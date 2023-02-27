@@ -1,0 +1,672 @@
+fileFormatVersion: 2
+guid: 40255cf14e4447e42a59e6b93145bc06
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Instrucciones_Btn_omitir_normal
+  - first:
+      213: 21300002
+    second: Instrucciones_Btn_omitir_hover
+  - first:
+      213: 21300004
+    second: Instrucciones_Btn_omitir_deshabilitado
+  - first:
+      213: 21300006
+    second: Instrucciones_Btn_continuar_normal
+  - first:
+      213: 21300008
+    second: Instrucciones_Btn_continuar_hover
+  - first:
+      213: 21300010
+    second: Instrucciones_Btn_continuar_deshabilitado
+  - first:
+      213: 21300012
+    second: Instrucciones_Cuadro
+  - first:
+      213: 21300014
+    second: Flecha_puntero
+  - first:
+      213: 21300016
+    second: Instrucciones_icono
+  - first:
+      213: 21300018
+    second: Instrucciones_icono_PC
+  - first:
+      213: 21300020
+    second: Instrucciones_Btn_continuar_normal_PC
+  - first:
+      213: 21300022
+    second: Instrucciones_Btn_omitir_normal_PC
+  - first:
+      213: 21300024
+    second: Instrucciones_Cuadro_PC
+  - first:
+      213: 21300026
+    second: Icono_WASD
+  - first:
+      213: 21300028
+    second: Icono_flechas
+  - first:
+      213: 21300030
+    second: Icono_shift
+  - first:
+      213: 21300032
+    second: Icono_barra_espaciadora
+  - first:
+      213: 21300034
+    second: Icono_camara
+  - first:
+      213: 21300036
+    second: Icono_puntero_mano
+  - first:
+      213: 21300038
+    second: Icono_arriba_abajo
+  - first:
+      213: 21300040
+    second: Instrucciones_0
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: 29
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Instrucciones_Btn_omitir_normal
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 147
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8615eabf6a3fa454db4a37548686c123
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_omitir_hover
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 147
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660a485aa8f1dbe49bc6fd788638ad97
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_omitir_deshabilitado
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 147
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435d8424c9dc3dc40bd2b0b9530bec51
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_continuar_normal
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 101
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62eeee3818508246846703c9eafd1ad
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_continuar_hover
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 101
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b012a8a3c7ff2d4784009d558dbee1f
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_continuar_deshabilitado
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 101
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc4aeca36ac49748bb1a022d74d4652
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Cuadro
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 798
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb42d14de1ab5d4aa55f3d243a897bd
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flecha_puntero
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 16
+        width: 71
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71a4982d86362549af0a3b9927695ed
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_icono
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 17
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: babfd9dc2c66ff2479176c611f8cce9d
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_icono_PC
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 17
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1893b3bc96934944a577141812c29b3
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_continuar_normal_PC
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 101
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb33ac86cf954a0478f495b2712620e0
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Btn_omitir_normal_PC
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 147
+        width: 104
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e822859f786c3eb4793431d8b931b991
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_Cuadro_PC
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 94
+        width: 550
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57632d1943c3f84f99305e92d3cff35
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_WASD
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 193
+        width: 86
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3872c5aeae3107f4596aaca333ab27b8
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_flechas
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 193
+        width: 86
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b4fc1da72541948b44260b15be86c2
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_shift
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 193
+        width: 51
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606e3928fbcd4414cb4c4e2f3576f4ed
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_barra_espaciadora
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 193
+        width: 135
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d7e69d5e5f50f42b277e6bc3433bf1
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_camara
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 193
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9204c836c478ad4cac3014377fee9ec
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_puntero_mano
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 192
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1065db3b06dcd9340bc780e9d7758834
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icono_arriba_abajo
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 193
+        width: 28
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b68afb6810807e4fa1cc00e05d41e5e
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Instrucciones_0
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 191
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20de302bb36329f459ee868a9c509613
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f05b0b06fad22d84098fe161eb81f422
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Flecha_puntero: 21300014
+      Icono_WASD: 21300026
+      Icono_arriba_abajo: 21300038
+      Icono_barra_espaciadora: 21300032
+      Icono_camara: 21300034
+      Icono_flechas: 21300028
+      Icono_puntero_mano: 21300036
+      Icono_shift: 21300030
+      Instrucciones_0: 21300040
+      Instrucciones_Btn_continuar_deshabilitado: 21300010
+      Instrucciones_Btn_continuar_hover: 21300008
+      Instrucciones_Btn_continuar_normal: 21300006
+      Instrucciones_Btn_continuar_normal_PC: 21300020
+      Instrucciones_Btn_omitir_deshabilitado: 21300004
+      Instrucciones_Btn_omitir_hover: 21300002
+      Instrucciones_Btn_omitir_normal: 21300000
+      Instrucciones_Btn_omitir_normal_PC: 21300022
+      Instrucciones_Cuadro: 21300012
+      Instrucciones_Cuadro_PC: 21300024
+      Instrucciones_icono: 21300016
+      Instrucciones_icono_PC: 21300018
+  spritePackingTag: 
+  pSDRemoveMatte: 1
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

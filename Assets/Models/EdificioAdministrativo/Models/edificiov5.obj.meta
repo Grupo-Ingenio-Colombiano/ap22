@@ -1,0 +1,783 @@
+fileFormatVersion: 2
+guid: 9d2bd39ddd140b04a8c04659204e2ed7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: baranda
+    100002: baranda001
+    100004: baranda_vidrio
+    100006: baranda_vidrio001
+    100008: baranda_vidrio002
+    100010: baranda_vidrio003
+    100012: //RootNode
+    100014: escalera2_004
+    100016: escalera2_3
+    100018: estructura
+    100020: interseccion1
+    100022: interseccion2
+    100024: interseccion3
+    100026: interseccion4
+    100028: manija1
+    100030: manija2
+    100032: marco_bath
+    100034: marco_puerta
+    100036: marcos
+    100038: marcos_peque
+    100040: pared_bath
+    100042: pared_bath_in
+    100044: pared_concreto
+    100046: paredes
+    100048: piso1
+    100050: piso2_3
+    100052: piso_bath
+    100054: puerta1
+    100056: puerta2
+    100058: puerta3
+    100060: puerta4
+    100062: puerta5
+    100064: puerta6
+    100066: puerta7
+    100068: puerta8
+    100070: puerta9
+    100072: puerta_bano
+    100074: puerta_bano1
+    100076: puerta_bano2
+    100078: puerta_bano3
+    100080: puerta_bano4
+    100082: puerta_of1
+    100084: puerta_of2
+    100086: soporte_bano1
+    100088: soporte_bano2
+    100090: soporte_bano3
+    100092: soporte_bano4
+    100094: soporte_bano5
+    100096: techo1
+    100098: techo2
+    100100: techo3
+    100102: techo_terraza
+    100104: ventana1
+    100106: ventana10
+    100108: ventana11
+    100110: ventana12
+    100112: ventana2
+    100114: ventana3
+    100116: ventana4
+    100118: ventana5
+    100120: ventana6
+    100122: ventana7
+    100124: ventana9
+    100126: ventanas_peque
+    100128: visagra1
+    100130: visagra2
+    100132: visagra3
+    100134: visagra4
+    100136: visagra5
+    100138: visagra6
+    400000: baranda
+    400002: baranda001
+    400004: baranda_vidrio
+    400006: baranda_vidrio001
+    400008: baranda_vidrio002
+    400010: baranda_vidrio003
+    400012: //RootNode
+    400014: escalera2_004
+    400016: escalera2_3
+    400018: estructura
+    400020: interseccion1
+    400022: interseccion2
+    400024: interseccion3
+    400026: interseccion4
+    400028: manija1
+    400030: manija2
+    400032: marco_bath
+    400034: marco_puerta
+    400036: marcos
+    400038: marcos_peque
+    400040: pared_bath
+    400042: pared_bath_in
+    400044: pared_concreto
+    400046: paredes
+    400048: piso1
+    400050: piso2_3
+    400052: piso_bath
+    400054: puerta1
+    400056: puerta2
+    400058: puerta3
+    400060: puerta4
+    400062: puerta5
+    400064: puerta6
+    400066: puerta7
+    400068: puerta8
+    400070: puerta9
+    400072: puerta_bano
+    400074: puerta_bano1
+    400076: puerta_bano2
+    400078: puerta_bano3
+    400080: puerta_bano4
+    400082: puerta_of1
+    400084: puerta_of2
+    400086: soporte_bano1
+    400088: soporte_bano2
+    400090: soporte_bano3
+    400092: soporte_bano4
+    400094: soporte_bano5
+    400096: techo1
+    400098: techo2
+    400100: techo3
+    400102: techo_terraza
+    400104: ventana1
+    400106: ventana10
+    400108: ventana11
+    400110: ventana12
+    400112: ventana2
+    400114: ventana3
+    400116: ventana4
+    400118: ventana5
+    400120: ventana6
+    400122: ventana7
+    400124: ventana9
+    400126: ventanas_peque
+    400128: visagra1
+    400130: visagra2
+    400132: visagra3
+    400134: visagra4
+    400136: visagra5
+    400138: visagra6
+    2300000: baranda
+    2300002: baranda001
+    2300004: baranda_vidrio
+    2300006: baranda_vidrio001
+    2300008: baranda_vidrio002
+    2300010: baranda_vidrio003
+    2300012: escalera2_004
+    2300014: escalera2_3
+    2300016: estructura
+    2300018: interseccion1
+    2300020: interseccion2
+    2300022: interseccion3
+    2300024: interseccion4
+    2300026: manija1
+    2300028: manija2
+    2300030: marco_bath
+    2300032: marco_puerta
+    2300034: marcos
+    2300036: marcos_peque
+    2300038: pared_bath
+    2300040: pared_bath_in
+    2300042: pared_concreto
+    2300044: paredes
+    2300046: piso1
+    2300048: piso2_3
+    2300050: piso_bath
+    2300052: puerta1
+    2300054: puerta2
+    2300056: puerta3
+    2300058: puerta4
+    2300060: puerta5
+    2300062: puerta6
+    2300064: puerta7
+    2300066: puerta8
+    2300068: puerta9
+    2300070: puerta_bano
+    2300072: puerta_bano1
+    2300074: puerta_bano2
+    2300076: puerta_bano3
+    2300078: puerta_bano4
+    2300080: puerta_of1
+    2300082: puerta_of2
+    2300084: soporte_bano1
+    2300086: soporte_bano2
+    2300088: soporte_bano3
+    2300090: soporte_bano4
+    2300092: soporte_bano5
+    2300094: techo1
+    2300096: techo2
+    2300098: techo3
+    2300100: techo_terraza
+    2300102: ventana1
+    2300104: ventana10
+    2300106: ventana11
+    2300108: ventana12
+    2300110: ventana2
+    2300112: ventana3
+    2300114: ventana4
+    2300116: ventana5
+    2300118: ventana6
+    2300120: ventana7
+    2300122: ventana9
+    2300124: ventanas_peque
+    2300126: visagra1
+    2300128: visagra2
+    2300130: visagra3
+    2300132: visagra4
+    2300134: visagra5
+    2300136: visagra6
+    3300000: baranda
+    3300002: baranda001
+    3300004: baranda_vidrio
+    3300006: baranda_vidrio001
+    3300008: baranda_vidrio002
+    3300010: baranda_vidrio003
+    3300012: escalera2_004
+    3300014: escalera2_3
+    3300016: estructura
+    3300018: interseccion1
+    3300020: interseccion2
+    3300022: interseccion3
+    3300024: interseccion4
+    3300026: manija1
+    3300028: manija2
+    3300030: marco_bath
+    3300032: marco_puerta
+    3300034: marcos
+    3300036: marcos_peque
+    3300038: pared_bath
+    3300040: pared_bath_in
+    3300042: pared_concreto
+    3300044: paredes
+    3300046: piso1
+    3300048: piso2_3
+    3300050: piso_bath
+    3300052: puerta1
+    3300054: puerta2
+    3300056: puerta3
+    3300058: puerta4
+    3300060: puerta5
+    3300062: puerta6
+    3300064: puerta7
+    3300066: puerta8
+    3300068: puerta9
+    3300070: puerta_bano
+    3300072: puerta_bano1
+    3300074: puerta_bano2
+    3300076: puerta_bano3
+    3300078: puerta_bano4
+    3300080: puerta_of1
+    3300082: puerta_of2
+    3300084: soporte_bano1
+    3300086: soporte_bano2
+    3300088: soporte_bano3
+    3300090: soporte_bano4
+    3300092: soporte_bano5
+    3300094: techo1
+    3300096: techo2
+    3300098: techo3
+    3300100: techo_terraza
+    3300102: ventana1
+    3300104: ventana10
+    3300106: ventana11
+    3300108: ventana12
+    3300110: ventana2
+    3300112: ventana3
+    3300114: ventana4
+    3300116: ventana5
+    3300118: ventana6
+    3300120: ventana7
+    3300122: ventana9
+    3300124: ventanas_peque
+    3300126: visagra1
+    3300128: visagra2
+    3300130: visagra3
+    3300132: visagra4
+    3300134: visagra5
+    3300136: visagra6
+    4300000: baranda
+    4300002: baranda001
+    4300004: baranda_vidrio
+    4300006: baranda_vidrio001
+    4300008: baranda_vidrio002
+    4300010: baranda_vidrio003
+    4300012: escalera2_004
+    4300014: escalera2_3
+    4300016: estructura
+    4300018: interseccion1
+    4300020: interseccion2
+    4300022: interseccion3
+    4300024: interseccion4
+    4300026: manija1
+    4300028: manija2
+    4300030: marco_bath
+    4300032: marco_puerta
+    4300034: marcos
+    4300036: marcos_peque
+    4300038: pared_bath
+    4300040: pared_bath_in
+    4300042: pared_concreto
+    4300044: paredes
+    4300046: piso1
+    4300048: piso2_3
+    4300050: piso_bath
+    4300052: puerta1
+    4300054: puerta2
+    4300056: puerta3
+    4300058: puerta4
+    4300060: puerta5
+    4300062: puerta6
+    4300064: puerta7
+    4300066: puerta8
+    4300068: puerta9
+    4300070: puerta_bano
+    4300072: puerta_bano1
+    4300074: puerta_bano2
+    4300076: puerta_bano3
+    4300078: puerta_bano4
+    4300080: puerta_of1
+    4300082: puerta_of2
+    4300084: soporte_bano1
+    4300086: soporte_bano2
+    4300088: soporte_bano3
+    4300090: soporte_bano4
+    4300092: soporte_bano5
+    4300094: techo1
+    4300096: techo2
+    4300098: techo3
+    4300100: techo_terraza
+    4300102: ventana1
+    4300104: ventana10
+    4300106: ventana11
+    4300108: ventana12
+    4300110: ventana2
+    4300112: ventana3
+    4300114: ventana4
+    4300116: ventana5
+    4300118: ventana6
+    4300120: ventana7
+    4300122: ventana9
+    4300124: ventanas_peque
+    4300126: visagra1
+    4300128: visagra2
+    4300130: visagra3
+    4300132: visagra4
+    4300134: visagra5
+    4300136: visagra6
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baranda001Mat
+    second: {fileID: 2100000, guid: bbf5f775d3b222e429ea0c4849b577f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barandaMat
+    second: {fileID: 2100000, guid: f461cd3cbd7496d46b35c6f3e5ae3183, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baranda_vidrio001Mat
+    second: {fileID: 2100000, guid: efffe353713056e4ab44ea6c25111bb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baranda_vidrio002Mat
+    second: {fileID: 2100000, guid: deb33c7addb36a644b0987acbd8a9d01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baranda_vidrio003Mat
+    second: {fileID: 2100000, guid: cff698bc028c02c4da9f0415ddb62e20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baranda_vidrioMat
+    second: {fileID: 2100000, guid: 89d10acc8c5280a4981e93da89aec7f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: escalera2_004Mat
+    second: {fileID: 2100000, guid: ef328921287702145a5ff45164cb6e9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: escalera2_3Mat
+    second: {fileID: 2100000, guid: 55125cc5a12d459498577445f24a4e11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: estructuraMat
+    second: {fileID: 2100000, guid: 573ec1c5252ce854d9033609c3c3c132, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interseccion1Mat
+    second: {fileID: 2100000, guid: a9c03860708edf5489fb368bea9031d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interseccion2Mat
+    second: {fileID: 2100000, guid: a802d7f43f872984599d6f3d8e631527, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interseccion3Mat
+    second: {fileID: 2100000, guid: a8745c153b65c8540be83d6baf5e504b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interseccion4Mat
+    second: {fileID: 2100000, guid: 487a7b54a83dc1c44bc58e09c118de54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: manija1Mat
+    second: {fileID: 2100000, guid: 41c287eedef5b10419b84c29f23c7db0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: manija2Mat
+    second: {fileID: 2100000, guid: c2f4152941257a2458270aaa9805bd49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marco_bathMat
+    second: {fileID: 2100000, guid: 55fa4ad4d40b93d4a8d33f1b50b69e10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marco_puertaMat
+    second: {fileID: 2100000, guid: fd7bf9957f81bfd47ae0bb646a55ee5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marcosMat
+    second: {fileID: 2100000, guid: be4d819b9e3846f4a919bb5ed13b0908, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: marcos_pequeMat
+    second: {fileID: 2100000, guid: 54fe264066d841243af9070702cd5890, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pared_bathMat
+    second: {fileID: 2100000, guid: afe21aa192b21b645b5e1f63d050fca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pared_bath_inMat
+    second: {fileID: 2100000, guid: 22493b9ff4730e34b93bba5d9c55d0e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pared_concretoMat
+    second: {fileID: 2100000, guid: 3ad81eafbff42214e99607ef09a0ab9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paredesMat
+    second: {fileID: 2100000, guid: 8c625171711e07747aceb1b88bfe2828, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso1Mat
+    second: {fileID: 2100000, guid: 1275f48512f19c84882e5aba4986f06d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso2_3Mat
+    second: {fileID: 2100000, guid: 8f78d864f466b2140a6f650d9e4c359d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: piso_bathMat
+    second: {fileID: 2100000, guid: ef6e5e89a48f51d428cea1788cebdbbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta1Mat
+    second: {fileID: 2100000, guid: bd4e20cbe95a3404cabe461ee6a8cf97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta2Mat
+    second: {fileID: 2100000, guid: ca5c2a997d5fdf0488c4d93685cbe115, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta3Mat
+    second: {fileID: 2100000, guid: 29a9082fac6fe6847894d7a205b8dc71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta4Mat
+    second: {fileID: 2100000, guid: 75dd00dc9f98cdd42bfc5e9a719b53b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta5Mat
+    second: {fileID: 2100000, guid: 25ff5cda5e4cefc4d907a72bc43a8b22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta6Mat
+    second: {fileID: 2100000, guid: b17b74075844c8a40b5e7d4a3d86f91f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta7Mat
+    second: {fileID: 2100000, guid: 87a8226dd17ca6b4e9f8e8635372d203, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta8Mat
+    second: {fileID: 2100000, guid: 5a702d8679f23eb4696f79c78c02e81f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta9Mat
+    second: {fileID: 2100000, guid: 054b188b0e9a3dc489d84457e7d53310, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_bano1Mat
+    second: {fileID: 2100000, guid: 7791b34f9ce7463408a6bb020be58d1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_bano2Mat
+    second: {fileID: 2100000, guid: 40f3f6c2e72dccb409624735d97a2be2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_bano3Mat
+    second: {fileID: 2100000, guid: 6012dbe2ee9ff95479f56a1f4f0c79a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_bano4Mat
+    second: {fileID: 2100000, guid: 158f8379a94a6d5469a2da20e32ddf74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_banoMat
+    second: {fileID: 2100000, guid: 7d30f7ec124ef2846ae5ca499dadf9e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_of1Mat
+    second: {fileID: 2100000, guid: 1dd3bcade89481141bd429d1f64c3d3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: puerta_of2Mat
+    second: {fileID: 2100000, guid: b29093cd09e8b3845a4b6f95b00c9361, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soporte_bano1Mat
+    second: {fileID: 2100000, guid: 92a11655c86a3884baa280c72ffc930b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soporte_bano2Mat
+    second: {fileID: 2100000, guid: d1a7d25c0aeca764fb38f64d6ba38be4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soporte_bano3Mat
+    second: {fileID: 2100000, guid: 4b6a2bd7515a87e448432178af5683c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soporte_bano4Mat
+    second: {fileID: 2100000, guid: c2c888b283548b949b20b4d5e70ac4e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soporte_bano5Mat
+    second: {fileID: 2100000, guid: 968629594713b004b8c30b78cdda1dcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: techo1Mat
+    second: {fileID: 2100000, guid: 8493bb4070ea1894faf6157befe22f8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: techo2Mat
+    second: {fileID: 2100000, guid: 0ece684f9628e864d9b9b09de889bfe7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: techo3Mat
+    second: {fileID: 2100000, guid: af80629351f83da4cb1cd2a6da77edaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: techo_terrazaMat
+    second: {fileID: 2100000, guid: 82ce0e9392247a9448a0ed855e87207b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana10Mat
+    second: {fileID: 2100000, guid: c136b81f2faf577468eaee4f943c7ee2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana11Mat
+    second: {fileID: 2100000, guid: b56d45af6bd795247b8c154da15fb77c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana12Mat
+    second: {fileID: 2100000, guid: 77c2cf39d4ab7f641927481415d0d3cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana1Mat
+    second: {fileID: 2100000, guid: a1bb06f3e7123ad43afb65c85224aa7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana2Mat
+    second: {fileID: 2100000, guid: fbe94a10b379455458c3af1b66082a38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana3Mat
+    second: {fileID: 2100000, guid: bd61db244dd3c13408876902a9606323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana4Mat
+    second: {fileID: 2100000, guid: 752b1d498b1fa7d4fb1fd5715db30dee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana5Mat
+    second: {fileID: 2100000, guid: 873de164cfbd1d0498d33e3a50f7cde0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana6Mat
+    second: {fileID: 2100000, guid: 23a88fe36f7d8fa4c83b72863b7e3076, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana7Mat
+    second: {fileID: 2100000, guid: 9f37c975b95fca5418298d032aaf00ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana9Mat
+    second: {fileID: 2100000, guid: e2cbdbf901f765d40869c0c5dca409db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventanas_pequeMat
+    second: {fileID: 2100000, guid: b5f806042ca514543ab37c55b912d29d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra1Mat
+    second: {fileID: 2100000, guid: 03be09fa5591cca419f9872a81bb3d99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra2Mat
+    second: {fileID: 2100000, guid: d8780fc12cafae247b33fd26e7b775bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra3Mat
+    second: {fileID: 2100000, guid: 86fd432b4cf25b34cad6b70b2b9a5681, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra4Mat
+    second: {fileID: 2100000, guid: 8d972d8f76c89a24a9da7c989df56f50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra5Mat
+    second: {fileID: 2100000, guid: afeb5ed6af2678543a90dd66d11fa3c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: visagra6Mat
+    second: {fileID: 2100000, guid: fd73edc8859243a4ab4a520bd153aec7, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 10
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,463 @@
+fileFormatVersion: 2
+guid: dc97b28a025ba794f83aa34ff67ba299
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: barril_de_pintura
+    100002: Cabina
+    100004: //RootNode
+    100006: cortina
+    100008: cortina 1
+    100010: cortina 2
+    100012: cortina 3
+    100014: cortina 4
+    100016: puerta
+    100018: puerta 1
+    100020: puerta001
+    100022: puerta002
+    100024: puerta003
+    100026: puerta004
+    100028: puerta005
+    100030: puerta006
+    100032: soporteCortinas
+    100034: soportes_cabina
+    100036: ventana
+    100038: vidrio
+    100040: vidrio001
+    100042: vidrio002
+    100044: vidrio003
+    100046: vidrioGrande
+    100048: visagra
+    100050: visagra001
+    100052: visagra002
+    100054: visagra003
+    100056: visagra004
+    100058: visagra005
+    100060: visagra006
+    100062: visagra007
+    100064: Wind001
+    100066: cortina001
+    100068: cortina002
+    100070: Cylinder002
+    100072: Cylinder003
+    100074: Bone001
+    100076: Bone001(mirrored)
+    100078: Bone002
+    100080: Bone002(mirrored)
+    100082: Bone003
+    100084: Bone003(mirrored)
+    100086: Bone004
+    100088: Bone004(mirrored)
+    100090: Bone005
+    100092: Bone005(mirrored)
+    100094: Bone006
+    100096: Bone006(mirrored)
+    100098: Bone007
+    100100: Bone007(mirrored)
+    100102: Bone008
+    100104: Bone008(mirrored)
+    100106: Bone009
+    100108: Bone009(mirrored)
+    100110: Bone010
+    100112: Bone010(mirrored)
+    100114: Bone011
+    100116: Bone011(mirrored)
+    100118: Bone012
+    100120: Bone012(mirrored)
+    100122: Bone013
+    100124: Bone013(mirrored)
+    100126: Bone014
+    100128: Bone014(mirrored)
+    100130: Bone015
+    100132: Bone015(mirrored)
+    100134: Bone016
+    100136: Bone016(mirrored)
+    100138: Bone017
+    100140: Bone017(mirrored)
+    100142: Bone018
+    100144: Bone018(mirrored)
+    100146: Bone019
+    100148: Bone019(mirrored)
+    100150: Bone020
+    100152: Bone020(mirrored)
+    100154: Bone021
+    100156: Bone021(mirrored)
+    100158: Bone022
+    100160: Bone022(mirrored)
+    100162: Bone023
+    100164: Bone023(mirrored)
+    100166: Bone024
+    100168: Bone024(mirrored)
+    100170: controlador002
+    100172: controlador1
+    100174: Cylinder005
+    100176: Cylinder007
+    100178: IK Chain001
+    100180: IK Chain002
+    100182: panel sistema de pintura
+    100184: pistola
+    100186: pistola001
+    100188: sistema_de_pintura
+    100190: motor
+    100192: motor2
+    100194: soporte
+    100196: soporte2
+    100198: Line001
+    400000: barril_de_pintura
+    400002: Cabina
+    400004: //RootNode
+    400006: cortina
+    400008: cortina 1
+    400010: cortina 2
+    400012: cortina 3
+    400014: cortina 4
+    400016: puerta
+    400018: puerta 1
+    400020: puerta001
+    400022: puerta002
+    400024: puerta003
+    400026: puerta004
+    400028: puerta005
+    400030: puerta006
+    400032: soporteCortinas
+    400034: soportes_cabina
+    400036: ventana
+    400038: vidrio
+    400040: vidrio001
+    400042: vidrio002
+    400044: vidrio003
+    400046: vidrioGrande
+    400048: visagra
+    400050: visagra001
+    400052: visagra002
+    400054: visagra003
+    400056: visagra004
+    400058: visagra005
+    400060: visagra006
+    400062: visagra007
+    400064: Wind001
+    400066: cortina001
+    400068: cortina002
+    400070: Cylinder002
+    400072: Cylinder003
+    400074: Bone001
+    400076: Bone001(mirrored)
+    400078: Bone002
+    400080: Bone002(mirrored)
+    400082: Bone003
+    400084: Bone003(mirrored)
+    400086: Bone004
+    400088: Bone004(mirrored)
+    400090: Bone005
+    400092: Bone005(mirrored)
+    400094: Bone006
+    400096: Bone006(mirrored)
+    400098: Bone007
+    400100: Bone007(mirrored)
+    400102: Bone008
+    400104: Bone008(mirrored)
+    400106: Bone009
+    400108: Bone009(mirrored)
+    400110: Bone010
+    400112: Bone010(mirrored)
+    400114: Bone011
+    400116: Bone011(mirrored)
+    400118: Bone012
+    400120: Bone012(mirrored)
+    400122: Bone013
+    400124: Bone013(mirrored)
+    400126: Bone014
+    400128: Bone014(mirrored)
+    400130: Bone015
+    400132: Bone015(mirrored)
+    400134: Bone016
+    400136: Bone016(mirrored)
+    400138: Bone017
+    400140: Bone017(mirrored)
+    400142: Bone018
+    400144: Bone018(mirrored)
+    400146: Bone019
+    400148: Bone019(mirrored)
+    400150: Bone020
+    400152: Bone020(mirrored)
+    400154: Bone021
+    400156: Bone021(mirrored)
+    400158: Bone022
+    400160: Bone022(mirrored)
+    400162: Bone023
+    400164: Bone023(mirrored)
+    400166: Bone024
+    400168: Bone024(mirrored)
+    400170: controlador002
+    400172: controlador1
+    400174: Cylinder005
+    400176: Cylinder007
+    400178: IK Chain001
+    400180: IK Chain002
+    400182: panel sistema de pintura
+    400184: pistola
+    400186: pistola001
+    400188: sistema_de_pintura
+    400190: motor
+    400192: motor2
+    400194: soporte
+    400196: soporte2
+    400198: Line001
+    2300000: barril_de_pintura
+    2300002: Cabina
+    2300004: cortina
+    2300006: cortina 1
+    2300008: cortina 2
+    2300010: cortina 3
+    2300012: cortina 4
+    2300014: puerta 1
+    2300016: puerta002
+    2300018: puerta004
+    2300020: puerta006
+    2300022: soporteCortinas
+    2300024: soportes_cabina
+    2300026: ventana
+    2300028: vidrio
+    2300030: vidrio001
+    2300032: vidrio002
+    2300034: vidrio003
+    2300036: vidrioGrande
+    2300038: visagra
+    2300040: visagra001
+    2300042: visagra002
+    2300044: visagra003
+    2300046: visagra004
+    2300048: visagra005
+    2300050: visagra006
+    2300052: visagra007
+    2300054: //RootNode
+    2300056: cortina001
+    2300058: Cylinder002
+    2300060: Cylinder003
+    2300062: Cylinder005
+    2300064: Cylinder007
+    2300066: panel sistema de pintura
+    2300068: sistema_de_pintura
+    2300070: motor
+    2300072: motor2
+    2300074: soporte
+    2300076: soporte2
+    2300078: pistola
+    2300080: pistola001
+    2300082: Line001
+    2300084: cortina002
+    3300000: barril_de_pintura
+    3300002: Cabina
+    3300004: cortina
+    3300006: cortina 1
+    3300008: cortina 2
+    3300010: cortina 3
+    3300012: cortina 4
+    3300014: puerta 1
+    3300016: puerta002
+    3300018: puerta004
+    3300020: puerta006
+    3300022: soporteCortinas
+    3300024: soportes_cabina
+    3300026: ventana
+    3300028: vidrio
+    3300030: vidrio001
+    3300032: vidrio002
+    3300034: vidrio003
+    3300036: vidrioGrande
+    3300038: visagra
+    3300040: visagra001
+    3300042: visagra002
+    3300044: visagra003
+    3300046: visagra004
+    3300048: visagra005
+    3300050: visagra006
+    3300052: visagra007
+    3300054: //RootNode
+    3300056: cortina001
+    3300058: Cylinder002
+    3300060: Cylinder003
+    3300062: Cylinder005
+    3300064: Cylinder007
+    3300066: panel sistema de pintura
+    3300068: sistema_de_pintura
+    3300070: motor
+    3300072: motor2
+    3300074: soporte
+    3300076: soporte2
+    3300078: pistola
+    3300080: pistola001
+    3300082: Line001
+    3300084: cortina002
+    4300000: barril_de_pintura
+    4300002: Cabina
+    4300004: soportes_cabina
+    4300006: puerta
+    4300008: vidrio
+    4300010: visagra
+    4300012: visagra001
+    4300014: puerta002
+    4300016: vidrio001
+    4300018: visagra002
+    4300020: visagra003
+    4300022: puerta004
+    4300024: vidrio002
+    4300026: visagra004
+    4300028: visagra005
+    4300030: puerta006
+    4300032: vidrio003
+    4300034: visagra006
+    4300036: visagra007
+    4300038: ventana
+    4300040: vidrioGrande
+    4300042: soporteCortinas
+    4300044: cortina
+    4300046: cortina
+    4300048: cortina
+    4300050: cortina
+    4300052: cortina
+    4300054: cortina001
+    4300056: cortina002
+    4300058: Cylinder002
+    4300060: Cylinder003
+    4300062: sistema_de_pintura
+    4300064: panel sistema de pintura
+    4300066: Cylinder005
+    4300068: pistola
+    4300070: pistola001
+    4300072: Cylinder007
+    4300074: motor2
+    4300076: motor
+    4300078: soporte2
+    4300080: soporte
+    4300082: Line001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: cortina002
+    13700002: pistola
+    13700004: pistola001
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: f0ba77de4c3eb2c4c801b126b4bfcb3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: default
+    second: {fileID: 2100000, guid: 9df390baec5a071409749ec13ed65e4f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

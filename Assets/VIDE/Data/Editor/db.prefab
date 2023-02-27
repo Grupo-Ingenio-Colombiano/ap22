@@ -1,0 +1,731 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &146666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499132}
+  - component: {fileID: 11416270}
+  m_Layer: 0
+  m_Name: db
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &499132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11416270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileIndex: 17
+  loadTag: 
+  startID: 0
+  curFocusID: 0
+  currentID: 56876
+  autosave: 1
+  previewPanning: 0
+  currentDiag: 17
+  locEdit: 0
+  S_playerDiags:
+  - commentCount: 1
+    s_comment:
+    - text: Vuelva a formular una nueva propuesta, ya que no se cumple con la demanda.
+      extraData: ExtraData
+      inputSetIndex: 0
+      outputNodeIndex: -1
+      outActionIndex: 4
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 281
+        y: 49
+        width: 30
+        height: 18.2
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 1
+    rect:
+      serializedVersion: 2
+      x: 310
+      y: 250
+      width: 316
+      height: 123.2
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Vuelva a formular una nueva propuesta, ya que aunque se cumple con la
+        demanda, est\xE1 es inviable a nivel de implementaci\xF3n porque  est\xE1
+        empleando m\xE1s recursos de los necesarios"
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: -1
+      outActionIndex: 3
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 281
+        y: 49
+        width: 30
+        height: 18.2
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 2
+    rect:
+      serializedVersion: 2
+      x: 310
+      y: 390
+      width: 316
+      height: 174.4
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: Comment...
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: -1
+      outActionIndex: 2
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 281
+        y: 49
+        width: 30
+        height: 18.2
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 3
+    rect:
+      serializedVersion: 2
+      x: 310
+      y: 580
+      width: 316
+      height: 99.600006
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 2
+    s_comment:
+    - text: "Lamentablemente despu\xE9s de tres intentos no ha logrado cumplir con
+        el avance requerido en su laborar por lo que no ha podido cumplir su periodo
+        de prueba."
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: 1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 281
+        y: 49
+        width: 30
+        height: 18.2
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Ha fracasado en su periodo de prueba.
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 4
+    rect:
+      serializedVersion: 2
+      x: 310
+      y: 690
+      width: 316
+      height: 192.59999
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  S_actionNodes:
+  - pauseHere: 0
+    gameObjectName: TurnAndOperatorsSelection
+    methodName: GotoNodeTurnValidator
+    nameIndex: 50
+    methodIndex: 3
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - EnableBoard
+    - TurnValidator
+    - GotoNodeTurnValidator
+    - SetNullSupervisorFailMessage
+    - FailTurnValidator
+    nameOpts:
+    - '[No object]'
+    - Capsule
+    - Capsule
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - Parrafo
+    - Titulo Instrucciones
+    - Button Talk
+    - UIManager
+    - Interfaz_Notas
+    - Indicator
+    - item_11
+    - item_10
+    - item_9
+    - item_8
+    - item_7
+    - item_6
+    - item_5
+    - item_4
+    - item_3
+    - item_2
+    - item_1
+    - item_0
+    - inventario
+    - Inventory
+    - Ingeniera
+    - Main Canvas
+    - Game Help
+    - ItemRecived
+    - Ingeniero
+    - Mapa
+    - Virtualina
+    - GameFlow
+    - Carro de transporte interno tubos DOBLADO
+    - AddOverol
+    - CanvasTest
+    - Operador_de_soldadura_2
+    - AddMask
+    - Carro de transporte interno tubos CORTE
+    - Operador_de_soldadura_2 (1)
+    - Personaje_ensamble (6)
+    - Personaje_ensamble (3)
+    - Cronometro
+    - MontacargasConducible
+    - Mini trono paralelo
+    - Revision Formularios
+    - AddGlass
+    - Dance
+    - AddBoots
+    - SoundManager
+    - TurnAndOperatorsSelection
+    - Personaje_ensamble (10)
+    - Personaje_ensamble (3)
+    - AddGloves
+    - Personaje_ensamble (11)
+    - FresadoraCNC
+    - Principal door controler
+    - Inicio jefe de planta
+    - AddTapaOidos
+    - Mini trono paralelo (1)
+    - Personaje_ensamble (2)
+    - Carro_Transporte_cuadro_base RECTIFICADO
+    - Personaje_ensamble (9)
+    - Personaje_ensamble (11)
+    - Operador_Cortadora_de_tubo_Unity
+    - Personaje_ensamble (5)
+    - AddHelmet
+    - cabina_pintura
+    - TextMeshPro Text
+    - Personaje_ensamble (4)
+    - Personaje_ensamble (8)
+    - Personaje_ensamble (7)
+    - Camera Base
+    - MethodSelector
+    - Player Data
+    - Cronotrigger
+    - Personaje_ensamble (1)
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 370
+      width: 200
+      height: 144.6
+    ID: 0
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: 0
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: TurnAndOperatorsSelection
+    methodName: FailTurnValidator
+    nameIndex: 50
+    methodIndex: 5
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - EnableBoard
+    - TurnValidator
+    - GotoNodeTurnValidator
+    - SetNullSupervisorFailMessage
+    - FailTurnValidator
+    nameOpts:
+    - '[No object]'
+    - Capsule
+    - Capsule
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - Parrafo
+    - Titulo Instrucciones
+    - Button Talk
+    - UIManager
+    - Interfaz_Notas
+    - Indicator
+    - item_11
+    - item_10
+    - item_9
+    - item_8
+    - item_7
+    - item_6
+    - item_5
+    - item_4
+    - item_3
+    - item_2
+    - item_1
+    - item_0
+    - inventario
+    - Inventory
+    - Ingeniera
+    - Main Canvas
+    - Game Help
+    - ItemRecived
+    - Ingeniero
+    - Mapa
+    - Virtualina
+    - GameFlow
+    - Carro de transporte interno tubos DOBLADO
+    - AddOverol
+    - CanvasTest
+    - Operador_de_soldadura_2
+    - AddMask
+    - Carro de transporte interno tubos CORTE
+    - Operador_de_soldadura_2 (1)
+    - Personaje_ensamble (6)
+    - Personaje_ensamble (3)
+    - Cronometro
+    - MontacargasConducible
+    - Mini trono paralelo
+    - Revision Formularios
+    - AddGlass
+    - Dance
+    - AddBoots
+    - SoundManager
+    - TurnAndOperatorsSelection
+    - Personaje_ensamble (10)
+    - Personaje_ensamble (3)
+    - AddGloves
+    - Personaje_ensamble (11)
+    - FresadoraCNC
+    - Principal door controler
+    - Inicio jefe de planta
+    - AddTapaOidos
+    - Mini trono paralelo (1)
+    - Personaje_ensamble (2)
+    - Carro_Transporte_cuadro_base RECTIFICADO
+    - Personaje_ensamble (9)
+    - Personaje_ensamble (11)
+    - Operador_Cortadora_de_tubo_Unity
+    - Personaje_ensamble (5)
+    - AddHelmet
+    - cabina_pintura
+    - TextMeshPro Text
+    - Personaje_ensamble (4)
+    - Personaje_ensamble (8)
+    - Personaje_ensamble (7)
+    - Camera Base
+    - MethodSelector
+    - Player Data
+    - Cronotrigger
+    - Personaje_ensamble (1)
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 680
+      y: 720
+      width: 200
+      height: 144.6
+    ID: 5
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: 0
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: TurnAndOperatorsSelection
+    methodName: SetNullSupervisorFailMessage
+    nameIndex: 50
+    methodIndex: 4
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - EnableBoard
+    - TurnValidator
+    - GotoNodeTurnValidator
+    - SetNullSupervisorFailMessage
+    - FailTurnValidator
+    nameOpts:
+    - '[No object]'
+    - Capsule
+    - Capsule
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - Parrafo
+    - Titulo Instrucciones
+    - Button Talk
+    - UIManager
+    - Interfaz_Notas
+    - Indicator
+    - item_11
+    - item_10
+    - item_9
+    - item_8
+    - item_7
+    - item_6
+    - item_5
+    - item_4
+    - item_3
+    - item_2
+    - item_1
+    - item_0
+    - inventario
+    - Inventory
+    - Ingeniera
+    - Main Canvas
+    - Game Help
+    - ItemRecived
+    - Ingeniero
+    - Mapa
+    - Virtualina
+    - GameFlow
+    - Carro de transporte interno tubos DOBLADO
+    - AddOverol
+    - CanvasTest
+    - Operador_de_soldadura_2
+    - AddMask
+    - Carro de transporte interno tubos CORTE
+    - Operador_de_soldadura_2 (1)
+    - Personaje_ensamble (6)
+    - Personaje_ensamble (3)
+    - Cronometro
+    - MontacargasConducible
+    - Mini trono paralelo
+    - Revision Formularios
+    - AddGlass
+    - Dance
+    - AddBoots
+    - SoundManager
+    - TurnAndOperatorsSelection
+    - Personaje_ensamble (10)
+    - Personaje_ensamble (3)
+    - AddGloves
+    - Personaje_ensamble (11)
+    - FresadoraCNC
+    - Principal door controler
+    - Inicio jefe de planta
+    - AddTapaOidos
+    - Mini trono paralelo (1)
+    - Personaje_ensamble (2)
+    - Carro_Transporte_cuadro_base RECTIFICADO
+    - Personaje_ensamble (9)
+    - Personaje_ensamble (11)
+    - Operador_Cortadora_de_tubo_Unity
+    - Personaje_ensamble (5)
+    - AddHelmet
+    - cabina_pintura
+    - TextMeshPro Text
+    - Personaje_ensamble (4)
+    - Personaje_ensamble (8)
+    - Personaje_ensamble (7)
+    - Camera Base
+    - MethodSelector
+    - Player Data
+    - Cronotrigger
+    - Personaje_ensamble (1)
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 680
+      y: 560
+      width: 200
+      height: 144.6
+    ID: 6
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: 0
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: TurnAndOperatorsSelection
+    methodName: SetNullSupervisorFailMessage
+    nameIndex: 50
+    methodIndex: 4
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - EnableBoard
+    - TurnValidator
+    - GotoNodeTurnValidator
+    - SetNullSupervisorFailMessage
+    - FailTurnValidator
+    nameOpts:
+    - '[No object]'
+    - Capsule
+    - Capsule
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - Parrafo
+    - Titulo Instrucciones
+    - Button Talk
+    - UIManager
+    - Interfaz_Notas
+    - Indicator
+    - item_11
+    - item_10
+    - item_9
+    - item_8
+    - item_7
+    - item_6
+    - item_5
+    - item_4
+    - item_3
+    - item_2
+    - item_1
+    - item_0
+    - inventario
+    - Inventory
+    - Ingeniera
+    - Main Canvas
+    - Game Help
+    - ItemRecived
+    - Ingeniero
+    - Mapa
+    - Virtualina
+    - GameFlow
+    - Carro de transporte interno tubos DOBLADO
+    - AddOverol
+    - CanvasTest
+    - Operador_de_soldadura_2
+    - AddMask
+    - Carro de transporte interno tubos CORTE
+    - Operador_de_soldadura_2 (1)
+    - Personaje_ensamble (6)
+    - Personaje_ensamble (3)
+    - Cronometro
+    - MontacargasConducible
+    - Mini trono paralelo
+    - Revision Formularios
+    - AddGlass
+    - Dance
+    - AddBoots
+    - SoundManager
+    - TurnAndOperatorsSelection
+    - Personaje_ensamble (10)
+    - Personaje_ensamble (3)
+    - AddGloves
+    - Personaje_ensamble (11)
+    - FresadoraCNC
+    - Principal door controler
+    - Inicio jefe de planta
+    - AddTapaOidos
+    - Mini trono paralelo (1)
+    - Personaje_ensamble (2)
+    - Carro_Transporte_cuadro_base RECTIFICADO
+    - Personaje_ensamble (9)
+    - Personaje_ensamble (11)
+    - Operador_Cortadora_de_tubo_Unity
+    - Personaje_ensamble (5)
+    - AddHelmet
+    - cabina_pintura
+    - TextMeshPro Text
+    - Personaje_ensamble (4)
+    - Personaje_ensamble (8)
+    - Personaje_ensamble (7)
+    - Camera Base
+    - MethodSelector
+    - Player Data
+    - Cronotrigger
+    - Personaje_ensamble (1)
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 670
+      y: 400
+      width: 200
+      height: 144.6
+    ID: 7
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: 0
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: TurnAndOperatorsSelection
+    methodName: CorrectTurnValidator
+    nameIndex: 50
+    methodIndex: 6
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - EnableBoard
+    - TurnValidator
+    - GotoNodeTurnValidator
+    - SetNullSupervisorFailMessage
+    - FailTurnValidator
+    - CorrectTurnValidator
+    nameOpts:
+    - '[No object]'
+    - Capsule
+    - Capsule
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - TMP SubMeshUI [OpenSans-Regular SDF Material + LiberationSans SDF Atlas]
+    - Parrafo
+    - Titulo Instrucciones
+    - Button Talk
+    - UIManager
+    - Interfaz_Notas
+    - Indicator
+    - item_11
+    - item_10
+    - item_9
+    - item_8
+    - item_7
+    - item_6
+    - item_5
+    - item_4
+    - item_3
+    - item_2
+    - item_1
+    - item_0
+    - inventario
+    - Inventory
+    - Ingeniera
+    - Main Canvas
+    - Game Help
+    - ItemRecived
+    - Ingeniero
+    - Mapa
+    - Virtualina
+    - GameFlow
+    - Carro de transporte interno tubos DOBLADO
+    - AddOverol
+    - CanvasTest
+    - Operador_de_soldadura_2
+    - AddMask
+    - Carro de transporte interno tubos CORTE
+    - Operador_de_soldadura_2 (1)
+    - Personaje_ensamble (6)
+    - Personaje_ensamble (3)
+    - Cronometro
+    - MontacargasConducible
+    - Mini trono paralelo
+    - Revision Formularios
+    - AddGlass
+    - Dance
+    - AddBoots
+    - SoundManager
+    - TurnAndOperatorsSelection
+    - Personaje_ensamble (10)
+    - Personaje_ensamble (3)
+    - AddGloves
+    - Personaje_ensamble (11)
+    - FresadoraCNC
+    - Principal door controler
+    - Inicio jefe de planta
+    - AddTapaOidos
+    - Mini trono paralelo (1)
+    - Personaje_ensamble (2)
+    - Carro_Transporte_cuadro_base RECTIFICADO
+    - Personaje_ensamble (9)
+    - Personaje_ensamble (11)
+    - Operador_Cortadora_de_tubo_Unity
+    - Personaje_ensamble (5)
+    - AddHelmet
+    - cabina_pintura
+    - TextMeshPro Text
+    - Personaje_ensamble (4)
+    - Personaje_ensamble (8)
+    - Personaje_ensamble (7)
+    - Camera Base
+    - MethodSelector
+    - Player Data
+    - Cronotrigger
+    - Personaje_ensamble (1)
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 670
+      y: 230
+      width: 200
+      height: 144.6
+    ID: 8
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: 0
+    renameDialogue: 
