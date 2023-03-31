@@ -690,15 +690,16 @@ MonoBehaviour:
   imageAsset: {fileID: 1727606124577104127}
   data: {fileID: 11400000, guid: a09a3a216e394df44a4d8311794fe239, type: 2}
   title: Estudio de Tiempos
-  image: {fileID: -7745471936822245382, guid: 9c850c2a544b24b4c9b854a1bbd0861c, type: 3}
-  content: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-    when an unknown printer took a galley of type and scrambled it to make a type
-    specimen book. It has survived not only five centuries, but also the leap into
-    electronic typesetting, remaining essentially unchanged. It was popularised in
-    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-    and more recently with desktop publishing software like Aldus PageMaker including
-    versions of Lorem Ipsum.
+  image: {fileID: 21300000, guid: cd35ab80d72058a43b8209424cc306fe, type: 3}
+  content: "Bienvenido a la Pr\xE1ctica de Estudio de Tiempos, que pertenece al Complejo
+    Industrial de Virtualplant.  El objetivo principal de esta pr\xE1ctica es realizar
+    la toma de tiempos de ciclo para una de las operaciones, utilizando cualquiera
+    de las 3 opciones presentadas de toma de tiempos:  Datos hist\xF3ricos, muestreo
+    y cronometraje.  \r\nPosterior a la toma de tiempos, se deber\xE1 analizar si
+    el tiempo de ciclo calculado para la operaci\xF3n, permite a la empresa Virtual
+    Bike cumplir con la demanda, requiriendo para ello un an\xE1lisis de posterior
+    en donde se deber\xE1n plantear posibles soluciones, en el caso en que el tiempo
+    de ciclo calculado de la operaci\xF3n, no permita cumplir con lo requerido.\r"
 --- !u!1 &1368649289
 GameObject:
   m_ObjectHideFlags: 0
@@ -8249,7 +8250,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Version '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
