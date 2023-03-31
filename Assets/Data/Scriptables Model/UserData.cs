@@ -25,20 +25,26 @@ public class UserData : ScriptableObject
 
     [Header("Guardado")]
     public int method;
+    public int proccessUnits;
+
 
     [Header("--Metodo 1 (Datos Históricos)")]
     [Header("----Punto 0")]
     public float[] historicData = new float[36];
 
     [Header("----Punto 1")]
+    public int unitsProccess;
     public float requiredUnits;
     [Header("----Punto 2")]
+    public int kSuplements;
 
 
 
     [Header("--Metodo 2 (Muestreo)")]
     [Header("----Punto 0")]
-
+    public int unitsMade;
+    public int rhythm;
+    public int percentage;
     [Header("--Metodo 3 (Cronometraje)")]
     [Header("----Punto 0")]
     public string[] A1; // 
