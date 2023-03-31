@@ -11,17 +11,18 @@ using UnityEditor;
 public class UserData : ScriptableObject
 {
     public string name;
-    public int edad;
-
     public string email;
 
-    public string lastName; 
 
     public string PlayerSelected;  
 
     public Vector3 position;
 
     public Quaternion rot;
+
+    public int progress;
+    public int experience;
+    public float timer;
 
     [Header("Guardado")]
     public int method;
