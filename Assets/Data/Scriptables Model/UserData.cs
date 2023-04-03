@@ -12,7 +12,7 @@ public class UserData : ScriptableObject
 {
     public string name;
     public string email;
-
+    public string lastScene;
 
     public string PlayerSelected;  
 

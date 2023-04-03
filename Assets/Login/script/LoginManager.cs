@@ -126,10 +126,17 @@ public class LoginManager : MonoBehaviour
 
     void ContinueScene()
     {
-        int activeScene = SceneManager.GetActiveScene().buildIndex;        
-        LevelLoader.sceneToload = activeScene + 1;
-        
-        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);   
+        if (data.lastScene.Length == 0)
+        {
+            int activeScene = SceneManager.GetActiveScene().buildIndex;
+            LevelLoader.sceneToload = activeScene + 1;
+        }
+        else
+        {
+            LevelLoader.sceneToload = int.Parse(data.lastScene);
+        }
+
+        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
     }
 
 
