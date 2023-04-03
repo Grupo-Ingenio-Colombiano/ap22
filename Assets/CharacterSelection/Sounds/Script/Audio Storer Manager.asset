@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e07d2042372bc40a89469ec04b7464, type: 3}
+  m_Name: Audio Storer Manager
+  m_EditorClassIdentifier: 
+  Audios:
+  - Clip: {fileID: 8300000, guid: fcce4047880d44445814f344c0f1ed33, type: 3}
+    Volume: 0.5
+    Loop: 0
+  - Clip: {fileID: 8300000, guid: ec8b67a54f7e33c4fae7e4b192f8bebf, type: 3}
+    Volume: 1
+    Loop: 0
+  - Clip: {fileID: 8300000, guid: c39584d48250b084f900b81721ef0ed9, type: 3}
+    Volume: 1
+    Loop: 0
+  - Clip: {fileID: 8300000, guid: f1bfb0a678922454d92a547e946168e3, type: 3}
+    Volume: 1
+    Loop: 0
