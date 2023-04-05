@@ -25,6 +25,16 @@ public class MethodSeleccion : MonoBehaviour
     public int method = 0;
 
     public string selectedExcelMethod = "InformeDatosHistoricos.xlsx";
+     void Start()
+    {
+        if (data.isSave == true)
+        {
+            method = data.method;
+            selection = data.selectedMethod;
+            acept();
+           
+        }
+    }
 
     private void OnEnable()
     {
@@ -46,6 +56,7 @@ public class MethodSeleccion : MonoBehaviour
             data.method = method;
             anim.SetTrigger("indh");
             selection = true;
+            data.selectedMethod = selection;
             selectedExcelMethod = "InformeDatosHistoricos.xlsx";
         }        
         
@@ -59,6 +70,7 @@ public class MethodSeleccion : MonoBehaviour
             data.method = method;
             anim.SetTrigger("inm");
             selection = true;
+            data.selectedMethod = selection; 
             selectedExcelMethod = "InformeMuestreo.xlsx";
         }
 
@@ -72,6 +84,7 @@ public class MethodSeleccion : MonoBehaviour
             data.method = method;
             anim.SetTrigger("inc");
             selection = true;
+            data.selectedMethod = selection;
             selectedExcelMethod = "InformeCronometraje.xlsx";
         }
 
@@ -102,11 +115,6 @@ public class MethodSeleccion : MonoBehaviour
             UiMethodSelection.enabled = false;
             gameObject.SetActive(false);
         }
-    }
-    void DataUpload()
-    {
-        loadManager.Upload();
-
     }
   
 

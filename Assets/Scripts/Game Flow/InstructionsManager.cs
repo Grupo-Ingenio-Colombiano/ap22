@@ -14,12 +14,22 @@ public class InstructionsManager : MonoBehaviour
     [SerializeField]
     GameObject[] instructions;
 
+    [SerializeField]
+    UserData data;
+
     public Canvas canvasInstructions;
 
     int lastIndex = 0;
 
     int instructionState = 0;
 
+    private void Start()
+    {
+        if (data.isSave == true)
+        {
+            EndInstructions();
+        }
+    }
     private void OnEnable()
     {
         canvasInstructions.enabled = true;

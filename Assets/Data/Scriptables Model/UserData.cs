@@ -14,7 +14,7 @@ public class UserData : ScriptableObject
     public string email;
     public string lastScene;
 
-    public bool isSave;
+    public bool isSave = false;
 
     public string PlayerSelected;  
     public Vector3 playerPosition;
@@ -26,6 +26,7 @@ public class UserData : ScriptableObject
 
     [Header("Guardado")]
     public int method;
+    public bool selectedMethod;
     public int proccessUnits;
 
 
