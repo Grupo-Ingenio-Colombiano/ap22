@@ -22,14 +22,23 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] PlayerCanMove movementControl;
 
+    [SerializeField]
+    UserData data;
+
     void Start()
     {
+
         rot = 50;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         capsuleCol = GetComponent<CapsuleCollider>();
 
         capsuleCol.material = con_friccion;
+        if (data.isSave == true)
+        {
+            rb.transform.localPosition = data.playerPosition;
+            rb.transform.localRotation = data.playerRot;
+        }
     }
 
     void Update()
@@ -70,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("movementSpeed", 0);
         }
-
+        data.playerPosition = rb.transform.localPosition;
+        data.playerRot = rb.transform.localRotation;
+       
     }
 
     private void SetPhysicMaterial(float vertical)
@@ -84,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             capsuleCol.material = con_friccion;
         }
     }
-
+   
     #region salto
     private IEnumerator Jump()
     {

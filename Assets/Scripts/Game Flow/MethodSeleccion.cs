@@ -14,6 +14,12 @@ public class MethodSeleccion : MonoBehaviour
     [SerializeField]
     GameManager manager;
 
+    [SerializeField]
+    UserData data;
+
+    LoadManager loadManager;
+
+
     bool selection = false;
 
     public int method = 0;
@@ -37,6 +43,7 @@ public class MethodSeleccion : MonoBehaviour
         if (!selection)
         {
             method = 1;
+            data.method = method;
             anim.SetTrigger("indh");
             selection = true;
             selectedExcelMethod = "InformeDatosHistoricos.xlsx";
@@ -49,6 +56,7 @@ public class MethodSeleccion : MonoBehaviour
         if (!selection)
         {
             method = 2;
+            data.method = method;
             anim.SetTrigger("inm");
             selection = true;
             selectedExcelMethod = "InformeMuestreo.xlsx";
@@ -61,6 +69,7 @@ public class MethodSeleccion : MonoBehaviour
         if (!selection)
         {
             method = 3;
+            data.method = method;
             anim.SetTrigger("inc");
             selection = true;
             selectedExcelMethod = "InformeCronometraje.xlsx";
@@ -94,6 +103,11 @@ public class MethodSeleccion : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    void DataUpload()
+    {
+        loadManager.Upload();
 
+    }
+  
 
 }

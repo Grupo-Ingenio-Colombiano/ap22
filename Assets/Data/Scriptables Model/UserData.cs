@@ -14,11 +14,11 @@ public class UserData : ScriptableObject
     public string email;
     public string lastScene;
 
+    public bool isSave;
+
     public string PlayerSelected;  
-
-    public Vector3 position;
-
-    public Quaternion rot;
+    public Vector3 playerPosition;
+    public Quaternion playerRot;
 
     public int progress;
     public int experience;

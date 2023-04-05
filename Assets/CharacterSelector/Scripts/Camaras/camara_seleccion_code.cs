@@ -25,6 +25,9 @@ public class camara_seleccion_code : MonoBehaviour
 
     [SerializeField] Gender pGender;
 
+    [SerializeField]
+    UserData data;
+
     //carga
     AsyncOperation carga;
     public Slider barra;
@@ -113,7 +116,7 @@ public class camara_seleccion_code : MonoBehaviour
         male.SetBool("seleccion", true);
         pGender.playerIsMan = true;
         Invoke("activar_trancision", 3f);
-
+        data.PlayerSelected = 0.ToString();
         btn_seleccion_male.SetActive(false);
 
     }
@@ -125,7 +128,7 @@ public class camara_seleccion_code : MonoBehaviour
         pGender.playerIsMan = false;
 
         Invoke("activar_trancision", 3f);
-
+        data.PlayerSelected = 1.ToString();
         btn_seleccion_female.SetActive(false);
     }
 
