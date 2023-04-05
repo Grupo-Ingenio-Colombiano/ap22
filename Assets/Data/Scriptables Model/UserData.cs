@@ -20,9 +20,9 @@ public class UserData : ScriptableObject
     public Vector3 playerPosition;
     public Quaternion playerRot;
 
-    public int progress;
-    public int experience;
-    public float timer;
+    public float progress;
+    public float experience;
+    public string timer;
 
     [Header("Guardado")]
     public int method;

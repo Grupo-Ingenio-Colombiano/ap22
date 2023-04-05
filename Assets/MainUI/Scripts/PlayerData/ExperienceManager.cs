@@ -14,7 +14,10 @@ public class ExperienceManager : MonoBehaviour
 
     [SerializeField] PlayerExperience experience;
 
+    [SerializeField]
+    UserData data;
 
+    float exp = 0;
     float maxExperience = 500;
     private void Start()
     {
@@ -23,6 +26,11 @@ public class ExperienceManager : MonoBehaviour
             maxExperience = experience.MaxExperience;
             experience.OnExperienceObtained += HandleExperienceBarChanged;
             experience.OnExperienceObtained += HandleExperienceChanged;
+        }
+        if (data.isSave == true)
+        {
+            exp = data.experience;
+            experienceText.text = exp.ToString();
         }
     }
 
@@ -33,7 +41,9 @@ public class ExperienceManager : MonoBehaviour
 
     private void HandleExperienceChanged(float units)
     {
-        float exp = Mathf.Ceil(units * maxExperience);
+        exp = Mathf.Ceil(units * maxExperience);
+
+        data.experience = exp;
 
         experienceText.text = exp.ToString();
 

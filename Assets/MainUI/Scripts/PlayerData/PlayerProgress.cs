@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerProgress : ScriptableObject
 {
 
+
+    public UserData data;
     float maxProgress = 100f;
     public float CurrentProgress;
-
 
     public float CurrentProgressPercentage
     {
@@ -32,6 +33,7 @@ public class PlayerProgress : ScriptableObject
     public void AddProgressPercentage(float percentage)
     {
         CurrentProgress += percentage;
+        data.progress = CurrentProgress;
 
         if (OnProgressMade != null)
         {
@@ -43,6 +45,7 @@ public class PlayerProgress : ScriptableObject
     public void ResetProgress()
     {
         CurrentProgress = 0;
+        data.progress = CurrentProgress;
         OnProgressMade(CurrentProgressPercentage);
     }
 
