@@ -10,6 +10,9 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] PlayerProgress playerProgress;
     [SerializeField] PlayerAnswers playerAnswers;
 
+
+    [SerializeField] UserData data;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +38,7 @@ public class PlayerDataManager : MonoBehaviour
     public void AddProgress(float percentage)
     {
         playerProgress.AddProgressPercentage(percentage);
+        data.progress = percentage;
     }
 
     public void AddExperience(float experience)

@@ -28,11 +28,11 @@ public class TimeCounter : MonoBehaviour
     private void Update()
     {
         var timeSpan = TimeSpan.FromSeconds(Math.Round(Time.realtimeSinceStartup - timeAux));
-        if (data.isSave == true)
-        {
-            timeSpan = TimeSpan.FromSeconds(Math.Round(Time.realtimeSinceStartup - timeAux) + Int32.Parse(timer.text));
+        //if (data.isSave == true)
+        //{
+        //    timeSpan = TimeSpan.FromSeconds(Math.Round(Time.realtimeSinceStartup - timeAux) + Int32.Parse(timer.text));
 
-        }
+        //}
 
         timer.text = timeSpan.ToString();
 
