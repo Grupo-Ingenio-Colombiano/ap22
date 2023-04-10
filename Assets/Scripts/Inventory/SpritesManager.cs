@@ -5,23 +5,33 @@ using UnityEngine;
 public class SpritesManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Sprite prizeC;
+    public Sprite prizeC;
 
-    [SerializeField] Sprite prizeD;
+    public Sprite prizeD;
 
-    [SerializeField] Sprite prizeI;
+    public Sprite prizeI;
 
-    [SerializeField] Sprite prizeO;
+    public Sprite prizeO;
 
-    [SerializeField] Sprite cronometro;
+    public Sprite cronometro;
 
-    [SerializeField] GameObject prizeCObject;
+    public Sprite infoPrizeC;
 
-    [SerializeField] GameObject prizeDObject;
+    public Sprite infoPrizeD;
 
-    [SerializeField] GameObject prizeIObject;
+    public Sprite infoPrizeI;
 
-    [SerializeField] GameObject prizeOObject;
+    public Sprite infoPrizeO;
 
-    [SerializeField] GameObject cronometroObject;
+    public Sprite infoCronometro;
+
+    public GameObject prizeCObject;
+
+    public GameObject prizeDObject;
+
+    public GameObject prizeIObject;
+
+    public GameObject prizeOObject;
+
+    public GameObject cronometroObject;
 }
