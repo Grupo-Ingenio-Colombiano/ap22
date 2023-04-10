@@ -159,26 +159,30 @@ public class Inventory : MonoBehaviour {
                 useOneTime = oneTimeUse
             };
 
-          
-             if (img == 1)
+            switch (img)
             {
-                var item = new Item
-                {
-                    itemName = name,
-                    sprite = spritesManager.prizeC,
-                    eliminable = eliminable,
-                    obj = spritesManager.prizeCObject,
-                    infotext = infoText,
-                    infoSprite = spritesManager.infoPrizeC,
-                    playerEquip = playerEquip,
-                    isNowEquiped = false,
-                    indexUi = indexUi,
-                    useDistance = useDistance,
-                    useOneTime = oneTimeUse
-                };
+                case 1:
+                    var item = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeC,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeCObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeC,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
 
-                inventoryList.Add(item);
-            }  
+                    inventoryList.Add(item);
+                    break;
+
+                default:
+                    break;
+            }
 
 
 
