@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour {
 
     public List<InventoryItem> inventoryItemList = new List<InventoryItem>();
 
-    SpritesManager spritesManager;
+    [SerializeField] SpritesManager spritesManager;
 
     public GameObject[] posiciones;
 
@@ -159,29 +159,27 @@ public class Inventory : MonoBehaviour {
                 useOneTime = oneTimeUse
             };
 
-            switch (img)
+          
+             if (img == 1)
             {
-                case 1:
-                    var item = new Item
-                    {
-                        itemName = name,
-                        sprite = spritesManager.prizeC,
-                        eliminable = eliminable,
-                        obj = spritesManager.prizeCObject,
-                        infotext = infoText,
-                        infoSprite = spritesManager.infoPrizeC,
-                        playerEquip = playerEquip,
-                        isNowEquiped = false,
-                        indexUi = indexUi,
-                        useDistance = useDistance,
-                        useOneTime = oneTimeUse
-                    };
+                var item = new Item
+                {
+                    itemName = name,
+                    sprite = spritesManager.prizeC,
+                    eliminable = eliminable,
+                    obj = spritesManager.prizeCObject,
+                    infotext = infoText,
+                    infoSprite = spritesManager.infoPrizeC,
+                    playerEquip = playerEquip,
+                    isNowEquiped = false,
+                    indexUi = indexUi,
+                    useDistance = useDistance,
+                    useOneTime = oneTimeUse
+                };
 
-                    inventoryList.Add(item);
+                inventoryList.Add(item);
+            }  
 
-                    break;
-                
-            }        
 
 
             if (GetComponent<AudioSource>())

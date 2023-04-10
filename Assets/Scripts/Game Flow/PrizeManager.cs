@@ -32,13 +32,19 @@ public class PrizeManager : MonoBehaviour
 
     public Sprite imgSprite;
 
+    public int spriteInt;
+
     public GameObject objectAction;
+
+    public int objectActionInt;
 
     public bool eliminable;
 
     public string infoText;
 
     public Sprite infosprite;
+
+    public int infospriteInt;
 
     public bool equip;
 
@@ -69,13 +75,13 @@ public class PrizeManager : MonoBehaviour
 
     public void SetItemToInventory()
     {
-        PutItemOnInventory(objectName, imgSprite, objectAction);
+        PutItemOnInventory(objectName, spriteInt, objectActionInt);
     }
 
-    void PutItemOnInventory(string name, Sprite img, GameObject action)
+    void PutItemOnInventory(string name, int img, int action)
     {
         prizeCanvas.enabled = false;
-        inventario.AddItem(name, img, eliminable, action, infoText, infosprite, equip, 0, useDistance, oneTimeUse);
+        inventario.AddItemTest(name, img, eliminable, action, infoText, infospriteInt, equip, 0, useDistance, oneTimeUse);
         gameObject.SetActive(false);
     }
 

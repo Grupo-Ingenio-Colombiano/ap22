@@ -38,7 +38,7 @@ public class PlayerDataManager : MonoBehaviour
     public void AddProgress(float percentage)
     {
         playerProgress.AddProgressPercentage(percentage);
-        data.progress = percentage;
+        //data.progress = percentage;
     }
 
     public void AddExperience(float experience)
