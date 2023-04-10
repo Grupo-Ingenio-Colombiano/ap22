@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour {
 
     public Sprite vacio;
 
-  
+    [SerializeField] UserData userData;
 
     //indice     
 
@@ -144,7 +144,7 @@ public class Inventory : MonoBehaviour {
 
         if (inventoryList.Count < casillas_inventario)
         {
-            var inventoryItem = new InventoryItem
+            var data = new InventoryItem
             {
                 itemName = name,
                 sprite = img,
@@ -158,6 +158,8 @@ public class Inventory : MonoBehaviour {
                 useDistance = useDistance,
                 useOneTime = oneTimeUse
             };
+
+            userData.inventory.Add(data);
 
             switch (img)
             {
