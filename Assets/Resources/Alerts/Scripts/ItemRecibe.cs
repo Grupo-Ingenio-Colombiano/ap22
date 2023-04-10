@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemRecibe : MonoBehaviour
+public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
 {
 
     string itemNameText = "";
@@ -12,6 +12,8 @@ public class ItemRecibe : MonoBehaviour
 
     [SerializeField] GameObject content;
     [SerializeField] GameObject item;
+
+    [SerializeField] UserData data;
 
     AudioSource audioSource;
 
@@ -116,5 +118,21 @@ public class ItemRecibe : MonoBehaviour
 
     }
 
+    public void OnBeforeSerialize()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer2 = GetComponent<SpriteRenderer>();
 
+        if (spriteRenderer != null && miniature != null && infoSprite != null)
+        {
+            spriteRenderer.sprite = miniature;
+            spriteRenderer2.sprite = infoSprite;
+        }
+       
+    }
+
+    public void OnAfterDeserialize()
+    {
+        //throw new System.NotImplementedException();
+    }
 }

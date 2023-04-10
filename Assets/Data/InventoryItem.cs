@@ -1,8 +1,10 @@
 
+using UnityEngine;
+
 [System.Serializable]
 public class InventoryItem 
 {
-    public string nombre;
+    public string itemName;
     public int sprite;
     public bool eliminable;
     public int obj;
@@ -19,4 +21,6 @@ public class InventoryItem
     public float useDistance;
 
     public bool useOneTime;
+
+  
 }

@@ -47,11 +47,17 @@ public class Inventory : MonoBehaviour {
 
     public List<Item> inventoryList = new List<Item>();
 
+    public List<InventoryItem> inventoryItemList = new List<InventoryItem>();
+
     public GameObject[] posiciones;
+
+    InventoryItem inventoryItem;   
 
     //sprites para actualizar el inventario
 
     public Sprite vacio;
+
+  
 
     //indice     
 
@@ -102,6 +108,7 @@ public class Inventory : MonoBehaviour {
         {
             var item = new Item { itemName = name, sprite = img, eliminable = eliminable, obj = obj, infotext = infoText, infoSprite = infoSprite, playerEquip = playerEquip, isNowEquiped = false, indexUi = indexUi, useDistance = useDistance, useOneTime = oneTimeUse };
 
+            //data.inventory = item;
 
             inventoryList.Add(item);
 
@@ -128,6 +135,43 @@ public class Inventory : MonoBehaviour {
         }
 
     }
+
+    public bool AddItemTest(string name, int img, bool eliminable, int obj, string infoText, int infoSprite, bool playerEquip, int indexUi, float useDistance, bool oneTimeUse)
+    {
+
+        if (inventoryList.Count < casillas_inventario)
+        {
+            //var item = new Item { itemName = name, sprite = prizeC, eliminable = eliminable, obj = obj, infotext = infoText, infoSprite = infoSprite, playerEquip = playerEquip, isNowEquiped = false, indexUi = indexUi, useDistance = useDistance, useOneTime = oneTimeUse };
+
+            //data.inventory = item;
+
+            //inventoryList.Add(item);
+
+
+            if (GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().Stop();
+                GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+            }
+            UpdateInventory();
+            return true;
+        }
+
+        else
+        {
+            print("Inventario lleno");
+            if (GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().Stop();
+                GetComponent<AudioSource>().PlayOneShot(sounds[0]);
+            }
+            UpdateInventory();
+            return false;
+        }
+
+    }
+
+
 
 
     public void OpenInventory()
