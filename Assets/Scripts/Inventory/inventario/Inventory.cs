@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
@@ -82,6 +83,14 @@ public class Inventory : MonoBehaviour {
     {
         indice = casillas_inventario + 1;
         useActions = FindObjectOfType(typeof(InventoryUseActions)) as InventoryUseActions;
+
+        for (int i = 0; i < userData.inventory.Count; i++)
+        {
+
+            AddItemTest(userData.inventory[i].itemName, userData.inventory[i].sprite, userData.inventory[i].eliminable, userData.inventory[i].obj,
+                        userData.inventory[i].infotext, userData.inventory[i].infoSprite, userData.inventory[i].playerEquip,
+                        userData.inventory[i].indexUi, userData.inventory[i].useDistance, userData.inventory[i].useOneTime);
+        }
     }
 
     public static Inventory Instance()
@@ -180,6 +189,82 @@ public class Inventory : MonoBehaviour {
                     };
 
                     inventoryList.Add(item);
+                    break;
+
+                case 2:
+                    var item2 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeC,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeCObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeC,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item2);
+                    break;
+
+                case 3:
+                    var item3 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeC,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeCObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeC,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item3);
+                    break;
+
+                case 4:
+                    var item4 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeC,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeCObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeC,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item4);
+                    break;
+
+                case 5:
+                    var item5 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeC,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeCObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeC,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item5);
                     break;
 
                 default:
