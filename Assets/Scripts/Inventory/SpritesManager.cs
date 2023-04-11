@@ -15,6 +15,20 @@ public class SpritesManager : MonoBehaviour
 
     public Sprite cronometro;
 
+    public Sprite helmet;
+
+    public Sprite boots;
+
+    public Sprite mask;
+
+    public Sprite gloves;
+
+    public Sprite overol;
+
+    public Sprite tapaOidos;
+
+    public Sprite glass;
+
     public Sprite infoPrizeC;
 
     public Sprite infoPrizeD;
@@ -34,4 +48,8 @@ public class SpritesManager : MonoBehaviour
     public GameObject prizeOObject;
 
     public GameObject cronometroObject;
+
+    public GameObject emptyObject;
+
+    public Sprite emptySprite;
 }

@@ -172,6 +172,24 @@ public class Inventory : MonoBehaviour {
 
             switch (img)
             {
+                case 0:
+                    var item0 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.cronometro,
+                        eliminable = eliminable,
+                        obj = spritesManager.cronometroObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoCronometro,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item0);
+                    break;
                 case 1:
                     var item = new Item
                     {
@@ -195,11 +213,11 @@ public class Inventory : MonoBehaviour {
                     var item2 = new Item
                     {
                         itemName = name,
-                        sprite = spritesManager.prizeC,
+                        sprite = spritesManager.helmet,
                         eliminable = eliminable,
-                        obj = spritesManager.prizeCObject,
+                        obj = spritesManager.emptyObject,
                         infotext = infoText,
-                        infoSprite = spritesManager.infoPrizeC,
+                        infoSprite = spritesManager.emptySprite,
                         playerEquip = playerEquip,
                         isNowEquiped = false,
                         indexUi = indexUi,
@@ -214,11 +232,11 @@ public class Inventory : MonoBehaviour {
                     var item3 = new Item
                     {
                         itemName = name,
-                        sprite = spritesManager.prizeC,
+                        sprite = spritesManager.boots,
                         eliminable = eliminable,
-                        obj = spritesManager.prizeCObject,
+                        obj = spritesManager.emptyObject,
                         infotext = infoText,
-                        infoSprite = spritesManager.infoPrizeC,
+                        infoSprite = spritesManager.emptySprite,
                         playerEquip = playerEquip,
                         isNowEquiped = false,
                         indexUi = indexUi,
@@ -233,11 +251,11 @@ public class Inventory : MonoBehaviour {
                     var item4 = new Item
                     {
                         itemName = name,
-                        sprite = spritesManager.prizeC,
+                        sprite = spritesManager.mask,
                         eliminable = eliminable,
-                        obj = spritesManager.prizeCObject,
+                        obj = spritesManager.emptyObject,
                         infotext = infoText,
-                        infoSprite = spritesManager.infoPrizeC,
+                        infoSprite = spritesManager.emptySprite,
                         playerEquip = playerEquip,
                         isNowEquiped = false,
                         indexUi = indexUi,
@@ -252,11 +270,11 @@ public class Inventory : MonoBehaviour {
                     var item5 = new Item
                     {
                         itemName = name,
-                        sprite = spritesManager.prizeC,
+                        sprite = spritesManager.gloves,
                         eliminable = eliminable,
-                        obj = spritesManager.prizeCObject,
+                        obj = spritesManager.emptyObject,
                         infotext = infoText,
-                        infoSprite = spritesManager.infoPrizeC,
+                        infoSprite = spritesManager.emptySprite,
                         playerEquip = playerEquip,
                         isNowEquiped = false,
                         indexUi = indexUi,
@@ -267,6 +285,119 @@ public class Inventory : MonoBehaviour {
                     inventoryList.Add(item5);
                     break;
 
+                case 6:
+                    var item6 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.overol,
+                        eliminable = eliminable,
+                        obj = spritesManager.emptyObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.emptySprite,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item6);
+                    break;
+
+                case 7:
+                    var item7 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.tapaOidos,
+                        eliminable = eliminable,
+                        obj = spritesManager.emptyObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.emptySprite,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item7);
+                    break;
+
+                case 8:
+                    var item8 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.glass,
+                        eliminable = eliminable,
+                        obj = spritesManager.emptyObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.emptySprite,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item8);
+                    break;
+
+                case 9:
+                    var item9 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeD,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeDObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeD,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item9);
+                    break;
+
+                case 10:
+                    var item10 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeI,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeIObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeI,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item10);
+                    break;
+
+                case 11:
+                    var item11 = new Item
+                    {
+                        itemName = name,
+                        sprite = spritesManager.prizeO,
+                        eliminable = eliminable,
+                        obj = spritesManager.prizeOObject,
+                        infotext = infoText,
+                        infoSprite = spritesManager.infoPrizeO,
+                        playerEquip = playerEquip,
+                        isNowEquiped = false,
+                        indexUi = indexUi,
+                        useDistance = useDistance,
+                        useOneTime = oneTimeUse
+                    };
+
+                    inventoryList.Add(item11);
+                    break;
                 default:
                     break;
             }

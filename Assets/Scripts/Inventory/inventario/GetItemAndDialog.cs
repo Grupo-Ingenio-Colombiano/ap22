@@ -30,6 +30,8 @@ public class GetItemAndDialog : MonoBehaviour
 
     float distance;
 
+    [SerializeField] int ord;
+
     
 
     void Start()
@@ -50,7 +52,7 @@ public class GetItemAndDialog : MonoBehaviour
                 if (Inventory.Instance().inventoryList.Count < Inventory.casillas_inventario)
                 {
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-                    recibeManager.SetItemBoxAndDialog(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse);
+                    recibeManager.SetItemBoxAndDialog(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse, ord);
                     
                 }
 

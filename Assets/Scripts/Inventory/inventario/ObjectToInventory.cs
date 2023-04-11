@@ -34,6 +34,8 @@ public class ObjectToInventory : MonoBehaviour {
 
     Texture2D offHand;
 
+    [SerializeField] int ord;
+
     float distance;
 
     void Start ()
@@ -86,7 +88,7 @@ public class ObjectToInventory : MonoBehaviour {
                 if (Inventory.Instance().inventoryList.Count < Inventory.casillas_inventario)
                 {
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-                    recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse);                    
+                    recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse, ord);                    
                     Destroy(gameObject);
                 }
 
@@ -101,7 +103,7 @@ public class ObjectToInventory : MonoBehaviour {
         {
             if (Inventory.Instance().inventoryList.Count < Inventory.casillas_inventario)
             {                
-                recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse);                
+                recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse, ord);                
             }
 
             else
@@ -120,7 +122,7 @@ public class ObjectToInventory : MonoBehaviour {
                 if (Inventory.Instance().inventoryList.Count < Inventory.casillas_inventario)
                 {
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-                    recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse);
+                    recibeManager.SetItemBox(objectName, objectImage, eliminable, objectToAction, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse, ord);
                     Destroy(gameObject);
                 }
 
@@ -135,7 +137,7 @@ public class ObjectToInventory : MonoBehaviour {
         {
             if (Inventory.Instance().inventoryList.Count < Inventory.casillas_inventario)
             {
-                recibeManager.SetItemBox(objectName, objectImage, eliminable, obj, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse);
+                recibeManager.SetItemBox(objectName, objectImage, eliminable, obj, infoText, infoImage, playerEquip, otherUi, useDistance, oneTimeUse, ord);
             }
 
             else
