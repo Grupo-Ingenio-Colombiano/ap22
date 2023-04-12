@@ -81,6 +81,7 @@ public class Inventory : MonoBehaviour {
 
     InventoryUseActions useActions;
 
+    [SerializeField] LoadManager loadManager;
     private void Start()
     {
         indice = casillas_inventario + 1;
@@ -414,7 +415,10 @@ public class Inventory : MonoBehaviour {
                 default:
                     break;
             }
-
+            if(name == "Virtualina")
+            {
+                loadManager.Upload(1);
+            }
             if (GetComponent<AudioSource>())
             {
                 GetComponent<AudioSource>().Stop();

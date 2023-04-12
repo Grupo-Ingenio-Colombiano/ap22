@@ -25,6 +25,8 @@ public class UserData : ScriptableObject
     public float experience;
     public string timer;
 
+    public Vector3 marker;
+
     [Header("Guardado")]
     public int method;
     public bool selectedMethod;
