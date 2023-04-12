@@ -6,9 +6,13 @@ public class LoadManager : MonoBehaviour
 {
     [SerializeField]
     UserData data;
+    public int load;
+
     // Start is called before the first frame update
-    public void Upload()
+    public void Upload(int point)
     {
+
+        data.load = point;
         Debug.Log("Se subieron datos de la práctica");
         data.isSave = true;
         StartCoroutine(VpNetServices.Upload(data.email, data, UploadResponse));

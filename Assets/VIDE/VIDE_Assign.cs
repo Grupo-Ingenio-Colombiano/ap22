@@ -21,16 +21,22 @@ public class VIDE_Assign : MonoBehaviour
 
     public int interactionCount = 0;
     public string alias = "";
-
+    public UserData userData;
     public int overrideStartNode = -1;
 
     public Sprite defaultNPCSprite;
     public Sprite defaultPlayerSprite;
 
+   
+
     /// <summary>
     /// Returns the name of the currently assigned dialogue.
     /// </summary>
     /// <returns></returns>
+    private void Start()
+    {
+        
+    }
     public string GetAssigned()
     {
         return diags[assignedIndex];

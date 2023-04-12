@@ -15,6 +15,7 @@ public class UserData : ScriptableObject
     public string lastScene;
 
     public bool isSave = false;
+    public int load;
 
     public string PlayerSelected;  
     public Vector3 playerPosition;

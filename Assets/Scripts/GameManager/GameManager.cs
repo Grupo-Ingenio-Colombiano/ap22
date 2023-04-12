@@ -15,6 +15,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject plantBossFirstInteraccion;
 
+
+    [SerializeField]
+    UserData userData;
+
+    private void Start()
+    {
+        if(userData.load >= 1)
+        {
+            disableSSGTdialog1();
+        }
+    }
     public void enablePlantBossFirstInteraccion()
     {
         plantBossFirstInteraccion.SetActive(true);
