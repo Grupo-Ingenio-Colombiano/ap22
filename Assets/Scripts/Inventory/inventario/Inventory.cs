@@ -91,6 +91,8 @@ public class Inventory : MonoBehaviour {
                         userData.inventory[i].infotext, userData.inventory[i].infoSprite, userData.inventory[i].playerEquip,
                         userData.inventory[i].indexUi, userData.inventory[i].useDistance, userData.inventory[i].useOneTime);
         }
+
+        Debug.Log(userData.inventory.Count);
     }
 
     public static Inventory Instance()

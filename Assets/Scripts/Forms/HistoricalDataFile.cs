@@ -13,6 +13,8 @@ public class HistoricalDataFile : MonoBehaviour
 
     [SerializeField] ExperienceRewardManager rewardManager;
 
+    [SerializeField] UserData data;
+
     void Start()
     {
         SetDataInFile();
@@ -31,6 +33,7 @@ public class HistoricalDataFile : MonoBehaviour
             for (int i = 0; i < dataCount; i++)
             {
                 historicalDataTexts[i].text = historicalSamples[i].ToString();
+                data.historicData[i] = historicalSamples[i];
             }
         }
 
