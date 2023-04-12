@@ -30,7 +30,7 @@ public class UserData : ScriptableObject
     public int proccessUnits;
 
     public List<InventoryItem> inventory;
-
+ 
 
     [Header("--Metodo 1 (Datos Históricos)")]
     [Header("----Punto 0")]

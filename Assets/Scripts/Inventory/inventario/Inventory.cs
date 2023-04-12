@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
@@ -57,6 +58,7 @@ public class Inventory : MonoBehaviour {
 
     InventoryItem inventoryItem;   
 
+
     //sprites para actualizar el inventario
 
     public Sprite vacio;
@@ -84,15 +86,21 @@ public class Inventory : MonoBehaviour {
         indice = casillas_inventario + 1;
         useActions = FindObjectOfType(typeof(InventoryUseActions)) as InventoryUseActions;
 
-        for (int i = 0; i < userData.inventory.Count; i++)
+        if (userData.isSave != false)
         {
+            for (int i = 0; i < userData.inventory.Count; i++)
+            {
+              
+                AddItemTest(userData.inventory[i].itemName, userData.inventory[i].sprite, userData.inventory[i].eliminable, userData.inventory[i].obj,
+                            userData.inventory[i].infotext, userData.inventory[i].infoSprite, userData.inventory[i].playerEquip,
+                            userData.inventory[i].indexUi, userData.inventory[i].useDistance, userData.inventory[i].useOneTime);
+               
+            }
+           
+            Debug.Log(userData.inventory.Count);
+        }     
 
-            AddItemTest(userData.inventory[i].itemName, userData.inventory[i].sprite, userData.inventory[i].eliminable, userData.inventory[i].obj,
-                        userData.inventory[i].infotext, userData.inventory[i].infoSprite, userData.inventory[i].playerEquip,
-                        userData.inventory[i].indexUi, userData.inventory[i].useDistance, userData.inventory[i].useOneTime);
-        }
-
-        Debug.Log(userData.inventory.Count);
+     
     }
 
     public static Inventory Instance()
@@ -152,7 +160,7 @@ public class Inventory : MonoBehaviour {
 
     public bool AddItemTest(string name, int img, bool eliminable, int obj, string infoText, int infoSprite, bool playerEquip, int indexUi, float useDistance, bool oneTimeUse)
     {
-
+      
         if (inventoryList.Count < casillas_inventario)
         {
             var data = new InventoryItem
@@ -169,8 +177,11 @@ public class Inventory : MonoBehaviour {
                 useDistance = useDistance,
                 useOneTime = oneTimeUse
             };
-
-            userData.inventory.Add(data);
+            if(userData.inventory.Count <= inventoryList.Count)
+            {
+                userData.inventory.Add(data);
+            }
+           
 
             switch (img)
             {
@@ -403,8 +414,6 @@ public class Inventory : MonoBehaviour {
                 default:
                     break;
             }
-
-
 
             if (GetComponent<AudioSource>())
             {
