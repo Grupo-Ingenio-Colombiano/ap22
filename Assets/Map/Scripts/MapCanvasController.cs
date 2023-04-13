@@ -84,6 +84,7 @@ public class MapCanvasController : MonoBehaviour
 	 */
     public float minimalOpacity = 0.3f;
 
+    [SerializeField] UserData userData;
 
     public InnerMap InnerMapComponent
     {
@@ -237,6 +238,8 @@ public class MapCanvasController : MonoBehaviour
             Vector3 posDif = marker.getPosition() - playerTransform.position;
             Vector3 newPos = new Vector3(posDif.x, posDif.z, 0);
             newPos.Normalize();
+
+            userData.marker = newPos;
 
             float markerRadius = (marker.markerSize / 2);
             float newLen = (distance / scaledRadarDistance) * (innerMapRadius - markerRadius);

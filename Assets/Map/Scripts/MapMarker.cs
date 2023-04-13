@@ -21,6 +21,8 @@ public class MapMarker : MonoBehaviour
 	 */
     public bool isActive = true;
 
+
+
     public Image MarkerImage
     {
         get
@@ -62,6 +64,7 @@ public class MapMarker : MonoBehaviour
         markerImage.rectTransform.localScale = Vector3.one;
         markerImage.rectTransform.sizeDelta = new Vector2(markerSize, markerSize);
         markerImage.gameObject.SetActive(false);
+        
     }
 
 
@@ -119,6 +122,7 @@ public class MapMarker : MonoBehaviour
     public void setLocalPos(Vector3 pos)
     {
         markerImage.rectTransform.localPosition = pos;
+   
 
     }
 

@@ -6,6 +6,7 @@ public class IndicatorManager : MonoBehaviour
 {
 
     static IndicatorManager indicatorManager;
+    [SerializeField] UserData userData;
 
     static public IndicatorManager instance()
     {
@@ -16,6 +17,7 @@ public class IndicatorManager : MonoBehaviour
     public void SetDestiny(Vector3 pos)
     {
         gameObject.transform.position = pos;
+        userData.marker = pos;
     }
 
 }

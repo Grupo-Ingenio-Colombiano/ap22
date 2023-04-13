@@ -14,6 +14,8 @@ public class QuestHistorical : MonoBehaviour
     [SerializeField] GameObject operator2;
     [SerializeField] GameObject operator1;
 
+    [SerializeField] UserData userData;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,6 +41,7 @@ public class QuestHistorical : MonoBehaviour
         var randomOperation = Random.Range(1, 4);
         //var randomOperation = 3;
         CurrentOperationData = new OperationData(randomOperation, 0);
+        userData.proccessUnits = CurrentOperationData.unidadesRealizadas;
         FormResultsManager.Instance.currentOperationIndex = randomOperation;
         ActivateObjects();
     }
