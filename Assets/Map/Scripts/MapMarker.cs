@@ -21,7 +21,7 @@ public class MapMarker : MonoBehaviour
 	 */
     public bool isActive = true;
 
-
+    [SerializeField] UserData userData;
 
     public Image MarkerImage
     {
@@ -65,8 +65,13 @@ public class MapMarker : MonoBehaviour
         markerImage.rectTransform.sizeDelta = new Vector2(markerSize, markerSize);
         markerImage.gameObject.SetActive(false);
         
+        if(userData.isSave != false)
+        {
+            setLocalPos(userData.markerCanvas);
+            markerImage.rectTransform.localPosition = userData.markerCanvas;
+        }
     }
-
+      
 
     void Update()
     {
@@ -116,13 +121,21 @@ public class MapMarker : MonoBehaviour
 
     public Vector3 getPosition()
     {
+        if (this.gameObject.tag != "Player")
+        {
+            userData.indicator = gameObject.transform.position;
+        }
+     
         return gameObject.transform.position;
     }
 
     public void setLocalPos(Vector3 pos)
     {
         markerImage.rectTransform.localPosition = pos;
-   
+        if (this.gameObject.tag != "Player")       {
+            userData.markerCanvas =pos;          
+        }
+      
 
     }
 

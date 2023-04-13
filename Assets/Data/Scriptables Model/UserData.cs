@@ -25,7 +25,8 @@ public class UserData : ScriptableObject
     public float experience;
     public string timer;
 
-    public Vector3 marker;
+    public Vector3 markerCanvas;
+    public Vector3 indicator;
 
     [Header("Guardado")]
     public int method;

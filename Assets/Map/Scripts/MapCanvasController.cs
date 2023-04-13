@@ -239,13 +239,14 @@ public class MapCanvasController : MonoBehaviour
             Vector3 newPos = new Vector3(posDif.x, posDif.z, 0);
             newPos.Normalize();
 
-            userData.marker = newPos;
+          
 
             float markerRadius = (marker.markerSize / 2);
             float newLen = (distance / scaledRadarDistance) * (innerMapRadius - markerRadius);
 
             newPos *= newLen;
             marker.setLocalPos(newPos);
+           
             marker.setOpacity(opacity);
         }
         else

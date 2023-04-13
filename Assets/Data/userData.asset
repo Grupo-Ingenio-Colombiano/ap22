@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4185f1eda9d0ff94e88a3b1626f42396, type: 3}
   m_Name: userData
   m_EditorClassIdentifier: 
-  name: k
-  email: k@k.
+  name: l
+  email: l@l.
   lastScene: 
   isSave: 1
-  load: 1
+  load: 0
   PlayerSelected: 1
-  playerPosition: {x: 26.262716, y: 0.04849696, z: -58.302696}
-  playerRot: {x: 0, y: 0.107306466, z: 0, w: 0.99422604}
+  playerPosition: {x: 77.00001, y: 0.02849996, z: -58.42}
+  playerRot: {x: 0, y: 1, z: 0, w: 0}
   progress: 0
-  experience: 170
-  timer: 00:02:28
-  marker: {x: 0.21400325, y: -0.9768329, z: 0}
+  experience: 30
+  timer: 00:00:33
+  markerCanvas: {x: 43.44869, y: 207.71468, z: 0}
+  indicator: {x: 39.357, y: 3.33, z: -7.089}
   method: 1
   selectedMethod: 1
   proccessUnits: 16
@@ -50,99 +51,22 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 1
-  - itemName: Botas
-    sprite: 3
-    eliminable: 0
-    obj: 3
-    infotext: 
-    infoSprite: 3
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Casco
-    sprite: 2
-    eliminable: 0
-    obj: 2
-    infotext: 
-    infoSprite: 2
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "M\xE1scara para vapores"
-    sprite: 4
-    eliminable: 0
-    obj: 4
-    infotext: 
-    infoSprite: 4
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Guantes
-    sprite: 5
-    eliminable: 0
-    obj: 5
-    infotext: 
-    infoSprite: 5
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Overol
-    sprite: 6
-    eliminable: 0
-    obj: 6
-    infotext: 
-    infoSprite: 6
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "Protector de o\xEDdos"
-    sprite: 7
-    eliminable: 0
-    obj: 7
-    infotext: 
-    infoSprite: 7
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Gafas
-    sprite: 8
-    eliminable: 0
-    obj: 8
-    infotext: 
-    infoSprite: 8
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
   historicData:
-  - 4.65
-  - 5.38
-  - 5.38
-  - 5.12
-  - 4.74
-  - 5.22
-  - 4.81
-  - 4.81
-  - 4.8
-  - 4.76
-  - 4.99
-  - 5.37
-  - 4.82
-  - 5.32
-  - 4.88
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 5.3
   - 4.63
   - 4.87
