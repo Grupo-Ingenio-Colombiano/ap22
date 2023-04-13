@@ -39,6 +39,9 @@ public class UserData : ScriptableObject
     [Header("--Metodo 1 (Datos Históricos)")]
     [Header("----Punto 0")]
     public float[] historicData = new float[36];
+    public float talkTime;
+    public float tiempoOptimo;
+    public float unidadesRequeridas;
 
     [Header("----Punto 1")]
     public int unitsProccess;
