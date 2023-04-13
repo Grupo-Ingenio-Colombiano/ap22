@@ -8,8 +8,15 @@ public class IndicatorManager : MonoBehaviour
 
     static IndicatorManager indicatorManager;
     [SerializeField] UserData userData;
-    [SerializeField] LoadManager loadManager;
+    [SerializeField] LoadCharacter loadCharacter;
 
+    private void Start()
+    {
+        if(userData.isSave != false)
+        {
+            loadCharacter.SetIndicatorLoad();
+        }
+    }
     static public IndicatorManager instance()
     {
         indicatorManager = FindObjectOfType(typeof(IndicatorManager)) as IndicatorManager;
@@ -20,7 +27,7 @@ public class IndicatorManager : MonoBehaviour
     public void SetDestiny(Vector3 pos)
     {
         gameObject.transform.position = pos;
-        loadManager.Upload(userData.load++);
+     
 
     }
 

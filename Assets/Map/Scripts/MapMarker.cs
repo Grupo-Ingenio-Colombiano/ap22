@@ -22,6 +22,7 @@ public class MapMarker : MonoBehaviour
     public bool isActive = true;
 
     [SerializeField] UserData userData;
+    [SerializeField] LoadManager loadManager;
 
     public Image MarkerImage
     {
@@ -132,10 +133,10 @@ public class MapMarker : MonoBehaviour
     public void setLocalPos(Vector3 pos)
     {
         markerImage.rectTransform.localPosition = pos;
-        if (this.gameObject.tag != "Player")       {
+        if (this.gameObject.tag != "Player")  {
             userData.markerCanvas =pos;          
         }
-      
+
 
     }
 
