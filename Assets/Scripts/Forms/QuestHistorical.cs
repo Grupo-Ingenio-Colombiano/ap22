@@ -41,7 +41,7 @@ public class QuestHistorical : MonoBehaviour
         var randomOperation = Random.Range(1, 4);
         //var randomOperation = 3;
         CurrentOperationData = new OperationData(randomOperation, 0);
-        userData.proccessUnits = CurrentOperationData.unidadesRealizadas;
+        userData.proccessUnits = CurrentOperationData.requiredUnits;
         FormResultsManager.Instance.currentOperationIndex = randomOperation;
         ActivateObjects();
     }
