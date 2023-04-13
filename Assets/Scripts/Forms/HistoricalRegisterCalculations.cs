@@ -43,6 +43,8 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
     [SerializeField] ExperienceRewardManager rewardManager;
 
+    [SerializeField] UserData userData;
+
 
     private void OnEnable()
     {
@@ -68,6 +70,15 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
+            && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
+            && DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
+        {
+            userData.talkTime = float.Parse(TOInput.text);
+            userData.tiempoOptimo = float.Parse(TCInput.text);
+            userData.talkTime = float.Parse(UPInput.text);
+        }
 
 
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
