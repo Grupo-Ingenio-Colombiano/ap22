@@ -13,6 +13,12 @@ public class Dialog1ISSGT : MonoBehaviour
 
     GameObject player;
 
+    
+
+    private void Start()
+    {
+        
+    }
     private void OnEnable()
     {
         col1.enabled = true;

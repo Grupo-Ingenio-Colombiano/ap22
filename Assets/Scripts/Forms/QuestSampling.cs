@@ -46,6 +46,8 @@ public class QuestSampling : MonoBehaviour
         CurrentOperationData = new OperationData(randomOperation, 1);
         userData.proccessUnits = CurrentOperationData.requiredUnits;
         FormResultsManager.Instance.currentOperationIndex = randomOperation;
+
+
         ActivateObjects();
     }
 

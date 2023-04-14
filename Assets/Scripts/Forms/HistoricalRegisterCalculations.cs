@@ -77,7 +77,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         {
             userData.talkTime = float.Parse(TOInput.text);
             userData.tiempoOptimo = float.Parse(TCInput.text);
-            userData.talkTime = float.Parse(UPInput.text);
+            userData.unidadesRequeridas = float.Parse(UPInput.text);
             userData.justifHistorical = justifInput.text;
         }
 

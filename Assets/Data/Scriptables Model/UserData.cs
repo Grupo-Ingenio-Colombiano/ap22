@@ -56,11 +56,12 @@ public class UserData : ScriptableObject
 
     [Header("--Metodo 2 (Muestreo)")]
     [Header("----Punto 0")]
-    public int unitsMade;
+   
     public float numMinutos;
     public float percentageOperation;
     public float rhythm;
     public float k;
+    public float unitsProccessMuestreo;
     [Header("--Metodo 3 (Cronometraje)")]
     [Header("----Punto 0")]
     public string[] A1; // 
@@ -74,6 +75,26 @@ public class UserData : ScriptableObject
     public bool turn2;
     public bool turn3;
     public string observaciones;
+
+
+    [Header("----------Datos de Excel----------")]
+
+    public string templateName;
+
+    public string fileName;
+
+    public List<VpSerializableData.ExcelPage> excelReport;
+
+    [Header("----------MailData----------")]
+
+    public string reportUrl;
+    public string institution;
+    public string academicProgram;
+    public string subject;
+    public string studentCode;
+    public string teacherName;
+    public string teacherEmail;
+
 }
 
 
