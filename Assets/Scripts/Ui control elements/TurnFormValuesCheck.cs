@@ -46,7 +46,7 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     GameObject player;
 
-
+    [SerializeField] UserData userData;
     public int upValue;
 
     public int urValue;
@@ -63,12 +63,14 @@ public class TurnFormValuesCheck : MonoBehaviour
             op += int.Parse(operators1.options[operators1.value].text);
             data[0] = "Si";
             data[1] = operators1.options[operators1.value].text;
+            userData.turn1 = true;
         }
         else
         {
             operators1.gameObject.SetActive(false);
             data[0] = "No";
             data[1] = "0";
+            userData.turn1 = false;
         }
 
 
@@ -78,6 +80,7 @@ public class TurnFormValuesCheck : MonoBehaviour
             op += int.Parse(operators2.options[operators2.value].text);
             data[2] = "Si";
             data[3] = operators2.options[operators1.value].text;
+            userData.turn2 = true;
         }
 
         else
@@ -85,6 +88,7 @@ public class TurnFormValuesCheck : MonoBehaviour
             operators2.gameObject.SetActive(false);
             data[2] = "No";
             data[3] = "0";
+            userData.turn2 = false;
         }
 
 
@@ -94,6 +98,7 @@ public class TurnFormValuesCheck : MonoBehaviour
             op += int.Parse(operators3.options[operators3.value].text);
             data[4] = "Si";
             data[5] = operators3.options[operators1.value].text;
+            userData.turn3 = true;
         }
 
         else
@@ -101,6 +106,7 @@ public class TurnFormValuesCheck : MonoBehaviour
             operators3.gameObject.SetActive(false);
             data[4] = "No";
             data[5] = "0";
+            userData.turn3 = false;
         }
 
         btnContinue.SetActive(true);
@@ -134,6 +140,8 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     public void Continue()
     {
+        userData.unitPerDay = upValue;
+        userData.unitsRquired = urValue;
         player.SetActive(true);
         FollowCameraController.instance.ResetCameraFollow();
         col.enabled = true;

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/userData", order = 1)]
 
@@ -42,6 +43,8 @@ public class UserData : ScriptableObject
     public float talkTime;
     public float tiempoOptimo;
     public float unidadesRequeridas;
+    public string justifHistorical;
+   
 
     [Header("----Punto 1")]
     public int unitsProccess;
@@ -54,15 +57,23 @@ public class UserData : ScriptableObject
     [Header("--Metodo 2 (Muestreo)")]
     [Header("----Punto 0")]
     public int unitsMade;
-    public int rhythm;
-    public int percentage;
+    public float numMinutos;
+    public float percentageOperation;
+    public float rhythm;
+    public float k;
     [Header("--Metodo 3 (Cronometraje)")]
     [Header("----Punto 0")]
     public string[] A1; // 
     public string[] B1; 
     public string[] C1; // C3 nombre del usuario
 
-   
+    [Header("--Selección de Turnos ")]
+    public int unitPerDay;
+    public int unitsRquired;
+    public bool turn1;
+    public bool turn2;
+    public bool turn3;
+    public string observaciones;
 }
 
 

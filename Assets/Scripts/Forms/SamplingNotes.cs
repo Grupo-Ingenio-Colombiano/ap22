@@ -13,6 +13,8 @@ public class SamplingNotes : MonoBehaviour
     [SerializeField] TextMeshProUGUI K;
     [SerializeField] TextMeshProUGUI unidadesProcesadas;
 
+    [SerializeField] UserData userData;
+
 
     private void OnEnable()
     {
@@ -21,6 +23,12 @@ public class SamplingNotes : MonoBehaviour
         tiempoDedicado.text = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion.ToString();
         factorRitmo.text = QuestSampling.Instance.CurrentOperationData.factorRitmo.ToString();
         K.text = QuestSampling.Instance.CurrentOperationData.K.ToString();
+
+        userData.numMinutos = QuestSampling.Instance.CurrentOperationData.numMinutosMuestreo / 60f;
+        userData.percentageOperation = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion;
+        userData.rhythm = QuestSampling.Instance.CurrentOperationData.factorRitmo;
+        userData.k = QuestSampling.Instance.CurrentOperationData.K;
+
 
 
     }

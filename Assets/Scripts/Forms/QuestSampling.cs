@@ -22,6 +22,8 @@ public class QuestSampling : MonoBehaviour
     [SerializeField] GameObject supervisor2;
     [SerializeField] GameObject supervisor1;
 
+    [SerializeField] UserData userData;
+
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +44,7 @@ public class QuestSampling : MonoBehaviour
         HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
         var randomOperation = Random.Range(1, 4);
         CurrentOperationData = new OperationData(randomOperation, 1);
+        userData.proccessUnits = CurrentOperationData.requiredUnits;
         FormResultsManager.Instance.currentOperationIndex = randomOperation;
         ActivateObjects();
     }
