@@ -27,6 +27,9 @@ public class UserData : ScriptableObject
     public float experience;
     public string timer;
 
+    public int badAnswers;
+    public int goodAnswers;
+
     public Vector3 markerCanvas;
     public Vector3 indicator;
 
