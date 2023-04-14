@@ -14,6 +14,7 @@ public class UserData : ScriptableObject
     public string name;
     public string email;
     public string lastScene;
+    public string practiceName;
 
     public bool isSave = false;
     public int load;
@@ -28,6 +29,8 @@ public class UserData : ScriptableObject
 
     public Vector3 markerCanvas;
     public Vector3 indicator;
+
+   
 
     [Header("Guardado")]
     public int method;

@@ -59,35 +59,52 @@ POST
     202 - No encuentra el archivo 
    
 
--[ExcelReport] Save data into each prectices folder as json txt file
+-[ExcelReport] Save report on server and return a URL
 url : http://54.144.50.139/virtualplantApiServices/reportData/endpoint/report.php
 
 # Type: 
 POST
 # Body Form: 
-    "name" 
+    "studentName" 
     "tamplateName" 
     "reportName"
     "data"
 # Response HTTP: 
-    200 - El archivo y el directorio se crearon correctamente
-    201 - No se pudo crear el directorio
-    202 - No se pudo crear el archivo 
+    200 - El reporte se creo correctamente
+    
 
--[SendMail] Send email using DHCP 
-url : http://54.144.50.139/virtualplantApiServices/mailService/sendMail.php
+-[SendMail] Send email using PHPExcel and SMTP  
+url : http://54.144.50.139/virtualplantApiServices/mailService/endPoint/sendMail.php
 
 # Type: 
 POST
 # Body Form: 
-    "name" 
-    "tamplateName" 
-    "reportName"
-    "data"
+    "email1" 
+    "email2" 
+    "reportUrl"
+    "studentName"
+    "practiceName"
+    "institution"
+    "academicProgram"
+    "subject"
+    "studentCode"
+    "teacherName"
 # Response HTTP: 
-    200 - El archivo y el directorio se crearon correctamente
-    201 - No se pudo crear el directorio
-    202 - No se pudo crear el archivo 
+    200 - El email se envio correctamente
+
+-[SendValuation] Send email with user valuation
+url : http://54.144.50.139/virtualplantApiServices/mailService/endPoint/sendValuation.php
+
+# Type: 
+POST
+# Body Form:     
+    "studentName"
+    "practiceName"
+    "value"
+    "valueDetails"
+# Response HTTP: 
+    200 - El email se envio correctamente
+   
 
 
 
