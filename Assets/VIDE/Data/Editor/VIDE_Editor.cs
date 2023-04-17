@@ -16,9 +16,9 @@ public class VIDE_Editor : EditorWindow
     //This script will draw the VIDE Editor window and all of its content
     //It comunicates with VIDE_EditorDB to store the data
 
-    //Blacklist for namespaces. 
-    //For Action Nodes: add here the namespaces of the scripts you don't wish to see fetched in the list.
-    //Any namespace CONTAINING any of the below strings will be discarded from the search.
+    //Blacklist for namespaces or class names. 
+    //For Action Nodes: add here the namespaces or classes you don't wish to see fetched in the list.
+    //Any namespace or class CONTAINING any of the below strings will be discarded from the search.
     public string[] namespaceBlackList = new string[]{
         "UnityEngine",
         //TMP       
@@ -43,17 +43,20 @@ public class VIDE_Editor : EditorWindow
     Rect fWin = new Rect();
     Rect startDiag;
 
+    bool updateNodesRectsOnce = true;
+    bool spyView = false;
     bool showSettings;
+    bool assignMenu;
+    bool assignMenuShowMore;
+    bool localizationMenu;
+    int deletingLanguage = -1;
+    string assignMenuFilter = "";
     float focusTimer;
-
-    string newsHeadline;
-    string newsHeadlineLink;
 
     bool searchingForDialogue = false;
     string searchWord;
     Vector2 searchScrollView;
 
-    WWW news;
     List<string> saveNames = new List<string>() { };
     List<string> saveNamesFull = new List<string>() { };
 
@@ -62,8 +65,6 @@ public class VIDE_Editor : EditorWindow
     Texture2D newNodeIcon;
     Texture2D newNodeIcon3;
     Texture2D twitIcon;
-    Texture2D visON;
-    Texture2D visOFF;
     int dragNewNode = 0;
     object copiedNode = null;
     Rect dragNewNodeRect = new Rect(20, 20, 100, 40);
@@ -80,14 +81,37 @@ public class VIDE_Editor : EditorWindow
     bool areYouSure = false;
     bool showError = false;
     bool hasID = false;
+    bool insideNode = false;
+    bool willDeselect = false;
+    bool copyFromDefSure = false;
+    bool editingColors = false;
+    bool showHelp = false;
     string newFileName = "My Dialogue";
     string errorMsg = "";
     string lastTextFocus;
-    Vector2 dragSlide;
 
+    bool draggingNode = false;
+
+    GUIStyle txtComst;
+    GUIStyle text1st;
+
+    Vector2 languageScrollArea;
+    VIDE_Localization.VLanguage selLang;
+    Rect langOptionsRect;
+
+    int selectNodeDelayed = -1;
+    int selectANodeDelayed = -1;
+
+    VIDE_Editor_Skin skinscr;
+
+    List<string> existingTags = new List<string>();
+
+    List<Vector2> balls = new List<Vector2>();
+    List<Vector2> ballsGravity = new List<Vector2>();
+    bool holdingBall = false;
 
     //Add VIDE Editor to Window...
-    [MenuItem("Window/VIDE Editor (Lite)")]
+    [MenuItem("Window/VIDE Editor")]
     static void ShowEditor()
     {
         VIDE_Editor editor = EditorWindow.GetWindow<VIDE_Editor>();
@@ -97,23 +121,57 @@ public class VIDE_Editor : EditorWindow
     void OnEnable()
     {
         VIDE_EditorDB.videRoot = AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this));
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
-        dbObj = (GameObject)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/Editor/db.prefab", typeof(GameObject));
+        VIDE_EditorDB.videRoot = VIDE_EditorDB.videRoot.Replace("Data/Editor/VIDE_Editor.cs", "");
+
+        dbObj = (GameObject)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/Editor/db.prefab", typeof(GameObject));
+
+        if (dbObj == null)
+        {
+            return;
+        }
+
+
         db = dbObj.GetComponent<VIDE_EditorDB>();
 
-        lineIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/lineIcon.png", typeof(Texture2D));
-        newNodeIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/newNode.png", typeof(Texture2D));
-        newNodeIcon3 = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/newNode2.png", typeof(Texture2D));
-        twitIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/twit.jpg", typeof(Texture2D));
-        visON = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/visON.png", typeof(Texture2D));
-        visOFF = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/visOFF.png", typeof(Texture2D));
-        gridTex = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/backTex.jpg", typeof(Texture2D));
-        gridTex.SetPixel(0, 0, new Color(0.2f,0.2f,0.2f,1));
-        gridTex.Apply();
 
+        GameObject go = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/Editor/editorstyles.prefab", typeof(GameObject));
+        VIDE_Editor_Skin.instance = go.GetComponent<VIDE_Editor_Skin>();
+        skinscr = go.GetComponent<VIDE_Editor_Skin>();
+
+        lineIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/lineIcon.png", typeof(Texture2D));
+        newNodeIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/newNode.png", typeof(Texture2D));
+        newNodeIcon3 = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/newNode2.png", typeof(Texture2D));
+        twitIcon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/twit.jpg", typeof(Texture2D));
+        gridTex = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/backTex.jpg", typeof(Texture2D));
+        mapTex = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/uiBack.png", typeof(Texture2D));
+
+        mapTex.SetPixel(0, 0, new Color(0, 0, 0, 0.25f)); mapTex.Apply();
+        gridTex.SetPixel(0, 0, VIDE_Editor_Skin.GetColor(7, db.skinIndex));
+        gridTex.Apply();
+        selLang = VIDE_Localization.LoadSettings();
+        txtComst = skinscr.mm_box_default;
+        text1st = skinscr.mm_labels;
+        spyView = false;
+
+        TextAsset[] files = Resources.LoadAll<TextAsset>("Dialogues");
+        saveNames = new List<string>();
+        saveNamesFull = new List<string>();
+        foreach (TextAsset f in files)
+        {
+            saveNames.Add(f.name);
+            saveNamesFull.Add(AssetDatabase.GetAssetPath(f));
+        }
+        saveNames.Sort();
+
+        //Listen to localization events
+        VIDE_Localization.LoadSettings();
+
+        loadEditorSettings();
+        loadFiles(db.currentDiag);
         Load(true);
+
+        repaintLines = true;
+        CenterAll(false, db.startID, true);
     }
 
     //Save progress if autosave is on
@@ -123,7 +181,7 @@ public class VIDE_Editor : EditorWindow
         Repaint();
         repaintLines = true;
 
-        if (db.autosave)
+        if (db != null && db.autosave)
         {
             Save();
             AssetDatabase.Refresh();
@@ -135,25 +193,29 @@ public class VIDE_Editor : EditorWindow
     public void Init(string dName, bool loadFromIndex)
     {
         VIDE_EditorDB.videRoot = AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this));
+        VIDE_EditorDB.videRoot = VIDE_EditorDB.videRoot.Replace("Data/Editor/VIDE_Editor.cs", "");
 
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
-        VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
 
 #if UNITY_5_0
         EditorWindow.GetWindow<VIDE_Editor>().title = "VIDE Editor";
 #else
-        Texture2D icon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/assignIcon.png", typeof(Texture2D));
+        Texture2D icon = (Texture2D)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/assignIcon.png", typeof(Texture2D));
         GUIContent titleContent = new GUIContent(" VIDE Editor", icon);
         EditorWindow.GetWindow<VIDE_Editor>().titleContent = titleContent;
 #endif
 
 
-        dbObj = (GameObject)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "/Data/Editor/db.prefab", typeof(GameObject));
+        dbObj = (GameObject)AssetDatabase.LoadAssetAtPath(VIDE_EditorDB.videRoot + "Data/Editor/db.prefab", typeof(GameObject));
+
+        if (dbObj == null)
+        {
+            Close();
+            return;
+        }
+
         db = dbObj.GetComponent<VIDE_EditorDB>();
         startDiag = new Rect(20f, 50f, 300f, 50f);
 
-        CheckNews();
 
         VIDE_Editor editor = EditorWindow.GetWindow<VIDE_Editor>();
         editor.position = new Rect(50f, 50f, 1027f, 768);
@@ -180,6 +242,7 @@ public class VIDE_Editor : EditorWindow
         }
 
         //Listen to localization events
+        VIDE_Localization.LoadSettings();
 
         if (loadFromIndex)
         {
@@ -196,47 +259,43 @@ public class VIDE_Editor : EditorWindow
         }
 
 
+        repaintLines = true;
 
         CenterAll(false, db.startID, true);
     }
 
-    void CheckNews()
-    {
-        newsHeadline = "Checking...";
-        news = new WWW("http://involutionsaga.com/data/VIDE/news.txt");
-    }
 
+    double lastTime;
+    double deltatime;
     void Update()
     {
-        if (news != null)
-            if (news.isDone)
-            {
-                if (news.text.Length > 10)
-                {
-                    string[] st = news.text.Split(","[0]);
-                    newsHeadline = st[0];
-                    if (st.Length > 1)
-                        newsHeadlineLink = st[1];
-                    news = null;
-
-                }
-                else
-                {
-                    newsHeadlineLink = string.Empty;
-                    newsHeadline = "Could not connect";
-                    news = null;
-                }
-            }
+        double currenttime = EditorApplication.timeSinceStartup;
+        deltatime = currenttime - lastTime;
 
         if (lerpFocusTime)
         {
-            float timer = ((Time.realtimeSinceStartup - focusTimer) / 10);
+            float timer = ((Time.realtimeSinceStartup - focusTimer) / 5);
             scrollArea = Vector2.Lerp(scrollArea, goalScrollPos, timer);
             Repaint();
-            if (timer > 0.2f) lerpFocusTime = false;
+            if (timer > 0.2f)
+            {
+                lerpFocusTime = false;
+            }
 
-            if (Vector2.Distance(new Vector2(scrollArea.x, scrollArea.y), new Vector2(goalScrollPos.x, goalScrollPos.y)) < 0.1f) lerpFocusTime = false;
+            if (Vector2.Distance(new Vector2(scrollArea.x, scrollArea.y), new Vector2(goalScrollPos.x, goalScrollPos.y)) < 0.1f)
+            {
+                lerpFocusTime = false;
+            }
         }
+
+        for (int i = 0; i < balls.Count; i++)
+        {
+            ballsGravity[i] += new Vector2(0, 15f);
+            balls[i] += ballsGravity[i] * (float)deltatime;
+        }
+
+        lastTime = currenttime;
+
     }
 
     public class SerializeHelper
@@ -272,19 +331,48 @@ public class VIDE_Editor : EditorWindow
     public void addComment(VIDE_EditorDB.DialogueNode id)
     {
         Undo.RecordObject(db, "Added Comment");
+        int setX = db.playerDiags.IndexOf(id);
         id.comment.Add(new VIDE_EditorDB.Comment(id));
 
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                    VIDE_Localization.languages[i].playerDiags[setX].comment.Add(new VIDE_EditorDB.Comment(VIDE_Localization.languages[i].playerDiags[setX]));
+            }
+        }
     }
 
     public void addSet(Vector2 rPos, int cSize, int id, string pTag, bool endC)
     {
         db.playerDiags.Add(new VIDE_EditorDB.DialogueNode(rPos, cSize, id, pTag, endC));
+
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                {
+                    VIDE_Localization.languages[i].playerDiags.Add(new VIDE_EditorDB.DialogueNode(rPos, cSize, id, pTag, endC));
+                }
+            }
+        }
     }
 
     public void removeSet(VIDE_EditorDB.DialogueNode id)
     {
         Undo.RecordObject(db, "Removed Set");
-
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                {
+                    VIDE_Localization.languages[i].playerDiags.RemoveAt(db.playerDiags.IndexOf(id));
+                }
+            }
+        }
 
         db.playerDiags.Remove(id);
 
@@ -312,9 +400,19 @@ public class VIDE_Editor : EditorWindow
     public void removeComment(VIDE_EditorDB.Comment idx)
     {
         Undo.RecordObject(db, "Removed Comment");
+        int setX = db.playerDiags.IndexOf(idx.inputSet);
+        int cX = idx.inputSet.comment.IndexOf(idx);
 
         idx.inputSet.comment.Remove(idx);
 
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                    VIDE_Localization.languages[i].playerDiags[setX].comment.RemoveAt(cX);
+            }
+        }
     }
 
     public void removeAction(VIDE_EditorDB.ActionNode id)
@@ -338,6 +436,29 @@ public class VIDE_Editor : EditorWindow
             if (db.actionNodes[i].outAction == id)
             {
                 db.actionNodes[i].outAction = null;
+            }
+        }
+    }
+
+    void ArrangeComment(VIDE_EditorDB.DialogueNode node, int dir, int oriIndex)
+    {
+        VIDE_EditorDB.Comment other = node.comment[oriIndex + dir];
+        node.comment[oriIndex + dir] = node.comment[oriIndex];
+        node.comment[oriIndex] = other;
+
+        int setX = db.playerDiags.IndexOf(node);
+
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                {
+                    VIDE_EditorDB.DialogueNode nodeB = VIDE_Localization.languages[i].playerDiags[setX];
+                    VIDE_EditorDB.Comment otherB = nodeB.comment[oriIndex + dir];
+                    nodeB.comment[oriIndex + dir] = nodeB.comment[oriIndex];
+                    nodeB.comment[oriIndex] = otherB;
+                }
             }
         }
     }
@@ -394,6 +515,17 @@ public class VIDE_Editor : EditorWindow
         int id = setUniqueID();
         db.playerDiags.Add(new VIDE_EditorDB.DialogueNode(new Rect(mPos.x - 150, mPos.y - 200, 0, 0), id));
         commID.outNode = db.playerDiags[db.playerDiags.Count - 1];
+
+        if (VIDE_Localization.isEnabled)
+        {
+            for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+            {
+                if (VIDE_Localization.languages[i].playerDiags != null)
+                {
+                    VIDE_Localization.languages[i].playerDiags.Add(new VIDE_EditorDB.DialogueNode(new Rect(mPos.x - 150, mPos.y - 200, 0, 0), 0));
+                }
+            }
+        }
 
         repaintLines = true;
         Repaint();
@@ -633,12 +765,93 @@ public class VIDE_Editor : EditorWindow
 
     #region File Handling
 
+    public void SaveToLanguage()
+    {
+        GUIUtility.hotControl = 0;
+        GUIUtility.keyboardControl = 0;
+
+        VIDE_Localization.VLanguage cur = VIDE_Localization.currentLanguage;
+        if (db.playerDiags.Count > 0)
+            cur.playerDiags = new List<VIDE_EditorDB.DialogueNode>();
+
+        for (int i = 0; i < db.playerDiags.Count; i++)
+        {
+            cur.playerDiags.Add(new VIDE_EditorDB.DialogueNode());
+
+            cur.playerDiags[i].sprite = db.playerDiags[i].sprite;
+            cur.playerDiags[i].playerTag = db.playerDiags[i].playerTag;
+
+            for (int ii = 0; ii < db.playerDiags[i].comment.Count; ii++)
+            {
+                cur.playerDiags[i].comment.Add(new VIDE_EditorDB.Comment());
+                cur.playerDiags[i].comment[ii].text = db.playerDiags[i].comment[ii].text;
+                cur.playerDiags[i].comment[ii].audios = db.playerDiags[i].comment[ii].audios;
+                cur.playerDiags[i].comment[ii].sprites = db.playerDiags[i].comment[ii].sprites;
+            }
+        }
+
+        VIDE_Localization.SaveLanguages(saveNames[db.currentDiag]);
+    }
+
+    public void LoadLocalizedFromDefault()
+    {
+        VIDE_Localization.VLanguage cur = VIDE_Localization.defaultLanguage;
+        if (cur != null)
+            if (cur.playerDiags != null)
+                for (int i = 0; i < cur.playerDiags.Count; i++)
+                {
+                    if (db.playerDiags.Count < 1) return;
+                    if (db.playerDiags[i] == null) return;
+                    db.playerDiags[i].sprite = cur.playerDiags[i].sprite;
+                    db.playerDiags[i].playerTag = cur.playerDiags[i].playerTag;
+                    for (int ii = 0; ii < cur.playerDiags[i].comment.Count; ii++)
+                    {
+                        if (ii >= db.playerDiags[i].comment.Count)
+                        {
+                            return;
+                        }
+                        db.playerDiags[i].comment[ii].text = cur.playerDiags[i].comment[ii].text;
+                        db.playerDiags[i].comment[ii].audios = cur.playerDiags[i].comment[ii].audios;
+                        db.playerDiags[i].comment[ii].sprites = cur.playerDiags[i].comment[ii].sprites;
+                    }
+                }
+    }
+
+    public void LoadLocalized()
+    {
+        VIDE_Localization.VLanguage cur = VIDE_Localization.currentLanguage;
+        if (cur != null)
+            if (cur.playerDiags != null)
+                for (int i = 0; i < cur.playerDiags.Count; i++)
+                {
+                    if (db.playerDiags.Count < 1) return;
+                    if (db.playerDiags[i] == null) return;
+                    db.playerDiags[i].sprite = cur.playerDiags[i].sprite;
+                    db.playerDiags[i].playerTag = cur.playerDiags[i].playerTag;
+                    for (int ii = 0; ii < cur.playerDiags[i].comment.Count; ii++)
+                    {
+                        if (ii >= db.playerDiags[i].comment.Count)
+                        {
+                            return;
+                        }
+                        db.playerDiags[i].comment[ii].text = cur.playerDiags[i].comment[ii].text;
+                        db.playerDiags[i].comment[ii].audios = cur.playerDiags[i].comment[ii].audios;
+                        db.playerDiags[i].comment[ii].sprites = cur.playerDiags[i].comment[ii].sprites;
+                    }
+                }
+    }
+
     //This will save the current data base status
     public void Save()
     {
         Dictionary<string, object> dict = new Dictionary<string, object>();
         GUIUtility.keyboardControl = 0;
 
+        if (VIDE_Localization.isEnabled)
+        {
+            SaveToLanguage();
+            VIDE_Localization.SaveSettings();
+        }
 
         if (saveNames.Count < 1)
             return;
@@ -691,6 +904,7 @@ public class VIDE_Editor : EditorWindow
         dict.Add("loadTag", db.loadTag);
         dict.Add("previewPanning", db.previewPanning);
         dict.Add("autosave", db.autosave);
+        dict.Add("locEdit", VIDE_Localization.isEnabled);
 
         dict.Add("showSettings", showSettings);
 
@@ -727,6 +941,16 @@ public class VIDE_Editor : EditorWindow
                 dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "extraD", db.playerDiags[i].comment[ii].extraData);
                 dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "showmore", db.playerDiags[i].comment[ii].showmore);
                 dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "visible", db.playerDiags[i].comment[ii].visible);
+
+                if (db.playerDiags[i].comment[ii].audios != null)
+                    dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "audio", AssetDatabase.GetAssetPath(db.playerDiags[i].comment[ii].audios));
+                else
+                    dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "audio", string.Empty);
+                if (db.playerDiags[i].comment[ii].sprites != null)
+                    dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "sprite", AssetDatabase.GetAssetPath(db.playerDiags[i].comment[ii].sprites));
+                else
+                    dict.Add("pd_" + i.ToString() + "_com_" + ii.ToString() + "sprite", string.Empty);
+
             }
         }
 
@@ -738,6 +962,8 @@ public class VIDE_Editor : EditorWindow
 
             dict.Add("ac_goName_" + i.ToString(), db.actionNodes[i].gameObjectName);
             dict.Add("ac_nIndex_" + i.ToString(), db.actionNodes[i].nameIndex);
+
+            dict.Add("ac_goto_" + i.ToString(), db.actionNodes[i].gotoNode);
 
             dict.Add("ac_optsCount_" + i.ToString(), db.actionNodes[i].opts.Length);
             for (int ii = 0; ii < db.actionNodes[i].opts.Length; ii++)
@@ -768,18 +994,87 @@ public class VIDE_Editor : EditorWindow
             dict.Add("ac_oSet_" + i.ToString(), db.playerDiags.FindIndex(idx => idx == db.actionNodes[i].outPlayer));
             dict.Add("ac_oAct_" + i.ToString(), db.actionNodes.FindIndex(idx => idx == db.actionNodes[i].outAction));
 
+            dict.Add("ac_ovrStartNode_" + i.ToString(), db.actionNodes[i].ovrStartNode);
+            dict.Add("ac_renameDialogue_" + i.ToString(), db.actionNodes[i].renameDialogue);
+            dict.Add("ac_more_" + i.ToString(), db.actionNodes[i].more);
 
+        }
+
+        //Check if Va needs preload again
+        if (needSave)
+        {
+            VIDE_Assign[] gos = Resources.FindObjectsOfTypeAll<VIDE_Assign>();
+            foreach (VIDE_Assign v in gos)
+            {
+                if (v.assignedDialogue == saveNames[db.currentDiag])
+                {
+                    if (v.preload)
+                    {
+                        v.notuptodate = true;
+                    }
+                }
+            }
         }
 
         needSave = false;
         SerializeHelper.WriteToFile(dict as Dictionary<string, object>, saveNamesFull[currentName]);
 
+
+
+
+    }
+
+    public static string colorToHex(Color32 color)
+    {
+        string hex = color.r.ToString("X2") + color.g.ToString("X2") + color.b.ToString("X2");
+        return hex;
+    }
+
+    public static Color hexToColor(string hex)
+    {
+        hex = hex.Replace("0x", "");//in case the string is formatted 0xFFFFFF
+        hex = hex.Replace("#", "");//in case the string is formatted #FFFFFF
+        byte a = 255;//assume fully visible unless specified in hex
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        //Only use alpha if the string has enough characters
+        if (hex.Length == 8)
+        {
+            a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+        }
+        return new Color32(r, g, b, a);
     }
 
     public void saveEditorSettings(int cd)
     {
         Dictionary<string, object> dict = new Dictionary<string, object>();
         dict.Add("db.currentDiagEdited", cd);
+
+        dict.Add("db.curSkin", db.skinIndex);
+
+        //Save skin colors
+        dict.Add("colors", "colors");
+        List<VIDE_Editor_Skin.Skin> skins = VIDE_Editor_Skin.instance.skins;
+        for (int i = 0; i < skins.Count; i++)
+        {
+            dict.Add("Skin_" + i.ToString() + "pNodeColor", colorToHex(skins[i].player_NodeColor));
+            dict.Add("Skin_" + i.ToString() + "pNodeColor2", colorToHex(skins[i].player_NodeColorSecondary));
+            dict.Add("Skin_" + i.ToString() + "nNodeColor", colorToHex(skins[i].npc_NodeColor));
+            dict.Add("Skin_" + i.ToString() + "nNodeColor2", colorToHex(skins[i].npc_NodeColorSecondary));
+            dict.Add("Skin_" + i.ToString() + "aNodeColor", colorToHex(skins[i].action_NodeColor));
+            dict.Add("Skin_" + i.ToString() + "aNodeColor2", colorToHex(skins[i].action_NodeColorSecondary));
+            dict.Add("Skin_" + i.ToString() + "back", colorToHex(skins[i].background_color));
+            dict.Add("Skin_" + i.ToString() + "grid", colorToHex(skins[i].grid_color));
+            dict.Add("Skin_" + i.ToString() + "connectors", colorToHex(skins[i].connectors_color));
+            dict.Add("Skin_" + i.ToString() + "pText", colorToHex(skins[i].playerText));
+            dict.Add("Skin_" + i.ToString() + "nText", colorToHex(skins[i].npcText));
+            dict.Add("Skin_" + i.ToString() + "aText", colorToHex(skins[i].actionText));
+            dict.Add("Skin_" + i.ToString() + "pText2", colorToHex(skins[i].playerText2));
+            dict.Add("Skin_" + i.ToString() + "nText2", colorToHex(skins[i].npcText2));
+            dict.Add("Skin_" + i.ToString() + "aText2", colorToHex(skins[i].actionText2));
+        }
+
         SerializeHelper.WriteSettings(dict as Dictionary<string, object>, "EditorSettings" + ".json");
     }
 
@@ -800,11 +1095,45 @@ public class VIDE_Editor : EditorWindow
             db.fileIndex = 0;
         }
 
+        if (dict.ContainsKey("db.curSkin"))
+        {
+            db.skinIndex = (int)((long)dict["db.curSkin"]);
+        }
+
+        //Load skin colors
+        if (dict.ContainsKey("colors"))
+        {
+            List<VIDE_Editor_Skin.Skin> skins = VIDE_Editor_Skin.instance.skins;
+            for (int i = 0; i < skins.Count; i++)
+            {
+                skins[i].player_NodeColor = hexToColor((string)dict["Skin_" + i.ToString() + "pNodeColor"]);
+                skins[i].player_NodeColorSecondary = hexToColor((string)dict["Skin_" + i.ToString() + "pNodeColor2"]);
+                skins[i].npc_NodeColor = hexToColor((string)dict["Skin_" + i.ToString() + "nNodeColor"]);
+                skins[i].npc_NodeColorSecondary = hexToColor((string)dict["Skin_" + i.ToString() + "nNodeColor2"]);
+                skins[i].action_NodeColor = hexToColor((string)dict["Skin_" + i.ToString() + "aNodeColor"]);
+                skins[i].action_NodeColorSecondary = hexToColor((string)dict["Skin_" + i.ToString() + "aNodeColor2"]);
+                skins[i].background_color = hexToColor((string)dict["Skin_" + i.ToString() + "back"]);
+                skins[i].grid_color = hexToColor((string)dict["Skin_" + i.ToString() + "grid"]);
+                skins[i].connectors_color = hexToColor((string)dict["Skin_" + i.ToString() + "connectors"]);
+                skins[i].playerText = hexToColor((string)dict["Skin_" + i.ToString() + "pText"]);
+                skins[i].npcText = hexToColor((string)dict["Skin_" + i.ToString() + "nText"]);
+                skins[i].actionText = hexToColor((string)dict["Skin_" + i.ToString() + "aText"]);
+                skins[i].playerText2 = hexToColor((string)dict["Skin_" + i.ToString() + "pText2"]);
+                skins[i].npcText2 = hexToColor((string)dict["Skin_" + i.ToString() + "nText2"]);
+                skins[i].actionText2 = hexToColor((string)dict["Skin_" + i.ToString() + "aText2"]);
+            }
+        }
+
+
     }
+
 
     //Loads from dialogues
     public void Load(bool clear)
     {
+        localizationMenu = false;
+        updateNodesRectsOnce = true;
+
         if (clear)
         {
             db.playerDiags = new List<VIDE_EditorDB.DialogueNode>();
@@ -876,6 +1205,7 @@ public class VIDE_Editor : EditorWindow
         if (dict.ContainsKey("locEdit"))
             db.locEdit = (bool)dict["locEdit"];
 
+        VIDE_Localization.isEnabled = db.locEdit;
 
         if (dict.ContainsKey("showSettings"))
         {
@@ -1024,6 +1354,20 @@ public class VIDE_Editor : EditorWindow
 
             db.actionNodes[db.actionNodes.Count - 1].nameIndex = (int)((long)dict["ac_nIndex_" + i.ToString()]);
 
+            if (dict.ContainsKey("ac_ovrStartNode_" + i.ToString()))
+                db.actionNodes[db.actionNodes.Count - 1].ovrStartNode = (int)((long)dict["ac_ovrStartNode_" + i.ToString()]);
+
+            if (dict.ContainsKey("ac_renameDialogue_" + i.ToString()))
+                db.actionNodes[db.actionNodes.Count - 1].renameDialogue = (string)dict["ac_renameDialogue_" + i.ToString()];
+
+            if (dict.ContainsKey("ac_more_" + i.ToString()))
+                db.actionNodes[db.actionNodes.Count - 1].more = (bool)dict["ac_more_" + i.ToString()];
+
+            if (dict.ContainsKey("ac_goto_" + i.ToString()))
+                db.actionNodes[db.actionNodes.Count - 1].gotoNode = (int)((long)dict["ac_goto_" + i.ToString()]);
+
+
+
             List<string> opts = new List<string>();
             List<string> nameOpts = new List<string>();
 
@@ -1062,6 +1406,26 @@ public class VIDE_Editor : EditorWindow
 
                 if (dict.ContainsKey("pd_" + i.ToString() + "_com_" + ii.ToString() + "showmore"))
                     db.playerDiags[i].comment[ii].showmore = (bool)dict["pd_" + i.ToString() + "_com_" + ii.ToString() + "showmore"];
+
+                if (dict.ContainsKey("pd_" + i.ToString() + "_com_" + ii.ToString() + "sprite"))
+                {
+                    string name = Path.GetFileNameWithoutExtension((string)dict["pd_" + i.ToString() + "_com_" + ii.ToString() + "sprite"]);
+
+                    if (spriteNames.Contains(name))
+                        db.playerDiags[i].comment[ii].sprites = sprites[spriteNames.IndexOf(name)];
+                    else if (name != "")
+                        Debug.LogError("'" + name + "' not found in any Resources folder!");
+                }
+
+                if (dict.ContainsKey("pd_" + i.ToString() + "_com_" + ii.ToString() + "audio"))
+                {
+                    string name = Path.GetFileNameWithoutExtension((string)dict["pd_" + i.ToString() + "_com_" + ii.ToString() + "audio"]);
+
+                    if (audioNames.Contains(name))
+                        db.playerDiags[i].comment[ii].audios = audios[audioNames.IndexOf(name)];
+                    else if (name != "")
+                        Debug.LogError("'" + name + "' not found in any Resources folder!");
+                }
 
                 if (dict.ContainsKey("pd_" + i.ToString() + "_com_" + ii.ToString() + "extraD"))
                     db.playerDiags[i].comment[ii].extraData = (string)dict["pd_" + i.ToString() + "_com_" + ii.ToString() + "extraD"];
@@ -1131,7 +1495,18 @@ public class VIDE_Editor : EditorWindow
             }
         }
 
+        //Listen to localization events
+        if (saveNames.Count > 0 && VIDE_Localization.isEnabled)
+        {
+            VIDE_Localization.LoadLanguages(saveNames[db.currentDiag], false);
+            LoadLocalized();
+        }
+
+        db.pNode = null;
+        db.aNode = null;
+        db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
         repaintLines = true;
+        UpdateTagList();
         Repaint();
     }
 
@@ -1166,6 +1541,10 @@ public class VIDE_Editor : EditorWindow
         int t_file = db.fileIndex;
         if (GUILayout.Button(">", EditorStyles.toolbarButton))
         {
+            assignMenu = false;
+            localizationMenu = false;
+            spyView = false;
+            editingColors = false;
             searchingForDialogue = !searchingForDialogue;
             searchWord = "";
             Repaint();
@@ -1197,6 +1576,8 @@ public class VIDE_Editor : EditorWindow
                             Save();
                         }
                         searchingForDialogue = false;
+                        spyView = false;
+                        editingColors = false;
                         db.currentDiag = db.fileIndex;
                         saveEditorSettings(db.currentDiag);
                         Load(true);
@@ -1234,11 +1615,13 @@ public class VIDE_Editor : EditorWindow
                         {
                             Save();
                         }
+                        editingColors = false;
+                        spyView = false;
                         db.currentDiag = db.fileIndex;
                         saveEditorSettings(db.currentDiag);
                         Load(true);
                         CenterAll(false, db.startID, true);
-                        return;
+                        //return;
                     }
                 }
             }
@@ -1247,12 +1630,14 @@ public class VIDE_Editor : EditorWindow
 
         if (searchingForDialogue) GUI.enabled = false;
 
-        GUI.color = new Color(0.8f, 0.9f, 0.95f, 1);
 
         //Add new
         if (GUILayout.Button("Add new dialogue", EditorStyles.toolbarButton))
         {
             editEnabled = false;
+            spyView = false;
+            editingColors = false;
+            showHelp = false;
             newFile = true;
             GUI.FocusWindow(99998);
         }
@@ -1262,7 +1647,10 @@ public class VIDE_Editor : EditorWindow
         {
             if (GUILayout.Button("Delete current", EditorStyles.toolbarButton, GUILayout.Width(100)))
             {
+                spyView = false;
+                editingColors = false;
                 editEnabled = false;
+                showHelp = false;
                 deletePopup = true;
             }
             GUIStyle bb = new GUIStyle(GUI.skin.label);
@@ -1272,7 +1660,27 @@ public class VIDE_Editor : EditorWindow
             if (showError)
                 GUI.enabled = false;
 
+            if (GUILayout.Button("Assign", EditorStyles.toolbarButton, GUILayout.Width(70)))
+            {
+                localizationMenu = false;
+                searchingForDialogue = false;
+                editingColors = false;
+                spyView = false;
+                showHelp = false;
+                assignMenu = !assignMenu;
+            }
+
             GUI.color = defaultColor;
+
+            if (GUILayout.Button("Mini Map", EditorStyles.toolbarButton, GUILayout.Width(70)))
+            {
+                localizationMenu = false;
+                searchingForDialogue = false;
+                assignMenu = false;
+                showHelp = false;
+                spyView = !spyView;
+                Repaint();
+            }
 
 
             if (needSave) GUI.color = Color.yellow;
@@ -1288,11 +1696,9 @@ public class VIDE_Editor : EditorWindow
                 newFile = false;
                 errorMsg = "";
                 saveEditorSettings(db.currentDiag);
-                //editEnabled = false;
-                //overwritePopup = true;
+
             }
             GUI.color = defaultColor;
-            //autosaveON = GUILayout.Toggle(autosaveON, "Autosave");
 
             GUILayout.Label("Autosave", EditorStyles.miniLabel);
             EditorGUI.BeginChangeCheck();
@@ -1318,7 +1724,7 @@ public class VIDE_Editor : EditorWindow
             }
 
             GUI.color = defaultColor;
-            GUILayout.Label("Load Tag: ", EditorStyles.miniLabel);
+            /*GUILayout.Label("Load Tag: ", EditorStyles.miniLabel);
             EditorGUI.BeginChangeCheck();
             string lt = EditorGUILayout.TextField(db.loadTag, EditorStyles.toolbarTextField, GUILayout.Width(50));
             if (EditorGUI.EndChangeCheck())
@@ -1328,28 +1734,26 @@ public class VIDE_Editor : EditorWindow
                 needSave = true;
 
             }
-            GUI.color = defaultColor;
+            GUI.color = defaultColor;*/
         }
 
         GUILayout.EndHorizontal();
         GUI.enabled = true;
 
         GUILayout.FlexibleSpace();
-        GUIStyle s = new GUIStyle(EditorStyles.toolbarButton);
-        //s.normal.textColor = new Color(0.4f,0.9f,0.2f,1);
-        s.alignment = TextAnchor.MiddleRight;
-        s.fontStyle = FontStyle.Bold;
-        if (GUILayout.Button(newsHeadline, s, GUILayout.MinWidth(30)))
-        {
-            if (newsHeadlineLink.Length > 0)
-            {
-                Application.OpenURL(newsHeadlineLink);
-                EditorGUIUtility.ExitGUI();
-            }
-        }
+
         GUI.color = defaultColor;
 
-    
+        if (GUILayout.Button("Help", EditorStyles.toolbarButton, GUILayout.Width(60)))
+        {
+            localizationMenu = false;
+            assignMenu = false;
+            searchingForDialogue = false;
+            editingColors = false;
+            spyView = false;
+            showHelp = !showHelp;
+        }
+
     }
 
     void DrawToolbar2()
@@ -1368,7 +1772,6 @@ public class VIDE_Editor : EditorWindow
 
             GUILayout.Label("Add nodes: ", EditorStyles.label);
             GUILayout.BeginHorizontal();
-            GUI.color = Color.cyan;
 
             // ADD NEW BUTTONS
             Rect lr;
@@ -1380,6 +1783,7 @@ public class VIDE_Editor : EditorWindow
             lr = GUILayoutUtility.GetLastRect();
             if (editEnabled && lr.Contains(Event.current.mousePosition) && Event.current.type == EventType.MouseDown)
             {
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
                 dragNewNode = 1;
             }
 
@@ -1390,6 +1794,7 @@ public class VIDE_Editor : EditorWindow
             lr = GUILayoutUtility.GetLastRect();
             if (editEnabled && lr.Contains(Event.current.mousePosition) && Event.current.type == EventType.MouseDown)
             {
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
                 dragNewNode = 2;
             }
 
@@ -1423,25 +1828,50 @@ public class VIDE_Editor : EditorWindow
             }
 
         }
+
+        string loca = "Localization: None";
+        if (VIDE_Localization.isEnabled)
+            if (VIDE_Localization.currentLanguage != null)
+                loca = "Localization: " + VIDE_Localization.currentLanguage.name;
+
+        if (GUILayout.Button(loca, EditorStyles.toolbarButton))
+        {
+            assignMenu = false;
+            searchingForDialogue = false;
+            localizationMenu = !localizationMenu;
+
+            Repaint();
+        }
+
         GUILayout.FlexibleSpace();
 
-        GUI.color = Color.yellow;
-        if (GUILayout.Button("Get VIDE PRO!", EditorStyles.toolbarButton, GUILayout.Width(120)))
-        {
-            Application.OpenURL("https://assetstore.unity.com/packages/tools/ai/vide-dialogues-pro-69932");
-            EditorGUIUtility.ExitGUI();
-        }
-        GUI.color = Color.white;
+        if (localizationMenu) GUI.enabled = false;
 
-        GUI.enabled = true; 
-
-        GUILayout.Label("VIDE 1.1.1 (Lite)", EditorStyles.miniLabel);
-        if (GUILayout.Button(twitIcon, EditorStyles.toolbarButton, GUILayout.Width(20)))
+        if (GUILayout.Button("Imp. TXT", EditorStyles.toolbarButton))
         {
-            Application.OpenURL("https://twitter.com/VIDEDialogues");
-            EditorGUIUtility.ExitGUI();
+            ImportTxtFile();
+            Repaint();
         }
 
+        if (GUILayout.Button("Exp. TXT", EditorStyles.toolbarButton))
+        {
+            ExportTxtFile();
+            Repaint();
+        }
+
+        GUI.enabled = true;
+
+        EditorGUI.BeginChangeCheck();
+        int fileIndexTEMP = EditorGUILayout.Popup(db.skinIndex, VIDE_Editor_Skin.GetNames(), GUILayout.Width(100));
+        if (EditorGUI.EndChangeCheck())
+        {
+            //Undo.RecordObject(db, "Set skin");
+            db.skinIndex = fileIndexTEMP;
+            editingColors = true;
+            GUIUtility.keyboardControl = 0;
+        }
+
+        GUI.enabled = true;
     }
 
     void SearchDialogue()
@@ -1471,15 +1901,1546 @@ public class VIDE_Editor : EditorWindow
 
     }
 
+    void AssignMenu()
+    {
+        if (Event.current.type == EventType.KeyUp && Event.current.keyCode == KeyCode.Escape)
+        {
+            assignMenu = false;
+            Repaint();
+        }
+        assignScroll = GUILayout.BeginScrollView(assignScroll, GUILayout.Height(position.height - 50));
+
+        GUILayout.BeginVertical(GUI.skin.box);
+        GUILayout.Label("Select gameobject to assign current dialogue to.");
+        GUILayout.Label("A VIDE_Assign component will be added to it if none is found.");
+
+        GUILayout.Space(10);
+
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Box("No VIDE_Assign", EditorStyles.toolbarButton);
+        Color c = Color.green;
+        c.r += 0.7f;
+        c.g += 0.7f;
+        c.b += 0.7f;
+        c.a = 1;
+        GUI.color = c;
+        GUILayout.Box("Has VIDE_Assign", EditorStyles.toolbarButton);
+
+        c = Color.blue;
+        c.r += 0.7f;
+        c.g += 0.7f;
+        c.b += 0.7f;
+        c.a = 1;
+        GUI.color = c;
+        GUILayout.Box("Already assigned", EditorStyles.toolbarButton);
+
+
+        GUI.color = defaultColor;
+        GUILayout.EndHorizontal();
+        GUILayout.EndVertical();
+
+        GUILayout.Label("Search: ");
+        assignMenuFilter = GUILayout.TextField(assignMenuFilter, GUILayout.Width(200));
+
+        GUILayout.Space(20);
+
+
+        GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>().OrderBy(go => go.name).ToArray();
+
+        for (int i = 0; i < gos.Length; i++)
+        {
+            if (!gos[i].name.ToLower().Contains(assignMenuFilter.ToLower()))
+                continue;
+
+            if (gos[i].hideFlags != HideFlags.None)
+                continue;
+
+            if (gos[i].activeInHierarchy)
+            {
+                GUI.color = defaultColor;
+
+
+                if (gos[i].GetComponent<VIDE_Assign>() != null)
+                {
+                    c = Color.green;
+                    c.r += 0.7f;
+                    c.g += 0.7f;
+                    c.b += 0.7f;
+                    c.a = 1;
+                    GUI.color = c;
+
+                    if (gos[i].GetComponent<VIDE_Assign>().assignedDialogue == saveNames[db.currentDiag])
+                    {
+                        c = Color.blue;
+                        c.r += 0.7f;
+                        c.g += 0.7f;
+                        c.b += 0.7f;
+                        c.a = 1;
+                        GUI.color = c;
+                    }
+                }
+
+                if (GUILayout.Button(gos[i].name, EditorStyles.toolbarButton))
+                {
+                    Undo.RecordObject(gos[i], "Assigned");
+                    if (gos[i].GetComponent<VIDE_Assign>() == null)
+                    {
+                        gos[i].AddComponent<VIDE_Assign>();
+                    }
+                    Selection.activeGameObject = gos[i];
+                    Repaint();
+                    gos[i].GetComponent<VIDE_Assign>().assignedDialogue = saveNames[db.currentDiag];
+                    gos[i].GetComponent<VIDE_Assign>().assignedIndex = db.currentDiag;
+                    gos[i].GetComponent<VIDE_Assign>().assignedID = db.currentID;
+                    Repaint();
+                }
+            }
+        }
+        GUILayout.Space(20);
+        GUI.color = defaultColor;
+
+        string show = "Show More";
+        if (assignMenuShowMore) show = "Show Less"; else show = "Show More";
+
+        if (GUILayout.Button(show, GUILayout.Height(30)))
+        {
+            assignMenuShowMore = !assignMenuShowMore;
+        }
+
+        if (assignMenuShowMore)
+            for (int i = 0; i < gos.Length; i++)
+            {
+                if (!gos[i].name.ToLower().Contains(assignMenuFilter.ToLower()))
+                    continue;
+
+                if (gos[i].hideFlags != HideFlags.None)
+                    continue;
+
+                if (!gos[i].activeInHierarchy)
+                {
+                    GUI.color = defaultColor;
+
+
+                    if (gos[i].GetComponent<VIDE_Assign>() != null)
+                    {
+                        c = Color.green;
+                        c.r += 0.7f;
+                        c.g += 0.7f;
+                        c.b += 0.7f;
+                        c.a = 1;
+                        GUI.color = c;
+
+                        if (gos[i].GetComponent<VIDE_Assign>().assignedDialogue == saveNames[db.currentDiag])
+                        {
+                            c = Color.blue;
+                            c.r += 0.7f;
+                            c.g += 0.7f;
+                            c.b += 0.7f;
+                            c.a = 1;
+                            GUI.color = c;
+                        }
+                    }
+
+                    if (GUILayout.Button(gos[i].name, EditorStyles.toolbarButton))
+                    {
+
+                        Undo.RecordObject(gos[i], "Assigned");
+                        if (gos[i].GetComponent<VIDE_Assign>() == null)
+                        {
+                            gos[i].AddComponent<VIDE_Assign>();
+                        }
+                        Selection.activeGameObject = gos[i];
+                        Repaint();
+                        gos[i].GetComponent<VIDE_Assign>().assignedDialogue = saveNames[db.currentDiag];
+                        gos[i].GetComponent<VIDE_Assign>().assignedIndex = db.currentDiag;
+                        gos[i].GetComponent<VIDE_Assign>().assignedID = db.currentID;
+                        Repaint();
+                    }
+                }
+            }
+        GUILayout.EndScrollView();
+
+        GUI.color = defaultColor;
+
+    }
+
+    void LocalizationMenu()
+    {
+        if (deletingLanguage != -1)
+        {
+            return;
+        }
+
+        if (Event.current.type == EventType.KeyUp && Event.current.keyCode == KeyCode.Escape)
+        {
+            localizationMenu = false;
+            Repaint();
+        }
+
+        GUILayout.Space(20);
+
+        string txt = "Enable Localization";
+        if (VIDE_Localization.enabledInGame)
+        {
+            txt = "Disable Localization";
+            GUI.color = Color.green;
+        }
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button(txt, GUILayout.ExpandWidth(true), GUILayout.Height(30), GUILayout.Width(position.width / 4)))
+        {
+            VIDE_Localization.enabledInGame = !VIDE_Localization.enabledInGame;
+
+            if (VIDE_Localization.enabledInGame)
+            {
+                VIDE_Localization.LoadLanguages(saveNames[db.currentDiag], false);
+            }
+
+            VIDE_Localization.SaveSettings();
+            Repaint();
+        }
+        GUI.color = defaultColor;
+        string txt2 = "Enable Edit";
+        if (VIDE_Localization.isEnabled)
+        {
+            txt2 = "Disable Edit";
+            GUI.color = Color.green;
+        }
+
+        if (GUILayout.Button(txt2, GUILayout.ExpandWidth(true), GUILayout.Height(30), GUILayout.Width(position.width / 4)))
+        {
+            VIDE_Localization.isEnabled = !VIDE_Localization.isEnabled;
+
+            if (VIDE_Localization.isEnabled)
+            {
+                VIDE_Localization.LoadLanguages(saveNames[db.currentDiag], false);
+                LoadLocalized();
+                VIDE_Localization.SaveSettings();
+            }
+            else
+            {
+                VIDE_Localization.currentLanguage = VIDE_Localization.defaultLanguage;
+                VIDE_Localization.SaveSettings();
+                LoadLocalized();
+                Repaint();
+            }
+
+            Repaint();
+        }
+        GUI.color = defaultColor;
+
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (!VIDE_Localization.enabledInGame)
+        {
+            EditorGUILayout.HelpBox("When disabled, only default language will be loaded while in-game.", MessageType.Info);
+        }
+        if (!VIDE_Localization.isEnabled)
+        {
+            EditorGUILayout.HelpBox("Enable Edit to localize. When disabled, no localization data will be saved or stored in memory.", MessageType.Info);
+        }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        if (!VIDE_Localization.isEnabled)
+            return;
+
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.HelpBox("When disabling Edit, no saved localization data will be lost. Also, will reset nodes to default language.\n'Default' has effect during runtime. 'Current' is for Editor, the one you are currently localizing. System will autosave changes when switching 'Current'.", MessageType.Info);
+
+        EditorGUILayout.HelpBox("Deleting a language is NOT undoable.", MessageType.Warning);
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginArea(new Rect(0, 200, position.width / 2, position.height / 2), GUI.skin.box);
+
+        if (VIDE_Localization.currentLanguage != null)
+            GUILayout.Box("Current Language: " + VIDE_Localization.currentLanguage.name, GUILayout.ExpandWidth(true));
+        languageScrollArea = GUILayout.BeginScrollView(languageScrollArea, GUILayout.Width(position.width / 2.02f), GUILayout.Height((position.height / 2) - 30));
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Languages");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        if (GUILayout.Button("Add New"))
+        {
+            SaveToLanguage();
+            VIDE_Localization.SaveSettings();
+            LoadLocalized();
+            selLang = VIDE_Localization.AddLang();
+            Repaint();
+        }
+        GUILayout.Space(10);
+
+        for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+        {
+            GUILayout.BeginHorizontal();
+
+            if (VIDE_Localization.languages[i] == VIDE_Localization.defaultLanguage) GUI.enabled = false;
+
+            if (GUILayout.Button("Delete", EditorStyles.toolbarButton, GUILayout.Width(50)))
+            {
+                deletingLanguage = i;
+                return;
+
+            }
+            GUI.enabled = true;
+
+
+            string langName = VIDE_Localization.languages[i].name;
+
+            if (VIDE_Localization.languages[i].selected)
+                GUI.color = new Color(0.7f, 0.7f, 0.95f, 1);
+            else
+                GUI.color = defaultColor;
+
+            if (GUILayout.Button(langName, EditorStyles.toolbarButton, GUILayout.ExpandWidth(true)))
+            {
+                if (VIDE_Localization.languages[i].selected)
+                {
+                    VIDE_Localization.SaveSettings();
+
+                    VIDE_Localization.DeselectAll();
+                    selLang = null;
+                }
+                else
+                {
+                    VIDE_Localization.SaveSettings();
+                    VIDE_Localization.DeselectAll();
+                    selLang = VIDE_Localization.languages[i];
+                    VIDE_Localization.languages[i].selected = true;
+                    Repaint();
+                }
+            }
+            GUI.color = defaultColor;
+
+            if (VIDE_Localization.defaultLanguage == VIDE_Localization.languages[i]) GUI.color = Color.green;
+
+            if (GUILayout.Button("Default", EditorStyles.toolbarButton, GUILayout.Width(75)))
+            {
+                VIDE_Localization.defaultLanguage = VIDE_Localization.languages[i];
+            }
+            GUI.color = defaultColor;
+
+            if (VIDE_Localization.currentLanguage == VIDE_Localization.languages[i]) GUI.color = new Color(0.7f, 0.7f, 0.95f, 1);
+
+            if (GUILayout.Button("Current", EditorStyles.toolbarButton, GUILayout.Width(75)))
+            {
+                SaveToLanguage();
+                VIDE_Localization.currentLanguage = VIDE_Localization.languages[i];
+                VIDE_Localization.SaveSettings();
+                LoadLocalized();
+                Repaint();
+            }
+            GUI.color = defaultColor;
+
+            GUILayout.Space(5);
+            GUILayout.EndHorizontal();
+        }
+        GUILayout.EndScrollView();
+        GUILayout.EndArea();
+
+        GUI.color = defaultColor;
+
+        GUILayout.BeginArea(new Rect(position.width / 2, 200, position.width / 2, position.height / 2), GUI.skin.box);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Language Settings");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
+
+        if (selLang != null)
+        {
+            GUILayout.Space(20);
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Name: ");
+            selLang.name = EditorGUILayout.TextField(selLang.name, GUILayout.Width(200));
+
+            GUILayout.FlexibleSpace();
+
+            GUILayout.EndHorizontal();
+            GUILayout.FlexibleSpace();
+            GUI.color = Color.cyan;
+
+            if (!copyFromDefSure)
+            {
+                if (GUILayout.Button("Copy Localization From Default"))
+                {
+                    copyFromDefSure = true;
+                }
+            }
+            else
+            {
+                GUI.color = Color.yellow;
+
+                if (GUILayout.Button("Are you sure? Click again to confirm"))
+                {
+                    Undo.RecordObject(db, "Copied Localization");
+                    LoadLocalizedFromDefault();
+                    localizationMenu = false;
+                    copyFromDefSure = false;
+                    Repaint();
+                }
+
+                if (Event.current.type == EventType.MouseUp)
+                {
+                    copyFromDefSure = false;
+                    Repaint();
+                }
+            }
+            GUI.color = defaultColor;
+            GUI.enabled = true;
+
+        }
+        GUILayout.EndArea();
+
+        GUILayout.BeginArea(new Rect(0, position.height - 20, position.width, 20), GUI.skin.box);
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Version 0.1");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.EndArea();
+
+
+    }
+
     private static string UppercaseString(string inputString)
     {
         return inputString.ToUpper();
     }
 
+    Rect mapBounds = new Rect();
+    float mapDivider = 2;
+    List<Rect> mapRects = new List<Rect>();
+    Texture2D mapTex;
+    Rect lastWindowSize = new Rect();
+
+    void CallSpyMap()
+    {
+        if (db.selectedNodes.Count > 0)
+        {
+            if (db.selectedNodes[0].aNode != null)
+            {
+                db.aNode = db.selectedNodes[0].aNode;
+                db.aNodeID = db.aNode.ID;
+                db.pNode = null;
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+
+            }
+            if (db.selectedNodes.Count > 0 && db.selectedNodes[0].dNode != null)
+            {
+                db.pNode = db.selectedNodes[0].dNode;
+                db.pNodeID = db.pNode.ID;
+                db.aNode = null;
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+            }
+
+        }
+        mapDivider = 2;
+        mapRects = new List<Rect>();
+        foreach (VIDE_EditorDB.DialogueNode d in db.playerDiags)
+            mapRects.Add(d.rect);
+        foreach (VIDE_EditorDB.ActionNode d in db.actionNodes)
+            mapRects.Add(d.rect);
+        mapBounds = GetBoundaries(mapRects.ToArray());
+        while (mapDivider < 10 && Mathf.Abs(mapBounds.width / mapDivider) > position.width - 32)
+        {
+            mapDivider += 0.01f;
+        }
+
+        while (mapDivider < 10 && Mathf.Abs((mapBounds.height - 450) / mapDivider) > position.height - 450)
+        {
+            mapDivider += 0.01f;
+        }
+
+        repaintLines = true;
+
+    }
+
+    Rect GetBoundaries(Rect[] rects)
+    {
+        float minX = 0;
+        float maxX = 0;
+        float minY = 0;
+        float maxY = 0;
+
+        for (int i = 0; i < rects.Length; i++)
+        {
+            List<float> vals = new List<float>();
+            foreach (Rect r in rects)
+                vals.Add(r.x);
+            minX = Mathf.Min(vals.ToArray());
+            vals = new List<float>();
+
+            foreach (Rect r in rects)
+                vals.Add(r.y);
+            minY = Mathf.Min(vals.ToArray());
+            vals = new List<float>();
+
+            foreach (Rect r in rects)
+                vals.Add(r.x + r.width);
+            maxX = Mathf.Max(vals.ToArray());
+            vals = new List<float>();
+
+            foreach (Rect r in rects)
+                vals.Add(r.y + r.height);
+            maxY = Mathf.Max(vals.ToArray());
+        }
+
+        return new Rect(minX, minY, maxX - minX, maxY - minY);
+    }
+
+    void RefreshMiniMap()
+    {
+        mapDivider = 2;
+        mapRects = new List<Rect>();
+        foreach (VIDE_EditorDB.DialogueNode d in db.playerDiags)
+            mapRects.Add(d.rect);
+        foreach (VIDE_EditorDB.ActionNode d in db.actionNodes)
+            mapRects.Add(d.rect);
+        mapBounds = GetBoundaries(mapRects.ToArray());
+        while (mapDivider < 10 && Mathf.Abs(mapBounds.width / mapDivider) > position.width - 32)
+        {
+            mapDivider += 0.01f;
+        }
+
+        while (mapDivider < 10 && Mathf.Abs((mapBounds.height - 450) / mapDivider) > position.height - 450)
+        {
+            mapDivider += 0.01f;
+        }
+    }
+
+    VIDE_EditorDB.DialogueNode GetDNodeWithID(int ID)
+    {
+
+        foreach (VIDE_EditorDB.DialogueNode d in db.playerDiags)
+        {
+            if (d.ID == ID)
+                return d;
+        }
+        return null;
+    }
+    VIDE_EditorDB.ActionNode GetANodeWithID(int ID)
+    {
+
+        foreach (VIDE_EditorDB.ActionNode d in db.actionNodes)
+        {
+            if (d.ID == ID)
+                return d;
+        }
+        return null;
+    }
+
+
+    void DrawSpyView()
+    {
+
+        //ONTOPOFEVERYTHINGGRID
+        GUI.BeginGroup(new Rect(0, 37, position.width, position.height - 37));
+        DrawGrid();
+        GUI.EndGroup();
+
+        //UNDO UPDATE 
+        if (Event.current.commandName == "UndoRedoPerformed")
+        {
+            CallSpyMap();
+            if (db.pNode != null)
+                db.pNode = GetDNodeWithID(db.pNodeID);
+            if (db.aNode != null)
+                db.aNode = GetANodeWithID(db.aNodeID);
+            Repaint();
+            GUIUtility.keyboardControl = -1;
+            return;
+        }
+
+        if (lastWindowSize != position)
+        {
+            RefreshMiniMap();
+            lastWindowSize = position;
+        }
+
+        //TITLES
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.normal.textColor = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
+        titleStyle.fontSize = 10;
+        GUI.Label(new Rect(16, 50, 300, 64), "Back (Esc/Space)", titleStyle);
+        titleStyle.fontSize = 12;
+        GUI.Label(new Rect(16, position.height - 250, 300, 64), "Editing: ", titleStyle);
+
+        GUI.Label(new Rect(68, position.height - 250, 300, 64), saveNames[db.currentDiag], titleStyle);
+
+        //INPUT EVENTS
+
+        if (Event.current.type == EventType.KeyUp && Event.current.keyCode == KeyCode.Escape)
+        {
+            spyView = false;
+            Repaint();
+            return;
+        }
+
+        if (Event.current.type == EventType.MouseUp)
+        {
+            dragNewNode = 0;
+        }
+
+
+        //MINIMAP
+        Rect groupRect = new Rect(0, 0, mapBounds.width / mapDivider, mapBounds.height / mapDivider);
+
+        float difference = position.width - mapBounds.width / mapDivider;
+        float differenceY = (position.height - 260) - mapBounds.height / mapDivider;
+        groupRect.x += difference / 2;
+        groupRect.y += (differenceY / 2);
+
+        GUIStyle buttStyle = new GUIStyle(GUI.skin.button);
+        buttStyle.fontSize = Mathf.RoundToInt(50 / mapDivider);
+        buttStyle.fontStyle = FontStyle.Normal;
+
+        GUI.BeginGroup(new Rect(0, 37, position.width, position.height - 37));
+
+        GUI.BeginGroup(groupRect);
+        for (int i = 0; i < mapRects.Count; i++)
+        {
+            float xAvr = 100 - (100 * ((mapBounds.x + mapBounds.width) - mapRects[i].x)) / (mapBounds.width);
+            float yAvr = 100 - (100 * ((mapBounds.y + mapBounds.height) - mapRects[i].y)) / (mapBounds.height);
+
+            Rect newPos = new Rect(((xAvr * mapBounds.width / mapDivider) / 100), ((yAvr * mapBounds.height / mapDivider) / 100), mapRects[i].width / mapDivider, mapRects[i].height / mapDivider);
+
+            int ID = -1;
+            Color theCol = Color.white;
+            if (i < db.playerDiags.Count)
+            {
+                ID = db.playerDiags[i].ID;
+                if (db.playerDiags[i].isPlayer) theCol = VIDE_Editor_Skin.GetColor(0, db.skinIndex);
+                else theCol = VIDE_Editor_Skin.GetColor(2, db.skinIndex);
+                if (db.pNode != null)
+                    if (db.playerDiags[i].ID == db.pNode.ID) theCol = new Color(theCol.r + 0.2f, theCol.g + 0.2f, theCol.b + 0.2f, 1);
+                DrawMapDialogueLine(db.playerDiags[i]);
+                GUI.color = theCol;
+                if (GUI.Button(newPos, "", VIDE_Editor_Skin.instance.windowStyle))
+                {
+                    if (db.pNode != null)
+                        if (db.playerDiags[i].ID == db.pNode.ID)
+                        {
+                            spyView = false;
+                            CenterAll(false, db.pNode.ID, false);
+                            return;
+                        }
+                    Undo.RecordObject(db, "Selected MiniMap node");
+                    areYouSure = false;
+                    db.pNode = db.playerDiags[i];
+                    db.pNodeID = db.pNode.ID;
+                    db.aNode = null;
+                    GUIUtility.keyboardControl = 0;
+                }
+                GUI.color = Color.white;
+
+                GUIStyle lbst = text1st;
+                lbst.alignment = TextAnchor.UpperLeft;
+                lbst.fontSize = Mathf.RoundToInt(24 / mapDivider);
+
+                //TAG             
+                lbst.normal.textColor = (db.playerDiags[i].isPlayer) ? VIDE_Editor_Skin.GetColor(14, db.skinIndex) : VIDE_Editor_Skin.GetColor(15, db.skinIndex);
+
+                GUI.Label(new Rect(newPos.x + 74 / mapDivider, newPos.y + 12 / mapDivider, newPos.width, newPos.height), db.playerDiags[i].playerTag, lbst);
+
+                //EVs
+                GUI.Label(new Rect(newPos.x + 16 / mapDivider, newPos.y + newPos.height - (50 / mapDivider), newPos.width, newPos.height), "x" + db.playerDiags[i].varKeys.Count.ToString() + " Extra Vars", lbst);
+                //ID
+                lbst.alignment = TextAnchor.UpperRight;
+                GUI.Label(new Rect((newPos.x + newPos.width) - (110 / mapDivider), newPos.y + newPos.height - (50 / mapDivider), (86 / mapDivider), newPos.height), "ID: " + db.playerDiags[i].ID.ToString(), lbst);
+                //COMMENT LINES
+                for (int c = 0; c < db.playerDiags[i].comment.Count; c++)
+                {
+                    if (c == 0 || c == 1)
+                        GUI.DrawTexture(new Rect(newPos.x + 75 / mapDivider, 37 / mapDivider + newPos.y + (16 / mapDivider * c), newPos.width - 100 / mapDivider, 8 / mapDivider), mapTex);
+                    else
+                        GUI.DrawTexture(new Rect(newPos.x + 32 / mapDivider, 37 / mapDivider + newPos.y + (16 / mapDivider * c), newPos.width - 58 / mapDivider, 8 / mapDivider), mapTex);
+
+                }
+                //SPRITE
+                if (db.playerDiags[i].sprite != null)
+                    GUI.DrawTexture(new Rect(newPos.x + 8, newPos.y + 7, 50 / mapDivider, 50 / mapDivider), db.playerDiags[i].sprite.texture);
+                else
+                    GUI.DrawTexture(new Rect(newPos.x + 8, newPos.y + 7, 50 / mapDivider, 50 / mapDivider), mapTex);
+
+            }
+            else
+            {
+                ID = db.actionNodes[i - db.playerDiags.Count].ID;
+                theCol = VIDE_Editor_Skin.GetColor(4, db.skinIndex);
+                DrawMapActionLine(db.actionNodes[i - db.playerDiags.Count]);
+                if (db.aNode != null)
+                    if (db.actionNodes[i - db.playerDiags.Count].ID == db.aNode.ID) theCol = new Color(theCol.r + 0.2f, theCol.g + 0.2f, theCol.b + 0.2f, 1);
+                GUI.color = theCol;
+                if (GUI.Button(newPos, "", VIDE_Editor_Skin.instance.windowStyle))
+                {
+                    if (db.aNode != null)
+                        if (db.actionNodes[i - db.playerDiags.Count].ID == db.aNode.ID)
+                        {
+                            spyView = false;
+                            CenterAll(false, db.aNode.ID, false);
+                            return;
+                        }
+                    db.pNode = null;
+                    Undo.RecordObject(db, "Selected MiniMap action node");
+                    areYouSure = false;
+                    db.aNode = db.actionNodes[i - db.playerDiags.Count];
+                    db.aNodeID = db.aNode.ID;
+                    GUIUtility.keyboardControl = 0;
+                }
+
+                GUI.color = Color.white;
+                GUIStyle lbsta = text1st;
+                lbsta.alignment = TextAnchor.UpperRight;
+                lbsta.fontSize = Mathf.RoundToInt(24 / mapDivider);
+                lbsta.normal.textColor = VIDE_Editor_Skin.GetColor(16, db.skinIndex);
+                //ID
+                GUI.Label(new Rect((newPos.x + newPos.width) - (110 / mapDivider), newPos.y + newPos.height - (50 / mapDivider), (86 / mapDivider), newPos.height), "ID: " + ID.ToString(), lbsta);
+            }
+
+
+
+        }
+        GUI.EndGroup();
+        GUI.EndGroup();
+
+        //EDIT AREA
+        Rect editRect = new Rect(16, position.height - 232, position.width - 32, 216);
+
+        Color bc = Color.grey;
+        bc.a = 0.5f;
+        GUI.color = bc;
+        GUI.BeginGroup(editRect, GUI.skin.box);
+        GUI.color = Color.white;
+
+        if (db.pNode != null)
+        {
+            DrawMMEditBar(editRect);
+        }
+        else if (db.aNode != null)
+        {
+            DrawMMActionBar(editRect);
+        }
+        else
+        {
+            GUI.Label(new Rect(10, 10, 300, 64), "Please select a node.", titleStyle);
+
+        }
+
+        GUI.EndGroup();
+
+
+    }
+
+    void DrawMMActionBar(Rect editRect)
+    {
+        GUIStyle boxBackst = new GUIStyle(GUI.skin.box);
+        boxBackst.normal.background = mapTex;
+        text1st.fontSize = 14;
+        text1st.normal.textColor = Color.white;
+        text1st.alignment = TextAnchor.MiddleCenter;
+
+        GUI.BeginGroup(new Rect(0, 8, editRect.width, 32), boxBackst);
+        GUI.Label(new Rect(0, 0, 80, 32), "ID: " + db.aNode.ID, text1st);
+        //FOCUS
+        if (GUI.Button(new Rect(88, 4, 64, 24), "Focus", txtComst))
+        {
+            spyView = false;
+            CenterAll(false, db.aNode.ID, false);
+        }
+        //DELETE
+        string delText = "Del";
+        if (areYouSureIndex == db.actionNodes.IndexOf(db.aNode))
+            if (areYouSure) { delText = "Sure?"; GUI.color = new Color32(176, 128, 54, 255); }
+        if (GUI.Button(new Rect(editRect.width - 60, 4, 52, 24), delText, txtComst))
+        {
+            if (areYouSureIndex != db.actionNodes.IndexOf(db.aNode)) areYouSure = false;
+            if (!areYouSure)
+            {
+                areYouSure = true;
+                areYouSureIndex = db.actionNodes.IndexOf(db.aNode);
+            }
+            else
+            {
+                areYouSure = false;
+                areYouSureIndex = 0;
+                removeAction(db.actionNodes[db.actionNodes.IndexOf(db.aNode)]);
+                needSave = true;
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+                CallSpyMap();
+                db.aNode = null;
+                db.aNodeID = -1;
+                Repaint();
+                return;
+            }
+        }
+        GUI.color = Color.white;
+        if (Event.current.type == EventType.MouseDown)
+        {
+            areYouSure = false;
+            Repaint();
+        }
+
+        GUI.EndGroup();
+        DrawMMActionBarContent(editRect);
+
+    }
+    void DrawMMActionBarContent(Rect er)
+    {
+
+        GUIStyle boxBackst = new GUIStyle(GUI.skin.box);
+        boxBackst.normal.background = mapTex;
+
+        GUIStyle text1st = new GUIStyle(GUI.skin.label);
+        text1st.fontSize = 14;
+        text1st.normal.textColor = Color.white;
+        text1st.alignment = TextAnchor.MiddleRight;
+
+        txtComst.alignment = TextAnchor.MiddleCenter;
+
+        GUI.BeginGroup(new Rect(0, 50, er.width / 2, er.height - 40));
+
+        if (GUI.Button(new Rect(40, 0, er.width / 2 - 40, 32), "Reset and fetch", txtComst))
+        {
+            Undo.RecordObject(db, "Reset and fetch");
+
+            var objects = Resources.FindObjectsOfTypeAll<GameObject>();
+            db.aNode.nameOpts.Clear();
+
+            int c = 0;
+            db.aNode.nameOpts.Add("[No object]");
+
+            foreach (GameObject g in objects)
+            {
+                if (g.activeInHierarchy && checkUseful(g))
+                    db.aNode.nameOpts.Add(g.name);
+
+                c++;
+            }
+
+            db.aNode.Clean();
+
+            //Fill up methods dictionary
+            var gos = Resources.FindObjectsOfTypeAll<GameObject>();
+            db.aNode.methods = new Dictionary<string, string>();
+            for (int i = 0; i < gos.Length; i++)
+            {
+                if (gos[i].activeInHierarchy && checkUseful(gos[i]))
+                {
+                    List<MethodInfo> methodz = GetMethods(gos[i]);
+
+                    for (int ii = 0; ii < methodz.Count; ii++)
+                    {
+                        if (!db.aNode.methods.ContainsKey(gos[i].name + ii.ToString()))
+                            db.aNode.methods.Add(gos[i].name + ii.ToString(), methodz[ii].Name);
+                    }
+                }
+            }
+
+            db.aNode.opts = new string[] { "[No method]" };
+
+            needSave = true;
+        }
+
+        GUI.color = Color.white;
+
+        if (!db.aNode.editorRefreshed && Event.current.type == EventType.Repaint)
+        {
+            db.aNode.editorRefreshed = true;
+
+            if (db.aNode.nameIndex != 0)
+            {
+                db.aNode.gameObjectName = db.aNode.nameOpts[db.aNode.nameIndex];
+            }
+            else
+            {
+                db.aNode.gameObjectName = "[No object]";
+                db.aNode.methodName = "[No method]";
+                db.aNode.methodIndex = 0;
+                db.aNode.paramType = -1;
+            }
+
+            if (db.aNode.methodIndex != 0)
+            {
+                db.aNode.methodName = db.aNode.opts[db.aNode.methodIndex];
+            }
+            else
+            {
+                db.aNode.methodName = "[No method]";
+                db.aNode.methodIndex = 0;
+                db.aNode.paramType = -1;
+            }
+
+            //Repaint();
+            //return;
+        }
+
+        if (db.aNode.nameOpts.Count > 0)
+        {
+            EditorGUI.BeginChangeCheck();
+            int idx = EditorGUI.Popup(new Rect(40, 40, er.width / 2 - 40, 24), db.aNode.nameIndex, db.aNode.nameOpts.ToArray(), txtComst);
+            if (EditorGUI.EndChangeCheck()) //Pick name
+            {
+                Undo.RecordObject(db, "Changed name Index");
+                db.aNode.nameIndex = idx;
+                db.aNode.gameObjectName = db.aNode.nameOpts[db.aNode.nameIndex];
+                db.aNode.methodName = "[No method]";
+                db.aNode.methodIndex = 0;
+                db.aNode.paramType = -1;
+
+                List<string> opti = new List<string>();
+                opti.Add("[No method]");
+
+                for (int x = 0; x < 10000; x++)
+                {
+                    if (db.aNode.methods.ContainsKey(db.aNode.gameObjectName + x.ToString()))
+                    {
+                        opti.Add(db.aNode.methods[db.aNode.gameObjectName + x.ToString()]);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                db.aNode.opts = opti.ToArray();
+
+                needSave = true;
+            }
+        }
+
+        EditorGUI.BeginChangeCheck();
+        int meth = EditorGUI.Popup(new Rect(40, 68, er.width / 2 - 40, 24), db.aNode.methodIndex, db.aNode.opts, txtComst);
+
+        if (EditorGUI.EndChangeCheck()) //Pick method
+        {
+            Undo.RecordObject(db, "Changed method index");
+            db.aNode.methodIndex = meth;
+            db.aNode.methodName = db.aNode.opts[db.aNode.methodIndex];
+
+            GameObject ob = GameObject.Find(db.aNode.gameObjectName);
+            var objects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == db.aNode.gameObjectName);
+
+            foreach (GameObject g in objects)
+            {
+                if (g.activeInHierarchy && checkUseful(g))
+                {
+                    ob = g;
+                    break;
+                }
+
+            }
+
+            List<MethodInfo> methods = GetMethods(ob);
+
+
+            if (db.aNode.methodIndex > 0)
+                db.aNode.paramType = checkParam(methods[db.aNode.methodIndex - 1]);
+            else
+                db.aNode.paramType = -1;
+
+            needSave = true;
+
+        }
+        //PARAMS
+        text1st.fontSize = 14;
+        txtComst.alignment = TextAnchor.MiddleLeft;
+        if (db.aNode.paramType > 0)
+            GUI.Label(new Rect(40, 100, 100, 16), "Parameters: ", text1st);
+
+        if (db.aNode.paramType == 1)
+        {
+            EditorGUI.BeginChangeCheck();
+            bool parab = EditorGUI.Toggle(new Rect(150, 100, 100, 24), db.aNode.param_bool, txtComst);
+            if (EditorGUI.EndChangeCheck()) //Pick method
+            {
+                Undo.RecordObject(db, "Changed param");
+                db.aNode.param_bool = parab;
+                needSave = true;
+            }
+        }
+
+        if (db.aNode.paramType == 2)
+        {
+            EditorGUI.BeginChangeCheck();
+            string ps = EditorGUI.TextField(new Rect(150, 100, 100, 24), db.aNode.param_string, txtComst);
+            if (EditorGUI.EndChangeCheck()) //Pick method
+            {
+                Undo.RecordObject(db, "Changed param");
+                db.aNode.param_string = ps;
+                needSave = true;
+            }
+        }
+        if (db.aNode.paramType == 3)
+        {
+            EditorGUI.BeginChangeCheck();
+            int pi = EditorGUI.IntField(new Rect(150, 100, 100, 24), db.aNode.param_int, txtComst);
+            if (EditorGUI.EndChangeCheck()) //Pick method
+            {
+                Undo.RecordObject(db, "Changed param");
+                db.aNode.param_int = pi;
+                needSave = true;
+            }
+        }
+        if (db.aNode.paramType == 4)
+        {
+            EditorGUI.BeginChangeCheck();
+            float pf = EditorGUI.FloatField(new Rect(150, 100, 100, 24), db.aNode.param_float, txtComst);
+            if (EditorGUI.EndChangeCheck()) //Pick method
+            {
+                Undo.RecordObject(db, "Changed param");
+                db.aNode.param_float = pf;
+                needSave = true;
+            }
+        }
+        //END
+        GUI.EndGroup();
+
+        GUI.BeginGroup(new Rect(er.width / 2, 50, er.width / 2, er.height - 40));
+        GUI.Label(new Rect(40, 0, 200, 32), "OvrStartNode", text1st);
+        EditorGUI.BeginChangeCheck();
+        int ovr = EditorGUI.IntField(new Rect(250, 0, er.width / 2 - 290, 32), db.aNode.ovrStartNode, txtComst);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(db, "Set Override Start Node");
+            db.aNode.ovrStartNode = ovr;
+            needSave = true;
+        }
+        GUI.Label(new Rect(40, 40, 200, 32), "RenameDialogue", text1st);
+        EditorGUI.BeginChangeCheck();
+        string ren = EditorGUI.TextField(new Rect(250, 40, er.width / 2 - 290, 32), db.aNode.renameDialogue, txtComst);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(db, "Set Rename Dialogue");
+            db.aNode.renameDialogue = ren;
+            needSave = true;
+        }
+        GUI.Label(new Rect(40, 80, 200, 32), "Go to Node", text1st);
+        EditorGUI.BeginChangeCheck();
+        int goton = EditorGUI.IntField(new Rect(250, 80, er.width / 2 - 290, 32), db.aNode.gotoNode, txtComst);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(db, "Set goto node");
+            db.aNode.gotoNode = goton;
+            needSave = true;
+        }
+
+
+        GUI.EndGroup();
+
+    }
+
+    void DrawMMEditBar(Rect editRect)
+    {
+
+        GUIStyle boxBackst = new GUIStyle(GUI.skin.box);
+        boxBackst.normal.background = mapTex;
+        GUIStyle text1st = new GUIStyle(GUI.skin.label);
+        text1st.fontSize = 14;
+        text1st.normal.textColor = Color.white;
+        text1st.alignment = TextAnchor.MiddleCenter;
+
+        GUI.BeginGroup(new Rect(0, 8, editRect.width, 32), boxBackst);
+        GUI.Label(new Rect(0, 0, 80, 32), "ID: " + db.pNode.ID, text1st);
+        string isp = "Is Player";
+        if (!db.pNode.isPlayer) isp = "Is NPC";
+
+        if (GUI.Button(new Rect(88, 4, 120, 24), isp))
+        {
+            Undo.RecordObject(db, "Set Node type");
+            db.pNode.isPlayer = !db.pNode.isPlayer;
+
+            if (!db.pNode.isPlayer)
+            {
+                for (int i = 0; i < db.pNode.comment.Count; i++)
+                {
+                    if (i == 0) continue;
+                    db.pNode.comment[i].outNode = null;
+                    db.pNode.comment[i].outAction = null;
+                }
+            }
+        }
+        GUI.color = Color.white;
+        //TAG
+        EditorGUI.BeginChangeCheck();
+        GUI.Label(new Rect(216, 4, 40, 24), "TAG: ", text1st);
+        text1st = new GUIStyle(GUI.skin.textField);
+        text1st.normal.textColor = Color.black;
+        text1st.alignment = TextAnchor.MiddleLeft;
+        string pt = EditorGUI.TextField(new Rect(254, 4, 150, 24), db.pNode.playerTag, txtComst);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(db, "Set player Tag");
+            db.pNode.playerTag = pt;
+            needSave = true;
+        }
+
+        //FOCUS
+        if (GUI.Button(new Rect(408, 4, 64, 24), "Focus", txtComst))
+        {
+            spyView = false;
+            CenterAll(false, db.pNode.ID, false);
+        }
+        //DELETE
+        string delText = "Del";
+        if (areYouSureIndex == db.playerDiags.IndexOf(db.pNode))
+            if (areYouSure) { delText = "Sure?"; GUI.color = new Color32(176, 128, 54, 255); }
+        if (GUI.Button(new Rect(editRect.width - 60, 4, 52, 24), delText, txtComst))
+        {
+            if (areYouSureIndex != db.playerDiags.IndexOf(db.pNode)) areYouSure = false;
+            if (!areYouSure)
+            {
+                areYouSure = true;
+                areYouSureIndex = db.playerDiags.IndexOf(db.pNode);
+            }
+            else
+            {
+                areYouSure = false;
+                areYouSureIndex = 0;
+                removeSet(db.playerDiags[db.playerDiags.IndexOf(db.pNode)]);
+                needSave = true;
+                db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+                CallSpyMap();
+                db.pNode = null;
+                db.pNodeID = -1;
+                Repaint();
+                return;
+            }
+        }
+        GUI.color = Color.white;
+
+        if (Event.current.type == EventType.MouseDown)
+        {
+            areYouSure = false;
+            Repaint();
+        }
+
+        GUI.EndGroup();
+
+        DrawMMEditBar2(editRect);
+
+    }
+
+    Vector2 comScroll;
+    Vector2 evScroll;
+
+    void DrawMMEditBar2(Rect er)
+    {
+        GUI.color = Color.white;
+        GUIStyle boxBackst = new GUIStyle(GUI.skin.box);
+        boxBackst.normal.background = mapTex;
+        GUIStyle text1st = new GUIStyle(GUI.skin.label);
+        text1st.fontSize = 14;
+        text1st.normal.textColor = Color.white;
+        text1st.alignment = TextAnchor.MiddleCenter;
+
+        GUI.BeginGroup(new Rect(0, 40, er.width / 2, 200));
+        GUI.BeginGroup(new Rect(0, 0, er.width / 2, 32));
+        if (GUI.Button(new Rect(4, 4, 136, 24), "Toggle contents", txtComst))
+        {
+            mmShowComments = !mmShowComments;
+            needSave = true;
+        }
+        if (GUI.Button(new Rect(144, 4, 240, 24), "Add Comment", txtComst))
+        {
+            areYouSure = false;
+            addComment(db.pNode);
+            needSave = true;
+        }
+        EditorGUI.BeginChangeCheck();
+        Sprite sp = (Sprite)EditorGUI.ObjectField(new Rect(392, 8, er.width / 2 - 392, 16), db.pNode.sprite, typeof(Sprite), false);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(db, "Set Sprite");
+            db.pNode.sprite = sp;
+            needSave = true;
+        }
+        GUI.EndGroup();
+
+        if (db.pNode == null) return;
+
+        comScroll = GUI.BeginScrollView(new Rect(0, 32, er.width / 2, 144), comScroll, new Rect(0, 0, er.width / 2, 32 * db.pNode.comment.Count), GUIStyle.none, GUIStyle.none);
+        DrawMMComments(er);
+        GUI.EndScrollView();
+        GUI.EndGroup();
+
+        GUI.BeginGroup(new Rect(er.width / 2, 40, er.width / 2, 200));
+        GUI.BeginGroup(new Rect(0, 0, er.width / 2, 32));
+        if (GUI.Button(new Rect(4, 4, 240, 24), "Add Extra Variable", txtComst))
+        {
+            Undo.RecordObject(db, "Add Extra Variable");
+            db.pNode.vars.Add(string.Empty);
+            db.pNode.varKeys.Add("Key" + db.pNode.vars.Count.ToString());
+            needSave = true;
+        }
+        GUI.EndGroup();
+        evScroll = GUI.BeginScrollView(new Rect(0, 32, er.width / 2, 144), evScroll, new Rect(0, 0, er.width / 2, 32 * db.pNode.varKeys.Count), GUIStyle.none, GUIStyle.none);
+        DrawMMEV(er);
+        GUI.EndScrollView();
+
+        GUI.EndGroup();
+
+    }
+
+    bool mmShowComments = true;
+
+    void DrawMMEV(Rect er)
+    {
+
+        for (int i = 0; i < db.pNode.vars.Count; i++)
+        {
+            txtComst.alignment = TextAnchor.MiddleCenter;
+            if (GUI.Button(new Rect(4, (32 * i) + 4, 24, 24), "X", txtComst))
+            {
+                Undo.RecordObject(db, "Removed Extra Variable");
+                db.pNode.vars.RemoveAt(i);
+                db.pNode.varKeys.RemoveAt(i);
+                needSave = true;
+                break;
+            }
+            txtComst.alignment = TextAnchor.UpperLeft;
+
+            EditorGUI.BeginChangeCheck();
+            string key = EditorGUI.TextField(new Rect(44, (32 * i) + 4, 132, 24), db.pNode.varKeys[i], txtComst);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(db, "Set key");
+                db.pNode.varKeys[i] = key;
+                needSave = true;
+            }
+            EditorGUI.BeginChangeCheck();
+            string val = EditorGUI.TextField(new Rect(184, (32 * i) + 4, (er.width / 2) - 188, 24), db.pNode.vars[i], txtComst);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(db, "Set val");
+                db.pNode.vars[i] = val;
+                needSave = true;
+            }
+
+            txtComst.alignment = TextAnchor.MiddleCenter;
+
+        }
+    }
+
+    void DrawMMComments(Rect er)
+    {
+        if (db.pNode != null)
+        {
+            GUIStyle txtst = new GUIStyle(GUI.skin.label);
+            txtst.normal.textColor = Color.white;
+            txtst.alignment = TextAnchor.MiddleLeft;
+            txtst.fontSize = 14;
+
+            for (int i = 0; i < db.pNode.comment.Count; i++)
+            {
+
+                txtComst.alignment = TextAnchor.MiddleCenter;
+                GUI.Label(new Rect(4, i * 32, 32, 32), i.ToString() + ". ", txtst);
+                if (db.pNode.comment.Count > 1)
+                    if (GUI.Button(new Rect(44, (i * 32) + 4, 24, 24), "X", txtComst))
+                    {
+                        areYouSure = false;
+                        removeComment(db.pNode.comment[i]);
+                        needSave = true;
+                        return;
+                    }
+
+                string isVis = "O";
+                if (!db.pNode.comment[i].visible) isVis = "Ø";
+
+                if (GUI.Button(new Rect(72 + 4, (i * 32) + 4, 24, 24), isVis, txtComst))
+                {
+                    Undo.RecordObject(db, "Set Comment visibility");
+                    db.pNode.comment[i].visible = !db.pNode.comment[i].visible;
+                    needSave = true;
+                }
+
+                if (GUI.Button(new Rect(108, i * 32, 32, 16), "▲", txtComst))
+                {
+                    if (i > 0)
+                    {
+                        Undo.RecordObject(db, "Arranged comment");
+                        ArrangeComment(db.pNode, -1, i);
+                        repaintLines = true;
+                        Repaint();
+                        needSave = true;
+                    }
+                }
+
+                if (GUI.Button(new Rect(108, (i * 32) + 16, 32, 16), "▼", txtComst))
+                {
+                    if (i < db.pNode.comment.Count - 1)
+                    {
+                        Undo.RecordObject(db, "Arranged comment");
+                        ArrangeComment(db.pNode, 1, i);
+                        repaintLines = true;
+                        Repaint();
+                        needSave = true;
+                    }
+
+                }
+                txtComst.alignment = TextAnchor.UpperLeft;
+
+                if (mmShowComments)
+                {
+                    GUIStyle exD = new GUIStyle(GUI.skin.textField);
+                    exD.wordWrap = false;
+                    EditorGUI.BeginChangeCheck();
+                    txtComst.fontSize = 12;
+                    string testText = EditorGUI.TextArea(new Rect(144, (i * 32), (er.width / 2) - 162, 30), db.pNode.comment[i].text, txtComst);
+                    txtComst.fontSize = 14;
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Edited Player comment");
+                        db.pNode.comment[i].text = testText;
+                        needSave = true;
+                    }
+                }
+                else
+                {
+                    EditorGUI.BeginChangeCheck();
+                    Sprite spr = (Sprite)EditorGUI.ObjectField(new Rect(148 + 4, (i * 32) + 8, 100, 16), db.pNode.comment[i].sprites, typeof(Sprite), false);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Set Comment Sprite");
+                        db.pNode.comment[i].sprites = spr;
+                        needSave = true;
+                    }
+                    EditorGUI.BeginChangeCheck();
+                    AudioClip aud = (AudioClip)EditorGUI.ObjectField(new Rect(256 + 4, (i * 32) + 8, 100, 16), db.pNode.comment[i].audios, typeof(AudioClip), false);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Set Comment Audio");
+                        db.pNode.comment[i].audios = aud;
+                        needSave = true;
+                    }
+                    EditorGUI.BeginChangeCheck();
+                    string exd = EditorGUI.TextArea(new Rect(364, (i * 32) + 4, (er.width / 2) - 396, 24), db.pNode.comment[i].extraData);
+                    GUI.color = Color.white;
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Edited Player extra data");
+                        db.pNode.comment[i].extraData = exd;
+                        needSave = true;
+                    }
+                }
+                txtComst.alignment = TextAnchor.MiddleCenter;
+            }
+        }
+    }
+
+    void DrawMapDialogueLine(VIDE_EditorDB.DialogueNode node)
+    {
+        foreach (VIDE_EditorDB.Comment c in node.comment)
+        {
+            if (c.outNode != null)
+            {
+                Rect sPosStart = new Rect(c.outRect.x + node.rect.x + 35, c.outRect.y + node.rect.y + 10, 10, 10);
+                DrawNodeLineMap(GetMapRect(c.outRect), GetMapRect(c.outNode.rect), GetMapRect(node.rect), GetMapRect(sPosStart));
+            }
+
+            if (c.outAction != null)
+            {
+                Rect sPosStart = new Rect(c.outRect.x + node.rect.x + 35, c.outRect.y + node.rect.y + 10, 10, 10);
+                DrawNodeLineMap(GetMapRect(c.outRect), GetMapRect(c.outAction.rect), GetMapRect(node.rect), GetMapRect(sPosStart));
+
+            }
+        }
+    }
+
+    void DrawMapActionLine(VIDE_EditorDB.ActionNode node)
+    {
+        if (node.outAction != null)
+        {
+            Rect sPosStart = new Rect(node.rect.x + 190, node.rect.y + 30, 10, 10);
+            DrawActionNodeLineMap(GetMapRect(node.rect), GetMapRect(node.outAction.rect), GetMapRect(sPosStart));
+        }
+        if (node.outPlayer != null)
+        {
+            Rect sPosStart = new Rect(node.rect.x + 190, node.rect.y + 30, 10, 10);
+            DrawActionNodeLineMap(GetMapRect(node.rect), GetMapRect(node.outPlayer.rect), GetMapRect(sPosStart));
+        }
+
+    }
+
+    Rect GetMapRect(Rect r)
+    {
+        float xAvr = 100 - (100 * ((mapBounds.x + mapBounds.width) - r.x)) / (mapBounds.width);
+        float yAvr = 100 - (100 * ((mapBounds.y + mapBounds.height) - r.y)) / (mapBounds.height);
+        Rect newPos = new Rect(((xAvr * mapBounds.width / mapDivider) / 100), ((yAvr * mapBounds.height / mapDivider) / 100), r.width / mapDivider, r.height / mapDivider);
+        return newPos;
+    }
+
+    void DrawEditSkin(int id)
+    {
+
+        VIDE_Editor_Skin.Skin s = VIDE_Editor_Skin.instance.skins[db.skinIndex];
+        /* Colors */
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Player Node", GUILayout.Width(80));
+        EditorGUI.BeginChangeCheck();
+        Color cc = EditorGUILayout.ColorField(s.player_NodeColor);
+        if (EditorGUI.EndChangeCheck()) s.player_NodeColor = cc;
+        s.player_NodeColorSecondary = EditorGUILayout.ColorField(s.player_NodeColorSecondary);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Player Text", GUILayout.Width(80));
+        s.playerText2 = EditorGUILayout.ColorField(s.playerText2);
+        s.playerText = EditorGUILayout.ColorField(s.playerText);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("NPC Node", GUILayout.Width(80));
+        s.npc_NodeColor = EditorGUILayout.ColorField(s.npc_NodeColor);
+        s.npc_NodeColorSecondary = EditorGUILayout.ColorField(s.npc_NodeColorSecondary);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("NPC Text", GUILayout.Width(80));
+        s.npcText2 = EditorGUILayout.ColorField(s.npcText2);
+        s.npcText = EditorGUILayout.ColorField(s.npcText);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Action Node", GUILayout.Width(80));
+        s.action_NodeColor = EditorGUILayout.ColorField(s.action_NodeColor);
+        s.action_NodeColorSecondary = EditorGUILayout.ColorField(s.action_NodeColorSecondary);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Action Text", GUILayout.Width(80));
+        s.actionText2 = EditorGUILayout.ColorField(s.actionText2);
+        s.actionText = EditorGUILayout.ColorField(s.actionText);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Background", GUILayout.Width(80));
+        s.background_color = EditorGUILayout.ColorField(s.background_color);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Grid", GUILayout.Width(80));
+        s.grid_color = EditorGUILayout.ColorField(s.grid_color);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Connectors", GUILayout.Width(80));
+        s.connectors_color = EditorGUILayout.ColorField(s.connectors_color);
+        GUILayout.EndHorizontal();
+
+
+        gridTex.SetPixel(0, 0, VIDE_Editor_Skin.GetColor(7, db.skinIndex));
+        gridTex.Apply();
+        GUILayout.BeginHorizontal();
+
+        /*if (GUILayout.Button("Def", GUILayout.Width(30)))
+        {
+            VIDE_Editor_Skin.SetDefault(db.skinIndex);
+        }*/
+        if (GUILayout.Button("Reset", GUILayout.Width(50)))
+        {
+            VIDE_Editor_Skin.Reset(db.skinIndex);
+        }
+        if (GUILayout.Button("Close", GUILayout.ExpandWidth(true)))
+        {
+            editingColors = false;
+            saveEditorSettings(db.currentDiag);
+            Repaint();
+        }
+
+        GUILayout.EndHorizontal();
+
+
+    }
+
+    bool showNaviTab = true;
+
+    void ShowHelp()
+    {
+        if (Event.current.keyCode == KeyCode.Escape)
+        {
+            showHelp = false;
+            Repaint();
+        }
+        GUILayout.BeginArea(new Rect(position.width / 10, position.height / 10, (position.width / 10) * 8, (position.height / 10) * 8), GUI.skin.box);
+        GUIStyle font = new GUIStyle(GUI.skin.GetStyle("label"));
+        font.fontSize = 18;
+        GUIStyle links = new GUIStyle(GUI.skin.GetStyle("button"));
+        links.normal.textColor = Color.white;
+        links.fontSize = 14;
+        links.fontStyle = FontStyle.Bold;
+
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        if (GUILayout.Button("Navigation"))
+            showNaviTab = true;
+
+        if (GUILayout.Button("Links"))
+            showNaviTab = false;
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(24);
+
+        if (showNaviTab)
+        {
+            GUILayout.Label("Panning: Click and drag on empty area", font);
+            GUILayout.Label("Clone node: Right click and drag from a node", font);
+            GUILayout.Label("New linked node: Click and drag from connection button to empty area", font);
+            GUILayout.Space(20);
+            GUILayout.Label("Right click: Drop new Dialogue node (Left click to cancel)", font);
+            GUILayout.Label("Return: Dialogue quick search", font);
+            GUILayout.Label("Space: Mini Map", font);
+            GUILayout.Label("Esc: Exit menus", font);
+        }
+        else
+        {
+
+
+
+            if (GUILayout.Button("Store Page", links, GUILayout.Height(40)))
+            {
+                Application.OpenURL("https://assetstore.unity.com/packages/tools/ai/vide-dialogues-pro-69932");
+            }
+            if (GUILayout.Button("Documentation", links, GUILayout.Height(40)))
+            {
+                Application.OpenURL("https://videdialogues.wordpress.com/about/");
+            }
+            if (GUILayout.Button("FAQ", links, GUILayout.Height(40)))
+            {
+                Application.OpenURL("https://videdialogues.wordpress.com/faq/");
+            }
+            if (GUILayout.Button("Scripting Tutorial", links, GUILayout.Height(40)))
+            {
+                Application.OpenURL("https://videdialogues.wordpress.com/tutorial/");
+            }
+            if (GUILayout.Button("Contact", links, GUILayout.Height(40)))
+            {
+                Application.OpenURL("https://videdialogues.wordpress.com/contact/");
+            }
+        }
+
+        GUILayout.EndArea();
+        GUILayout.Label("VIDE Dialogues 2.2.3");
+    }
+
     //Here's where we actually draw everything
+    GUISkin actionNodeSkin;
     void OnGUI()
     {
         Event e = Event.current;
+
+        if (db == null) return;
+
         //Set colors we'll be using later
         colors = new Color32[]{new Color32(255,255,255,255),
             new Color32(180,180,180,255),
@@ -1495,18 +3456,27 @@ public class VIDE_Editor : EditorWindow
             GUI.FocusControl("filterSearch");
         }
 
+        if (e.keyCode == KeyCode.Space && e.type == EventType.KeyUp && GUIUtility.keyboardControl < 1)
+        {
+            spyView = !spyView;
+            if (spyView) CallSpyMap();
+            Repaint();
+
+        }
+
         if (e.keyCode == KeyCode.Return && e.type == EventType.KeyUp && GUIUtility.keyboardControl == 0)
         {
-            if (!searchingForDialogue)
+            if (!searchingForDialogue && !spyView)
             {
                 searchingForDialogue = true;
+                spyView = false;
                 searchWord = "";
                 Repaint();
                 return;
             }
         }
 
-        GUIStyle sty = EditorStyles.toolbar;
+        GUIStyle sty = new GUIStyle(EditorStyles.toolbar);
         sty.fixedHeight = 18;
         GUILayout.BeginHorizontal(sty);
         DrawToolbar();
@@ -1515,22 +3485,52 @@ public class VIDE_Editor : EditorWindow
         DrawToolbar2();
         GUILayout.EndHorizontal();
 
-        //GUILayout.Label("Bounds: " + canvas.ToString());
-        //GUILayout.Label("ScrollArea: " + scrollArea.ToString());
-        //GUILayout.Label("lerpTime: " + lerpFocusTime.ToString());
-        //GUILayout.Label("Hot control: " + GUIUtility.hotControl);
-        //GUILayout.Label("Keyboard Control: " + GUIUtility.keyboardControl);
-        //GUILayout.Label("Focused control: " + GUI.GetNameOfFocusedControl());
-        //GUILayout.Label("RealTimeSinceStartup: " + Time.realtimeSinceStartup.ToString());
-        //GUILayout.Label("Focusing: " + lerpFocusTime.ToString() + " Time: " + focusTimer.ToString());
-        //GUILayout.Label("videroot: " + Application.dataPath + "/../" + VIDE_EditorDB.videRoot + "/Resources/");
-        //GUILayout.Label(Application.systemLanguage.ToString());
-
-
 
         if (searchingForDialogue)
         {
             SearchDialogue();
+            return;
+        }
+
+        if (assignMenu)
+        {
+            AssignMenu();
+            return;
+        }
+
+        if (showHelp)
+        {
+            ShowHelp();
+            return;
+        }
+
+        if (localizationMenu)
+        {
+            LocalizationMenu();
+            if (deletingLanguage != -1)
+            {
+                BeginWindows();
+
+                fWin = new Rect(position.width / 4, position.height / 4, position.width / 2, 0);
+                fWin = GUILayout.Window(99995, fWin, DrawDeleteLang, "Are you sure?");
+                GUI.FocusWindow(99995);
+
+                EndWindows();
+            }
+            return;
+        }
+
+        if (spyView)
+        {
+            DrawSpyView();
+            if (editingColors)
+            {
+                BeginWindows();
+                Rect r = new Rect(position.width - 216, 48, 200, 150);
+                r = GUILayout.Window(100000, r, DrawEditSkin, "Skins", GUI.skin.GetStyle("Window"));
+                GUI.BringWindowToFront(100000);
+                EndWindows();
+            }
             return;
         }
 
@@ -1539,7 +3539,6 @@ public class VIDE_Editor : EditorWindow
         DrawGrid();
 
         defaultColor = GUI.color;
-
 
         //handle input events
         if (editEnabled)
@@ -1556,25 +3555,67 @@ public class VIDE_Editor : EditorWindow
                 }
             }
 
+
             if (e.type == EventType.MouseDown)
             {
+                if (holdingBall) //dropball
+                {
+                    if (e.button == 0)
+                    {
+                        holdingBall = false;
+                        ballsGravity[ballsGravity.Count - 1] = new Vector2(Random.Range(-300, 300), Random.Range(200, 600) * -1);
+                    }
+
+                }
+
                 if (GUIUtility.hotControl != 0) GUIUtility.hotControl = 0;
                 if (lerpFocusTime)
                     lerpFocusTime = false;
+
+                foreach (VIDE_EditorDB.DialogueNode d in db.playerDiags)
+                {
+                    if (d.rect.Contains(e.mousePosition))
+                    {
+                        insideNode = true; break;
+
+                    }
+                }
+                foreach (VIDE_EditorDB.ActionNode d in db.actionNodes)
+                {
+                    if (d.rect.Contains(e.mousePosition))
+                    {
+                        insideNode = true; break;
+                    }
+                }
+                willDeselect = true;
+
+
             }
 
             if (position.Contains(GUIUtility.GUIToScreenPoint(e.mousePosition)))
             {
-                if (e.type == EventType.MouseDrag && e.button == 0 && dragNewNode == 0) //Drag all around
+                if (e.type == EventType.MouseDrag && e.button == 0 && dragNewNode == 0) //Pan
                 {
-                    if (GUIUtility.hotControl == 0)
+                    if (GUIUtility.hotControl == 0 && !insideNode && !editingColors)
                     {
                         dragnWindows = true;
-                        if (e.delta.x < 200 && e.delta.y < 200)
+                        if (Mathf.Abs(e.delta.x) < 200 && Mathf.Abs(e.delta.y) < 200)
                         {
+                            willDeselect = false;
                             scrollArea = new Vector2(scrollArea.x -= e.delta.x, scrollArea.y -= e.delta.y);
                             Repaint();
                         }
+                    }
+                }
+
+                if (e.type == EventType.MouseDown && e.button == 1 && GUIUtility.hotControl == 0)
+                {
+                    if (!holdingBall)
+                    {
+                        dragNewNode = 0;
+                        holdingBall = true;
+                        balls.Add(e.mousePosition);
+                        ballsGravity.Add(Vector2.zero);
                     }
                 }
             }
@@ -1587,6 +3628,7 @@ public class VIDE_Editor : EditorWindow
                     repaintLines = true;
                 }
             }
+
 
             if (e.type == EventType.MouseUp)
             {
@@ -1605,8 +3647,18 @@ public class VIDE_Editor : EditorWindow
                     Repaint();
                     repaintLines = true;
                 }
+
+                if (!insideNode && willDeselect)
+                {
+                    db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+                    willDeselect = false;
+                    Repaint();
+                }
+
+                insideNode = false;
                 draggingLine = false;
             }
+
         }
         //Draw connection line
         if (editEnabled)
@@ -1632,19 +3684,33 @@ public class VIDE_Editor : EditorWindow
             }
         }
 
+
         //Here we'll draw all of the windows
+
         BeginWindows();
 
         int setID = 0;
         int ansID = 0;
         int acID = 0;
         GUI.enabled = editEnabled;
-        GUIStyle st = new GUIStyle(GUI.skin.window);
 
+        GUIStyle st = new GUIStyle(VIDE_Editor_Skin.instance.windowStyle);
         st.fontStyle = FontStyle.Bold;
         st.fontSize = 12;
         st.richText = true;
         st.wordWrap = true;
+        st.clipping = TextClipping.Clip;
+
+        if (selectNodeDelayed != -1)
+        {
+            db.selectedNodes.Add(new VIDE_EditorDB.NodeSelection(db.playerDiags[selectNodeDelayed]));
+            selectNodeDelayed = -1;
+        }
+        if (selectANodeDelayed != -1)
+        {
+            db.selectedNodes.Add(new VIDE_EditorDB.NodeSelection(db.actionNodes[selectANodeDelayed]));
+            selectANodeDelayed = -1;
+        }
 
         if (!newFile && !deletePopup && !overwritePopup)
         {
@@ -1652,31 +3718,35 @@ public class VIDE_Editor : EditorWindow
             {
                 for (; setID < db.playerDiags.Count; setID++)
                 {
-                    if (!CheckInsideWindow(db.playerDiags[setID].rect)) continue;
+                    if (!updateNodesRectsOnce)
+                        if (!CheckInsideWindow(db.playerDiags[setID].rect)) continue;
 
                     if (db.playerDiags[setID].isPlayer)
-                        GUI.color = new Color32(180, 160, 160, 255);
+                        GUI.color = VIDE_Editor_Skin.GetColor(0, db.skinIndex);
                     else
-                        GUI.color = new Color32(160, 160, 180, 255);
+                        GUI.color = VIDE_Editor_Skin.GetColor(2, db.skinIndex);
+
+                    foreach (VIDE_EditorDB.NodeSelection ns in db.selectedNodes)
+                    {
+                        if (ns.dNode == db.playerDiags[setID])
+                            GUI.color = new Color(GUI.color.r + 0.1f, GUI.color.g + 0.1f, GUI.color.b + 0.1f, 1);
+                    }
 
 
                     if (!dragnWindows)
                     {
-                        db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawNodeWindow, "Dialogue Node - <color=white>ID: " + db.playerDiags[setID].ID.ToString() + "</color>", st, GUILayout.Height(40));
-                        Rect rawrect = db.playerDiags[setID].rect;
-                        rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
-                        rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
-                        db.playerDiags[setID].rect = new Rect(rawrect.x, rawrect.y, db.playerDiags[setID].rect.width, db.playerDiags[setID].rect.height);
+                        db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawNodeWindow, "", st, GUILayout.Width(50), GUILayout.Height(40));
+
                     }
                     else
                     {
                         if (db.previewPanning)
                         {
-                            db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawEmptyWindow, "Dialogue Node - <color=white>ID: " + db.playerDiags[setID].ID.ToString() + "</color>", st, GUILayout.Height(40));
+                            db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawEmptyWindow, "", st, GUILayout.Height(40));
                         }
                         else
                         {
-                            db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawNodeWindow, "Dialogue Node - <color=white>ID: " + db.playerDiags[setID].ID.ToString() + "</color>", st, GUILayout.Height(40));
+                            db.playerDiags[setID].rect = GUILayout.Window(setID, db.playerDiags[setID].rect, DrawNodeWindow, "", st, GUILayout.Height(40));
                         }
                     }
                 }
@@ -1684,30 +3754,34 @@ public class VIDE_Editor : EditorWindow
             GUI.color = defaultColor;
             if (db.actionNodes.Count > 0)
             {
+
                 for (; acID < db.actionNodes.Count; acID++)
                 {
-                    if (!CheckInsideWindow(db.actionNodes[acID].rect)) continue;
+                    if (!updateNodesRectsOnce)
+                        if (!CheckInsideWindow(db.actionNodes[acID].rect)) continue;
 
-                    GUI.color = new Color32(160, 180, 160, 255);
 
+                    GUI.color = VIDE_Editor_Skin.GetColor(4, db.skinIndex);
+
+                    foreach (VIDE_EditorDB.NodeSelection ns in db.selectedNodes)
+                    {
+                        if (ns.aNode == db.actionNodes[acID])
+                            GUI.color = new Color(GUI.color.r + 0.1f, GUI.color.g + 0.1f, GUI.color.b + 0.1f, 1);
+                    }
 
                     if (!dragnWindows)
                     {
-                        db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawActionWindow, "Action Node - <color=white>ID: " + db.actionNodes[acID].ID.ToString() + "</color>", st, GUILayout.Height(40), GUILayout.Width(200));
-                        Rect rawrect = db.actionNodes[acID].rect;
-                        rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
-                        rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
-                        db.actionNodes[acID].rect = new Rect(rawrect.x, rawrect.y, db.actionNodes[acID].rect.width, db.actionNodes[acID].rect.height);
+                        db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawActionWindow, "", st, GUILayout.Height(40), GUILayout.Width(200));
                     }
                     else
                     {
                         if (db.previewPanning)
                         {
-                            db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawEmptyWindow, "Action Node - <color=white>ID: " + db.actionNodes[acID].ID.ToString() + "</color>", st, GUILayout.Height(40), GUILayout.Width(200));
+                            db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawEmptyWindow, "", st, GUILayout.Height(40), GUILayout.Width(200));
                         }
                         else
                         {
-                            db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawActionWindow, "Action Node - <color=white>ID: " + db.actionNodes[acID].ID.ToString() + "</color>", st, GUILayout.Height(40), GUILayout.Width(200));
+                            db.actionNodes[acID].rect = GUILayout.Window(acID + setID + ansID, db.actionNodes[acID].rect, DrawActionWindow, "", st, GUILayout.Height(40), GUILayout.Width(200));
                         }
 
                     }
@@ -1716,8 +3790,49 @@ public class VIDE_Editor : EditorWindow
             }
         }
 
+        if (draggingNode)
+        {
+            if (position.Contains(GUIUtility.GUIToScreenPoint(e.mousePosition)))
+            {
+                if (Mathf.Abs(e.delta.x) < 200 && Mathf.Abs(e.delta.y) < 200)
+                {
+                    Undo.RecordObject(db, "dragged");
+                    DragOtherNodes(e.delta);
+                }
+            }
+            else
+            {
+                draggingNode = false;
+            }
 
-        //Here we check for errors in the node structure
+        }
+
+        if (e.type == EventType.MouseUp)
+        {
+            if (draggingNode)
+            {
+                draggingNode = false;
+            }
+        }
+
+        //Snap diags 
+        foreach (VIDE_EditorDB.DialogueNode n in db.playerDiags)
+        {
+            Rect rawrect = n.rect;
+            rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
+            rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
+            n.rect = new Rect(rawrect.x, rawrect.y, n.rect.width, n.rect.height);
+        }
+        foreach (VIDE_EditorDB.ActionNode n in db.actionNodes)
+        {
+            Rect rawrect = n.rect;
+            rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
+            rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
+            n.rect = new Rect(rawrect.x, rawrect.y, n.rect.width, n.rect.height);
+        }
+
+
+        //Here we check for errors in the node stfructure
 
         playerReady = true;
         hasID = false;
@@ -1750,29 +3865,41 @@ public class VIDE_Editor : EditorWindow
         {
             fWin = new Rect(canvas.x + scrollArea.x + position.width / 4, canvas.y + scrollArea.y + position.height / 4, position.width / 2, 0);
             fWin = GUILayout.Window(99998, fWin, DrawNewFileWindow, "New Dialogue:");
-            GUI.FocusWindow(99998);
+            GUI.BringWindowToFront(99998);
         }
         if (overwritePopup)
         {
             fWin = new Rect(canvas.x + scrollArea.x + position.width / 4, canvas.y + scrollArea.y + position.height / 4, position.width / 2, 0);
             fWin = GUILayout.Window(99997, fWin, DrawOverwriteWindow, "Overwrite?");
-            GUI.FocusWindow(99997);
+            GUI.BringWindowToFront(99997);
         }
         if (deletePopup)
         {
             fWin = new Rect(canvas.x + scrollArea.x + position.width / 4, canvas.y + scrollArea.y + position.height / 4, position.width / 2, 0);
             fWin = GUILayout.Window(99996, fWin, DrawDeleteWindow, "Are you sure?");
-            GUI.FocusWindow(99996);
+            GUI.BringWindowToFront(99996);
+        }
+        if (editingColors)
+        {
+            Rect r = new Rect(canvas.x + scrollArea.x + position.width - 216, canvas.y + scrollArea.y + 8, 200, 150);
+            r = GUILayout.Window(100000, r, DrawEditSkin, "Skins", GUI.skin.GetStyle("Window"));
+            GUI.BringWindowToFront(100000);
         }
         EndWindows();
+
 
         if (e.button == 0 && e.type == EventType.MouseDown)
         {
             areYouSure = false;
-            GUIUtility.keyboardControl = 0;
+            if (!editingColors)
+            {
+                //GUIUtility.keyboardControl = 0;
+            }
             Repaint();
         }
+
         GUI.EndScrollView();
+
 
         if (editEnabled)
             if (e.type == EventType.MouseUp)
@@ -1781,6 +3908,15 @@ public class VIDE_Editor : EditorWindow
                 {
                     addNewNode(e.mousePosition, dragNewNode);
                     dragNewNode = 0;
+                    Repaint();
+                }
+                if (holdingBall) // DropNewD
+                {
+                    addNewNode(e.mousePosition, 1);
+                    dragNewNode = 0;
+                    balls.RemoveAt(balls.Count - 1);
+                    ballsGravity.RemoveAt(ballsGravity.Count - 1);
+                    holdingBall = false;
                     Repaint();
                 }
             }
@@ -1799,15 +3935,64 @@ public class VIDE_Editor : EditorWindow
             Repaint();
         }
 
+        if (updateNodesRectsOnce && Event.current.type == EventType.Repaint)
+        {
+            updateNodesRectsOnce = false;
+        }
+
+        //Ballstuff
+        if (holdingBall)
+        {
+            if (balls[balls.Count - 1].y > position.height)
+            {
+                holdingBall = false;
+                ballsGravity[ballsGravity.Count - 1] = new Vector2(Random.Range(-100, 100), Random.Range(200, 500) * -1);
+            }
+            else
+            {
+                balls[balls.Count - 1] = e.mousePosition;
+            }
+            Repaint();
+
+        }
+
+        for (int i = 0; i < balls.Count; i++)
+        {
+            float rspeed = ballsGravity[i].y / 4 * Mathf.Sign(ballsGravity[i].x);
+            if (i == balls.Count - 1 && holdingBall) rspeed = 0;
+
+            Matrix4x4 matrixBackup = GUI.matrix;
+
+            GUIUtility.RotateAroundPivot(rspeed, new Vector2(balls[i].x, balls[i].y));
+            GUI.DrawTexture(new Rect(balls[i].x - 40, balls[i].y - 15, 80, 30), newNodeIcon, ScaleMode.StretchToFill, true);
+
+            GUI.matrix = matrixBackup;
+
+            //ballsGravity[i] += new Vector2(0, 2f);
+            //balls[i] += ballsGravity[i] * deltatime;
+
+            if (balls[i].y > position.height + 50)
+            {
+                balls.RemoveAt(i);
+                ballsGravity.RemoveAt(i);
+            }
+
+            Repaint();
+        }
+
+        if (Event.current.commandName == "UndoRedoPerformed")
+            Repaint();
+
     }
+
 
     Texture2D gridTex;
 
     void DrawGrid()
     {
-        Color dCol = Handles.color;
-        Color gridColor = new Color(0.3f, 0.3f, 0.3f, 1);
 
+        Color dCol = Handles.color;
+        Color gridColor = VIDE_Editor_Skin.GetColor(8, db.skinIndex);
         GUI.DrawTexture(canvas, gridTex, ScaleMode.StretchToFill);
 
         int wlines = Mathf.RoundToInt(canvas.width / gridSize);
@@ -1870,6 +4055,33 @@ public class VIDE_Editor : EditorWindow
 
     void DrawNodeWindow(int id)
     {
+
+        GUI.skin = VIDE_Editor_Skin.instance.ActionSkin;
+
+        if (id >= db.playerDiags.Count) return;
+
+        if (db.playerDiags[id].isPlayer)
+        {
+            GUI.backgroundColor = VIDE_Editor_Skin.GetColor(1, db.skinIndex);
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(11, db.skinIndex);
+        }
+        else
+        {
+            GUI.backgroundColor = VIDE_Editor_Skin.GetColor(3, db.skinIndex);
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(12, db.skinIndex);
+        }
+        GUIStyle stf = new GUIStyle(EditorStyles.textArea);
+        stf.wordWrap = true;
+        //stf.normal.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        //stf.focused.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        //stf.active.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        Color last = GUI.backgroundColor;
+        GUIStyle exD = new GUIStyle(EditorStyles.textArea);
+        //exD.normal.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        //exD.active.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        //exD.focused.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+        exD.wordWrap = false;
+
         if (id >= db.playerDiags.Count)
             return;
 
@@ -1881,17 +4093,35 @@ public class VIDE_Editor : EditorWindow
         {
             draggingLine = false;
             dontDrag = true;
+
         }
 
         GUI.color = new Color(0, 0, 0, 0.2f);
         GUILayout.BeginVertical(GUI.skin.box);
         GUI.color = defaultColor;
 
+        Color lastc = GUI.contentColor;
+        if (db.playerDiags[id].isPlayer)
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(14, db.skinIndex);
+        else
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(15, db.skinIndex);
+
+
         GUILayout.BeginHorizontal();
-        GUI.color = colors[1];
+        GUILayout.FlexibleSpace();
+        GUI.skin.label.fontStyle = FontStyle.Bold;
+        GUILayout.Label("Dialogue Node - ID: " + db.playerDiags[id].ID.ToString());
+        GUI.skin.label.fontStyle = FontStyle.Normal;
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        GUI.contentColor = lastc;
+
+        GUILayout.BeginHorizontal();
+
         string delText = "Delete Node";
         if (areYouSureIndex == id)
-            if (areYouSure) { delText = "Sure?"; GUI.color = new Color32(176, 128, 54, 255); }
+            if (areYouSure) { delText = "Sure?"; }
         if (GUILayout.Button(delText, GUILayout.Width(80)))
         {
             if (areYouSureIndex != id) areYouSure = false;
@@ -1914,6 +4144,7 @@ public class VIDE_Editor : EditorWindow
             areYouSure = false;
             Repaint();
         }
+
         GUI.color = defaultColor;
         if (GUILayout.Button("Add comment", GUILayout.Width(140)))
         {
@@ -1924,9 +4155,6 @@ public class VIDE_Editor : EditorWindow
 
         string isp = "Is Player";
         if (!db.playerDiags[id].isPlayer) isp = "Is NPC";
-
-        if (db.playerDiags[id].isPlayer) GUI.color = new Color32(180, 160, 160, 255);
-        else GUI.color = new Color32(160, 160, 180, 255);
 
         if (GUILayout.Button(isp))
         {
@@ -1948,12 +4176,21 @@ public class VIDE_Editor : EditorWindow
 
         GUILayout.EndVertical();
 
+        GUILayout.Space(5);
+
+
         for (int i = 0; i < db.playerDiags[id].comment.Count; i++)
         {
             if (db.playerDiags[id].comment.Count > 0)
             {
                 GUILayout.BeginHorizontal();
+                lastc = GUI.contentColor;
+                if (db.playerDiags[id].isPlayer)
+                    GUI.contentColor = VIDE_Editor_Skin.GetColor(14, db.skinIndex);
+                else
+                    GUI.contentColor = VIDE_Editor_Skin.GetColor(15, db.skinIndex);
                 GUILayout.Label((i).ToString() + ". ", GUILayout.Width(20));
+                GUI.contentColor = lastc;
                 if (i == 0) GUILayout.Space(24);
                 if (i != 0)
                     if (GUILayout.Button("X", GUILayout.Width(20)))
@@ -1963,18 +4200,53 @@ public class VIDE_Editor : EditorWindow
                         needSave = true;
                         return;
                     }
-                GUIStyle stf = new GUIStyle(GUI.skin.textField);
-                GUIStyle exD = new GUIStyle(GUI.skin.textField);
-                exD.wordWrap = false;
-                stf.wordWrap = true;
+
                 EditorGUI.BeginChangeCheck();
+                last = GUI.backgroundColor;
+                lastc = GUI.contentColor;
+                GUI.contentColor = Color.white;
+                GUI.backgroundColor = Color.white;
                 string testText = EditorGUILayout.TextArea(db.playerDiags[id].comment[i].text, stf, GUILayout.Width(200));
+                GUI.contentColor = lastc;
+                GUI.backgroundColor = last;
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RecordObject(db, "Edited Player comment");
                     db.playerDiags[id].comment[i].text = testText;
                     needSave = true;
                 }
+
+                GUI.color = new Color(0, 0, 0, 0.2f);
+                GUILayout.BeginVertical();
+                GUI.color = defaultColor;
+
+                if (GUILayout.Button("", GUILayout.Height(10), GUILayout.Width(16), GUILayout.ExpandHeight(true)))
+                {
+                    if (i != 0)
+                    {
+                        Undo.RecordObject(db, "Arranged commen");
+                        ArrangeComment(db.playerDiags[id], -1, i);
+                        repaintLines = true;
+                        Repaint();
+                        needSave = true;
+                    }
+                }
+
+                if (GUILayout.Button("", GUILayout.Height(10), GUILayout.Width(16), GUILayout.ExpandHeight(true)))
+                {
+                    if (i != db.playerDiags[id].comment.Count - 1)
+                    {
+                        Undo.RecordObject(db, "Arranged commen");
+                        ArrangeComment(db.playerDiags[id], 1, i);
+                        repaintLines = true;
+                        Repaint();
+                        needSave = true;
+                    }
+
+                }
+
+                GUILayout.EndVertical();
+
 
                 string showmore = "+";
                 if (db.playerDiags[id].comment[i].showmore) showmore = "-";
@@ -2002,7 +4274,7 @@ public class VIDE_Editor : EditorWindow
                     if (db.playerDiags[id].comment[i].outNode == null && db.playerDiags[id].comment[i].outAction == null)
                     {
                         Rect lr;
-                        GUI.color = Color.green;
+
                         if (GUILayout.RepeatButton("O", GUILayout.Width(30)))
                         {
                             areYouSure = false;
@@ -2022,8 +4294,9 @@ public class VIDE_Editor : EditorWindow
                     else
                     {
 
-                        GUI.color = defaultColor;
-                        if (GUILayout.Button("x", GUILayout.Width(30)))
+                        last = GUI.backgroundColor;
+                        GUI.backgroundColor = Color.white;
+                        if (GUILayout.Button("<color='black'>x</color>", GUILayout.Width(30)))
                         {
                             areYouSure = false;
                             breakConnection(0, db.playerDiags[id].comment[i], null);
@@ -2033,8 +4306,12 @@ public class VIDE_Editor : EditorWindow
                         {
                             db.playerDiags[id].comment[i].outRect = GUILayoutUtility.GetLastRect();
                         }
+                        GUI.backgroundColor = last;
+                        GUI.color = defaultColor;
+
                     }
                 }
+                GUILayout.FlexibleSpace();
 
 
                 GUILayout.EndHorizontal();
@@ -2042,55 +4319,82 @@ public class VIDE_Editor : EditorWindow
                 if (db.playerDiags[id].comment[i].showmore)
                 {
                     GUILayout.BeginHorizontal();
+                    GUILayout.Space(24);
+                    string visText = "O";
 
-                    GUILayout.Space(26);
-                    GUIStyle visStyle = new GUIStyle(GUI.skin.button);
-                    if (db.playerDiags[id].comment[i].visible)
-                        visStyle.normal.background = visON;
-                    else
-                        visStyle.normal.background = visOFF;
+                    if (!db.playerDiags[id].comment[i].visible)
+                        visText = "Ø";
 
-                    visStyle.fixedHeight = 0;
-                    visStyle.fixedWidth = 0;
-                    visStyle.padding = new RectOffset(0, 0, 0, 0);
-                    visStyle.margin = new RectOffset(0, 0, 0, 0);
-
-                    if (GUILayout.Button("", visStyle, GUILayout.Width(18), GUILayout.Height(18)))
+                    if (GUILayout.Button(visText, GUILayout.Width(20)))
                     {
                         Undo.RecordObject(db, "Set Comment visibility");
                         db.playerDiags[id].comment[i].visible = !db.playerDiags[id].comment[i].visible;
                         needSave = true;
                     }
+                    GUI.color = defaultColor;
+
+                    last = GUI.backgroundColor;
+                    GUI.backgroundColor = Color.white;
+                    lastc = GUI.contentColor;
+                    GUI.contentColor = Color.white;
 
                     EditorGUI.BeginChangeCheck();
-                    string exd = EditorGUILayout.TextArea(db.playerDiags[id].comment[i].extraData, exD, GUILayout.Width(100));
-                    GUI.color = Color.white;
+                    Sprite spr = (Sprite)EditorGUILayout.ObjectField(db.playerDiags[id].comment[i].sprites, typeof(Sprite), false);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Set Comment Sprite");
+                        db.playerDiags[id].comment[i].sprites = spr;
+                        needSave = true;
+                    }
+
+                    EditorGUI.BeginChangeCheck();
+                    AudioClip aud = (AudioClip)EditorGUILayout.ObjectField(db.playerDiags[id].comment[i].audios, typeof(AudioClip), false);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(db, "Set Comment Audio");
+                        db.playerDiags[id].comment[i].audios = aud;
+                        needSave = true;
+                    }
+
+                    EditorGUI.BeginChangeCheck();
+                    string exd = EditorGUILayout.TextArea(db.playerDiags[id].comment[i].extraData, exD, GUILayout.Width(70));
                     if (EditorGUI.EndChangeCheck())
                     {
                         Undo.RecordObject(db, "Edited Player extra data");
                         db.playerDiags[id].comment[i].extraData = exd;
                         needSave = true;
                     }
-                    GUILayout.FlexibleSpace();
+                    GUI.backgroundColor = last;
+                    GUI.contentColor = lastc;
                     GUILayout.EndHorizontal();
-                    GUI.color = Color.white;
-                    GUILayout.Box(" ", GUILayout.ExpandWidth(true), GUILayout.Height(2));
-                    GUI.color = defaultColor;
+                    GUILayout.Space(5);
                 }
 
             }
         }
+        GUILayout.Space(5);
+
         GUI.color = new Color(0, 0, 0, 0.2f);
         GUILayout.BeginVertical(GUI.skin.box);
         GUI.color = defaultColor;
 
-        GUIStyle stf2 = new GUIStyle(GUI.skin.textField);
-        stf2.wordWrap = true;
         GUILayout.BeginHorizontal();
+        lastc = GUI.contentColor;
+        if (db.playerDiags[id].isPlayer)
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(14, db.skinIndex);
+        else
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(15, db.skinIndex);
         GUILayout.Label("Tag: ", GUILayout.Width(30));
+        GUI.contentColor = lastc;
 
         EditorGUI.BeginChangeCheck();
-        string pt = EditorGUILayout.TextField(db.playerDiags[id].playerTag, stf2, GUILayout.Width(80));
+        last = GUI.backgroundColor;
+        lastc = GUI.contentColor;
+        GUI.contentColor = Color.white;
+        GUI.backgroundColor = Color.white;
+        string pt = EditorGUILayout.TextField(db.playerDiags[id].playerTag, stf, GUILayout.Width(80));
+        GUI.backgroundColor = last;
+        GUI.contentColor = lastc;
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(db, "Set player Tag");
@@ -2098,12 +4402,30 @@ public class VIDE_Editor : EditorWindow
             needSave = true;
         }
 
-        GUI.color = new Color(0.7f, 0.8f, 0.4f, 1);
-        if (db.playerDiags[id].sprite != null || db.playerDiags[id].vars.Count > 0)
+
+        //TagShortcut
+
+        EditorGUI.BeginChangeCheck();
+        Color pp = GUI.contentColor;
+        GUI.contentColor = Color.white;
+        int tidx = EditorGUILayout.Popup(-1, existingTags.ToArray(), GUILayout.Width(16));
+        GUI.contentColor = pp;
+        if (EditorGUI.EndChangeCheck())
         {
-            Color c = new Color(0.1f, 0.4f, 0.8f, 1);
-            GUI.color = c;
+            Undo.RecordObject(db, "Set player Tag");
+            string newtag = "";
+
+            if (existingTags[tidx] != "[Empty]")
+                newtag = existingTags[tidx];
+
+            db.playerDiags[id].playerTag = newtag;
+            needSave = true;
+
+            UpdateTagList();
         }
+
+
+        GUI.color = Color.white;
 
         GUILayout.FlexibleSpace();
         string exText = (db.playerDiags[id].expand) ? "-" : "+";
@@ -2121,17 +4443,25 @@ public class VIDE_Editor : EditorWindow
 
         if (db.playerDiags[id].expand)
         {
-            GUIStyle st = new GUIStyle(GUI.skin.label);
-            Vector2 coff = st.contentOffset;
-            coff.y -= 5;
-            st.contentOffset = coff;
-            GUILayout.Label("__________________________________________", st);
-            coff.y += 7;
-            st.contentOffset = coff;
-            st.fontStyle = FontStyle.Bold;
+            GUILayout.Space(5);
+            GUIStyle obst = new GUIStyle(EditorStyles.objectField);
+            obst.normal.textColor = GUI.contentColor;
 
             EditorGUI.BeginChangeCheck();
+
+            last = GUI.backgroundColor;
+            GUI.backgroundColor = Color.white;
+            GUI.contentColor = Color.white;
+            GUISkin pskin = GUI.skin;
+            GUI.skin = null;
+
+
             Sprite sp = (Sprite)EditorGUILayout.ObjectField("Node Sprite: ", db.playerDiags[id].sprite, typeof(Sprite), false);
+
+
+            //GUI.skin = pskin;
+            GUI.backgroundColor = last;
+            GUI.contentColor = lastc;
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(db, "Set Sprite");
@@ -2140,7 +4470,13 @@ public class VIDE_Editor : EditorWindow
             }
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Extra Variables: ", st);
+            lastc = GUI.contentColor;
+            if (db.playerDiags[id].isPlayer)
+                GUI.contentColor = VIDE_Editor_Skin.GetColor(14, db.skinIndex);
+            else
+                GUI.contentColor = VIDE_Editor_Skin.GetColor(15, db.skinIndex);
+            GUILayout.Label("Extra Variables: ");
+            GUI.contentColor = lastc;
             if (GUILayout.Button("Add"))
             {
                 Undo.RecordObject(db, "Add Extra Variable");
@@ -2154,7 +4490,13 @@ public class VIDE_Editor : EditorWindow
             for (int i = 0; i < db.playerDiags[id].vars.Count; i++)
             {
                 GUILayout.BeginHorizontal();
+                lastc = GUI.contentColor;
+                if (db.playerDiags[id].isPlayer)
+                    GUI.contentColor = VIDE_Editor_Skin.GetColor(14, db.skinIndex);
+                else
+                    GUI.contentColor = VIDE_Editor_Skin.GetColor(15, db.skinIndex);
                 GUILayout.Label(i.ToString() + ". ", GUILayout.Width(20));
+                GUI.contentColor = lastc;
                 if (GUILayout.Button("X", GUILayout.Width(20)))
                 {
                     Undo.RecordObject(db, "Removed Extra Variable");
@@ -2165,7 +4507,12 @@ public class VIDE_Editor : EditorWindow
                 }
 
                 EditorGUI.BeginChangeCheck();
-                string key = EditorGUILayout.TextField(db.playerDiags[id].varKeys[i], GUILayout.Width(80));
+                last = GUI.backgroundColor;
+                lastc = GUI.contentColor;
+                GUI.contentColor = Color.white;
+                GUI.backgroundColor = Color.white;
+                string key = EditorGUILayout.TextField(db.playerDiags[id].varKeys[i], stf, GUILayout.Width(80));
+
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RecordObject(db, "Set key");
@@ -2175,7 +4522,10 @@ public class VIDE_Editor : EditorWindow
                 }
 
                 EditorGUI.BeginChangeCheck();
-                string val = EditorGUILayout.TextField(db.playerDiags[id].vars[i]);
+
+                string val = EditorGUILayout.TextField(db.playerDiags[id].vars[i], stf);
+                GUI.backgroundColor = last;
+                GUI.contentColor = lastc;
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RecordObject(db, "Set value");
@@ -2192,56 +4542,134 @@ public class VIDE_Editor : EditorWindow
 
         GUILayout.EndVertical();
 
-        if (e.button == 0 && e.type == EventType.MouseDown)
+        if (e.type == EventType.MouseDrag && e.button == 0)
         {
-            areYouSure = false;
-            Repaint();
+
+            needSave = true;
+            bool hasNode = false;
+            foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                if (s.dNode == db.playerDiags[id]) { hasNode = true; break; }
+
+            if (hasNode && !draggingNode && GUIUtility.hotControl == 0)
+            {
+                draggingNode = true;
+            }
         }
+        if (!draggingNode)
+        {
+            db.playerDiags[id].rectRaw = db.playerDiags[id].rect;
+        }
+
+        if (e.button == 0 && e.type == EventType.MouseUp)
+        {
+            //Select node
+            if (!draggingNode)
+            {
+                if (e.shift)
+                {
+                    bool hasNode = false;
+                    foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                        if (s.dNode == db.playerDiags[id]) { hasNode = true; break; }
+                    if (!hasNode)
+                        selectNodeDelayed = id;
+                }
+                else
+                {
+                    db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+                    bool hasNode = false;
+                    foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                        if (s.dNode == db.playerDiags[id]) { hasNode = true; break; }
+                    if (!hasNode)
+                    {
+                        selectNodeDelayed = id;
+                    }
+                    UpdateTagList();
+                }
+                Repaint();
+            }
+            else
+            {
+                draggingNode = false;
+            }
+
+        }
+
+
         if (e.commandName == "UndoRedoPerformed")
             Repaint();
 
-        if (e.type == EventType.MouseDrag)
-        {
-            Undo.RecordObject(db, "Dragged node");
-        }
-
         if (!lerpFocusTime && e.button == 0)
         {
-            if (position.Contains(GUIUtility.GUIToScreenPoint(e.mousePosition)))
+            bool hasNode2 = false;
+            foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                if (s.dNode == db.playerDiags[id]) { hasNode2 = true; break; }
+
+            if (position.Contains(GUIUtility.GUIToScreenPoint(e.mousePosition)) && !hasNode2)
+            {
+                if (e.type == EventType.MouseDrag)
+                    Undo.RecordObject(db, "dragg");
+
                 GUI.DragWindow();
+
+            }
         }
 
         if (!lerpFocusTime && e.button == 1 && e.type == EventType.MouseDown)
         {
             dragNewNode = 1;
             copiedNode = db.playerDiags[id];
+
+            holdingBall = false;
+            balls.RemoveAt(balls.Count - 1);
+            ballsGravity.RemoveAt(ballsGravity.Count - 1);
         }
-
-        if (db.playerDiags[id].rectRaw != db.playerDiags[id].rect)
-            needSave = true;
-
-        db.playerDiags[id].rectRaw = db.playerDiags[id].rect;
-
 
     }
 
-    void DragOtherWindows(VIDE_EditorDB.DialogueNode com, Vector2 off)
+    void DragOtherNodes(Vector2 mPos)
     {
-        for (int i = 0; i < db.playerDiags.Count; i++)
+        foreach (VIDE_EditorDB.NodeSelection n in db.selectedNodes)
         {
-            if (db.playerDiags[i] == com) continue;
-            Rect r = db.playerDiags[i].rect;
-            r.x += off.x;
-            r.y += off.y;
-            db.playerDiags[i].rect = r;
-        }
-    }
+            if (n.dNode != null)
+            {
+                Rect r = n.dNode.rectRaw;
 
+                r.x += mPos.x / 2;
+                r.y += mPos.y / 2;
+                n.dNode.rectRaw = r;
+
+                Rect rawrect = n.dNode.rectRaw;
+                rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
+                rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
+                n.dNode.rect = new Rect(rawrect.x, rawrect.y, n.dNode.rect.width, n.dNode.rect.height);
+            }
+            else
+            {
+                Rect r = n.aNode.rectRaw;
+
+                r.x += mPos.x / 2;
+                r.y += mPos.y / 2;
+                n.aNode.rectRaw = r;
+
+                Rect rawrect = n.aNode.rectRaw;
+                rawrect.x = Mathf.Floor(rawrect.x / gridSize) * gridSize;
+                rawrect.y = Mathf.Floor(rawrect.y / gridSize) * gridSize;
+                n.aNode.rect = new Rect(rawrect.x, rawrect.y, n.aNode.rect.width, n.aNode.rect.height);
+            }
+
+        }
+        Repaint();
+    }
 
     void DrawActionWindow(int id)
     {
+        GUI.skin = VIDE_Editor_Skin.instance.ActionSkin;
+
         GUI.enabled = editEnabled;
         bool dontDrag = false;
+
+        GUI.backgroundColor = VIDE_Editor_Skin.GetColor(5, db.skinIndex);
+        GUI.contentColor = VIDE_Editor_Skin.GetColor(13, db.skinIndex);
 
         int aID = id - (db.playerDiags.Count);
         if (aID < 0)
@@ -2258,14 +4686,38 @@ public class VIDE_Editor : EditorWindow
 
         GUI.color = new Color(0, 0, 0, 0.2f);
         GUILayout.BeginVertical(GUI.skin.box);
-        GUI.color = defaultColor;
+        GUI.color = Color.white;
+
+        Color last = GUI.contentColor;
+        GUI.contentColor = VIDE_Editor_Skin.GetColor(16, db.skinIndex);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUI.skin.label.fontStyle = FontStyle.Bold;
+        GUILayout.Label("Action Node - ID: " + db.actionNodes[aID].ID.ToString());
+        GUI.skin.label.fontStyle = FontStyle.Normal;
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        GUI.contentColor = last;
+
 
         GUILayout.BeginHorizontal();
 
-        GUI.color = new Color32(230, 230, 230, 255);
+        string txt = "+";
+        if (db.actionNodes[aID].more) txt = "-";
+
+        if (GUILayout.Button(txt, GUILayout.Width(30)))
+        {
+            Undo.RecordObject(db, "Set Expand");
+            db.actionNodes[aID].more = !db.actionNodes[aID].more;
+        }
+
         string delText = "Delete Node";
         if (areYouSureIndex == id)
-            if (areYouSure) { delText = "Sure?"; GUI.color = new Color32(176, 128, 54, 255); }
+            if (areYouSure) { delText = "Sure?"; }
+
+        GUI.color = Color.white;
         if (GUILayout.Button(delText))
         {
             if (areYouSureIndex != id) areYouSure = false;
@@ -2297,7 +4749,7 @@ public class VIDE_Editor : EditorWindow
         if (db.actionNodes[aID].outPlayer == null && db.actionNodes[aID].outAction == null)
         {
             Rect lr;
-            GUI.color = Color.green;
+            //GUI.color = VIDE_Editor_Skin.GetColor(5, db.skinIndex);
             if (GUILayout.RepeatButton("O", GUILayout.Width(30)))
             {
                 areYouSure = false;
@@ -2328,12 +4780,88 @@ public class VIDE_Editor : EditorWindow
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
 
+        GUILayout.Space(5);
+
+        if (db.actionNodes[aID].more)
+        {
+
+            last = GUI.contentColor;
+            GUIStyle intStyle = new GUIStyle(EditorStyles.textField);
+            //intStyle.normal.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+            //intStyle.focused.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+            //intStyle.active.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(16, db.skinIndex);
+
+            GUI.color = Color.white;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("OvrStartNode");
+            GUI.contentColor = last;
+            EditorGUI.BeginChangeCheck();
+            last = GUI.backgroundColor;
+            Color lastc = GUI.contentColor;
+            GUI.contentColor = Color.white;
+            GUI.backgroundColor = Color.white;
+
+            int ovr = EditorGUILayout.IntField(db.actionNodes[aID].ovrStartNode, intStyle);
+            GUI.backgroundColor = last;
+            GUI.contentColor = lastc;
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(db, "Set Override Start Node");
+                db.actionNodes[aID].ovrStartNode = ovr;
+                needSave = true;
+            }
+            last = GUI.contentColor;
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(16, db.skinIndex);
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("RenameDialogue");
+            GUI.contentColor = last;
+
+            EditorGUI.BeginChangeCheck();
+            last = GUI.backgroundColor;
+            GUI.backgroundColor = Color.white;
+            lastc = GUI.contentColor;
+            GUI.contentColor = Color.white;
+            string ren = EditorGUILayout.TextField(db.actionNodes[aID].renameDialogue, intStyle);
+            GUI.backgroundColor = last;
+            GUI.contentColor = lastc;
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(db, "Set Rename Dialogue");
+                db.actionNodes[aID].renameDialogue = ren;
+                needSave = true;
+            }
+            last = GUI.contentColor;
+            GUI.contentColor = VIDE_Editor_Skin.GetColor(16, db.skinIndex);
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Go to Node");
+            GUI.contentColor = last;
+            EditorGUI.BeginChangeCheck();
+            last = GUI.backgroundColor;
+            GUI.backgroundColor = Color.white;
+            lastc = GUI.contentColor;
+            GUI.contentColor = Color.white;
+            int goton = EditorGUILayout.IntField(db.actionNodes[aID].gotoNode, intStyle);
+            GUI.contentColor = lastc;
+            GUI.backgroundColor = last;
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(db, "Set goto node");
+                db.actionNodes[aID].gotoNode = goton;
+                needSave = true;
+            }
+            GUILayout.EndHorizontal();
+        }
+        else
+        {
             GUI.color = new Color(0, 0, 0, 0.2f);
-            GUILayout.BeginVertical(GUI.skin.box);
+            GUILayout.BeginVertical();
 
             GUI.color = defaultColor;
 
-            GUI.color = new Color32(170, 200, 170, 255);
 
             if (GUILayout.Button("Reset and fetch"))
             {
@@ -2407,13 +4935,19 @@ public class VIDE_Editor : EditorWindow
                 }
 
                 Repaint();
-                return;
+                //return;
             }
 
             if (db.actionNodes[aID].nameOpts.Count > 0)
             {
                 EditorGUI.BeginChangeCheck();
+                Color pp = GUI.contentColor;
+                Color ptc = EditorStyles.popup.normal.textColor;
+                EditorStyles.popup.normal.textColor = VIDE_Editor_Skin.GetColor(13, db.skinIndex);
+                GUI.contentColor = Color.white;
                 int idx = EditorGUILayout.Popup(db.actionNodes[aID].nameIndex, db.actionNodes[aID].nameOpts.ToArray());
+                GUI.contentColor = pp;
+                EditorStyles.popup.normal.textColor = ptc;
                 if (EditorGUI.EndChangeCheck()) //Pick name
                 {
                     Undo.RecordObject(db, "Changed name Index");
@@ -2444,7 +4978,13 @@ public class VIDE_Editor : EditorWindow
             }
 
             EditorGUI.BeginChangeCheck();
+            Color pp2 = GUI.contentColor;
+            GUI.contentColor = Color.white;
+            Color ptc2 = EditorStyles.popup.normal.textColor;
+            EditorStyles.popup.normal.textColor = VIDE_Editor_Skin.GetColor(13, db.skinIndex);
             int meth = EditorGUILayout.Popup(db.actionNodes[aID].methodIndex, db.actionNodes[aID].opts);
+            GUI.contentColor = pp2;
+            EditorStyles.popup.normal.textColor = ptc2;
 
             if (EditorGUI.EndChangeCheck()) //Pick method
             {
@@ -2477,13 +5017,17 @@ public class VIDE_Editor : EditorWindow
 
             }
 
-
             GUI.color = Color.white;
             GUILayout.BeginHorizontal();
 
 
             if (db.actionNodes[aID].paramType > 0)
                 GUILayout.Label("Param: ", GUILayout.Width(60));
+
+            GUIStyle intStyle = new GUIStyle(EditorStyles.textField);
+            //intStyle.normal.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+            //intStyle.focused.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
+            //intStyle.active.textColor = (Application.HasProLicense()) ? Color.white : Color.black;
 
 
             if (db.actionNodes[aID].paramType == 1)
@@ -2512,7 +5056,9 @@ public class VIDE_Editor : EditorWindow
             if (db.actionNodes[aID].paramType == 3)
             {
                 EditorGUI.BeginChangeCheck();
-                int pi = EditorGUILayout.IntField(db.actionNodes[aID].param_int, new GUIStyle(GUI.skin.textField), GUILayout.Width(100));
+
+
+                int pi = EditorGUILayout.IntField(db.actionNodes[aID].param_int, intStyle, GUILayout.Width(100));
                 if (EditorGUI.EndChangeCheck()) //Pick method
                 {
                     Undo.RecordObject(db, "Changed param");
@@ -2523,7 +5069,7 @@ public class VIDE_Editor : EditorWindow
             if (db.actionNodes[aID].paramType == 4)
             {
                 EditorGUI.BeginChangeCheck();
-                float pf = EditorGUILayout.FloatField(db.actionNodes[aID].param_float, new GUIStyle(GUI.skin.textField), GUILayout.Width(100));
+                float pf = EditorGUILayout.FloatField(db.actionNodes[aID].param_float, intStyle, GUILayout.Width(100));
                 if (EditorGUI.EndChangeCheck()) //Pick method
                 {
                     Undo.RecordObject(db, "Changed param");
@@ -2533,6 +5079,10 @@ public class VIDE_Editor : EditorWindow
             }
             GUILayout.EndHorizontal();
             GUILayout.EndVertical();
+
+        }
+
+        GUILayout.Space(5);
 
         GUI.color = new Color(0, 0, 0, 0.2f);
         GUILayout.BeginVertical(GUI.skin.box);
@@ -2549,40 +5099,96 @@ public class VIDE_Editor : EditorWindow
 
         GUILayout.EndVertical();
 
+        if (!draggingNode)
+        {
+            db.actionNodes[aID].rectRaw = db.actionNodes[aID].rect;
+        }
+
+        if (Event.current.type == EventType.MouseDrag && Event.current.button == 0)
+        {
+            needSave = true;
+            bool hasNode = false;
+            foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                if (s.aNode == db.actionNodes[aID]) { hasNode = true; break; }
+
+            if (hasNode && !draggingNode && GUIUtility.hotControl == 0)
+            {
+                draggingNode = true;
+            }
+        }
+
+
+        if (Event.current.button == 0 && Event.current.type == EventType.MouseUp)
+        {
+            //Select node
+            if (!draggingNode)
+            {
+                if (Event.current.shift)
+                {
+                    bool hasNode = false;
+                    foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                        if (s.aNode == db.actionNodes[aID]) { hasNode = true; break; }
+                    if (!hasNode)
+                        selectANodeDelayed = aID;
+                }
+                else
+                {
+                    db.selectedNodes = new List<VIDE_EditorDB.NodeSelection>();
+                    bool hasNode = false;
+                    foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                        if (s.aNode == db.actionNodes[aID]) { hasNode = true; break; }
+                    if (!hasNode)
+                        selectANodeDelayed = aID;
+                }
+                Repaint();
+            }
+            else
+            {
+                draggingNode = false;
+            }
+        }
+
+
         if (Event.current.commandName == "UndoRedoPerformed")
             Repaint();
-
-        if (Event.current.type == EventType.MouseDrag)
-        {
-            Undo.RecordObject(db, "Dragged node");
-        }
 
 
         if (!lerpFocusTime && Event.current.button == 0)
         {
-            if (position.Contains(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)))
+            bool hasNode2 = false;
+            foreach (VIDE_EditorDB.NodeSelection s in db.selectedNodes)
+                if (s.aNode == db.actionNodes[aID]) { hasNode2 = true; break; }
+
+            if (position.Contains(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)) && !hasNode2)
+            {
+                if (Event.current.type == EventType.MouseDrag)
+                    Undo.RecordObject(db, "dragg");
+
                 GUI.DragWindow();
+            }
         }
+
 
         if (!lerpFocusTime && Event.current.button == 1 && Event.current.type == EventType.MouseDown)
         {
             dragNewNode = 2;
             copiedNode = db.actionNodes[aID];
+            holdingBall = false;
+            balls.RemoveAt(balls.Count - 1);
+            ballsGravity.RemoveAt(ballsGravity.Count - 1);
         }
 
-
-        if (db.actionNodes[aID].rectRaw != db.actionNodes[aID].rect)
-            needSave = true;
-
-        db.actionNodes[aID].rectRaw = db.actionNodes[aID].rect;
-
     }
+
 
     bool notInBlackList(MonoBehaviour mb)
     {
         for (int i = 0; i < namespaceBlackList.Length; i++)
         {
             if (mb.GetType().Namespace != null && mb.GetType().Namespace.Contains(namespaceBlackList[i]))
+                return false;
+
+            if (mb.GetType().Name.Contains(namespaceBlackList[i]))
                 return false;
         }
         return true;
@@ -2901,6 +5507,34 @@ public class VIDE_Editor : EditorWindow
         }
     }
 
+    void DrawDeleteLang(int id)
+    {
+        GUIStyle st = new GUIStyle(GUI.skin.label);
+        st.alignment = TextAnchor.UpperCenter;
+        st.fontSize = 16;
+        st.fontStyle = FontStyle.Bold;
+        string lName = VIDE_Localization.languages[deletingLanguage].name;
+        GUILayout.Label("Deleting '" + lName + "' will result in dataloss once you save the dialogue(s).", st);
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.HelpBox("Warning: System autosaves when clicking the 'Current' button.", MessageType.Warning);
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        if (GUILayout.Button("Yes", GUILayout.Height(20)) || Event.current.keyCode == KeyCode.Return)
+        {
+            VIDE_Localization.languages.RemoveAt(deletingLanguage);
+            VIDE_Localization.currentLanguage = VIDE_Localization.defaultLanguage;
+            VIDE_Localization.SaveSettings();
+            LoadLocalized();
+            deletingLanguage = -1;
+        }
+        if (GUILayout.Button("No", GUILayout.Height(40)) || Event.current.keyCode == KeyCode.Escape)
+        {
+            deletingLanguage = -1;
+        }
+    }
+
     void DrawLines()
     {
         Handles.color = colors[3];
@@ -2957,15 +5591,41 @@ public class VIDE_Editor : EditorWindow
     //Player Node
     void DrawNodeLine(Rect start, Rect end, Rect sPos)
     {
-        Color nc = Color.white;
+        Color nc = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
 
         Vector3 startPos = new Vector3(start.x + sPos.x + 35, start.y + sPos.y + 10, 0);
-        Vector3 endPos = new Vector3(end.x, end.y + (end.height / 2), 0);
+        Vector3 endPos = new Vector3(end.x + 4, end.y + (end.height / 2), 0);
+
         float ab = Vector2.Distance(startPos, endPos);
-        Vector3 startTan = startPos + Vector3.right * (ab/3);
+
+        Vector3 startTan = startPos + Vector3.right * (ab / 3);
         Vector3 endTan = endPos + Vector3.left * (ab / 3);
 
         Handles.DrawBezier(startPos, endPos, startTan, endTan, nc, null, 3);
+
+
+        //Draw arrow
+        DrawArrow(startPos, startTan, endTan, endPos, sPos, start, true);
+
+        if (repaintLines)
+        {
+            Repaint();
+        }
+    }
+
+    void DrawNodeLineMap(Rect start, Rect end, Rect sPos, Rect pStart)
+    {
+        Color nc = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
+
+        Vector3 startPos = new Vector3(pStart.x, pStart.y, 0);
+        Vector3 endPos = new Vector3(end.x + 8 / mapDivider, end.y + (end.height / 2), 0);
+
+        float ab = Vector2.Distance(startPos, endPos);
+
+        Vector3 startTan = startPos + Vector3.right * ((ab) / mapDivider);
+        Vector3 endTan = endPos + Vector3.left * ((ab) / mapDivider);
+
+        Handles.DrawBezier(startPos, endPos, startTan, endTan, nc, null, 1.5f);
 
         //Draw arrow
         DrawArrow(startPos, startTan, endTan, endPos, sPos, start, true);
@@ -2980,7 +5640,7 @@ public class VIDE_Editor : EditorWindow
     {
         Handles.BeginGUI();
         float ab = Vector2.Distance(startPos, endPos);
-        if (ab < 75) return;
+        if (ab < 25) return;
 
         float dist = 0.4f;
 
@@ -2992,8 +5652,12 @@ public class VIDE_Editor : EditorWindow
 
         Matrix4x4 matrixBackup = GUI.matrix;
         GUIUtility.RotateAroundPivot(rot + 90, new Vector2(cen.x, cen.y));
-        GUI.color = Color.white;
-        GUI.DrawTexture(new Rect(cen.x - 15, cen.y - 15, 30, 30), lineIcon, ScaleMode.StretchToFill);
+        GUI.color = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
+        if (spyView)
+            GUI.DrawTexture(new Rect(cen.x - 20f / mapDivider, cen.y - 20f / mapDivider, 40 / mapDivider, 40 / mapDivider), lineIcon, ScaleMode.StretchToFill);
+        else
+            GUI.DrawTexture(new Rect(cen.x - 10, cen.y - 10, 20, 20), lineIcon, ScaleMode.StretchToFill);
+
         GUI.color = Color.white;
         GUI.matrix = matrixBackup;
 
@@ -3003,12 +5667,14 @@ public class VIDE_Editor : EditorWindow
     //Action Node line
     void DrawActionNodeLine(Rect start, Rect end)
     {
-        Color nc2 = Color.white;
+        Color nc2 = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
 
         Vector3 startPos = new Vector3(start.x + 190, start.y + 30, 0);
-        Vector3 endPos = new Vector3(end.x, end.y + (end.height / 2), 0);
+        Vector3 endPos = new Vector3(end.x + 4, end.y + (end.height / 2), 0);
+
         float ab = Vector2.Distance(startPos, endPos);
-        Vector3 startTan = startPos + Vector3.right * (ab/3);
+
+        Vector3 startTan = startPos + Vector3.right * (ab / 3);
         Vector3 endTan = endPos + Vector3.left * (ab / 3);
 
         Handles.DrawBezier(startPos, endPos, startTan, endTan, nc2, null, 3);
@@ -3021,13 +5687,39 @@ public class VIDE_Editor : EditorWindow
         }
     }
 
+    //Action Node line
+    void DrawActionNodeLineMap(Rect start, Rect end, Rect sStart)
+    {
+        Color nc2 = VIDE_Editor_Skin.GetColor(9, db.skinIndex);
+
+        Vector3 startPos = new Vector3(sStart.x, sStart.y, 0);
+        Vector3 endPos = new Vector3(end.x + 8 / mapDivider, end.y + (end.height / 2), 0);
+
+        float ab = Vector2.Distance(startPos, endPos);
+
+        Vector3 startTan = startPos + Vector3.right * ((ab) / mapDivider);
+        Vector3 endTan = endPos + Vector3.left * ((ab) / mapDivider);
+
+        Handles.DrawBezier(startPos, endPos, startTan, endTan, nc2, null, 1.5f);
+
+        DrawArrow(startPos, startTan, endTan, endPos, new Rect(0, 0, 0, 0), start, false);
+
+        if (repaintLines)
+        {
+            Repaint();
+        }
+    }
+
+
     //Connection line
     void DrawNodeLine3(Vector2 start, Vector2 end)
     {
         Vector3 startPos = new Vector3(start.x, start.y, 0);
-        Vector3 endPos = new Vector3(end.x, end.y, 0);
+        Vector3 endPos = new Vector3(end.x + 4, end.y, 0);
+
         float ab = Vector2.Distance(startPos, endPos);
-        Vector3 startTan = startPos + Vector3.right * (ab/3);
+
+        Vector3 startTan = startPos + Vector3.right * (ab / 3);
         Vector3 endTan = endPos + Vector3.left * (ab / 3);
 
         Handles.DrawBezier(startPos, endPos, startTan, endTan, colors[0], null, 5);
@@ -3074,6 +5766,17 @@ public class VIDE_Editor : EditorWindow
                     db.CopyLastDialogueNode(copiedNode);
                     copiedNode = null;
                 }
+
+                if (VIDE_Localization.isEnabled)
+                {
+                    for (int i = 0; i < VIDE_Localization.languages.Count; i++)
+                    {
+                        if (VIDE_Localization.languages[i].playerDiags != null)
+                        {
+                            VIDE_Localization.languages[i].playerDiags.Add(new VIDE_EditorDB.DialogueNode(pos, 0));
+                        }
+                    }
+                }
                 break;
             case 2:
                 db.actionNodes.Add(new VIDE_EditorDB.ActionNode(pos, setUniqueID()));
@@ -3090,5 +5793,157 @@ public class VIDE_Editor : EditorWindow
         dragNewNode = 0;
         Repaint();
     }
+
+    void UpdateTagList()
+    {
+        List<string> uniqueTags = new List<string>();
+        uniqueTags.Add("[Empty]");
+
+        for (int i = 0; i < db.playerDiags.Count; i++)
+        {
+            if (!uniqueTags.Contains(db.playerDiags[i].playerTag))
+                uniqueTags.Add(db.playerDiags[i].playerTag);
+        }
+        existingTags = uniqueTags;
+    }
+
+    void ExportTxtFile()
+    {
+        string fname = saveNames[db.currentDiag];
+        if (VIDE_Localization.isEnabled) fname += "_" + VIDE_Localization.currentLanguage.name;
+
+        StreamWriter sw = new StreamWriter(VIDE_EditorDB.videRoot + "/Export/" + fname + ".txt");
+
+        sw.WriteLine("Edit the dialogue on the go.");
+        sw.WriteLine("You can edit and add comments, edit the tags, and set node type.");
+        sw.WriteLine("Do not attempt to add more nodes: the number of nodes must match when importing the text file.");
+        sw.WriteLine("Do not modify the IDs.");
+        sw.WriteLine("Do not add or remove empty lines.");
+        sw.WriteLine("Do not restructure the data.");
+        sw.WriteLine();
+        sw.WriteLine("Dialogue name: " + saveNames[db.currentDiag]);
+        sw.WriteLine("---------------------------------");
+
+        for (int i = 0; i < db.playerDiags.Count; i++)
+        {
+            sw.WriteLine("#NODEID#");
+            sw.WriteLine(db.playerDiags[i].ID.ToString());
+            sw.WriteLine("#TAG#");
+            sw.WriteLine(db.playerDiags[i].playerTag.ToString());
+            sw.WriteLine("#ISPLAYER#");
+            sw.WriteLine(db.playerDiags[i].isPlayer.ToString());
+            sw.WriteLine("---");
+            for (int c = 0; c < db.playerDiags[i].comment.Count; c++)
+            {
+                sw.WriteLine("#COMMENT#");
+                sw.WriteLine(db.playerDiags[i].comment[c].text);
+            }
+
+            sw.WriteLine("---------------------------------");
+        }
+
+        sw.WriteLine("#END#");
+
+        sw.Close();
+
+    }
+
+    void ImportTxtFile()
+    {
+        Undo.RecordObject(db, "Imported from txt file");
+
+        string fname = saveNames[db.currentDiag];
+        if (VIDE_Localization.isEnabled) fname += "_" + VIDE_Localization.currentLanguage.name;
+
+
+        if (File.Exists(VIDE_EditorDB.videRoot + "/Export/" + fname + ".txt"))
+        {
+            StreamReader sr = new StreamReader(VIDE_EditorDB.videRoot + "/Export/" + fname + ".txt");
+
+            string line;
+            int index = 0;
+
+            while ((line = sr.ReadLine()) != "#END#")
+            {
+                if (line == null) continue;
+
+                int nodeID = -1;
+                string tag = "";
+                bool isPlayer = false;
+                List<string> comments = new List<string>();
+
+                if (line != null && line.Contains("#NODEID#"))
+                {
+                    line = sr.ReadLine();
+                    int.TryParse(line, out nodeID);
+                }
+                else
+                {
+                    continue;
+                }
+                line = sr.ReadLine();
+                if (line != null && line.Contains("#TAG#"))
+                {
+                    line = sr.ReadLine();
+                    tag = line;
+                }
+                line = sr.ReadLine();
+                if (line != null && line.Contains("#ISPLAYER#"))
+                {
+                    line = sr.ReadLine().ToLower();
+                    if (line == "true") isPlayer = true; else isPlayer = false;
+                }
+                line = sr.ReadLine();
+                line = sr.ReadLine();
+                while (line.Contains("#COMMENT#"))
+                {
+                    line = sr.ReadLine();
+                    comments.Add(line);
+                    line = sr.ReadLine();
+                }
+
+                if (nodeID != -1)
+                {
+                    if (db.playerDiags[index].ID != nodeID)
+                    {
+                        Debug.LogWarning("Node ID mismatch!");
+                    }
+                    else
+                    {
+                        db.playerDiags[index].playerTag = tag;
+                        db.playerDiags[index].isPlayer = isPlayer;
+
+                        int removeFrom = 0;
+                        for (int i = 0; i < comments.Count; i++)
+                        {
+                            if (i >= db.playerDiags[index].comment.Count)
+                            {
+                                db.playerDiags[index].comment.Add(new VIDE_EditorDB.Comment(db.playerDiags[index]));
+                            }
+
+                            db.playerDiags[index].comment[i].text = comments[i];
+                            removeFrom++;
+                        }
+                        if (removeFrom < db.playerDiags[index].comment.Count)
+                        {
+                            db.playerDiags[index].comment.RemoveRange(removeFrom, db.playerDiags[index].comment.Count - removeFrom);
+                        }
+                    }
+
+                    index++;
+                }
+
+            }
+            sr.Close();
+            needSave = true;
+
+        }
+        else
+        {
+            Debug.LogWarning("'" + fname + "' not found!");
+        }
+
+    }
+
 
 }

@@ -27,6 +27,8 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         public string[] opts = new string[] { "[No method]" };
         public Dictionary<string, string> methods = new Dictionary<string, string>();
 
+        public int gotoNode = -1;
+
         public bool param_bool;
         public string param_string;
         public int param_int;
@@ -38,6 +40,10 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         public DialogueNode outPlayer;
         public ActionNode outAction;
 
+        public bool more = false;
+        public int ovrStartNode = -1;
+        public string renameDialogue = String.Empty;
+
         public void Clean()
         {
             pauseHere = false;
@@ -45,6 +51,9 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
             methodName = "[NONE]";
             methodIndex = 0;
             nameIndex = 0;
+            ovrStartNode = -1;
+            renameDialogue = String.Empty;
+            more = false;
             paramType = -1;
         }
 
@@ -110,6 +119,8 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         public bool expand;
         public List<string> vars = new List<string>();
         public List<string> varKeys = new List<string>();
+		
+		
 
         public DialogueNode()
         {
@@ -143,6 +154,27 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
                 comment.Add(new Comment());
         }
     }
+	
+	public class NodeSelection
+    {
+        public VIDE_EditorDB.DialogueNode dNode;
+        public VIDE_EditorDB.ActionNode aNode;
+
+        public NodeSelection(VIDE_EditorDB.DialogueNode d)
+        {
+            dNode = d;
+        }
+        public NodeSelection(VIDE_EditorDB.ActionNode d)
+        {
+            aNode = d;
+        }
+		
+		   public NodeSelection()
+        {
+            dNode = null;
+            aNode = null;
+        }
+    }
 
     public class Comment
     {
@@ -152,9 +184,10 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         public DialogueNode outNode;
         public ActionNode outAction;
         public Rect outRect;
+
         public bool visible = true;
-
-
+        public AudioClip audios;
+        public Sprite sprites;
         public bool showmore;
 
         public Comment()
@@ -175,10 +208,11 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
             extraData = "ExtraData";
         }
     }
-
+     
     public List<DialogueNode> playerDiags = new List<DialogueNode>();
     public List<ActionNode> actionNodes = new List<ActionNode>();
-
+    public List<NodeSelection> selectedNodes = new List<NodeSelection>();
+	
     public void CopyLastActionNode(object copy)
     {
         ActionNode ac = actionNodes[actionNodes.Count - 1];
@@ -195,6 +229,8 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         ac.opts = c.opts;
         ac.methods = c.methods;
 
+        ac.gotoNode = c.gotoNode;
+
         ac.param_bool = c.param_bool;
         ac.param_string = c.param_string;
         ac.param_int = c.param_int;
@@ -202,6 +238,10 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
 
         ac.outPlayer = c.outPlayer;
         ac.outAction = c.outAction;
+
+        ac.more = c.more;
+        ac.ovrStartNode = c.ovrStartNode;
+        ac.renameDialogue = c.renameDialogue;
     }
 
     public void CopyLastDialogueNode(object copy)
@@ -230,17 +270,18 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
             dn.comment[i].outNode = c.comment[i].outNode;
             dn.comment[i].outAction = c.comment[i].outAction;
             dn.comment[i].outRect = c.comment[i].outRect;
+            dn.comment[i].audios = c.comment[i].audios;
+            dn.comment[i].sprites = c.comment[i].sprites;
             dn.comment[i].showmore = c.comment[i].showmore;
             dn.comment[i].visible = c.comment[i].visible;
         }
 
     }
 
-    //public static List<Lang> diags = new List<Lang>();
-
     /* Editor */
     public static string videRoot;
     public int fileIndex = 0;
+    public int skinIndex = 0;
     public string loadTag = string.Empty;
     public int startID = 0;
     public int curFocusID = 0;
@@ -249,11 +290,16 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
     public bool previewPanning;
     public int currentDiag = 0;
     public bool locEdit = false;
+    public DialogueNode pNode;
+    public int pNodeID;
+    public ActionNode aNode;
+    public int aNodeID;
 
     //SERIALIZATION...
 
     public List<Serialized_playerDiags> S_playerDiags;
     public List<Serialized_actionNodes> S_actionNodes;
+    public List<Serialized_selNodes> S_selNodes;
 
 
     public void OnBeforeSerialize()
@@ -332,6 +378,12 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
         public AudioClip audios;
         public bool visible;
     }
+	[Serializable]
+    public struct Serialized_selNodes
+    {
+        public VIDE_EditorDB.DialogueNode dNode;
+        public VIDE_EditorDB.ActionNode aNode;
+    }
 
 
     void playerSerialize()
@@ -364,6 +416,8 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
                     outActionIndex = actionNodes.IndexOf(child.comment[i].outAction),
                     outputNodeIndex = playerDiags.IndexOf(child.comment[i].outNode),
                     inputSetIndex = playerDiags.IndexOf(child),
+                    audios = child.comment[i].audios,
+                    sprites = child.comment[i].sprites,
                     showmore = child.comment[i].showmore,
                     visible = child.comment[i].visible,
                     extraData = child.comment[i].extraData
@@ -399,13 +453,30 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
                 ID = child.ID,
                 rect = child.rect,
                 outPlayerIndex = playerDiags.IndexOf(child.outPlayer),
-                outActionIndex = actionNodes.IndexOf(child.outAction)
+                outActionIndex = actionNodes.IndexOf(child.outAction),
+                more = child.more,
+                ovrStartNode = child.ovrStartNode,
+                renameDialogue = child.renameDialogue
             };
             S_actionNode.Add(np);
         }
         S_actionNodes = S_actionNode;
     }
-
+	
+	void selSerialize()
+    {
+        List<Serialized_selNodes> S_selNode = new List<Serialized_selNodes>();
+        foreach (var child in selectedNodes)
+        {
+            Serialized_selNodes np = new Serialized_selNodes()
+            {
+                dNode = child.dNode,
+                aNode = child.aNode,			
+            };
+            S_selNode.Add(np);
+        }
+        S_selNodes = S_selNode;
+    }
 
     List<DialogueNode> playerDeserialize()
     {
@@ -428,6 +499,8 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
                 DialogueNode s = temp_playerDiags[temp_playerDiags.Count - 1];
                 s.comment.Add(new Comment());
                 s.comment[i].text = child.s_comment[i].text;
+                s.comment[i].sprites = child.s_comment[i].sprites;
+                s.comment[i].audios = child.s_comment[i].audios;
                 s.comment[i].extraData = child.s_comment[i].extraData;
                 s.comment[i].outRect = child.s_comment[i].outRect;
                 s.comment[i].showmore = child.s_comment[i].showmore;
@@ -459,15 +532,33 @@ public class VIDE_EditorDB : MonoBehaviour, ISerializationCallbackReceiver
             x.pauseHere = child.pauseHere;
             x.ID = child.ID;
             x.rect = child.rect;
+            x.more = child.more;
+            x.ovrStartNode = child.ovrStartNode;
+            x.renameDialogue = child.renameDialogue;
+
         }
 
         return temp_actionNodes;
+    }
+	
+	List<NodeSelection> selDeserialize()
+    {
+        List<NodeSelection> temp_selNodes = new List<NodeSelection>();
+        foreach (var child in S_selNodes)
+        {
+            temp_selNodes.Add(new NodeSelection());
+            var x = temp_selNodes[temp_selNodes.Count - 1];
+			
+            x.dNode = child.dNode;
+            x.aNode = child.aNode;
+        }
+
+        return temp_selNodes;
     }
 
     //Now we can connect all of the nodes 
     void ConnectNodes()
     {
-
         for (int i = 0; i < playerDiags.Count; i++) //Connect Player Nodes
         {
             for (int ii = 0; ii < playerDiags[i].comment.Count; ii++)

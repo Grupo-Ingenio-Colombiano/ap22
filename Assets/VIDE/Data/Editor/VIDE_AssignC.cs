@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,11 +13,16 @@ public class VIDE_AssignC : Editor
     /*
      * Custom Inspector for the VIDE_Assign component
      */
+
     VIDE_Assign d;
     bool loadup = false;
 
     static string path = "";
     List<string> fullPaths = new List<string>();
+
+    bool searching = false;
+    string diagSearch = "";
+    List<string> results = new List<string>();
 
     private void openVIDE_Editor(string idx)
     {
@@ -60,7 +66,7 @@ public class VIDE_AssignC : Editor
     int AssignDialogueID(string[] saveNames)
     {
         List<int> ids = new List<int>();
-        int newID = Random.Range(0, 99999);
+        int newID = UnityEngine.Random.Range(0, 99999);
 
         //Retrieve all IDs
         foreach (string s in saveNames)
@@ -76,7 +82,7 @@ public class VIDE_AssignC : Editor
         //Make sure ID is unique
         while (ids.Contains(newID))
         {
-            newID = Random.Range(0, 99999);
+            newID = UnityEngine.Random.Range(0, 99999);
         }
 
         return newID;
@@ -85,6 +91,7 @@ public class VIDE_AssignC : Editor
     public class SerializeHelper
     {
         static string fileDataPath = Application.dataPath + "/../";
+
         public static void WriteToFile(object data, string filename)
         {
             string outString = DiagJson.Serialize(data);
@@ -99,7 +106,6 @@ public class VIDE_AssignC : Editor
 
     public override void OnInspectorGUI()
     {
-
         d = (VIDE_Assign)target;
         Color defColor = GUI.color;
         GUI.color = Color.yellow;
@@ -108,6 +114,12 @@ public class VIDE_AssignC : Editor
         {
             loadFiles();
             loadup = false;
+        }
+
+        if (searching)
+        {
+            ShowSearch();
+            return;
         }
 
         //Create a button to open up the VIDE Editor and load the currently assigned dialogue
@@ -127,7 +139,7 @@ public class VIDE_AssignC : Editor
 
         GUILayout.BeginHorizontal();
 
-        GUILayout.Label("Assigned dialogue:");
+        GUILayout.Label(new GUIContent("Assigned dialogue", "Which dialogue is this NPC going to own?"));
         if (d.diags.Count > 0)
         {
             EditorGUI.BeginChangeCheck();
@@ -136,6 +148,7 @@ public class VIDE_AssignC : Editor
 
             if (EditorGUI.EndChangeCheck())
             {
+                PreloadDialogue(false);
                 int theID = 0;
                 int currentName = -1;
 
@@ -190,13 +203,19 @@ public class VIDE_AssignC : Editor
         else
         {
             GUILayout.Label("No saved Dialogues!");
-
         }
+
+        if (GUILayout.Button("Search", EditorStyles.miniButton))
+        {
+            searching = true;
+            diagSearch = "";
+        }
+
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
 
-        GUILayout.Label("Alias: ");
+        GUILayout.Label(new GUIContent("Alias", "Custom alias for this dialogue"));
 
         Undo.RecordObject(d, "Changed custom name");
         EditorGUI.BeginChangeCheck();
@@ -214,7 +233,7 @@ public class VIDE_AssignC : Editor
 
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Override Start Node: ");
+        GUILayout.Label(new GUIContent("Override Start node", "Dialogue will instead begin on the node with this ID"));
         Undo.RecordObject(d, "Changed override start node");
         EditorGUI.BeginChangeCheck();
         d.overrideStartNode = EditorGUILayout.IntField(d.overrideStartNode);
@@ -229,7 +248,7 @@ public class VIDE_AssignC : Editor
         GUILayout.EndHorizontal();
 
         EditorGUI.BeginChangeCheck();
-        d.defaultPlayerSprite = (Sprite)EditorGUILayout.ObjectField("Def. Player Sprite: ", d.defaultPlayerSprite, typeof(Sprite), false);
+        d.defaultPlayerSprite = (Sprite)EditorGUILayout.ObjectField(new GUIContent("Default Player Sprite", "Default player sprite for this component"), d.defaultPlayerSprite, typeof(Sprite), false);
         if (EditorGUI.EndChangeCheck())
         {
             foreach (var transform in Selection.transforms)
@@ -240,7 +259,7 @@ public class VIDE_AssignC : Editor
         }
 
         EditorGUI.BeginChangeCheck();
-        d.defaultNPCSprite = (Sprite)EditorGUILayout.ObjectField("Def. NPC Sprite: ", d.defaultNPCSprite, typeof(Sprite), false);
+        d.defaultNPCSprite = (Sprite)EditorGUILayout.ObjectField(new GUIContent("Default NPC Sprite", "Default NPC sprite for this component"), d.defaultNPCSprite, typeof(Sprite), false);
         if (EditorGUI.EndChangeCheck())
         {
             foreach (var transform in Selection.transforms)
@@ -249,10 +268,138 @@ public class VIDE_AssignC : Editor
                 scr.defaultNPCSprite = d.defaultNPCSprite;
             }
         }
-        GUILayout.Label("Interaction Count: " + d.interactionCount.ToString());
-        /*GUILayout.Label(d.assignedID.ToString());
-        GUILayout.Label(d.assignedIndex.ToString());
-        GUILayout.Label(d.assignedDialogue.ToString());*/
+        GUILayout.Label(new GUIContent("Interaction Count: " + d.interactionCount.ToString(), "How many times have we interacted with this NPC?"));
+
+        GUILayout.BeginVertical(GUI.skin.box);
+
+        if (!d.preload)
+        {
+            if (d.assignedDialogue == "" || d.assignedIndex == -1) GUI.enabled = false;
+            if (GUILayout.Button("Preload dialogue"))
+            {
+                PreloadDialogue(true);
+            }
+            GUI.enabled = true;
+            EditorGUILayout.HelpBox("The dialogue will be preloaded for all VAs and won't require loading from json, eliminating loading times.\nMake sure you preload again if you make changes to the dialogue!", MessageType.Info);
+        } else
+        {
+            GUI.color = Color.green;
+            if (GUILayout.Button("Unload"))
+            {
+                PreloadDialogue(false);
+            }
+            GUI.color = Color.white;
+
+            string helptext = "Dialogue preloaded.";
+            if (d.playerDiags != null) helptext += "\nDialogue Nodes: " + d.playerDiags.Count.ToString(); else helptext += "\nDialogue Nodes: 0";
+            if (d.actionNodes != null) helptext += "\nAction Nodes: " + d.actionNodes.Count.ToString(); else helptext += "\nAction Nodes: 0";
+            if (d.langs != null) helptext += "\nLanguages: " + d.langs.Count.ToString(); else helptext += "\nLanguages: 0";
+            EditorGUILayout.HelpBox(helptext, MessageType.Info);
+            if (d.notuptodate)
+            {
+                EditorGUILayout.HelpBox("You've made changes to the dialogue. Make sure you preload again.", MessageType.Warning);
+            }
+        }
+        GUILayout.EndVertical();
+
+        GUILayout.BeginVertical(GUI.skin.box);
+        GUILayout.BeginHorizontal();
+
+        if (!Application.isPlaying || d.assignedIndex == -1 || d.targetManager == null) GUI.enabled = false;
+        if (GUILayout.Button(new GUIContent("Test Interact", "Select dialogue, target gameobject, and enter play mode.")))
+        {
+            d.targetManager.SendMessage("Interact", d, SendMessageOptions.RequireReceiver);
+        }
+        GUI.enabled = true;
+
+        d.targetManager = (GameObject)EditorGUILayout.ObjectField(d.targetManager, typeof(GameObject), true);
+
+        GUILayout.EndHorizontal();
+        EditorGUILayout.HelpBox("You can select a gameobject containing a UI Manager and press 'Test Interact' during PlayMode to test this dialogue without requiring a dialogue trigger." +
+            "\nUI Manager must contain an 'Interact' method like in Template_UIManager.cs", MessageType.Info);
+        GUILayout.EndVertical();
+    }
+
+    Vector2 scrollpos = new Vector2();
+    public void ShowSearch()
+    {
+        GUI.color = Color.white;
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        if (GUILayout.Button("Back"))
+        {
+            searching = false;
+        }
+        diagSearch = EditorGUILayout.TextField(diagSearch);
+        GUILayout.EndHorizontal();
+        results.Clear();
+        for (int i = 0; i < d.diags.Count; i++)
+        {
+            if (d.diags[i].ToLower().Contains(diagSearch.ToLower()))
+            {
+                results.Add(d.diags[i]);
+            }
+        }
+        scrollpos = GUILayout.BeginScrollView(scrollpos, GUI.skin.box, GUILayout.Height(200));
+        for (int i = 0; i < results.Count; i++)
+        {
+            if (GUILayout.Button(results[i], EditorStyles.miniButton))
+            {
+                PreloadDialogue(false);
+                int theID = 0;
+                int currentName = -1;
+
+                d.assignedIndex = d.diags.IndexOf(results[i]);
+
+                /* Get file location based on name */
+                for (int i2 = 0; i2 < d.diags.Count; i2++)
+                {
+                    if (fullPaths[i2].Contains(d.diags[d.assignedIndex] + ".json"))
+                        currentName = i2;
+                }
+
+                if (currentName == -1)
+                {
+                    return;
+                }
+
+                if (File.Exists(Application.dataPath + "/../" + fullPaths[currentName]))
+                {
+                    Dictionary<string, object> dict = SerializeHelper.ReadFromFile(fullPaths[currentName]) as Dictionary<string, object>;
+                    if (dict.ContainsKey("dID"))
+                    {
+                        theID = ((int)((long)dict["dID"]));
+
+                    }
+                    else Debug.LogError("Could not read dialogue ID!");
+                }
+
+                if (!HasUniqueID(theID, fullPaths.ToArray(), currentName))
+                {
+                    theID = AssignDialogueID(fullPaths.ToArray());
+                    Dictionary<string, object> dict = SerializeHelper.ReadFromFile(fullPaths[currentName]) as Dictionary<string, object>;
+                    if (dict.ContainsKey("dID"))
+                    {
+                        dict["dID"] = theID;
+                    }
+                    SerializeHelper.WriteToFile(dict as Dictionary<string, object>, fullPaths[currentName]);
+                }
+
+                d.assignedID = theID;
+                d.assignedDialogue = d.diags[d.assignedIndex];
+
+
+                foreach (var transform in Selection.transforms)
+                {
+                    VIDE_Assign scr = transform.GetComponent<VIDE_Assign>();
+                    scr.assignedIndex = d.assignedIndex;
+                    scr.assignedDialogue = d.assignedDialogue;
+                    scr.assignedID = d.assignedID;
+                }
+                searching = false;
+            }
+        }
+
+        GUILayout.EndScrollView();
     }
 
     void OnInspectorUpdate()
@@ -299,7 +446,7 @@ public class VIDE_AssignC : Editor
         List<int> theIDs = new List<int>();
         if (d.assignedIndex == -1)
         {
-            if (d.assignedDialogue != "")
+            if (d.assignedDialogue != "" && d.diags.Contains(d.assignedDialogue))
             {
                 d.assignedIndex = d.diags.IndexOf(d.assignedDialogue);
             }
@@ -309,19 +456,14 @@ public class VIDE_AssignC : Editor
             }
         }
 
-        if (!d.diags.Contains(d.assignedDialogue))
-        {
-            Debug.LogError("'" + d.assignedDialogue + "' dialogue not found!");
-            return;
-        }
-
-
         if (d.assignedIndex >= d.diags.Count)
         {
             for (int i = 0; i < d.diags.Count; i++)
             {
-                if (d.diags[i] == d.assignedDialogue)
+                    if (d.diags[i] == d.assignedDialogue)
+                {
                     d.assignedIndex = i;
+                }
             }
         }
 
@@ -375,5 +517,45 @@ public class VIDE_AssignC : Editor
                 d.assignedDialogue = d.diags[d.assignedIndex];
         }
     }
+
+    
+    void PreloadDialogue(bool preload)
+    {
+        if (preload)
+        {
+            IDCheck();
+
+            VIDE_Data.Diags diag = VIDE_Data.VD.PreloadLoad(d.assignedDialogue);
+
+            d.playerDiags = diag.playerNodes;
+            d.actionNodes = diag.actionNodes;
+            d.loadtag = diag.loadTag;
+            d.startp = diag.start;
+            d.preload = true;
+
+            VIDE_EditorDB.videRoot = AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this));
+            VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
+            VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
+            VIDE_EditorDB.videRoot = Directory.GetParent(VIDE_EditorDB.videRoot).ToString();
+
+            d.langs = VIDE_Localization.PreloadLanguages(d.assignedDialogue);
+            d.notuptodate = false;
+
+        }
+        else
+        {
+            d.playerDiags = new List<VIDE_Data.DialogueNode>();
+            d.actionNodes = new List<VIDE_Data.ActionNode>();
+            d.langs = new List<VIDE_Localization.VLanguage>() ;
+            d.loadtag = "";
+            d.startp = 0;
+            d.preload = false;
+            d.notuptodate = false;
+        }
+       
+    }
+
+
+
 
 }
