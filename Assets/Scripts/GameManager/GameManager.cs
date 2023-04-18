@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
     {
         if(userData.load >= 1)
         {
-            disableSSGTdialog1();
+            enableSSGTdialog1();
             EnableSecurityNPC();
+            disablePlantBossFirstInteraccion();
         }
     }
     public void enablePlantBossFirstInteraccion()

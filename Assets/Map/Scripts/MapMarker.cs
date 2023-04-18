@@ -66,11 +66,11 @@ public class MapMarker : MonoBehaviour
         markerImage.rectTransform.sizeDelta = new Vector2(markerSize, markerSize);
         markerImage.gameObject.SetActive(false);
         
-        if(userData.isSave != false)
-        {
-            setLocalPos(userData.markerCanvas);
-            markerImage.rectTransform.localPosition = userData.markerCanvas;
-        }
+        //if(userData.isSave != false)
+        //{
+        //    setLocalPos(userData.markerCanvas);
+        //    markerImage.rectTransform.localPosition = userData.markerCanvas;
+        //}
     }
       
 
@@ -122,10 +122,10 @@ public class MapMarker : MonoBehaviour
 
     public Vector3 getPosition()
     {
-        if (this.gameObject.tag != "Player")
-        {
-            userData.indicator = gameObject.transform.position;
-        }
+        //if (this.gameObject.tag != "Player")
+        //{
+        //    userData.indicator = gameObject.transform.position;
+        //}
      
         return gameObject.transform.position;
     }
@@ -133,9 +133,9 @@ public class MapMarker : MonoBehaviour
     public void setLocalPos(Vector3 pos)
     {
         markerImage.rectTransform.localPosition = pos;
-        if (this.gameObject.tag != "Player")  {
-            userData.markerCanvas =pos;          
-        }
+        //if (this.gameObject.tag != "Player")  {
+        //    userData.markerCanvas =pos;          
+        //}
 
 
     }

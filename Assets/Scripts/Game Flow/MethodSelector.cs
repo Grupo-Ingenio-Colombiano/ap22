@@ -17,6 +17,16 @@ public class MethodSelector : MonoBehaviour
     [SerializeField]
     GameObject timing;
 
+    [SerializeField]
+    UserData userData;
+
+    private void Start()
+    {
+        if(userData.isSave == true)
+        {
+            method.method = userData.method;
+        }
+    }
     public void setMethod()
     {
         switch (method.method)

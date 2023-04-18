@@ -18,6 +18,7 @@ public class UserData : ScriptableObject
 
     public bool isSave = false;
     public int load;
+    public int nodeDialogueJefePlanta;
 
     public string PlayerSelected;  
     public Vector3 playerPosition;
