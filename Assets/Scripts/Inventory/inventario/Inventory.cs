@@ -415,10 +415,13 @@ public class Inventory : MonoBehaviour {
                 default:
                     break;
             }
-            if (name == "Virtualina")
+            if(userData.load <= 1 && name == "Virtualina")
             {
-                loadManager.Upload(1);
+              
+                    loadManager.Upload(1);
+                
             }
+            
             if (GetComponent<AudioSource>())
             {
                 GetComponent<AudioSource>().Stop();

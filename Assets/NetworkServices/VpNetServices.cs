@@ -16,7 +16,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("PRACTICENAME", Application.productName);
         form.AddField("FILEDATA", jsonData);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/userData/endpoint/Upload.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/userData/endpoint/Upload.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -39,7 +39,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("PRACTICENAME", Application.productName);
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/userData/endpoint/Download.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/userData/endpoint/Download.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -49,9 +49,19 @@ public class VpNetServices : MonoBehaviour
             }
             else
             {
-                callback(true, www.downloadHandler.text, www.error, www.responseCode);
+                
                 if(www.responseCode==200)
-                JsonUtility.FromJsonOverwrite( www.downloadHandler.text, data);
+                {
+                     JsonUtility.FromJsonOverwrite( www.downloadHandler.text, data);
+                     callback(true, www.downloadHandler.text, www.error, www.responseCode);
+                }
+                else
+                {
+                    callback(false, www.downloadHandler.text, www.error, www.responseCode);
+                }
+
+                
+               
             }
         }
     }
@@ -63,7 +73,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("PRACTICENAME", Application.productName);
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/userData/endpoint/CheckFile.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/userData/endpoint/CheckFile.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -94,7 +104,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("data", jsonData);
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/reportData/endpoint/report.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/reportData/endpoint/report.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -131,7 +141,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("teacherName", data.teacherName);        
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/mailService/endPoint/sendMail.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/mailService/endPoint/sendMail.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -162,7 +172,7 @@ public class VpNetServices : MonoBehaviour
         form.AddField("valueDetails", valueDetails);        
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://54.144.50.139/virtualplantApiServices/mailService/endPoint/sendValuation.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/mailService/endPoint/sendValuation.php", form))
         {
             yield return www.SendWebRequest();
 

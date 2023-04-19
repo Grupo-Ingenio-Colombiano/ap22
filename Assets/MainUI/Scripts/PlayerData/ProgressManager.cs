@@ -11,6 +11,8 @@ public class ProgressManager : MonoBehaviour
 
     [SerializeField] PlayerProgress progress;
 
+    [SerializeField] UserData userData;
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class ProgressManager : MonoBehaviour
     private void HandleProgressPercentageChanged(float pct)
     {
         progressPercentage.text = Mathf.Ceil(pct * 100).ToString() + "%";
+        userData.progress = progress.CurrentProgress;
 
         if (Mathf.Ceil(pct * 100) > 98)
         {

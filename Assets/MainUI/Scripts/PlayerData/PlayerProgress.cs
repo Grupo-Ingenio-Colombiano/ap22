@@ -6,7 +6,7 @@ public class PlayerProgress : ScriptableObject
 {
 
 
-    public UserData data;
+  
     float maxProgress = 100f;
     public float CurrentProgress;
 

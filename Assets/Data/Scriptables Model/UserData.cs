@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class UserData : ScriptableObject
 {
+    public static UserData Instance;
+    
     public string name;
     public string email;
     public string lastScene;
@@ -40,6 +42,7 @@ public class UserData : ScriptableObject
     public int method;
     public bool selectedMethod;
     public int proccessUnits;
+    public int indexOperationData;
 
     public List<InventoryItem> inventory;
  

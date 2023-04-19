@@ -39,6 +39,8 @@ public class UIDialogManager : MonoBehaviour
     [SerializeField] Sprite playerSpriteMan;
     [SerializeField] PlayerCanMove canMove;
 
+    [SerializeField] UserData userData;
+
     bool dialoguePaused = false;
     bool animatingText = false;
 
@@ -357,7 +359,15 @@ public class UIDialogManager : MonoBehaviour
     {
         if (data.comments[data.commentIndex].Contains("[H_OPERATION]"))
         {
-            data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", QuestHistorical.Instance.CurrentOperationData.operationName);
+            if(UserData.Instance.isSave == true)
+            {
+                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", QuestHistorical.Instance.CurrentOperationData.operationName);
+            }
+            else
+            {
+                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", QuestHistorical.Instance.CurrentOperationData.operationName);
+            }
+           
         }
 
         if (data.comments[data.commentIndex].Contains("[S_OPERATION]"))
@@ -367,7 +377,15 @@ public class UIDialogManager : MonoBehaviour
 
         if (data.comments[data.commentIndex].Contains("[H_UNITS]"))
         {
-            data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString());
+            if (UserData.Instance.isSave == true)
+            {
+                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", UserData.Instance.proccessUnits.ToString());
+            }
+            else
+            {
+                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString());
+            }
+          
         }
 
         if (data.comments[data.commentIndex].Contains("[S_UNITS]"))

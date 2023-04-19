@@ -17,9 +17,23 @@ public class HistoricalOperatorManager : MonoBehaviour
     [SerializeField] Vector3 toSetPosition3;
 
 
+    [SerializeField] UserData userData;
+
     void Start()
     {
-        var operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
+        var operatorType = 0;
+        userData.indexOperationData = operatorType;
+        if (userData.load == 2)
+        {
+            operatorType = userData.indexOperationData;
+        }
+        else
+        {
+            operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
+        }
+
+
+       
 
         if (operatorType == 1)
         {

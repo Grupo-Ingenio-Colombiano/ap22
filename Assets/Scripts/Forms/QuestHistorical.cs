@@ -31,19 +31,28 @@ public class QuestHistorical : MonoBehaviour
     private void Start()
     {
         SetHistoricalQuest();
+       
     }
 
 
     public void SetHistoricalQuest()
     {
-        IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
-        HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta, si tiene dudas de su ubicación recuerde consultar el plot plan, este se encuentra en el costado derecho.");
-        var randomOperation = Random.Range(1, 4);
-        //var randomOperation = 3;
-        CurrentOperationData = new OperationData(randomOperation, 0);
-        userData.proccessUnits = CurrentOperationData.requiredUnits;
-        FormResultsManager.Instance.currentOperationIndex = randomOperation;
-        ActivateObjects();
+        if (userData.isSave == true)
+        {
+            CurrentOperationData.requiredUnits = userData.proccessUnits;
+        }
+        else
+        {
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+            HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta, si tiene dudas de su ubicación recuerde consultar el plot plan, este se encuentra en el costado derecho.");
+            var randomOperation = Random.Range(1, 4);
+            //var randomOperation = 3;
+            CurrentOperationData = new OperationData(randomOperation, 0);
+            userData.proccessUnits = CurrentOperationData.requiredUnits;
+            FormResultsManager.Instance.currentOperationIndex = randomOperation;
+            ActivateObjects();
+        }
+        
     }
 
 
