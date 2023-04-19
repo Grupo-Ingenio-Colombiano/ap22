@@ -13,7 +13,7 @@ public class HistoricalDataFile : MonoBehaviour
 
     [SerializeField] ExperienceRewardManager rewardManager;
 
-    [SerializeField] UserData data;
+    [SerializeField] UserData userData;
 
     void Start()
     {
@@ -25,7 +25,21 @@ public class HistoricalDataFile : MonoBehaviour
         var dataCount = QuestHistorical.Instance.CurrentOperationData.historicalSamples.Length;
         var minTime = QuestHistorical.Instance.CurrentOperationData.minTime;
         var maxTime = QuestHistorical.Instance.CurrentOperationData.maxTime;
-        float[] historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
+
+        float[] historicalSamples = new float[36];
+
+        if (userData.load >= 2)
+        {
+            
+            historicalSamples = userData.historicData;
+        }
+        else
+        {
+            historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
+            minTime = QuestHistorical.Instance.CurrentOperationData.minTime;
+            maxTime = QuestHistorical.Instance.CurrentOperationData.maxTime;
+        }
+     
 
 
         if (isCorrectData)
@@ -33,7 +47,7 @@ public class HistoricalDataFile : MonoBehaviour
             for (int i = 0; i < dataCount; i++)
             {
                 historicalDataTexts[i].text = historicalSamples[i].ToString();
-                data.historicData[i] = historicalSamples[i];
+                userData.historicData[i] = historicalSamples[i];
             }
         }
 

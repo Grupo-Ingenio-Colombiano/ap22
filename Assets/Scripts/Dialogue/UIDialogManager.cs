@@ -357,17 +357,10 @@ public class UIDialogManager : MonoBehaviour
 
     private static void ReplaceQuestData(VD.NodeData data)
     {
+
         if (data.comments[data.commentIndex].Contains("[H_OPERATION]"))
-        {
-            if(UserData.Instance.isSave == true)
-            {
+        {    
                 data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", QuestHistorical.Instance.CurrentOperationData.operationName);
-            }
-            else
-            {
-                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", QuestHistorical.Instance.CurrentOperationData.operationName);
-            }
-           
         }
 
         if (data.comments[data.commentIndex].Contains("[S_OPERATION]"))
@@ -377,15 +370,17 @@ public class UIDialogManager : MonoBehaviour
 
         if (data.comments[data.commentIndex].Contains("[H_UNITS]"))
         {
-            if (UserData.Instance.isSave == true)
+            if (UserData.Instance.load >= 2)
             {
-                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_OPERATION]", UserData.Instance.proccessUnits.ToString());
+                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", UserData.Instance.requiredUnits.ToString());
+
             }
             else
             {
                 data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString());
+
             }
-          
+
         }
 
         if (data.comments[data.commentIndex].Contains("[S_UNITS]"))

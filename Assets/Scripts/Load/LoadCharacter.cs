@@ -20,6 +20,8 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject operarioHistorico2;
     [SerializeField] GameObject supervHistoprico2;
 
+    [SerializeField] GameObject questHistorical;
+
     [Header("--Dialogos datos muestreo")]
     [SerializeField] VIDE_Assign supervMuestreo1;
    
@@ -58,6 +60,7 @@ public class LoadCharacter : MonoBehaviour
                         operarioHistorico1.SetActive(false);
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
+                        questHistorical.SetActive(true);
                     }
                     break;
 
