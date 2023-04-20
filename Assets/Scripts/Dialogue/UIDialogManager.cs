@@ -370,18 +370,9 @@ public class UIDialogManager : MonoBehaviour
 
         if (data.comments[data.commentIndex].Contains("[H_UNITS]"))
         {
-            if (UserData.Instance.load >= 2)
-            {
-                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", UserData.Instance.requiredUnits.ToString());
+            data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString());
 
-            }
-            else
-            {
-                data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace("[H_UNITS]", QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString());
-
-            }
-
-        }
+       }
 
         if (data.comments[data.commentIndex].Contains("[S_UNITS]"))
         {

@@ -84,6 +84,58 @@ public class OperationData
 
     }
 
+    public OperationData(int indexToGenerate, int method, UserData userData)
+    {
+        Index = indexToGenerate;
+
+        switch (indexToGenerate)
+        {
+            case 1:
+                operationName = "Corte del tubo de manubrio";
+                minTime = userData.minTimeHistorical;
+                maxTime = userData.maxTimeHistorical;
+                numMachines = 3;
+                requiredUnits = userData.proccessUnits;
+                unidadesRealizadas = userData.requiredUnits;
+
+                break;
+            case 2:
+                operationName = "Doblado del manubrio";
+                minTime = userData.minTimeHistorical;
+                maxTime = userData.maxTimeHistorical;
+                numMachines = 3;
+                requiredUnits = userData.proccessUnits;
+                unidadesRealizadas = userData.requiredUnits;
+                break;
+            case 3:
+                operationName = "Rectificación de cuadro";
+                minTime = userData.minTimeHistorical;
+                maxTime = userData.maxTimeHistorical;
+                numMachines = 3;
+                requiredUnits = userData.proccessUnits;
+                unidadesRealizadas = userData.requiredUnits;
+                break;
+
+            default:
+                break;
+        }
+
+        SetHistoricalSamples(minTime, maxTime);
+        SetRhytmfactors();
+
+        if (method == 1)
+        {
+            SetSamplingData();
+        }
+
+        if (method == 2)
+        {
+            SetTimingData();
+        }
+
+    }
+
+
 
     void SetHistoricalSamples(float minValue, float maxValue)
     {

@@ -25,20 +25,8 @@ public class HistoricalDataFile : MonoBehaviour
         var dataCount = QuestHistorical.Instance.CurrentOperationData.historicalSamples.Length;
         var minTime = QuestHistorical.Instance.CurrentOperationData.minTime;
         var maxTime = QuestHistorical.Instance.CurrentOperationData.maxTime;
-
-        float[] historicalSamples = new float[36];
-
-        if (userData.load >= 2)
-        {
-            
-            historicalSamples = userData.historicData;
-        }
-        else
-        {
-            historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
-            minTime = QuestHistorical.Instance.CurrentOperationData.minTime;
-            maxTime = QuestHistorical.Instance.CurrentOperationData.maxTime;
-        }
+        float [] historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
+      
      
 
 

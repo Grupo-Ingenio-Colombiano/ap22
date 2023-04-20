@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4185f1eda9d0ff94e88a3b1626f42396, type: 3}
   m_Name: userData
   m_EditorClassIdentifier: 
-  name: 
-  email: 
+  name: a
+  email: a@a.aa
   lastScene: 
   practiceName: 
-  isSave: 0
-  load: 0
+  isSave: 1
+  load: 1
   nodeDialogueJefePlanta: 0
   PlayerSelected: 1
-  playerPosition: {x: 29.81545, y: 3.358036, z: 9.601374}
-  playerRot: {x: 0, y: 0.7659537, z: 0, w: 0.64289576}
-  progress: 30
-  experience: 140
-  timer: 00:43:07
+  playerPosition: {x: -2.8964586, y: 0.048502266, z: -60.78646}
+  playerRot: {x: 0, y: 0.99641865, z: 0, w: 0.084557034}
+  progress: 10
+  experience: 50
+  timer: 00:03:57
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 50.9972, y: 147.01886, z: 0}
   indicator: {x: 41, y: 0, z: -20.3}
-  method: 2
-  selectedMethod: 1
-  proccessUnits: 200
+  method: 1
+  selectedMethod: 0
+  proccessUnits: 135
   indexOperationData: 0
   inventory:
   - itemName: "Cron\xF3metro"
@@ -45,45 +45,144 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 6
     useOneTime: 1
+  - itemName: Virtualina
+    sprite: 1
+    eliminable: 1
+    obj: 1
+    infotext: "Renueva los animos y da m\xE1s velocidad"
+    infoSprite: 1
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 1
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "M\xE1scara para vapores"
+    sprite: 4
+    eliminable: 0
+    obj: 4
+    infotext: 
+    infoSprite: 4
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Guantes
+    sprite: 5
+    eliminable: 0
+    obj: 5
+    infotext: 
+    infoSprite: 5
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "Protector de o\xEDdos"
+    sprite: 7
+    eliminable: 0
+    obj: 7
+    infotext: 
+    infoSprite: 7
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Gafas
+    sprite: 8
+    eliminable: 0
+    obj: 8
+    infotext: 
+    infoSprite: 8
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
-  - 6.1
-  - 5.68
-  - 6.43
-  - 6.01
-  - 6.5
-  - 5.99
-  - 6.42
-  - 6.25
-  - 6.01
-  - 6.54
-  - 6.45
-  - 5.93
-  - 6.6
-  - 5.64
-  - 6.38
-  - 5.53
-  - 6.01
-  - 5.62
-  - 5.48
-  - 6.07
-  - 6.46
-  - 6.38
-  - 5.66
-  - 6.49
-  - 5.46
-  - 6.01
-  - 5.98
-  - 5.86
-  - 5.46
-  - 6.1
-  - 6.16
-  - 6.02
-  - 6.26
-  - 5.55
-  - 6.4
-  - 6.01
-  minTimeHistorical: 0
-  maxTimeHistorical: 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  minTimeHistorical: 5.4
+  maxTimeHistorical: 6.6
   talkTime: 0
   tiempoOptimo: 0
   unidadesRequeridas: 0

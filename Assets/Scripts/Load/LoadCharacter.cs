@@ -38,7 +38,7 @@ public class LoadCharacter : MonoBehaviour
 
     public void SetIndicatorLoad()
     {
-        if(userData.load == 1)
+        if(userData.load >= 1)
         {
             dialogSST.SetActive(true);
         }

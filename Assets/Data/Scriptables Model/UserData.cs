@@ -60,7 +60,7 @@ public class UserData : ScriptableObject
 
     [Header("----Punto 1")]
     public int unitsProccess;
-    public float requiredUnits;
+    public int requiredUnits;
     [Header("----Punto 2")]
     public int kSuplements;
 
