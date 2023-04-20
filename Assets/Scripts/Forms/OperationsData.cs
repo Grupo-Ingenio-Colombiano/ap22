@@ -87,33 +87,29 @@ public class OperationData
     public OperationData(int indexToGenerate, int method, UserData userData)
     {
         Index = indexToGenerate;
-
+        requiredUnits = userData.proccessUnits;
+        minTime = userData.minTimeHistorical;
+        maxTime = userData.maxTimeHistorical;
+        unidadesRealizadas = userData.requiredUnits;
         switch (indexToGenerate)
         {
             case 1:
-                operationName = "Corte del tubo de manubrio";
-                minTime = userData.minTimeHistorical;
-                maxTime = userData.maxTimeHistorical;
-                numMachines = 3;
-                requiredUnits = userData.proccessUnits;
-                unidadesRealizadas = userData.requiredUnits;
+                operationName = "Corte del tubo de manubrio";             
+                numMachines = 3;             
+               
 
                 break;
             case 2:
                 operationName = "Doblado del manubrio";
-                minTime = userData.minTimeHistorical;
-                maxTime = userData.maxTimeHistorical;
+             
                 numMachines = 3;
-                requiredUnits = userData.proccessUnits;
-                unidadesRealizadas = userData.requiredUnits;
+              
                 break;
             case 3:
                 operationName = "Rectificación de cuadro";
-                minTime = userData.minTimeHistorical;
-                maxTime = userData.maxTimeHistorical;
+             
                 numMachines = 3;
-                requiredUnits = userData.proccessUnits;
-                unidadesRealizadas = userData.requiredUnits;
+               
                 break;
 
             default:

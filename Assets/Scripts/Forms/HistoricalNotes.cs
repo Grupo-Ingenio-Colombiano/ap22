@@ -11,14 +11,10 @@ public class HistoricalNotes : MonoBehaviour
 
     private void OnEnable()
     {
-        if (userData.load >= 1)
-        {
-            unidadesRequeridas.text = userData.proccessUnits.ToString();
-        }
-        else
-        {
+       
+       
             unidadesRequeridas.text = QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString();
-        }
+        
 
     }
 

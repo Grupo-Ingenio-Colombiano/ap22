@@ -28,38 +28,51 @@ public class HistoricalDataFile : MonoBehaviour
         float [] historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
       
      
-
-
-        if (isCorrectData)
+        if(userData.load >= 2)
         {
+            QuestHistorical.Instance.CurrentOperationData.requiredUnits = userData.proccessUnits;
+
             for (int i = 0; i < dataCount; i++)
             {
-                historicalDataTexts[i].text = historicalSamples[i].ToString();
-                userData.historicData[i] = historicalSamples[i];
+                historicalDataTexts[i].text = userData.historicData[i].ToString();
+               
             }
         }
-
-        if (notEnoughData)
+        else
         {
-            for (int i = 0; i < 20; i++)
+            if (isCorrectData)
             {
-                historicalDataTexts[i].text = Random.Range(minTime, maxTime).ToString();
+                for (int i = 0; i < dataCount; i++)
+                {
+                    historicalDataTexts[i].text = historicalSamples[i].ToString();
+                    userData.historicData[i] = historicalSamples[i];
+                }
             }
 
-            for (int i = 20; i < dataCount; i++)
+            if (notEnoughData)
             {
-                historicalDataTexts[i].text = "";
+                for (int i = 0; i < 20; i++)
+                {
+                    historicalDataTexts[i].text = Random.Range(minTime, maxTime).ToString();
+                }
+
+                for (int i = 20; i < dataCount; i++)
+                {
+                    historicalDataTexts[i].text = "";
+                }
+            }
+
+            if (isNotCorrectData)
+            {
+                var bias = 3.0f;
+                for (int i = 0; i < dataCount; i++)
+                {
+                    historicalDataTexts[i].text = (historicalSamples[i] + Random.Range(minTime - bias, maxTime + bias)).ToString();
+                }
             }
         }
 
-        if (isNotCorrectData)
-        {
-            var bias = 3.0f;
-            for (int i = 0; i < dataCount; i++)
-            {
-                historicalDataTexts[i].text = (historicalSamples[i] + Random.Range(minTime - bias, maxTime + bias)).ToString();
-            }
-        }
+      
 
     }
 

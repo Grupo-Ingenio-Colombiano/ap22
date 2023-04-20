@@ -19,6 +19,7 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject operarioHistorico1;
     [SerializeField] GameObject operarioHistorico2;
     [SerializeField] GameObject supervHistoprico2;
+    [SerializeField] GameObject supervHistoprico1;
 
     [SerializeField] GameObject questHistorical;
 
@@ -58,6 +59,7 @@ public class LoadCharacter : MonoBehaviour
                     if(userData.load == 2)
                     {
                         operarioHistorico1.SetActive(false);
+                        supervHistoprico1.SetActive(false);
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
                         questHistorical.SetActive(true);
