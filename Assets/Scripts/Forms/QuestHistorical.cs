@@ -49,13 +49,14 @@ public class QuestHistorical : MonoBehaviour
         {
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             var randomOperation = Random.Range(1, 4);
+            userData.indexOperationData = randomOperation;
             //var randomOperation = 3;
             CurrentOperationData = new OperationData(randomOperation, 0);
             userData.proccessUnits = CurrentOperationData.requiredUnits;
             userData.minTimeHistorical = CurrentOperationData.minTime;
             userData.maxTimeHistorical = CurrentOperationData.maxTime;
             FormResultsManager.Instance.currentOperationIndex = randomOperation;
-            userData.indexOperationData = randomOperation;           
+                     
         }
         ActivateObjects();
     }

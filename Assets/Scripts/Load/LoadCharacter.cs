@@ -15,7 +15,8 @@ public class LoadCharacter : MonoBehaviour
     VIDE_Assign inspectorSeguridad;
 
     [Header("--Dialogos datos históricos")]
-    [SerializeField] VIDE_Assign supervHistorico1;
+    [SerializeField] VIDE_Assign supervHistorico1VIDE;
+    [SerializeField] VIDE_Assign supervHistorico2VIDE;
     [SerializeField] GameObject operarioHistorico1;
     [SerializeField] GameObject operarioHistorico2;
     [SerializeField] GameObject supervHistoprico2;
@@ -63,6 +64,7 @@ public class LoadCharacter : MonoBehaviour
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
                         questHistorical.SetActive(true);
+                        //supervHistorico2VIDE.overrideStartNode = 1; 
                     }
                     break;
 

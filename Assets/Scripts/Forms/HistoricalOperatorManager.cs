@@ -22,18 +22,8 @@ public class HistoricalOperatorManager : MonoBehaviour
     void Start()
     {
         var operatorType = 0;
-        userData.indexOperationData = operatorType;
-        if (userData.load == 2)
-        {
-            operatorType = userData.indexOperationData;
-        }
-        else
-        {
-            operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
-        }
-
-
        
+           operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
 
         if (operatorType == 1)
         {

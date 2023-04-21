@@ -48,31 +48,30 @@ public class HistoricalDataFile : MonoBehaviour
                     userData.historicData[i] = historicalSamples[i];
                 }
             }
-
-            if (notEnoughData)
+          
+        }
+        if (notEnoughData)
+        {
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 20; i++)
-                {
-                    historicalDataTexts[i].text = Random.Range(minTime, maxTime).ToString();
-                }
-
-                for (int i = 20; i < dataCount; i++)
-                {
-                    historicalDataTexts[i].text = "";
-                }
+                historicalDataTexts[i].text = Random.Range(minTime, maxTime).ToString();
             }
 
-            if (isNotCorrectData)
+            for (int i = 20; i < dataCount; i++)
             {
-                var bias = 3.0f;
-                for (int i = 0; i < dataCount; i++)
-                {
-                    historicalDataTexts[i].text = (historicalSamples[i] + Random.Range(minTime - bias, maxTime + bias)).ToString();
-                }
+                historicalDataTexts[i].text = "";
             }
         }
 
-      
+        if (isNotCorrectData)
+        {
+            var bias = 3.0f;
+            for (int i = 0; i < dataCount; i++)
+            {
+                historicalDataTexts[i].text = (historicalSamples[i] + Random.Range(minTime - bias, maxTime + bias)).ToString();
+            }
+        }
+
 
     }
 

@@ -36,7 +36,7 @@ public class OperationData
     public OperationData(int indexToGenerate, int method)
     {
         Index = indexToGenerate;
-
+        Debug.Log("INDEX" + Index);
         switch (indexToGenerate)
         {
             case 1:
