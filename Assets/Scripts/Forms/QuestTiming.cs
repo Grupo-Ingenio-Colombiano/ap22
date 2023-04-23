@@ -14,6 +14,7 @@ public class QuestTiming : MonoBehaviour
     [SerializeField] GameObject operator1;
 
     [SerializeField] Vector3[] cronoIndicatorPositions;
+    [SerializeField] UserData userData;
 
     public bool isSetTimer = false;
 
@@ -38,12 +39,24 @@ public class QuestTiming : MonoBehaviour
     {
         IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
         HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
-        var randomOperation = Random.Range(1, 4);        
-        CurrentOperationData = new OperationData(randomOperation, 2);
+        if (userData.load >= 2 && userData.method == 2)
+        {
+            CurrentOperationData = new OperationData(userData.indexOperationData, 2, userData);
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+            FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+        }
+        else
+        {
+            var randomOperation = Random.Range(1, 4);         
+            CurrentOperationData = new OperationData(randomOperation, 2);
+            userData.indexOperationData = randomOperation;
+            userData.kCronometraje = CurrentOperationData.K;
 
-        //CurrentOperationData = new OperationData(1, 2);//TO ERASE
+            //CurrentOperationData = new OperationData(1, 2);//TO ERASE
 
-        FormResultsManager.Instance.currentOperationIndex = randomOperation;
+            FormResultsManager.Instance.currentOperationIndex = randomOperation;
+        }
+       
         ActivateQuestObjects();
     }
 

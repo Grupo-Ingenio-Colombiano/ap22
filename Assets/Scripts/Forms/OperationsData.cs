@@ -129,7 +129,7 @@ public class OperationData
 
         if (method == 2)
         {
-            SetTimingData();
+            K = userData.kCronometraje;
         }
 
     }

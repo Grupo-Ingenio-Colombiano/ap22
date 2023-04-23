@@ -77,9 +77,7 @@ public class UserData : ScriptableObject
     public float unitsProccessMuestreo;
     [Header("--Metodo 3 (Cronometraje)")]
     [Header("----Punto 0")]
-    public string[] A1; // 
-    public string[] B1; 
-    public string[] C1; // C3 nombre del usuario
+    public float kCronometraje;
 
     [Header("--Selección de Turnos ")]
     public int unitPerDay;
