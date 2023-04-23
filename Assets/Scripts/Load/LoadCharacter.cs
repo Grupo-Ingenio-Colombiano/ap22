@@ -14,7 +14,7 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField]
     VIDE_Assign inspectorSeguridad;
 
-    [Header("--Dialogos datos históricos")]
+    [Header("-- Datos históricos")]
     [SerializeField] VIDE_Assign supervHistorico1VIDE;
     [SerializeField] VIDE_Assign supervHistorico2VIDE;
     [SerializeField] GameObject operarioHistorico1;
@@ -25,8 +25,10 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject questHistorical;
 
     [Header("--Dialogos datos muestreo")]
-    [SerializeField] VIDE_Assign supervMuestreo1;
-   
+    [SerializeField] GameObject questSamplingMuestreo;
+    [SerializeField] GameObject supervMuestreo2;
+    [SerializeField] GameObject supervMuestreo1;
+
 
     [Header("--Dialogos datos cronometro")]
     [SerializeField] VIDE_Assign supervCronometro1;
@@ -64,10 +66,18 @@ public class LoadCharacter : MonoBehaviour
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
                         questHistorical.SetActive(true);
-                        //supervHistorico2VIDE.overrideStartNode = 1; 
+                      
                     }
                     break;
-
+                case 2:
+                    if (userData.load == 2)
+                    {
+                     
+                      questSamplingMuestreo.SetActive(true);
+                      supervMuestreo2.SetActive(true);
+                      supervMuestreo1.SetActive(false);
+                    }
+                    break;
                 default:
                     break;
             }
