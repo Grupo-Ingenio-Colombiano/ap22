@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultsOneWeekManager : MonoBehaviour
@@ -124,10 +125,11 @@ public class ResultsOneWeekManager : MonoBehaviour
 
     public void EnbleFInalResult()
     {
-        finalResult.SetActive(true);
-        resultsSupervisor.SetActive(false);
-        gameObject.SetActive(false);
+        int activeScene = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader.sceneToload = activeScene + 1;
+        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
     }
+
 
 
     public void DialogController()
