@@ -73,6 +73,7 @@ public class UserData : ScriptableObject
     public float percentageOperation;
     public float rhythm;
     public float k;
+    public int unidadesProducidasMuestreo;
     public float unitsProccessMuestreo;
     [Header("--Metodo 3 (Cronometraje)")]
     [Header("----Punto 0")]

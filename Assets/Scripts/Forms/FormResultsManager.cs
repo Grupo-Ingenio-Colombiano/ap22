@@ -14,6 +14,7 @@ public class FormResultsManager : MonoBehaviour
     [SerializeField] ExperienceRewardManager expRewardManager;
     [SerializeField] GameObject sadSequenceActivationObject;
     [SerializeField] GameObject turnOperatorSequenceActivationObject;
+    [SerializeField] LoadManager loadManager;
 
     GameObject currentForm;
 
@@ -128,7 +129,9 @@ public class FormResultsManager : MonoBehaviour
                 value = false;
                 break;
             }
+            loadManager.Upload(3);
         }
+
 
         return value;
     }

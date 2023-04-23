@@ -90,7 +90,7 @@ public class OperationData
         requiredUnits = userData.proccessUnits;
         minTime = userData.minTimeHistorical;
         maxTime = userData.maxTimeHistorical;
-        unidadesRealizadas = userData.requiredUnits;
+        unidadesRealizadas = userData.unidadesProducidasMuestreo;
         switch (indexToGenerate)
         {
             case 1:
@@ -121,7 +121,10 @@ public class OperationData
 
         if (method == 1)
         {
-            SetSamplingData();
+            numMinutosMuestreo = userData.numMinutos;
+            porcentajeDedicadoOperacion = userData.percentageOperation;
+            factorRitmo =userData.rhythm;
+            K = userData.k;
         }
 
         if (method == 2)

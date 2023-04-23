@@ -40,12 +40,29 @@ public class QuestSampling : MonoBehaviour
 
     public void SetSamplingQuest()
     {
-        IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+      
         HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
-        var randomOperation = Random.Range(1, 4);
-        CurrentOperationData = new OperationData(randomOperation, 1);
-        userData.proccessUnits = CurrentOperationData.requiredUnits;
-        FormResultsManager.Instance.currentOperationIndex = randomOperation;
+        if (userData.load >= 2 && userData.method == 2)
+        {
+            CurrentOperationData = new OperationData(userData.indexOperationData, 0, userData);
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+            FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+        }
+        else
+        {
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+            var randomOperation = Random.Range(1, 4);
+            userData.indexOperationData = randomOperation;
+            CurrentOperationData = new OperationData(randomOperation, 1);
+            userData.proccessUnits = CurrentOperationData.requiredUnits;
+            userData.numMinutos = CurrentOperationData.numMinutosMuestreo;
+            userData.percentageOperation = CurrentOperationData.porcentajeDedicadoOperacion;
+            userData.rhythm = CurrentOperationData.factorRitmo;
+            userData.k = CurrentOperationData.K;
+            userData.unidadesProducidasMuestreo = CurrentOperationData.unidadesRealizadas;
+            FormResultsManager.Instance.currentOperationIndex = randomOperation;
+        }
+      
 
 
         ActivateObjects();

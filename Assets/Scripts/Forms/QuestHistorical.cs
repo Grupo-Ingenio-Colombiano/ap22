@@ -39,7 +39,7 @@ public class QuestHistorical : MonoBehaviour
     {
         //IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
         HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta, si tiene dudas de su ubicación recuerde consultar el plot plan, este se encuentra en el costado derecho.");
-        if (userData.load >= 2)
+        if (userData.load >= 2 && userData.method ==1)
         {
             CurrentOperationData = new OperationData(userData.indexOperationData, 0, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));          

@@ -21,9 +21,8 @@ public class HistoricalOperatorManager : MonoBehaviour
 
     void Start()
     {
-        var operatorType = 0;
-       
-           operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
+      
+          var operatorType = QuestHistorical.Instance.CurrentOperationData.Index;
 
         if (operatorType == 1)
         {
