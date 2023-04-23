@@ -24,10 +24,15 @@ public class LoadCharacter : MonoBehaviour
 
     [SerializeField] GameObject questHistorical;
 
-    [Header("--Dialogos datos muestreo")]
+    [Header("--Datos muestreo")]
     [SerializeField] GameObject questSamplingMuestreo;
     [SerializeField] GameObject supervMuestreo2;
     [SerializeField] GameObject supervMuestreo1;
+
+    [Header("--Datos Cronometro")]
+    [SerializeField] GameObject questTimignCronometro;
+    [SerializeField] GameObject supervCronom2;
+    [SerializeField] GameObject supervCronom1;
 
 
     [Header("--Dialogos datos cronometro")]
@@ -76,6 +81,15 @@ public class LoadCharacter : MonoBehaviour
                       questSamplingMuestreo.SetActive(true);
                       supervMuestreo2.SetActive(true);
                       supervMuestreo1.SetActive(false);
+                    }
+                    break;
+                case 3:
+                    if (userData.load == 2)
+                    {
+
+                        questTimignCronometro.SetActive(true);
+                        supervCronom1.SetActive(false);
+                        supervCronom2.SetActive(true);
                     }
                     break;
                 default:

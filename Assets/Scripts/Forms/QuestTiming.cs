@@ -37,9 +37,9 @@ public class QuestTiming : MonoBehaviour
 
     public void SetQuest()
     {
-        IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+     
         HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
-        if (userData.load >= 2 && userData.method == 2)
+        if (userData.load >= 2 && userData.method == 3)
         {
             CurrentOperationData = new OperationData(userData.indexOperationData, 2, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
@@ -47,6 +47,7 @@ public class QuestTiming : MonoBehaviour
         }
         else
         {
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             var randomOperation = Random.Range(1, 4);         
             CurrentOperationData = new OperationData(randomOperation, 2);
             userData.indexOperationData = randomOperation;
