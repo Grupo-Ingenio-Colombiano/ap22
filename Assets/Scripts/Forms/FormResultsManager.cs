@@ -129,7 +129,7 @@ public class FormResultsManager : MonoBehaviour
                 value = false;
                 break;
             }
-            loadManager.Upload(3);
+           
         }
 
 

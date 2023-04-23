@@ -23,6 +23,7 @@ public class QuestSampling : MonoBehaviour
     [SerializeField] GameObject supervisor1;
 
     [SerializeField] UserData userData;
+    [SerializeField] LoadManager loadManager;
 
     private void Awake()
     {
@@ -108,6 +109,7 @@ public class QuestSampling : MonoBehaviour
         infoCapsuleObjects[CurrentOperationData.Index - 1].SetActive(true);
         infoObjects[CurrentOperationData.Index - 1].GetComponent<MouseOverEvent>().enabled = true;
         HelpManager.Instance().SetHelp("Realice el conteo de unidades dando clic sobre el carro indicado, luego hable nuevamente con el supervisor");
+        loadManager.Upload(2);
 
     }
 
