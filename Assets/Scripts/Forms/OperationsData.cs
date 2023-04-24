@@ -116,8 +116,8 @@ public class OperationData
                 break;
         }
 
-        SetHistoricalSamples(minTime, maxTime);
-        SetRhytmfactors();
+        historicalSamples = userData.historicData;
+        rhytmfFactors = userData.rhytmFactor;
 
         if (method == 1)
         {

@@ -31,13 +31,10 @@ public class LoadCharacter : MonoBehaviour
 
     [Header("--Datos Cronometro")]
     [SerializeField] GameObject questTimignCronometro;
-    [SerializeField] GameObject supervCronom2;
+    [SerializeField] GameObject actividadTiming;
     [SerializeField] GameObject supervCronom1;
-
-
-    [Header("--Dialogos datos cronometro")]
-    [SerializeField] VIDE_Assign supervCronometro1;
-
+    [SerializeField] GameObject formTimingQuestCronometro;
+    [SerializeField] GameObject timingDragActivity;
     // Update is called once per frame
 
     private void Start()
@@ -66,11 +63,12 @@ public class LoadCharacter : MonoBehaviour
                 case 1:
                     if(userData.load == 2)
                     {
+                        questHistorical.SetActive(true);
                         operarioHistorico1.SetActive(false);
                         supervHistoprico1.SetActive(false);
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
-                        questHistorical.SetActive(true);
+                      
                       
                     }
                     break;
@@ -86,10 +84,12 @@ public class LoadCharacter : MonoBehaviour
                 case 3:
                     if (userData.load == 2)
                     {
-
-                        questTimignCronometro.SetActive(true);
-                        supervCronom1.SetActive(false);
-                        supervCronom2.SetActive(true);
+                       questTimignCronometro.SetActive(true);
+                        timingDragActivity.SetActive(true);
+                        actividadTiming.SetActive(true);                                            
+                        formTimingQuestCronometro.SetActive(true);
+                      
+                     
                     }
                     break;
                 default:

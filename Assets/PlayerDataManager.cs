@@ -11,7 +11,7 @@ public class PlayerDataManager : MonoBehaviour
     [SerializeField] PlayerAnswers playerAnswers;
 
 
-    [SerializeField] UserData data;
+    [SerializeField] UserData userData;
 
     private void Awake()
     {
@@ -25,6 +25,20 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if(userData.isSave != false)
+        {
+            for (int i = 0; i < userData.badAnswer; i++)
+            {
+
+            }
+            for (int i = 0; i < userData.goodAnswer; i++)
+            {
+
+            }
+        }
+    }
     public void AddIncorrect()
     {
         playerAnswers.AddIncorrectAnswer();

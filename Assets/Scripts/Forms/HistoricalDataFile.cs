@@ -28,7 +28,7 @@ public class HistoricalDataFile : MonoBehaviour
         float [] historicalSamples = QuestHistorical.Instance.CurrentOperationData.historicalSamples;
       
      
-        if(userData.load >= 2)
+        if(userData.load >= 2 && userData.method == 1)
         {
             QuestHistorical.Instance.CurrentOperationData.requiredUnits = userData.proccessUnits;
 

@@ -8,6 +8,7 @@ public class TimingFormValuesDistrib : MonoBehaviour
     [SerializeField] Text[] values;
 
 
+
     private void OnEnable()
     {
         SetValues();
@@ -15,8 +16,11 @@ public class TimingFormValuesDistrib : MonoBehaviour
 
     void SetValues()
     {
+      
         var currentTimeValues = QuestTiming.Instance.CurrentOperationData.historicalSamples;
         var currentFRValues = QuestTiming.Instance.CurrentOperationData.rhytmfFactors;
+        
+
 
         float[] col1 = new float[5];
         float[] col2 = new float[7];

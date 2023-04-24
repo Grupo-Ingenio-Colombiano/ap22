@@ -76,8 +76,10 @@ public class UserData : ScriptableObject
     public int unidadesProducidasMuestreo;
     public float unitsProccessMuestreo;
     [Header("--Metodo 3 (Cronometraje)")]
-    [Header("----Punto 0")]
+
     public float kCronometraje;
+    public int[] rhytmFactor = new int[36];
+    public float[] cronometrajeData = new float[36];
 
     [Header("--Selección de Turnos ")]
     public int unitPerDay;

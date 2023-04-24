@@ -64,10 +64,21 @@ public class QuestHistorical : MonoBehaviour
 
     void ActivateObjects()
     {
-        for (int i = 0; i < objectsToActivate.Length; i++)
+        if(userData.load >= 2 && userData.method == 1)
         {
-            objectsToActivate[i].SetActive(true);
+            for (int i = 0; i < objectsToActivate.Length; i++)
+            {
+                objectsToActivate[i].SetActive(false);
+            }
         }
+        else
+        {
+            for (int i = 0; i < objectsToActivate.Length; i++)
+            {
+                objectsToActivate[i].SetActive(true);
+            }
+        }
+       
     }
 
     public void EnableDataSelector()
