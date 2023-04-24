@@ -77,8 +77,8 @@ public class LoadCharacter : MonoBehaviour
                     {
                      
                       questSamplingMuestreo.SetActive(true);
-                      supervMuestreo2.SetActive(true);
-                      supervMuestreo1.SetActive(false);
+                      //supervMuestreo2.SetActive(true);
+                      supervMuestreo1.SetActive(true);
                     }
                     break;
                 case 3:
