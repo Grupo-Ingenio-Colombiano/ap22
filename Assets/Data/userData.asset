@@ -17,22 +17,22 @@ MonoBehaviour:
   lastScene: 
   practiceName: 
   isSave: 1
-  load: 2
+  load: 1
   nodeDialogueJefePlanta: 0
   PlayerSelected: 1
-  playerPosition: {x: 25.957998, y: 0.04849702, z: -58.029045}
-  playerRot: {x: 0, y: 0.4416272, z: 0, w: 0.8971986}
-  progress: 30
+  playerPosition: {x: 36.289566, y: 0.048526227, z: -59.585464}
+  playerRot: {x: 0.0035757064, y: 0.8592733, z: -0.0060072253, w: 0.51146907}
+  progress: 40
   experience: 140
-  timer: 00:00:12
+  timer: 00:14:43
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 50.9972, y: 147.01886, z: 0}
   indicator: {x: 41, y: 0, z: -20.3}
-  method: 2
+  method: 3
   selectedMethod: 1
   proccessUnits: 186
-  indexOperationData: 2
+  indexOperationData: 1
   inventory:
   - itemName: "Cron\xF3metro"
     sprite: 0
@@ -56,6 +56,17 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 1
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   - itemName: Casco
     sprite: 2
     eliminable: 0
@@ -144,17 +155,6 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
-  - itemName: Casco
-    sprite: 2
-    eliminable: 0
-    obj: 2
-    infotext: 
-    infoSprite: 2
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
   - itemName: "M\xE1scara para vapores"
     sprite: 4
     eliminable: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   k: 10.78
   unidadesProducidasMuestreo: 19
   unitsProccessMuestreo: 19
-  kCronometraje: 0
+  kCronometraje: 14
   unitPerDay: 0
   unitsRquired: 0
   turn1: 1
