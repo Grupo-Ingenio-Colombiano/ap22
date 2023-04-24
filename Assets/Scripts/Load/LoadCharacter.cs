@@ -86,8 +86,8 @@ public class LoadCharacter : MonoBehaviour
                     {
                        questTimignCronometro.SetActive(true);
                         timingDragActivity.SetActive(true);
-                        actividadTiming.SetActive(true);                                            
-                        formTimingQuestCronometro.SetActive(true);
+                        //actividadTiming.SetActive(true);                                            
+                        //formTimingQuestCronometro.SetActive(true);
                       
                      
                     }
