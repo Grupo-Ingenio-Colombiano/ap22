@@ -7,6 +7,7 @@ public class LoadCharacter : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] UserData userData;
     [SerializeField] GameObject dialogSST;
+    [SerializeField] VIDE_Assign vigilante;
 
     [SerializeField]
     VIDE_Assign videJefe;
@@ -57,6 +58,7 @@ public class LoadCharacter : MonoBehaviour
             if (userData.load >= 1)
             {
                 videJefe.overrideStartNode = 10;
+                vigilante.overrideStartNode = 3;
             }
             switch (userData.method)
             {
