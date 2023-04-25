@@ -9,13 +9,16 @@ public class IndicatorManager : MonoBehaviour
     static IndicatorManager indicatorManager;
     [SerializeField] UserData userData;
     [SerializeField] LoadCharacter loadCharacter;
+    [SerializeField] GameObject indicator;
 
     private void Start()
     {
-        if(userData.isSave != false)
+        indicator.transform.localScale = new Vector3(0.09f, 0.09f, 0.09f);
+        if (userData.isSave != false)
         {
             loadCharacter.SetIndicatorLoad();
         }
+       
     }
     static public IndicatorManager instance()
     {
@@ -27,7 +30,8 @@ public class IndicatorManager : MonoBehaviour
     public void SetDestiny(Vector3 pos)
     {
         gameObject.transform.position = pos;
-     
+        indicator.transform.localScale = new Vector3(0.09f, 0.09f, 0.09f);  
+
 
     }
 
