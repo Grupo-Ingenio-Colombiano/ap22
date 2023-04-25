@@ -35,6 +35,9 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     string  content;
 
+    [SerializeField] Gender gender;
+    [SerializeField] UserData userData;
+
     
 
     private void Start() {
@@ -134,6 +137,7 @@ public class LoginManager : MonoBehaviour
         else
         {
             LevelLoader.sceneToload = int.Parse(data.lastScene);
+            gender.playerIsMan = userData.gender;
         }
 
         SceneManager.LoadScene("Loading", LoadSceneMode.Additive);

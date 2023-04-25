@@ -22,7 +22,8 @@ public class UserData : ScriptableObject
     public int load;
     public int nodeDialogueJefePlanta;
 
-    public string PlayerSelected;  
+    public string PlayerSelected;
+    public bool gender;
     public Vector3 playerPosition;
     public Quaternion playerRot;
 
