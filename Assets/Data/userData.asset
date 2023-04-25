@@ -20,19 +20,19 @@ MonoBehaviour:
   load: 2
   nodeDialogueJefePlanta: 0
   PlayerSelected: 0
-  playerPosition: {x: 25.936438, y: 0.04850036, z: -57.51162}
-  playerRot: {x: 0, y: 0.43320948, z: 0, w: 0.9012933}
-  progress: 35
-  experience: 170
-  timer: 00:04:05
+  playerPosition: {x: -2.7660847, y: 0.048558295, z: -58.770943}
+  playerRot: {x: -0.0018612571, y: 0.9825879, z: -0.00985757, w: -0.18552735}
+  progress: 65
+  experience: 140
+  timer: 00:00:17
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
   method: 3
   selectedMethod: 1
-  proccessUnits: 146
-  indexOperationData: 2
+  proccessUnits: 150
+  indexOperationData: 3
   inventory:
   - itemName: "Cron\xF3metro"
     sprite: 0
@@ -133,43 +133,76 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
-  - 5.27
-  - 4.84
-  - 5.28
-  - 5.23
-  - 4.77
-  - 4.94
-  - 4.7
-  - 4.72
-  - 4.64
-  - 4.75
-  - 5.28
-  - 4.66
-  - 4.8
-  - 4.9
-  - 4.88
-  - 5.27
-  - 4.86
-  - 4.65
-  - 5.14
-  - 4.66
-  - 4.81
-  - 4.72
-  - 4.8
-  - 4.83
-  - 4.67
-  - 5.13
-  - 4.99
-  - 4.66
-  - 5
-  - 4.95
-  - 5.3
-  - 5.03
-  - 5.27
-  - 4.93
-  - 4.64
-  - 4.82
+  - 4
+  - 234
+  - 34
+  - 3
+  - 5.73
+  - 33
+  - 3
+  - 3
+  - 3
+  - 3
+  - 5.87
+  - 6.45
+  - 6.52
+  - 5.51
+  - 6.41
+  - 6.25
+  - 6.4
+  - 5.88
+  - 6.15
+  - 6.21
+  - 5.84
+  - 6.46
+  - 6.17
+  - 5.67
+  - 5.61
+  - 5.7
+  - 5.67
+  - 6.06
+  - 5.59
+  - 6.04
+  - 6.23
+  - 6.25
+  - 6.31
+  - 5.54
+  - 5.42
+  - 5.51
   minTimeHistorical: 4.6
   maxTimeHistorical: 5.4
   talkTime: 0
@@ -185,8 +218,8 @@ MonoBehaviour:
   k: 1.9
   unidadesProducidasMuestreo: 145
   unitsProccessMuestreo: 145
-  kCronometraje: 0
-  rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  kCronometraje: 15
+  rhytmFactor: 5a0000005f00000064000000690000006e0000005a0000006e0000005a0000006e0000006e000000640000005f0000005a000000640000005f0000005f000000730000006400000069000000690000005f0000005f00000069000000690000006400000064000000690000006400000064000000690000005f000000640000005a000000640000006e00000055000000
   cronometrajeData:
   - 0
   - 0
