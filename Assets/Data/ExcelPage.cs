@@ -44,6 +44,15 @@ namespace VpSerializableData
         public ExcelPage()
         {
             C = new List<string>(new string[31]);
+            D = new List<string>(new string[31]);
+            E = new List<string>(new string[31]);
+            F = new List<string>(new string[31]);
+            G = new List<string>(new string[31]);
+            H = new List<string>(new string[31]);
+            I = new List<string>(new string[70]);
+            J = new List<string>(new string[55]);
+            K = new List<string>(new string[55]);
+            L = new List<string>(new string[55]);
         }
     }
 }
