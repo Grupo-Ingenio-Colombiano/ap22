@@ -17,7 +17,7 @@ public class Downloader : MonoBehaviour
         userData.excelReport[0].E[3] = WorkPermit.userName + " " + WorkPermit.userLastName;
         userData.excelReport[0].E[5] = WorkPermit.userID;
 
-        if(userData.method == 1 || userData.method == 2)
+        if (userData.method == 1 || userData.method == 2)
         {
             userData.excelReport[0].J[15] = MethodsAnswerData.TiempoTakt[0];
             userData.excelReport[0].K[15] = MethodsAnswerData.TiempoTakt[1];
@@ -64,8 +64,129 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].I[38] = GameManager.scoreFormTCiclo.ToString();
             userData.excelReport[0].I[39] = GameManager.scoreUpgradeForm.ToString();
         }
+        else if (userData.method == 3) {
+            //Campana
+            userData.excelReport[0].C[17] = HistoricalAnswerData.campana85;
 
-       
+            userData.excelReport[0].D[17] = HistoricalAnswerData.campana90[0];
+            userData.excelReport[0].D[18] = HistoricalAnswerData.campana90[1];
+            userData.excelReport[0].D[19] = HistoricalAnswerData.campana90[2];
+            userData.excelReport[0].D[20] = HistoricalAnswerData.campana90[3];
+            userData.excelReport[0].D[21] = HistoricalAnswerData.campana90[4];
+
+            userData.excelReport[0].E[17] = HistoricalAnswerData.campana95[0];
+            userData.excelReport[0].E[18] = HistoricalAnswerData.campana95[1];
+            userData.excelReport[0].E[19] = HistoricalAnswerData.campana95[2];
+            userData.excelReport[0].E[20] = HistoricalAnswerData.campana95[3];
+            userData.excelReport[0].E[21] = HistoricalAnswerData.campana95[4];
+            userData.excelReport[0].E[22] = HistoricalAnswerData.campana95[5];
+            userData.excelReport[0].E[23] = HistoricalAnswerData.campana95[6];
+
+            userData.excelReport[0].F[17] = HistoricalAnswerData.campana100[0];
+            userData.excelReport[0].F[18] = HistoricalAnswerData.campana100[1];
+            userData.excelReport[0].F[19] = HistoricalAnswerData.campana100[2];
+            userData.excelReport[0].F[20] = HistoricalAnswerData.campana100[3];
+            userData.excelReport[0].F[21] = HistoricalAnswerData.campana100[4];
+            userData.excelReport[0].F[22] = HistoricalAnswerData.campana100[5];
+            userData.excelReport[0].F[23] = HistoricalAnswerData.campana100[6];
+            userData.excelReport[0].F[24] = HistoricalAnswerData.campana100[7];
+            userData.excelReport[0].F[25] = HistoricalAnswerData.campana100[8];
+            userData.excelReport[0].F[26] = HistoricalAnswerData.campana100[9];
+
+            userData.excelReport[0].G[17] = HistoricalAnswerData.campana105[0];
+            userData.excelReport[0].G[18] = HistoricalAnswerData.campana105[1];
+            userData.excelReport[0].G[19] = HistoricalAnswerData.campana105[2];
+            userData.excelReport[0].G[20] = HistoricalAnswerData.campana105[3];
+            userData.excelReport[0].G[21] = HistoricalAnswerData.campana105[4];
+            userData.excelReport[0].G[22] = HistoricalAnswerData.campana105[5];
+            userData.excelReport[0].G[23] = HistoricalAnswerData.campana105[6];
+
+            userData.excelReport[0].H[17] = HistoricalAnswerData.campana110[0];
+            userData.excelReport[0].H[18] = HistoricalAnswerData.campana110[1];
+            userData.excelReport[0].H[19] = HistoricalAnswerData.campana110[2];
+            userData.excelReport[0].H[20] = HistoricalAnswerData.campana110[3];
+            userData.excelReport[0].H[21] = HistoricalAnswerData.campana110[4];
+
+            userData.excelReport[0].I[17] = HistoricalAnswerData.campana115;
+
+            //Tiempos
+            userData.excelReport[0].C[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[0];
+            userData.excelReport[0].C[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[0];
+            userData.excelReport[0].C[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[0];
+
+            userData.excelReport[0].D[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[1];
+            userData.excelReport[0].D[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[1];
+            userData.excelReport[0].D[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[1];
+
+            userData.excelReport[0].E[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[2];
+            userData.excelReport[0].E[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[2];
+            userData.excelReport[0].E[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[2];
+
+            userData.excelReport[0].F[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[3];
+            userData.excelReport[0].F[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[3];
+            userData.excelReport[0].F[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[3];
+
+            userData.excelReport[0].G[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[4];
+            userData.excelReport[0].G[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[4];
+            userData.excelReport[0].G[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[4];
+
+            userData.excelReport[0].H[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[5];
+            userData.excelReport[0].H[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[5];
+            userData.excelReport[0].H[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[5];
+
+            userData.excelReport[0].I[28] = HistoricalAnswerData.TiempoNormalizadoIntento1[6];
+            userData.excelReport[0].I[29] = HistoricalAnswerData.TiempoNormalizadoIntento2[6];
+            userData.excelReport[0].I[30] = HistoricalAnswerData.TiempoNormalizadoIntento3[6];
+
+            //Cuadros
+            userData.excelReport[0].J[33] = HistoricalAnswerData.TiempoNormal[0];
+            userData.excelReport[0].K[33] = HistoricalAnswerData.TiempoNormal[1];
+            userData.excelReport[0].L[33] = HistoricalAnswerData.TiempoNormal[2];
+
+            userData.excelReport[0].J[34] = MethodsAnswerData.TiempoCiclo[0];
+            userData.excelReport[0].K[34] = MethodsAnswerData.TiempoCiclo[1];
+            userData.excelReport[0].L[34] = MethodsAnswerData.TiempoCiclo[2];
+
+            userData.excelReport[0].J[35] = MethodsAnswerData.TiempoTakt[0];
+            userData.excelReport[0].K[35] = MethodsAnswerData.TiempoTakt[1];
+            userData.excelReport[0].L[35] = MethodsAnswerData.TiempoTakt[2];
+
+            userData.excelReport[0].J[36] = MethodsAnswerData.UnidadesProducidas[0];
+            userData.excelReport[0].K[36] = MethodsAnswerData.UnidadesProducidas[1];
+            userData.excelReport[0].L[36] = MethodsAnswerData.UnidadesProducidas[2];
+
+            userData.excelReport[0].J[38] = MethodsAnswerData.YesNo[0];
+            userData.excelReport[0].K[38] = MethodsAnswerData.YesNo[1];
+            userData.excelReport[0].L[38] = MethodsAnswerData.YesNo[2];
+
+            userData.excelReport[0].J[39] = HistoricalAnswerData.JustificationTomados[0];
+            userData.excelReport[0].K[39] = HistoricalAnswerData.JustificationTomados[1];
+            userData.excelReport[0].L[39] = HistoricalAnswerData.JustificationTomados[2];
+
+            userData.excelReport[0].J[40] = HistoricalAnswerData.YesNoSuficientes[0];
+            userData.excelReport[0].K[40] = HistoricalAnswerData.YesNoSuficientes[1];
+            userData.excelReport[0].L[40] = HistoricalAnswerData.YesNoSuficientes[2];
+
+            userData.excelReport[0].J[41] = HistoricalAnswerData.JustificationSuficientes[0];
+            userData.excelReport[0].K[41] = HistoricalAnswerData.JustificationSuficientes[1];
+            userData.excelReport[0].L[41] = HistoricalAnswerData.JustificationSuficientes[2];
+
+            userData.excelReport[0].J[42] = MethodsAnswerData.YesNo[0];
+            userData.excelReport[0].K[42] = MethodsAnswerData.YesNo[1];
+            userData.excelReport[0].L[42] = MethodsAnswerData.YesNo[2];
+
+            userData.excelReport[0].J[43] = MethodsAnswerData.Justification[0];
+            userData.excelReport[0].K[43] = MethodsAnswerData.Justification[1];
+            userData.excelReport[0].L[43] = MethodsAnswerData.Justification[2];
+
+            //Propuesta mejora
+
+
+
+
+        }
+
+
     }
     public void DownloadData()
     {
