@@ -54,6 +54,7 @@ public class MethodSeleccion : MonoBehaviour
         {
             method = 1;
             data.method = method;
+            data.templateName = "app22_1";
             anim.SetTrigger("indh");
             selection = true;
             data.selectedMethod = selection;
@@ -68,6 +69,7 @@ public class MethodSeleccion : MonoBehaviour
         {
             method = 2;
             data.method = method;
+            data.templateName = "app22_2";
             anim.SetTrigger("inm");
             selection = true;
             data.selectedMethod = selection; 
@@ -82,6 +84,7 @@ public class MethodSeleccion : MonoBehaviour
         {
             method = 3;
             data.method = method;
+            data.templateName = "app22_3";
             anim.SetTrigger("inc");
             selection = true;
             data.selectedMethod = selection;
