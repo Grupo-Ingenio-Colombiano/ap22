@@ -17,7 +17,7 @@ public class Downloader : MonoBehaviour
         userData.excelReport[0].E[3] = WorkPermit.userName + " " + WorkPermit.userLastName;
         userData.excelReport[0].E[5] = WorkPermit.userID;
 
-        if(userData.method == 1)
+        if(userData.method == 1 || userData.method == 2)
         {
             userData.excelReport[0].J[15] = MethodsAnswerData.TiempoTakt[0];
             userData.excelReport[0].K[15] = MethodsAnswerData.TiempoTakt[1];
@@ -58,9 +58,14 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].J[32] = methodData.obI1;
             userData.excelReport[0].K[32] = methodData.obI2;
             userData.excelReport[0].L[32] = methodData.obI3;
+
+            userData.excelReport[0].I[36] = GameManager.scoreSecurityElements.ToString();
+            userData.excelReport[0].I[37] = GameManager.scoreSelectData.ToString();
+            userData.excelReport[0].I[38] = GameManager.scoreFormTCiclo.ToString();
+            userData.excelReport[0].I[39] = GameManager.scoreUpgradeForm.ToString();
         }
+
        
-        
     }
     public void DownloadData()
     {
@@ -89,48 +94,7 @@ public class Downloader : MonoBehaviour
             (GameManager.scoreSecurityElements + GameManager.scoreSelectData + GameManager.scoreFormTCiclo + GameManager.scoreUpgradeForm).ToString()
 
             );
-
-        userData.excelReport[0].E[3] = WorkPermit.userName + " " + WorkPermit.userLastName;
-        userData.excelReport[0].E[5] = WorkPermit.userID;
-        userData.excelReport[0].J[15] = MethodsAnswerData.TiempoTakt[0];
-        userData.excelReport[0].K[15] = MethodsAnswerData.TiempoTakt[1];
-        userData.excelReport[0].L[15] = MethodsAnswerData.TiempoTakt[2];
-        userData.excelReport[0].J[16] = MethodsAnswerData.TiempoCiclo[0];
-        userData.excelReport[0].K[16] = MethodsAnswerData.TiempoCiclo[1];
-        userData.excelReport[0].L[16] = MethodsAnswerData.TiempoCiclo[2];
-        userData.excelReport[0].J[17] = MethodsAnswerData.UnidadesProducidas[0];
-        userData.excelReport[0].K[17] = MethodsAnswerData.UnidadesProducidas[1];
-        userData.excelReport[0].L[17] = MethodsAnswerData.UnidadesProducidas[2];
-        userData.excelReport[0].J[19] = MethodsAnswerData.YesNo[0];
-        userData.excelReport[0].K[19] = MethodsAnswerData.YesNo[1];
-        userData.excelReport[0].L[19] = MethodsAnswerData.YesNo[2];
-        userData.excelReport[0].J[20] = MethodsAnswerData.Justification[0];
-        userData.excelReport[0].K[20] = MethodsAnswerData.Justification[1];
-        userData.excelReport[0].L[20] = MethodsAnswerData.Justification[2];
-        userData.excelReport[0].J[25] = methodData.t1I1;
-        userData.excelReport[0].K[25] = methodData.t1I2;
-        userData.excelReport[0].L[25] = methodData.t1I3;
-        userData.excelReport[0].J[26] = methodData.o1I1;
-        userData.excelReport[0].K[26] = methodData.o1I2;
-        userData.excelReport[0].L[26] = methodData.o1I3;
-        userData.excelReport[0].J[27] = methodData.t2I1;
-        userData.excelReport[0].K[27] = methodData.t2I2;
-        userData.excelReport[0].L[27] = methodData.t2I3;
-        userData.excelReport[0].J[28] = methodData.o2I1;
-        userData.excelReport[0].K[28] = methodData.o2I2;
-        userData.excelReport[0].L[28] = methodData.o2I3;
-        userData.excelReport[0].J[29] = methodData.t3I1;
-        userData.excelReport[0].K[29] = methodData.t3I2;
-        userData.excelReport[0].L[29] = methodData.t3I3;
-        userData.excelReport[0].J[30] = methodData.o3I1;
-        userData.excelReport[0].K[30] = methodData.o3I2;
-        userData.excelReport[0].L[30] = methodData.o3I3;
-        userData.excelReport[0].J[31] = methodData.upI1;
-        userData.excelReport[0].K[31] = methodData.upI2;
-        userData.excelReport[0].L[31] = methodData.upI3;
-        userData.excelReport[0].J[32] = methodData.obI1;
-        userData.excelReport[0].K[32] = methodData.obI2;
-        userData.excelReport[0].L[32] = methodData.obI3;
+       
 
 
 
