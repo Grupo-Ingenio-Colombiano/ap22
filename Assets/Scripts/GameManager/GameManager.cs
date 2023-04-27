@@ -23,11 +23,22 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         userData.lastScene = SceneManager.GetActiveScene().buildIndex.ToString();
+        userData.scoreSecurityElements = scoreSecurityElements;
+        userData.scoreTimeTake = scoreTimeTake; 
+        userData.scoreSelectData = scoreSelectData;
+        userData.scoreFormTCiclo = scoreFormTCiclo;
+        userData.scoreUpgradeForm = scoreUpgradeForm;
         if (userData.load >= 1)
         {
           
             EnableSecurityNPC();
             disablePlantBossFirstInteraccion();
+            scoreSecurityElements = userData.scoreSecurityElements;
+            scoreTimeTake = userData.scoreTimeTake; 
+            scoreSelectData = userData.scoreSelectData;
+            scoreFormTCiclo = userData.scoreFormTCiclo;
+            scoreUpgradeForm = userData.scoreUpgradeForm;
+
         }
         if (userData.load == 1)
         {

@@ -45,6 +45,12 @@ public class UserData : ScriptableObject
     public int proccessUnits;
     public int indexOperationData;
 
+    public  int scoreSecurityElements;
+    public  int scoreTimeTake;
+    public  int scoreSelectData;
+    public  int scoreFormTCiclo;
+    public  int scoreUpgradeForm;
+
     public List<InventoryItem> inventory;
  
 
