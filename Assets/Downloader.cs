@@ -181,9 +181,35 @@ public class Downloader : MonoBehaviour
 
             //Propuesta mejora
 
+            userData.excelReport[0].J[47] = methodData.t1I1;
+            userData.excelReport[0].K[47] = methodData.t1I2;
+            userData.excelReport[0].L[47] = methodData.t1I3;
+            userData.excelReport[0].J[48] = methodData.o1I1;
+            userData.excelReport[0].K[48] = methodData.o1I2;
+            userData.excelReport[0].L[48] = methodData.o1I3;
+            userData.excelReport[0].J[49] = methodData.t2I1;
+            userData.excelReport[0].K[49] = methodData.t2I2;
+            userData.excelReport[0].L[49] = methodData.t2I3;
+            userData.excelReport[0].J[50] = methodData.o2I1;
+            userData.excelReport[0].K[50] = methodData.o2I2;
+            userData.excelReport[0].L[50] = methodData.o2I3;
+            userData.excelReport[0].J[51] = methodData.t3I1;
+            userData.excelReport[0].K[51] = methodData.t3I2;
+            userData.excelReport[0].L[51] = methodData.t3I3;
+            userData.excelReport[0].J[52] = methodData.o3I1;
+            userData.excelReport[0].K[52] = methodData.o3I2;
+            userData.excelReport[0].L[52] = methodData.o3I3;
+            userData.excelReport[0].J[53] = methodData.upI1;
+            userData.excelReport[0].K[53] = methodData.upI2;
+            userData.excelReport[0].L[53] = methodData.upI3;
+            userData.excelReport[0].J[54] = methodData.obI1;
+            userData.excelReport[0].K[54] = methodData.obI2;
+            userData.excelReport[0].L[54] = methodData.obI3;
 
-
-
+            userData.excelReport[0].I[58] = GameManager.scoreSecurityElements.ToString();
+            userData.excelReport[0].I[59] = GameManager.scoreSelectData.ToString();
+            userData.excelReport[0].I[60] = GameManager.scoreFormTCiclo.ToString();
+            userData.excelReport[0].I[61] = GameManager.scoreUpgradeForm.ToString();
         }
 
 
