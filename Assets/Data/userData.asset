@@ -21,11 +21,11 @@ MonoBehaviour:
   nodeDialogueJefePlanta: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 20.650747, y: 0.048496366, z: -61.926353}
-  playerRot: {x: 0, y: 0.99998975, z: 0, w: 0.0045376457}
-  progress: 40
-  experience: 200
-  timer: 00:04:42
+  playerPosition: {x: -1.0048866, y: 0.04850179, z: -17.91789}
+  playerRot: {x: 0, y: -0.01651027, z: 0, w: 0.99986374}
+  progress: 105
+  experience: 290
+  timer: 00:02:33
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
@@ -34,6 +34,11 @@ MonoBehaviour:
   selectedMethod: 1
   proccessUnits: 189
   indexOperationData: 2
+  scoreSecurityElements: 0
+  scoreTimeTake: 0
+  scoreSelectData: 0
+  scoreFormTCiclo: 0
+  scoreUpgradeForm: 0
   inventory:
   - itemName: "Cron\xF3metro"
     sprite: 0
@@ -145,6 +150,28 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
+  - itemName: Camiseta
+    sprite: 9
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Baile
+    sprite: 10
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
   - 0
   - 0
@@ -236,10 +263,10 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  unitPerDay: 0
-  unitsRquired: 0
+  unitPerDay: 8181
+  unitsRquired: 189
   turn1: 1
-  turn2: 1
+  turn2: 0
   turn3: 0
   observaciones: 
   templateName: ap22_2
@@ -315,7 +342,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
+    - ' '
     - 
     - 
     - 
@@ -476,10 +503,10 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
+    - 30
+    - 30
+    - 20
+    - 20
     - 
     - 
     - 
@@ -526,23 +553,23 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 2.14
+    - 2.97
+    - 136
+    - 
+    - Si
+    - yjtyu
     - 
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Si
+    - 1
+    - No
+    - 0
+    - No
+    - 0
+    - 8181
     - 
     - 
     - 
@@ -582,12 +609,12 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 2.14
+    - 0.05
+    - 8181
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Si
+    - yjtyu
     - 
     - 
     - 
@@ -683,7 +710,7 @@ MonoBehaviour:
     O: []
     P: []
     Q: []
-  reportUrl: 
+  reportUrl: https://apivirtualplant.com/virtualplantApiServices/reportData/data/-.pdf
   institution: 
   academicProgram: 
   subject: 
