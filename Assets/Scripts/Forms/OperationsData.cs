@@ -119,13 +119,11 @@ public class OperationData
         historicalSamples = userData.historicData;
         rhytmfFactors = userData.rhytmFactor;
 
-        if (method == 1)
-        {
-            numMinutosMuestreo = userData.numMinutos;
-            porcentajeDedicadoOperacion = userData.percentageOperation;
-            factorRitmo =userData.rhythm;
-            K = userData.k;
-        }
+        numMinutosMuestreo = userData.numMinutos;
+        porcentajeDedicadoOperacion = userData.percentageOperation;
+        factorRitmo =userData.rhythm;
+        K = userData.k;
+        
 
         if (method == 2)
         {

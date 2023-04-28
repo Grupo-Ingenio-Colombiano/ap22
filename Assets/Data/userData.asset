@@ -21,24 +21,24 @@ MonoBehaviour:
   nodeDialogueJefePlanta: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: -1.0048866, y: 0.04850179, z: -17.91789}
-  playerRot: {x: 0, y: -0.01651027, z: 0, w: 0.99986374}
-  progress: 105
-  experience: 290
-  timer: 00:02:33
+  playerPosition: {x: 26.02754, y: 0.04850179, z: -56.813225}
+  playerRot: {x: 0, y: 0.7999322, z: 0, w: 0.60009044}
+  progress: 10
+  experience: 50
+  timer: 00:00:40
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
   method: 2
   selectedMethod: 1
-  proccessUnits: 189
+  proccessUnits: 112
   indexOperationData: 2
-  scoreSecurityElements: 0
-  scoreTimeTake: 0
-  scoreSelectData: 0
-  scoreFormTCiclo: 0
-  scoreUpgradeForm: 0
+  scoreSecurityElements: 30
+  scoreTimeTake: 30
+  scoreSelectData: 30
+  scoreFormTCiclo: 30
+  scoreUpgradeForm: 30
   inventory:
   - itemName: "Cron\xF3metro"
     sprite: 0
@@ -139,39 +139,6 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
-  - itemName: Camiseta
-    sprite: 9
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Camiseta
-    sprite: 9
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Baile
-    sprite: 10
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 0
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
   historicData:
   - 0
   - 0
@@ -218,12 +185,12 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 1
+  numMinutos: 150
   percentageOperation: 85
-  rhythm: 90
-  k: 10
-  unidadesProducidasMuestreo: 17
-  unitsProccessMuestreo: 17
+  rhythm: 95
+  k: 14
+  unidadesProducidasMuestreo: 19
+  unitsProccessMuestreo: 0
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -263,9 +230,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  unitPerDay: 8181
-  unitsRquired: 189
-  turn1: 1
+  unitPerDay: 0
+  unitsRquired: 0
+  turn1: 0
   turn2: 0
   turn3: 0
   observaciones: 
@@ -342,7 +309,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - ' '
+    - 
     - 
     - 
     - 
@@ -503,10 +470,10 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 30
-    - 30
-    - 20
-    - 20
+    - 
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -553,23 +520,23 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 2.14
-    - 2.97
-    - 136
-    - 
-    - Si
-    - yjtyu
     - 
     - 
     - 
     - 
-    - Si
-    - 1
-    - No
-    - 0
-    - No
-    - 0
-    - 8181
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -609,12 +576,12 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 2.14
-    - 0.05
-    - 8181
     - 
-    - Si
-    - yjtyu
+    - 
+    - 
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -710,7 +677,7 @@ MonoBehaviour:
     O: []
     P: []
     Q: []
-  reportUrl: https://apivirtualplant.com/virtualplantApiServices/reportData/data/-.pdf
+  reportUrl: 
   institution: 
   academicProgram: 
   subject: 

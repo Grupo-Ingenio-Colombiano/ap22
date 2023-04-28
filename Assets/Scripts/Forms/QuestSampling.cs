@@ -24,6 +24,7 @@ public class QuestSampling : MonoBehaviour
 
     [SerializeField] UserData userData;
     [SerializeField] LoadManager loadManager;
+   
 
     private void Awake()
     {
@@ -48,6 +49,8 @@ public class QuestSampling : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 1, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+            SwapOperator();
+            
         }
         else
         {

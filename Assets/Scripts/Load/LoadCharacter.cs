@@ -36,6 +36,7 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject supervCronom1;
     [SerializeField] GameObject formTimingQuestCronometro;
     [SerializeField] GameObject timingDragActivity;
+    [SerializeField] NotesManager notesManager;
     // Update is called once per frame
 
     private void Start()
@@ -79,8 +80,10 @@ public class LoadCharacter : MonoBehaviour
                     {
                      
                       questSamplingMuestreo.SetActive(true);
-                      //supervMuestreo2.SetActive(true);
-                      supervMuestreo1.SetActive(true);
+                      supervMuestreo2.SetActive(true);
+                      supervMuestreo1.SetActive(false);
+                        notesManager.EnablePage(1);
+
                     }
                     break;
                 case 3:

@@ -81,7 +81,7 @@ public class UserData : ScriptableObject
     public float rhythm;
     public float k;
     public int unidadesProducidasMuestreo;
-    public float unitsProccessMuestreo;
+    
     [Header("--Metodo 3 (Cronometraje)")]
 
     public float kCronometraje;

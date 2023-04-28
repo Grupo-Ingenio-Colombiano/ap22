@@ -28,7 +28,7 @@ public class SamplingNotes : MonoBehaviour
         userData.percentageOperation = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion;
         userData.rhythm = QuestSampling.Instance.CurrentOperationData.factorRitmo;
         userData.k = QuestSampling.Instance.CurrentOperationData.K;
-        userData.unitsProccessMuestreo = float.Parse(unidadesProcesadas.text);
+        userData.unidadesProducidasMuestreo = QuestSampling.Instance.CurrentOperationData.unidadesRealizadas;
 
 
 
@@ -37,6 +37,7 @@ public class SamplingNotes : MonoBehaviour
     public void EnableProducedUnits()
     {
         unidadesProcesadas.text = QuestSampling.Instance.CurrentOperationData.unidadesRealizadas.ToString();
+       
     }
 
 }
