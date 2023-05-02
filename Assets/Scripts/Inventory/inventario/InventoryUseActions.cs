@@ -18,9 +18,18 @@ public class InventoryUseActions : MonoBehaviour {
     public GameObject btnUsar;
     public GameObject btnRetirar;
 
+    [SerializeField] UserData userData;
+
     void Start()
     {        
         player = GameObject.FindWithTag("Player").transform;
+
+        if(userData.isSave == true)
+        {
+          
+            Debug.Log("Indice " + inventario.indice);
+            player.gameObject.GetComponent<CharacterAppearanceManager>().SetItem("Botas",3);
+        }
     }
 
     public void StartAction()

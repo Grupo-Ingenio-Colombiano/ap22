@@ -44,6 +44,9 @@ public class CharacterAppearanceManager : MonoBehaviour
 
     [SerializeField] GameObject Cronometer;
 
+    [SerializeField] UserData userData;
+
+   
 
     //metodos casco____________________________________________
     void SetCharWithHelmet()
@@ -497,4 +500,162 @@ public class CharacterAppearanceManager : MonoBehaviour
                 break;
         }
     }
+
+    public void SetItem(string item, int numero)
+    {
+
+        var inventoty = FindObjectOfType(typeof(Inventory)) as Inventory;
+
+
+
+
+        switch (item)
+        {
+            case "Botas":
+                Debug.Log(inventoty.inventoryList[inventoty.indice]);
+                if (!inventoty.inventoryList[numero].isNowEquiped)
+                {
+                    inventoty.inventoryList[numero].isNowEquiped = true;
+                    SetCharWithBoots();
+
+                }
+                else
+                {
+                    SetCharWithoutBoots();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+                break;
+
+            case "Gafas":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetCharWithGlasses();
+
+                }
+                else
+                {
+                    SetCharWithoutGlasses();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+
+                break;
+
+            case "Bata":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetCharWithCoat();
+
+                }
+                else
+                {
+                    SetCharWithOutCoat();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+
+                break;
+
+            case "Guantes":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetGloves();
+
+                }
+                else
+                {
+                    SetWithOutGloves();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+
+                break;
+
+            case "Casco":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetCharWithHelmet();
+
+                }
+                else
+                {
+                    SetCharWithoutHelmet();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+
+                break;
+
+            case "Máscara para vapores":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetMask();
+
+                }
+                else
+                {
+                    SetWithOutMask();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+
+                break;
+
+            case "Protector de oídos":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetOrejeras();
+
+                }
+                else
+                {
+                    SetWithOutOrejeras();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+                break;
+
+            case "Overol":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                    SetOverol();
+
+                }
+                else
+                {
+                    SetWithOutOverol();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+                break;
+
+            case "Camiseta":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    SetCamiseta();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                }
+                else
+                {
+                    SetWithOutCamiseta();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+                break;
+
+            case "Cronómetro":
+                if (!inventoty.inventoryList[inventoty.indice].isNowEquiped)
+                {
+                    SetCrono();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = true;
+                }
+                else
+                {
+                    SetWithOutCrono();
+                    inventoty.inventoryList[inventoty.indice].isNowEquiped = false;
+                }
+                break;
+        }
+    }
+
+
 }
