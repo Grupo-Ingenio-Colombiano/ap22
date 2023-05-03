@@ -57,24 +57,22 @@ public class HelpManager : MonoBehaviour
 
     IEnumerator AnimateClose()
     {
-        for (int i = 0; i > -850; i -= 50)
-        {
-            helpPanel.transform.localPosition = new Vector3(i, 62.5f, 0);
+        
+            helpPanel.transform.localPosition = new Vector3(0,0, 0);
             //yield return new WaitForSecondsRealtime(0.1f);
             yield return null;
-        }
-        helpPanel.transform.localPosition = new Vector3(-850f, 62.5f, 0);
+        
+        //helpPanel.transform.localPosition = new Vector3(-850f, 62.5f, 0);
         helpButton.enabled = true;
     }
 
     IEnumerator AnimateOpen()
     {
-        for (int i = -850; i < 0; i += 50)
-        {
-            helpPanel.transform.localPosition = new Vector3(i, 62.5f, 0);
+       
+            helpPanel.transform.localScale = new Vector3(1, 1, 1);
             yield return null;
-        }
-        helpPanel.transform.localPosition = new Vector3(0, 62.5f, 0);
+        
+        //helpPanel.transform.localPosition = new Vector3(0, 62.5f, 0);
         closeButton.enabled = true;
     }
 
