@@ -26,9 +26,7 @@ public class InventoryUseActions : MonoBehaviour {
 
         if(userData.isSave == true)
         {
-          
-            Debug.Log("Indice " + inventario.indice);
-            player.gameObject.GetComponent<CharacterAppearanceManager>().SetItem("Botas",3);
+          StartAction();
         }
     }
 
