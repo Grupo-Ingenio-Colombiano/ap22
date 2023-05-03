@@ -82,6 +82,8 @@ public class Inventory : MonoBehaviour {
     InventoryUseActions useActions;
 
     [SerializeField] LoadManager loadManager;
+
+    [SerializeField] GameObject[] empty;
     private void Start()
     {
         indice = casillas_inventario + 1;
@@ -114,11 +116,13 @@ public class Inventory : MonoBehaviour {
     public void DeleteItem()
     {
         inventoryList.RemoveAt(indice);
+        empty[indice].SetActive(true);
         indice = casillas_inventario + 1;
         seleccionado = "";
         posiciones[inventoryList.Count].GetComponent<Image>().sprite = vacio;
         posiciones[inventoryList.Count].GetComponent<Button>().interactable = false;
         posiciones[inventoryList.Count].GetComponent<Image>().color = Color.white;
+      
         UpdateInventory();
     }
 
@@ -134,7 +138,7 @@ public class Inventory : MonoBehaviour {
             //data.inventory = item;
 
             inventoryList.Add(item);
-
+            empty[indexUi].SetActive(false);
 
             if (GetComponent<AudioSource>())
             {
@@ -182,7 +186,7 @@ public class Inventory : MonoBehaviour {
             {
                 userData.inventory.Add(data);
             }
-           
+
 
             switch (img)
             {
@@ -201,7 +205,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[0].SetActive(false);
                     inventoryList.Add(item0);
                     break;
                 case 1:
@@ -219,7 +223,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[1].SetActive(false);
                     inventoryList.Add(item);
                     break;
 
@@ -238,7 +242,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[indexUi].SetActive(false);
                     inventoryList.Add(item2);
                     break;
 
@@ -257,7 +261,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[2].SetActive(false);
                     inventoryList.Add(item3);
                     break;
 
@@ -276,7 +280,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[3].SetActive(false);
                     inventoryList.Add(item4);
                     break;
 
@@ -295,7 +299,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[4].SetActive(false);
                     inventoryList.Add(item5);
                     break;
 
@@ -314,7 +318,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[5].SetActive(false);
                     inventoryList.Add(item6);
                     break;
 
@@ -333,7 +337,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[6].SetActive(false);
                     inventoryList.Add(item7);
                     break;
 
@@ -352,7 +356,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[7].SetActive(false);
                     inventoryList.Add(item8);
                     break;
 
@@ -371,7 +375,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[8].SetActive(false);
                     inventoryList.Add(item9);
                     break;
 
@@ -390,7 +394,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[9].SetActive(false);
                     inventoryList.Add(item10);
                     break;
 
@@ -409,7 +413,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-
+                    empty[10].SetActive(false);
                     inventoryList.Add(item11);
                     break;
                 default:
@@ -452,7 +456,7 @@ public class Inventory : MonoBehaviour {
     {
         UpdateInventory();
         gameObject.GetComponent<Animator>().SetBool("activo", !(gameObject.GetComponent<Animator>().GetBool("activo")));
-        indicador.GetComponent<Animator>().SetBool("A", !indicador.GetComponent<Animator>().GetBool("A"));
+        //indicador.GetComponent<Animator>().SetBool("A", !indicador.GetComponent<Animator>().GetBool("A"));
 
         if (gameObject.GetComponent<Animator>().GetBool("activo"))
         {
