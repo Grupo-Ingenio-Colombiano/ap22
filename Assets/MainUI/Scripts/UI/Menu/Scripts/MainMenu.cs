@@ -103,8 +103,7 @@ public class MainMenu : MonoBehaviour
 
     public void Exit()
     {
-        endResults.SetActive(true);
-        gameObject.SetActive(false);
+        VpNewNotice.SetNotice("Salir", "Para salir, por favor cierre la ventana del navegador");
     }
 
 }
