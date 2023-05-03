@@ -327,12 +327,12 @@ public class UIDialogManager : MonoBehaviour
         //Create the options
         for (int i = 0; i < opts.Length; i++)
         {
-            playerText.gameObject.GetComponent<OptionDialog>().index = i;
+            playerText.gameObject.GetComponent<OptionDialog>().index = i;   
             GameObject newOp = Instantiate(playerText.gameObject, playerText.transform.position, Quaternion.identity);
             newOp.SetActive(true);
             newOp.transform.SetParent(playerText.transform.parent, true);
 
-            newOp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 8f - (40 * i));
+            newOp.transform.position = playerText.transform.position;
             newOp.GetComponentInChildren<UnityEngine.UI.Text>().text = opts[i];
             currentOptions.Add(newOp);
         }
