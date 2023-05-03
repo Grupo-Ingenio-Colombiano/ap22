@@ -19,15 +19,15 @@ public class UIDialogManager : MonoBehaviour
 
     [Header("NPC")]
     [SerializeField]
-    Text npcText;
-    [SerializeField] Text npcName;
+    TMPro.TextMeshProUGUI npcText;
+    [SerializeField] TMPro.TextMeshProUGUI npcName;
     [SerializeField] Image npcImage;
     [SerializeField] Sprite NPCBackgroundSprite;
 
     [Header("Player")]
     [SerializeField]
     GameObject playerText;
-    [SerializeField] Text playerNameText;
+    [SerializeField] TMPro.TextMeshProUGUI playerNameText;
     [SerializeField] Image playerImage;
     [SerializeField] Sprite playerBackgroundSprite;
 

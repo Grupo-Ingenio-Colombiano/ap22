@@ -14,170 +14,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   email: 
-  lastScene: 2
-  practiceName: Estudio de tiempos
-  isSave: 1
-  load: 2
+  lastScene: 
+  practiceName: 
+  isSave: 0
+  load: 0
   nodeDialogueJefePlanta: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 33.148514, y: 0.04849696, z: -58.170074}
-  playerRot: {x: 0, y: -0.79075325, z: 0, w: 0.6121351}
-  progress: 40
-  experience: 140
-  timer: 00:00:11
+  playerPosition: {x: 0, y: 0, z: 0}
+  playerRot: {x: 0, y: 0, z: 0, w: 0}
+  progress: 0
+  experience: 0
+  timer: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  method: 1
-  selectedMethod: 1
-  proccessUnits: 103
-  indexOperationData: 1
-  scoreSecurityElements: 30
-  scoreTimeTake: 30
-  scoreSelectData: 30
-  scoreFormTCiclo: 30
-  scoreUpgradeForm: 30
-  inventory:
-  - itemName: "Cron\xF3metro"
-    sprite: 0
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 0
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 6
-    useOneTime: 1
-  - itemName: Virtualina
-    sprite: 1
-    eliminable: 1
-    obj: 1
-    infotext: "Renueva los animos y da m\xE1s velocidad"
-    infoSprite: 1
-    playerEquip: 0
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 1
-  - itemName: Botas
-    sprite: 3
-    eliminable: 0
-    obj: 3
-    infotext: 
-    infoSprite: 3
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Casco
-    sprite: 2
-    eliminable: 0
-    obj: 2
-    infotext: 
-    infoSprite: 2
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "M\xE1scara para vapores"
-    sprite: 4
-    eliminable: 0
-    obj: 4
-    infotext: 
-    infoSprite: 4
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Guantes
-    sprite: 5
-    eliminable: 0
-    obj: 5
-    infotext: 
-    infoSprite: 5
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Overol
-    sprite: 6
-    eliminable: 0
-    obj: 6
-    infotext: 
-    infoSprite: 6
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "Protector de o\xEDdos"
-    sprite: 7
-    eliminable: 0
-    obj: 7
-    infotext: 
-    infoSprite: 7
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Gafas
-    sprite: 8
-    eliminable: 0
-    obj: 8
-    infotext: 
-    infoSprite: 8
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
+  method: 0
+  selectedMethod: 0
+  proccessUnits: 0
+  indexOperationData: 0
+  scoreSecurityElements: 0
+  scoreTimeTake: 0
+  scoreSelectData: 0
+  scoreFormTCiclo: 0
+  scoreUpgradeForm: 0
+  inventory: []
   historicData:
-  - 6.25
-  - 5.99
-  - 5.75
-  - 6.13
-  - 5.83
-  - 5.96
-  - 5.61
-  - 5.91
-  - 5.73
-  - 6.51
-  - 6.1
-  - 6.01
-  - 5.9
-  - 5.46
-  - 5.54
-  - 5.62
-  - 6.32
-  - 5.8
-  - 6.26
-  - 6.11
-  - 5.54
-  - 5.85
-  - 5.95
-  - 5.73
-  - 5.53
-  - 5.93
-  - 6.08
-  - 6.45
-  - 5.56
-  - 5.9
-  - 6.46
-  - 6.45
-  - 5.73
-  - 5.82
-  - 6.37
-  - 6.28
-  minTimeHistorical: 5.4
-  maxTimeHistorical: 6.6
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  minTimeHistorical: 0
+  maxTimeHistorical: 0
   talkTime: 0
   tiempoOptimo: 0
   unidadesRequeridas: 0
@@ -235,447 +136,9 @@ MonoBehaviour:
   turn2: 0
   turn3: 0
   observaciones: 
-  templateName: ap22_1
+  templateName: 
   fileName: 
-  excelReport:
-  - A: []
-    B: []
-    C:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    D:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    E:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    F:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    G:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    H:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    I:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    J:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    K:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    L:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    M: []
-    N: []
-    O: []
-    P: []
-    Q: []
+  excelReport: []
   reportUrl: 
   institution: 
   academicProgram: 
