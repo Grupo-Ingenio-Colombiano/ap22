@@ -332,7 +332,8 @@ public class UIDialogManager : MonoBehaviour
             newOp.SetActive(true);
             newOp.transform.SetParent(playerText.transform.parent, true);
 
-            newOp.transform.position = playerText.transform.position;
+            newOp.GetComponent<RectTransform>().anchoredPosition = new Vector2(222, -40f - (40 * i));
+            //newOp.transform.position = playerText.transform.position;
             newOp.GetComponentInChildren<UnityEngine.UI.Text>().text = opts[i];
             currentOptions.Add(newOp);
         }
