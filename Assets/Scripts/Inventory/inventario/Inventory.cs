@@ -242,7 +242,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[indexUi].SetActive(false);
+                    empty[2].SetActive(false);
                     inventoryList.Add(item2);
                     break;
 
@@ -261,7 +261,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[2].SetActive(false);
+                    empty[3].SetActive(false);
                     inventoryList.Add(item3);
                     break;
 
@@ -280,7 +280,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[3].SetActive(false);
+                    empty[4].SetActive(false);
                     inventoryList.Add(item4);
                     break;
 
@@ -299,7 +299,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[4].SetActive(false);
+                    empty[5].SetActive(false);
                     inventoryList.Add(item5);
                     break;
 
@@ -318,7 +318,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[5].SetActive(false);
+                    empty[6].SetActive(false);
                     inventoryList.Add(item6);
                     break;
 
@@ -337,7 +337,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[6].SetActive(false);
+                    empty[7].SetActive(false);
                     inventoryList.Add(item7);
                     break;
 
@@ -356,7 +356,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[7].SetActive(false);
+                    empty[8].SetActive(false);
                     inventoryList.Add(item8);
                     break;
 
@@ -375,7 +375,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[8].SetActive(false);
+                    empty[9].SetActive(false);
                     inventoryList.Add(item9);
                     break;
 
@@ -394,7 +394,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[9].SetActive(false);
+                    empty[10].SetActive(false);
                     inventoryList.Add(item10);
                     break;
 
@@ -413,7 +413,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[10].SetActive(false);
+                    empty[11].SetActive(false);
                     inventoryList.Add(item11);
                     break;
                 default:
