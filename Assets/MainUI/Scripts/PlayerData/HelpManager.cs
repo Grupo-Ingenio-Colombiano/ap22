@@ -58,7 +58,7 @@ public class HelpManager : MonoBehaviour
     IEnumerator AnimateClose()
     {
         
-            helpPanel.transform.localPosition = new Vector3(0,0, 0);
+            helpPanel.transform.localScale = new Vector3(0,0, 0);
             //yield return new WaitForSecondsRealtime(0.1f);
             yield return null;
         
