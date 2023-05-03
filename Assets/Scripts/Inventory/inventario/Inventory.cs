@@ -116,7 +116,7 @@ public class Inventory : MonoBehaviour {
     public void DeleteItem()
     {
         inventoryList.RemoveAt(indice);
-        empty[indice].SetActive(true);
+        //empty[indice].SetActive(true);
         indice = casillas_inventario + 1;
         seleccionado = "";
         posiciones[inventoryList.Count].GetComponent<Image>().sprite = vacio;
