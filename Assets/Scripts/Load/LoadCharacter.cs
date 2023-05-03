@@ -61,6 +61,12 @@ public class LoadCharacter : MonoBehaviour
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
             }
+
+            if (userData.load >= 2)
+            {
+                videJefe.overrideStartNode = 10;
+                vigilante.overrideStartNode = 3;
+            }
             switch (userData.method)
             {
                 case 1:
@@ -71,8 +77,8 @@ public class LoadCharacter : MonoBehaviour
                         supervHistoprico1.SetActive(false);
                         supervHistoprico2.SetActive(true);
                         operarioHistorico2.SetActive(true);
-                      
-                      
+                       // notesManager.EnablePage(0);
+
                     }
                     break;
                 case 2:
@@ -82,7 +88,7 @@ public class LoadCharacter : MonoBehaviour
                       questSamplingMuestreo.SetActive(true);
                       supervMuestreo2.SetActive(true);
                       supervMuestreo1.SetActive(false);
-                        notesManager.EnablePage(1);
+                        //notesManager.EnablePage(1);
 
                     }
                     break;
@@ -93,8 +99,8 @@ public class LoadCharacter : MonoBehaviour
                         timingDragActivity.SetActive(true);
                         //actividadTiming.SetActive(true);                                            
                         //formTimingQuestCronometro.SetActive(true);
-                      
-                     
+                        //notesManager.EnablePage(2);
+
                     }
                     break;
                 default:

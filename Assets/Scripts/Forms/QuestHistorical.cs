@@ -15,6 +15,7 @@ public class QuestHistorical : MonoBehaviour
     [SerializeField] GameObject operator1;
 
     [SerializeField] UserData userData;
+    [SerializeField] NotesManager notesManager;
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class QuestHistorical : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 0, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));          
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+            notesManager.EnablePage(0);
         }
         else
         {
@@ -59,6 +61,7 @@ public class QuestHistorical : MonoBehaviour
                      
         }
         ActivateObjects();
+        notesManager.EnablePage(0);
     }
 
 
@@ -93,6 +96,8 @@ public class QuestHistorical : MonoBehaviour
         HelpManager.Instance().SetHelp("Puede consultar la Ficha de datos historicos en el bloc de notas, para revisarlo haga clic en el botón que se encuentra en el costado derecho.");
         historicalForm.SetActive(true);
         historicalDataViewer.SetActive(true);
+        notesManager.EnablePage(0);
+
     }
 
     public void SetIndicator()

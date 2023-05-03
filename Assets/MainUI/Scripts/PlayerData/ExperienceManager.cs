@@ -14,13 +14,14 @@ public class ExperienceManager : MonoBehaviour
 
     [SerializeField] PlayerExperience experience;
 
-    [SerializeField]
-    UserData data;
+    [SerializeField] UserData data;
+    [SerializeField] Text name;
 
     float exp = 0;
     float maxExperience = 500;
     private void Start()
     {
+        name.text = data.name;
         if (experience != null)
         {
             maxExperience = experience.MaxExperience;
@@ -31,6 +32,9 @@ public class ExperienceManager : MonoBehaviour
         {
             exp = data.experience;
             experienceText.text = exp.ToString();
+            experience.CurrentExperience = data.experience;
+            experience.OnExperienceObtained += HandleExperienceBarChanged;
+            experience.OnExperienceObtained += HandleExperienceChanged;
         }
     }
 

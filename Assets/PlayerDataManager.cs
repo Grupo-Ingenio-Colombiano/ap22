@@ -23,20 +23,14 @@ public class PlayerDataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+       
     }
 
     private void Start()
     {
         if(userData.isSave != false)
         {
-            for (int i = 0; i < userData.badAnswer; i++)
-            {
-
-            }
-            for (int i = 0; i < userData.goodAnswer; i++)
-            {
-
-            }
+            playerExperience.AddExperience(userData.experience);
         }
     }
     public void AddIncorrect()

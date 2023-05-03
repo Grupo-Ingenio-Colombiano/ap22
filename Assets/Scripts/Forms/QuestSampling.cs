@@ -24,7 +24,9 @@ public class QuestSampling : MonoBehaviour
 
     [SerializeField] UserData userData;
     [SerializeField] LoadManager loadManager;
-   
+
+    [SerializeField] NotesManager notesManager;
+
 
     private void Awake()
     {
@@ -66,8 +68,8 @@ public class QuestSampling : MonoBehaviour
             userData.unidadesProducidasMuestreo = CurrentOperationData.unidadesRealizadas;
             FormResultsManager.Instance.currentOperationIndex = randomOperation;
         }
-      
 
+        notesManager.EnablePage(1);
 
         ActivateObjects();
     }

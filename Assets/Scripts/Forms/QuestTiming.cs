@@ -16,6 +16,8 @@ public class QuestTiming : MonoBehaviour
     [SerializeField] Vector3[] cronoIndicatorPositions;
     [SerializeField] UserData userData;
 
+    [SerializeField] NotesManager notesManager;
+
     public bool isSetTimer = false;
 
     private void Awake()
@@ -63,6 +65,7 @@ public class QuestTiming : MonoBehaviour
         }
        
         ActivateQuestObjects();
+        notesManager.EnablePage(2);
     }
 
 
