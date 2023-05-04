@@ -21,25 +21,47 @@ MonoBehaviour:
   nodeDialogueJefePlanta: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 28.91398, y: 0.0485031, z: -7.0977955}
-  playerRot: {x: 0, y: 0.9994063, z: 0, w: 0.034454938}
-  progress: 5
-  experience: 20
-  timer: 00:00:52
+  playerPosition: {x: 30.642294, y: 0.04849696, z: -58.188133}
+  playerRot: {x: 0, y: -0.58218473, z: 0, w: 0.8130566}
+  progress: 10
+  experience: 50
+  timer: 00:02:25
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  method: 1
-  selectedMethod: 0
-  proccessUnits: 160
-  indexOperationData: 2
+  method: 2
+  selectedMethod: 1
+  proccessUnits: 278
+  indexOperationData: 1
   scoreSecurityElements: 30
   scoreTimeTake: 30
   scoreSelectData: 30
   scoreFormTCiclo: 30
   scoreUpgradeForm: 30
   inventory:
+  - itemName: "Cron\xF3metro"
+    sprite: 0
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 6
+    useOneTime: 1
+  - itemName: Virtualina
+    sprite: 1
+    eliminable: 1
+    obj: 1
+    infotext: "Renueva los animos y da m\xE1s velocidad"
+    infoSprite: 1
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 1
   - itemName: Botas
     sprite: 3
     eliminable: 0
@@ -154,8 +176,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  minTimeHistorical: 4.6
-  maxTimeHistorical: 5.4
+  minTimeHistorical: 0
+  maxTimeHistorical: 0
   talkTime: 0
   tiempoOptimo: 0
   unidadesRequeridas: 0
@@ -163,11 +185,11 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 0
-  percentageOperation: 0
-  rhythm: 0
-  k: 0
-  unidadesProducidasMuestreo: 0
+  numMinutos: 1
+  percentageOperation: 90
+  rhythm: 85
+  k: 14
+  unidadesProducidasMuestreo: 16
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -213,7 +235,7 @@ MonoBehaviour:
   turn2: 0
   turn3: 0
   observaciones: 
-  templateName: 
+  templateName: ap22_2
   fileName: 
   excelReport:
   - A: []
