@@ -36,19 +36,12 @@ public class InventorySpace : MonoBehaviour {
             if (nombre == "item_" + i.ToString())
             {
                 inventario.seleccionado = inventario.inventoryList[i].itemName;
-                inventario.indice = i;
-
-                print("Indice "+ inventario.indice);
-                print("innventory list count "+ inventario.inventoryList.Count);
-              
+                inventario.indice = i; 
             }
           
         }
-
-       
-        inventario.UpdateInventory();
      
-
+        inventario.UpdateInventory();
     }
    public void EquipLoad()
     {
@@ -60,18 +53,13 @@ public class InventorySpace : MonoBehaviour {
             {
                 inventario.seleccionado = inventario.inventoryList[i].itemName;
                 inventario.indice = i;
-
-                print("Indice " + inventario.indice);
-                print("innventory list count " + inventario.inventoryList.Count);
                 if (userData.load >= 2 && inventario.inventoryList[inventario.indice].playerEquip)
                 {
-
                     inventoryUseActions.StartAction();
                 }
             }
 
         }
-
 
         inventario.UpdateInventory();
     }

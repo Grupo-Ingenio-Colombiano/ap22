@@ -87,8 +87,7 @@ public class Inventory : MonoBehaviour {
     private void Start()
     {
         indice = casillas_inventario + 1;
-        useActions = FindObjectOfType(typeof(InventoryUseActions)) as InventoryUseActions;
-        print("EL indice en script inventario es " + indice);
+        useActions = FindObjectOfType(typeof(InventoryUseActions)) as InventoryUseActions;       
         if (userData.isSave != false)
         {
             for (int i = 0; i < userData.inventory.Count; i++)
@@ -102,11 +101,6 @@ public class Inventory : MonoBehaviour {
            
             Debug.Log(userData.inventory.Count);
         }
-        else
-        {
-
-        }
-
      
     }
 
