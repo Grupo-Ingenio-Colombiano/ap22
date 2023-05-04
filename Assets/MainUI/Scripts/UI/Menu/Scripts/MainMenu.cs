@@ -103,7 +103,7 @@ public class MainMenu : MonoBehaviour
 
     public void Exit()
     {
-        VpNewNotice.SetNotice("Salir", "Para salir, por favor cierre la ventana del navegador");
+        VpNewNotice.SetNotice("Salir", "Para salir, por favor cierre la pestaña del navegador");
     }
 
 }
