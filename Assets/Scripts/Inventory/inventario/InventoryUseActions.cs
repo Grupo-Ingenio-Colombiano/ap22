@@ -24,12 +24,13 @@ public class InventoryUseActions : MonoBehaviour {
     {        
         player = GameObject.FindWithTag("Player").transform;
 
-        if(userData.isSave == true)
-        {
-          StartAction();
-        }
+      
     }
+   
 
+
+
+    
     public void StartAction()
     {
         var obj = inventario.inventoryList[inventario.indice].obj;
