@@ -60,6 +60,7 @@ public class LoadCharacter : MonoBehaviour
             {
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
+                inspectorSeguridad.overrideStartNode = 12;
             }
 
             if (userData.load >= 2)

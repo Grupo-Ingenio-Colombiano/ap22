@@ -21,6 +21,7 @@ public class UserData : ScriptableObject
     public bool isSave = false;
     public int load;
     public int nodeDialogueJefePlanta;
+    public int inspectorSeguridad;
 
     public string PlayerSelected;
     public bool gender;
@@ -30,6 +31,7 @@ public class UserData : ScriptableObject
     public float progress;
     public float experience;
     public string timer;
+    public string note;
 
     public int badAnswer;
     public int goodAnswer;
