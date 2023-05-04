@@ -14,32 +14,109 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   email: 
-  lastScene: 
-  practiceName: 
-  isSave: 0
-  load: 0
+  lastScene: 2
+  practiceName: Estudio de tiempos
+  isSave: 1
+  load: 2
   nodeDialogueJefePlanta: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 0, y: 0, z: 0}
-  playerRot: {x: 0, y: 0, z: 0, w: 0}
-  progress: 0
-  experience: 0
-  timer: 
+  playerPosition: {x: 28.91398, y: 0.0485031, z: -7.0977955}
+  playerRot: {x: 0, y: 0.9994063, z: 0, w: 0.034454938}
+  progress: 5
+  experience: 20
+  timer: 00:00:52
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  method: 0
+  method: 1
   selectedMethod: 0
-  proccessUnits: 0
-  indexOperationData: 0
-  scoreSecurityElements: 0
-  scoreTimeTake: 0
-  scoreSelectData: 0
-  scoreFormTCiclo: 0
-  scoreUpgradeForm: 0
-  inventory: []
+  proccessUnits: 160
+  indexOperationData: 2
+  scoreSecurityElements: 30
+  scoreTimeTake: 30
+  scoreSelectData: 30
+  scoreFormTCiclo: 30
+  scoreUpgradeForm: 30
+  inventory:
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "M\xE1scara para vapores"
+    sprite: 4
+    eliminable: 0
+    obj: 4
+    infotext: 
+    infoSprite: 4
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Guantes
+    sprite: 5
+    eliminable: 0
+    obj: 5
+    infotext: 
+    infoSprite: 5
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "Protector de o\xEDdos"
+    sprite: 7
+    eliminable: 0
+    obj: 7
+    infotext: 
+    infoSprite: 7
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Gafas
+    sprite: 8
+    eliminable: 0
+    obj: 8
+    infotext: 
+    infoSprite: 8
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
   - 0
   - 0
@@ -77,8 +154,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  minTimeHistorical: 0
-  maxTimeHistorical: 0
+  minTimeHistorical: 4.6
+  maxTimeHistorical: 5.4
   talkTime: 0
   tiempoOptimo: 0
   unidadesRequeridas: 0
@@ -138,7 +215,445 @@ MonoBehaviour:
   observaciones: 
   templateName: 
   fileName: 
-  excelReport: []
+  excelReport:
+  - A: []
+    B: []
+    C:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    E:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    F:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    G:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    H:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    I:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    J:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    K:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    L:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    M: []
+    N: []
+    O: []
+    P: []
+    Q: []
   reportUrl: 
   institution: 
   academicProgram: 

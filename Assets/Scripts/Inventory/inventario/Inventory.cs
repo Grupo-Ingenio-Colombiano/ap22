@@ -88,7 +88,7 @@ public class Inventory : MonoBehaviour {
     {
         indice = casillas_inventario + 1;
         useActions = FindObjectOfType(typeof(InventoryUseActions)) as InventoryUseActions;
-
+        print("EL indice en script inventario es " + indice);
         if (userData.isSave != false)
         {
             for (int i = 0; i < userData.inventory.Count; i++)
@@ -101,7 +101,11 @@ public class Inventory : MonoBehaviour {
             }
            
             Debug.Log(userData.inventory.Count);
-        }     
+        }
+        else
+        {
+
+        }
 
      
     }
@@ -116,7 +120,6 @@ public class Inventory : MonoBehaviour {
     public void DeleteItem()
     {
         inventoryList.RemoveAt(indice);
-        //empty[indice].SetActive(true);
         indice = casillas_inventario + 1;
         seleccionado = "";
         posiciones[inventoryList.Count].GetComponent<Image>().sprite = vacio;
@@ -204,9 +207,18 @@ public class Inventory : MonoBehaviour {
                         indexUi = indexUi,
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
+
                     };
                     empty[0].SetActive(false);
                     inventoryList.Add(item0);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
                 case 1:
                     var item = new Item
@@ -225,6 +237,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[1].SetActive(false);
                     inventoryList.Add(item);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 2:
@@ -244,6 +264,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[2].SetActive(false);
                     inventoryList.Add(item2);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 3:
@@ -263,6 +291,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[3].SetActive(false);
                     inventoryList.Add(item3);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 4:
@@ -282,6 +318,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[4].SetActive(false);
                     inventoryList.Add(item4);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 5:
@@ -301,6 +345,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[5].SetActive(false);
                     inventoryList.Add(item5);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 6:
@@ -320,6 +372,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[6].SetActive(false);
                     inventoryList.Add(item6);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 7:
@@ -339,6 +399,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[7].SetActive(false);
                     inventoryList.Add(item7);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 8:
@@ -358,6 +426,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[8].SetActive(false);
                     inventoryList.Add(item8);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 9:
@@ -377,6 +453,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[9].SetActive(false);
                     inventoryList.Add(item9);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 10:
@@ -396,6 +480,14 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[10].SetActive(false);
                     inventoryList.Add(item10);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
 
                 case 11:
@@ -415,8 +507,17 @@ public class Inventory : MonoBehaviour {
                     };
                     empty[11].SetActive(false);
                     inventoryList.Add(item11);
+
+                    if (GetComponent<AudioSource>())
+                    {
+                        GetComponent<AudioSource>().Stop();
+                        GetComponent<AudioSource>().PlayOneShot(sounds[1]);
+                    }
+                    UpdateInventory();
+                    return true;
                     break;
                 default:
+                    return true;
                     break;
             }
             if(userData.load <= 1 && name == "Virtualina")
@@ -425,14 +526,7 @@ public class Inventory : MonoBehaviour {
                     loadManager.Upload(1);
                 
             }
-            
-            if (GetComponent<AudioSource>())
-            {
-                GetComponent<AudioSource>().Stop();
-                GetComponent<AudioSource>().PlayOneShot(sounds[1]);
-            }
-            UpdateInventory();
-            return true;
+          
         }
 
         else

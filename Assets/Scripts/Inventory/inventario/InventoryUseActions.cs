@@ -19,22 +19,23 @@ public class InventoryUseActions : MonoBehaviour {
     public GameObject btnRetirar;
 
     [SerializeField] UserData userData;
+    [SerializeField] InventorySpace inventorySpace;
+
+    string nombre;
 
     void Start()
     {        
         player = GameObject.FindWithTag("Player").transform;
 
-      
-    }
    
+    }
 
-
-
-    
-    public void StartAction()
+  
+        public void StartAction()
     {
+        print("Por que el indice es " + inventario.indice);
         var obj = inventario.inventoryList[inventario.indice].obj;
-
+      
         if (!inventario.inventoryList[inventario.indice].isNowEquiped && inventario.inventoryList[inventario.indice].playerEquip && !obj)
         {
             btnUsar.SetActive(false);            

@@ -11,13 +11,20 @@ public class InventorySpace : MonoBehaviour {
     Text descripcion;
     public int usos = 0;
     static public int usos_totales= 0;
-    int indice;   
-
+    int indice;
+    [SerializeField] InventoryUseActions inventoryUseActions;
+    [SerializeField] UserData userData;
     void Start ()
     {
         inventario = Inventory.Instance();
         nombre = gameObject.name;        
         indice = getnumber(name);
+
+        if(userData.load >= 2)
+        {
+
+            EquipLoad();
+        }
     }	
 
     public void seleccionar_objeto()
@@ -30,14 +37,45 @@ public class InventorySpace : MonoBehaviour {
             {
                 inventario.seleccionado = inventario.inventoryList[i].itemName;
                 inventario.indice = i;
+
+                print("Indice "+ inventario.indice);
+                print("innventory list count "+ inventario.inventoryList.Count);
+              
             }
+          
         }
 
-        //print(inventario.indice);
+       
         inventario.UpdateInventory();
-        
-    }
+     
 
+    }
+   public void EquipLoad()
+    {
+        inventario.UpdateInventory();
+
+        for (int i = 0; i < inventario.inventoryList.Count; i++)
+        {
+            if (nombre == "item_" + i.ToString())
+            {
+                inventario.seleccionado = inventario.inventoryList[i].itemName;
+                inventario.indice = i;
+
+                print("Indice " + inventario.indice);
+                print("innventory list count " + inventario.inventoryList.Count);
+                if (userData.load >= 2 && inventario.inventoryList[inventario.indice].playerEquip)
+                {
+
+                    inventoryUseActions.StartAction();
+                }
+            }
+
+        }
+
+
+        inventario.UpdateInventory();
+    }
+  
     int getnumber(string s)
     {
         int i;
