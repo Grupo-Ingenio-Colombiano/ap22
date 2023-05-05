@@ -5,7 +5,14 @@ using UnityEngine;
 public class ExperienceRewardManager : MonoBehaviour
 {
     int currentAttempts;
+    [SerializeField] UserData userData;
+    
+    
+    private void Start()
+    {
 
+    }
+    
     public int GetCurrentAttempts()
     {
         return currentAttempts;
@@ -19,6 +26,7 @@ public class ExperienceRewardManager : MonoBehaviour
     void Awake()
     {
         SetCurrentAttempts(3);
+        
     }
 
     public void AddScore()
@@ -26,6 +34,7 @@ public class ExperienceRewardManager : MonoBehaviour
         PlayerDataManager.Instance.AddExperience(GetCurrentAttempts() * 40);
         PlayerDataManager.Instance.AddProgress(25);
     }
+   
 
     public void FailAttempt()
     {

@@ -22,20 +22,15 @@ public class ExperienceManager : MonoBehaviour
     private void Start()
     {
         name.text = data.name;
+       
         if (experience != null)
         {
             maxExperience = experience.MaxExperience;
             experience.OnExperienceObtained += HandleExperienceBarChanged;
             experience.OnExperienceObtained += HandleExperienceChanged;
         }
-        if (data.isSave == true)
-        {
-            exp = data.experience;
-            experienceText.text = exp.ToString();
-            experience.CurrentExperience = data.experience;
-            experience.OnExperienceObtained += HandleExperienceBarChanged;
-            experience.OnExperienceObtained += HandleExperienceChanged;
-        }
+
+       
     }
 
     private void HandleExperienceBarChanged(float percentage)
@@ -46,8 +41,8 @@ public class ExperienceManager : MonoBehaviour
     private void HandleExperienceChanged(float units)
     {
         exp = Mathf.Ceil(units * maxExperience);
-
-        data.experience = exp;
+        print("Experiencia " + exp);
+      
 
         experienceText.text = exp.ToString();
 
@@ -65,6 +60,7 @@ public class ExperienceManager : MonoBehaviour
         {
             star1.SetActive(true);
         }
+        data.experience = exp;
     }
 
     private void OnDisable()

@@ -14,7 +14,7 @@ public class FormResultsManager : MonoBehaviour
     [SerializeField] ExperienceRewardManager expRewardManager;
     [SerializeField] GameObject sadSequenceActivationObject;
     [SerializeField] GameObject turnOperatorSequenceActivationObject;
-    [SerializeField] LoadManager loadManager;
+    [SerializeField] UserData userData;
 
     GameObject currentForm;
 
@@ -52,6 +52,8 @@ public class FormResultsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        
     }
 
     public void TestEvaluate()

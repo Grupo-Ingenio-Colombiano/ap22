@@ -28,10 +28,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private void Start()
     {
-        if(userData.isSave != false)
-        {
-            playerExperience.AddExperience(userData.experience);
-        }
+       
     }
     public void AddIncorrect()
     {

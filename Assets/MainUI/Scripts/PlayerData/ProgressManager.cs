@@ -21,11 +21,7 @@ public class ProgressManager : MonoBehaviour
             progress.OnProgressMade += HandleProgressBarChanged;
             progress.OnProgressMade += HandleProgressPercentageChanged;
         }
-        if (userData.isSave == true)
-        {
-           progress.CurrentProgress = userData.progress;
-           progressPercentage.text = userData.progress.ToString() + "%";
-        }
+        
     }
 
     private void HandleProgressBarChanged(float pct)

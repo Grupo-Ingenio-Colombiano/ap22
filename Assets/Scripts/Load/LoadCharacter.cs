@@ -37,11 +37,13 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject formTimingQuestCronometro;
     [SerializeField] GameObject timingDragActivity;
     [SerializeField] NotesManager notesManager;
+
     // Update is called once per frame
 
     private void Start()
     {
         MethodFlujo();
+      
     }
 
     public void SetIndicatorLoad()
@@ -51,7 +53,7 @@ public class LoadCharacter : MonoBehaviour
             dialogSST.SetActive(true);
         }
     }
-
+   
     void MethodFlujo()
     {
         if (userData.isSave == true)
