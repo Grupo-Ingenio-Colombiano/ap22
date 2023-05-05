@@ -162,7 +162,7 @@ public class Inventory : MonoBehaviour {
 
     public bool AddItemTest(string name, int img, bool eliminable, int obj, string infoText, int infoSprite, bool playerEquip, int indexUi, float useDistance, bool oneTimeUse)
     {
-      
+
         if (inventoryList.Count < casillas_inventario)
         {
             var data = new InventoryItem
@@ -179,11 +179,11 @@ public class Inventory : MonoBehaviour {
                 useDistance = useDistance,
                 useOneTime = oneTimeUse
             };
-            if(userData.inventory.Count <= inventoryList.Count)
+            if (userData.inventory.Count <= inventoryList.Count)
             {
                 userData.inventory.Add(data);
             }
-
+            empty[indexUi].SetActive(false);
 
             switch (img)
             {
@@ -203,7 +203,7 @@ public class Inventory : MonoBehaviour {
                         useOneTime = oneTimeUse
 
                     };
-                    empty[0].SetActive(false);
+                  
                     inventoryList.Add(item0);
 
                     if (GetComponent<AudioSource>())
@@ -230,6 +230,7 @@ public class Inventory : MonoBehaviour {
                         useOneTime = oneTimeUse
                     };
                     empty[1].SetActive(false);
+                    empty[2].SetActive(false);
                     inventoryList.Add(item);
 
                     if (GetComponent<AudioSource>())
@@ -257,6 +258,7 @@ public class Inventory : MonoBehaviour {
                         useOneTime = oneTimeUse
                     };
                     empty[2].SetActive(false);
+                    empty[1].SetActive(false);
                     inventoryList.Add(item2);
 
                     if (GetComponent<AudioSource>())
