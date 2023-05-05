@@ -8,7 +8,7 @@ public class PlayerExperience : ScriptableObject
     float maxExperience = 500f;
     public float CurrentExperience;
 
-
+    
     public float CurrentExperiencePercentage
     {
         get { return CurrentExperience / MaxExperience; }

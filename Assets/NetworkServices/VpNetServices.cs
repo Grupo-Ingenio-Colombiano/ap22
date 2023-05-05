@@ -9,6 +9,8 @@ public class VpNetServices : MonoBehaviour
     
     static public IEnumerator Upload( string studentEmail, UserData data, System.Action<bool, string, string, long> callback)
     {
+        VpNewNotice.StartSavingAnimation();
+
         var jsonData = JsonUtility.ToJson(data);
         
         WWWForm form = new WWWForm();
@@ -22,18 +24,25 @@ public class VpNetServices : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {                
+                
                 callback(false, www.downloadHandler.text, www.error, www.responseCode);
             }
             else
             {
                 callback(true, www.downloadHandler.text, www.error, www.responseCode);
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
+
+
     }
 
 
     static public IEnumerator Download(string studentEmail, UserData data, System.Action<bool, string, string, long> callback)
     {
+        VpNewNotice.StartSavingAnimation();
+
         WWWForm form = new WWWForm();
         form.AddField("FILENAME", studentEmail);
         form.AddField("PRACTICENAME", Application.productName);
@@ -59,15 +68,17 @@ public class VpNetServices : MonoBehaviour
                 {
                     callback(false, www.downloadHandler.text, www.error, www.responseCode);
                 }
-
-                
                
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
     }
 
     static public IEnumerator CheckFile(string studentEmail, System.Action<bool, string, string, long> callback)
     {
+        VpNewNotice.StartSavingAnimation();     
+
         WWWForm form = new WWWForm();
         form.AddField("FILENAME", studentEmail);
         form.AddField("PRACTICENAME", Application.productName);
@@ -86,12 +97,18 @@ public class VpNetServices : MonoBehaviour
                 callback(true, www.downloadHandler.text, www.error, www.responseCode);                
                 
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
+
+        
     }
 
 
     static public IEnumerator CreateReportWithUserData(UserData data, System.Action<bool, string, string, long> callback)
     {
+        VpNewNotice.StartSavingAnimation();
+
         WWWForm form = new WWWForm();
        
         var jsonData = JsonUtility.ToJson(data);
@@ -117,12 +134,16 @@ public class VpNetServices : MonoBehaviour
                 callback(true, www.downloadHandler.text, www.error, www.responseCode);                
                 
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
     }
 
 
     static public IEnumerator SendMail(UserData data, System.Action<bool, string, string, long> callback)
     {
+        VpNewNotice.StartSavingAnimation();
+
         WWWForm form = new WWWForm();
        
         var jsonData = JsonUtility.ToJson(data);
@@ -154,12 +175,17 @@ public class VpNetServices : MonoBehaviour
                 callback(true, www.downloadHandler.text, www.error, www.responseCode);                
                 
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
     }
 
 
      static public IEnumerator SendValuation(UserData data, string value, string valueDetails, System.Action<bool, string, string, long> callback)
     {
+
+        VpNewNotice.StartSavingAnimation();
+
         WWWForm form = new WWWForm();
        
         var jsonData = JsonUtility.ToJson(data);
@@ -185,6 +211,8 @@ public class VpNetServices : MonoBehaviour
                 callback(true, www.downloadHandler.text, www.error, www.responseCode);                
                 
             }
+
+            VpNewNotice.StopSavingAnimation();
         }
     }
     
