@@ -28,7 +28,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private void Start()
     {
-       
+        Invoke("UpdateExperience", 1f);
     }
     public void AddIncorrect()
     {
@@ -43,9 +43,16 @@ public class PlayerDataManager : MonoBehaviour
     public void AddProgress(float percentage)
     {
         playerProgress.AddProgressPercentage(percentage);
-        //data.progress = percentage;
+       
     }
-
+    public void UpdateExperience()
+    {
+        if (userData.isSave == true)
+        {
+            AddProgress(userData.progress);
+            AddExperience(userData.experience);
+        }
+    }
     public void AddExperience(float experience)
     {
         playerExperience.AddExperience(experience);

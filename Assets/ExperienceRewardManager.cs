@@ -10,7 +10,8 @@ public class ExperienceRewardManager : MonoBehaviour
     
     private void Start()
     {
-
+        //PlayerDataManager.Instance.AddExperience(GetCurrentAttempts() * 40);
+        //PlayerDataManager.Instance.AddProgress(25);
     }
     
     public int GetCurrentAttempts()

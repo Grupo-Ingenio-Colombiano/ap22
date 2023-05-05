@@ -43,7 +43,7 @@ public class LoadCharacter : MonoBehaviour
     private void Start()
     {
         MethodFlujo();
-      
+       
     }
 
     public void SetIndicatorLoad()
@@ -62,7 +62,8 @@ public class LoadCharacter : MonoBehaviour
             {
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
-              
+               
+
             }
 
             if (userData.load >= 2)
