@@ -16,17 +16,17 @@ MonoBehaviour:
   email: 
   lastScene: 2
   practiceName: Estudio de tiempos
-  isSave: 0
-  load: 0
+  isSave: 1
+  load: 2
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 29.492815, y: 3.358036, z: 9.479216}
-  playerRot: {x: 0, y: 0.65915513, z: 0, w: 0.75200707}
+  playerPosition: {x: 31.569124, y: 0.048503518, z: -2.9409122}
+  playerRot: {x: -0, y: 0.8698363, z: -0, w: 0.49334058}
   progress: 5
   experience: 30
-  timer: 00:01:11
+  timer: 00:00:46
   note: 
   badAnswer: 0
   goodAnswer: 0
@@ -64,6 +64,39 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 1
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "M\xE1scara para vapores"
+    sprite: 4
+    eliminable: 0
+    obj: 4
+    infotext: 
+    infoSprite: 4
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
   - 0
   - 0

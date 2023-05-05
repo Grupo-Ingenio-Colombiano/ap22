@@ -93,7 +93,7 @@ public class QuestHistorical : MonoBehaviour
 
     public void EnableForm()
     {
-        HelpManager.Instance().SetHelp("Puede consultar la Ficha de datos historicos en el bloc de notas, para revisarlo haga clic en el botón que se encuentra en el costado derecho.");
+        HelpManager.Instance().SetHelp("Puede consultar la Ficha de datos historicos, para revisarlo haga clic en el botón que se encuentra en el costado derecho debajo del botón para hablar.");
         historicalForm.SetActive(true);
         historicalDataViewer.SetActive(true);
         notesManager.EnablePage(0);
