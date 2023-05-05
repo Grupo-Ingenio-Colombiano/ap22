@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour {
             //data.inventory = item;
 
             inventoryList.Add(item);
-            empty[indexUi].SetActive(false);
+            
 
             if (GetComponent<AudioSource>())
             {
@@ -183,7 +183,7 @@ public class Inventory : MonoBehaviour {
             {
                 userData.inventory.Add(data);
             }
-            empty[indexUi].SetActive(false);
+            
 
             switch (img)
             {
@@ -229,8 +229,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[1].SetActive(false);
-                    empty[2].SetActive(false);
+                  
                     inventoryList.Add(item);
 
                     if (GetComponent<AudioSource>())
@@ -257,8 +256,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[2].SetActive(false);
-                    empty[1].SetActive(false);
+                    
                     inventoryList.Add(item2);
 
                     if (GetComponent<AudioSource>())
@@ -285,7 +283,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[3].SetActive(false);
+                   
                     inventoryList.Add(item3);
 
                     if (GetComponent<AudioSource>())
@@ -312,7 +310,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[4].SetActive(false);
+                   
                     inventoryList.Add(item4);
 
                     if (GetComponent<AudioSource>())
@@ -339,7 +337,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[5].SetActive(false);
+                 
                     inventoryList.Add(item5);
 
                     if (GetComponent<AudioSource>())
@@ -366,7 +364,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[6].SetActive(false);
+                    
                     inventoryList.Add(item6);
 
                     if (GetComponent<AudioSource>())
@@ -393,7 +391,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[7].SetActive(false);
+                    
                     inventoryList.Add(item7);
 
                     if (GetComponent<AudioSource>())
@@ -420,7 +418,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[8].SetActive(false);
+                    
                     inventoryList.Add(item8);
 
                     if (GetComponent<AudioSource>())
@@ -447,7 +445,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[9].SetActive(false);
+                    
                     inventoryList.Add(item9);
 
                     if (GetComponent<AudioSource>())
@@ -474,7 +472,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[10].SetActive(false);
+                   
                     inventoryList.Add(item10);
 
                     if (GetComponent<AudioSource>())
@@ -501,7 +499,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[11].SetActive(false);
+                    
                     inventoryList.Add(item11);
 
                     if (GetComponent<AudioSource>())

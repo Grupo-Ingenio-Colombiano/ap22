@@ -22,8 +22,10 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
     GameObject obj;
     [SerializeField] int objInt;
     [SerializeField] Button button;
-    [SerializeField] GameObject[] empty;
+    public GameObject[] empty;
     bool eliminate, playerEquip;
+
+    public int numInv = 0;
 
     string infoText;
 
@@ -95,18 +97,21 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         this.objInt = orden;
         this.infoSpriteInt = orden;
         //print("ventana de añadir item generanda correctamente");        
-        empty[indexUi].SetActive(false);
+       
     }
 
     public void AcceptItem()
     {
         GetComponent<Animator>().SetTrigger("hide");
-
+        empty[numInv].SetActive(false);
+       
+      
         StartCoroutine(offWindow());
        
         item.GetComponent<Animator>().SetTrigger("toInventory");
         StartCoroutine(AddItemInventory());
         button.enabled = false;
+        numInv++;
     }
 
     IEnumerator AddItemInventory()
@@ -116,6 +121,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         Inventory i = Inventory.Instance();
         i.AddItemTest(itemNameText, miniatureInt, eliminate, objInt, infoText, infoSpriteInt, playerEquip, indexUi, useDistance, oneTimeUse);
         button.enabled = true;
+      
     }
 
     IEnumerator offWindow()

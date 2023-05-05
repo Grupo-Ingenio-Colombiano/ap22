@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class PrizeManager : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class PrizeManager : MonoBehaviour
     Button acept;
 
     [SerializeField]
-    AudioSource sound;   
+    AudioSource sound;
+
+
+
 
     public string objectName;
 
@@ -54,6 +58,11 @@ public class PrizeManager : MonoBehaviour
 
     public bool oneTimeUse;
 
+
+    public int numInventario;
+
+    [SerializeField] ItemRecibe itemRecibe; 
+
     private void OnEnable()
     {
         prizeCanvas.enabled = true;
@@ -69,6 +78,10 @@ public class PrizeManager : MonoBehaviour
         acept.interactable = false;
         anim.SetTrigger("out");
         Invoke("SetItemToInventory", 1.5f);
+        itemRecibe.numInv = numInventario + 1;
+
+        print("invent " + numInventario);
+        itemRecibe.empty[numInventario].SetActive(false);
         PlayerDataManager.Instance.AddExperience(30);
         PlayerDataManager.Instance.AddProgress(5);
     }
@@ -76,6 +89,7 @@ public class PrizeManager : MonoBehaviour
     public void SetItemToInventory()
     {
         PutItemOnInventory(objectName, spriteInt, objectActionInt);
+     
     }
 
     void PutItemOnInventory(string name, int img, int action)
