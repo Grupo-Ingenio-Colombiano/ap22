@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
     GameObject obj;
     [SerializeField] int objInt;
     [SerializeField] Button button;
-
+    [SerializeField] GameObject[] empty;
     bool eliminate, playerEquip;
 
     string infoText;
@@ -94,7 +95,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         this.objInt = orden;
         this.infoSpriteInt = orden;
         //print("ventana de añadir item generanda correctamente");        
-
+        empty[indexUi].SetActive(false);
     }
 
     public void AcceptItem()
@@ -102,7 +103,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         GetComponent<Animator>().SetTrigger("hide");
 
         StartCoroutine(offWindow());
-
+       
         item.GetComponent<Animator>().SetTrigger("toInventory");
         StartCoroutine(AddItemInventory());
         button.enabled = false;
