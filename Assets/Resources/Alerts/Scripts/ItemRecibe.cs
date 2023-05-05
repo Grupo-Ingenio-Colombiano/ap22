@@ -20,6 +20,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
 
     GameObject obj;
     [SerializeField] int objInt;
+    [SerializeField] Button button;
 
     bool eliminate, playerEquip;
 
@@ -104,14 +105,16 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
 
         item.GetComponent<Animator>().SetTrigger("toInventory");
         StartCoroutine(AddItemInventory());
-
+        button.enabled = false;
     }
 
     IEnumerator AddItemInventory()
     {
+
         yield return new WaitForSeconds(1.2f);
         Inventory i = Inventory.Instance();
         i.AddItemTest(itemNameText, miniatureInt, eliminate, objInt, infoText, infoSpriteInt, playerEquip, indexUi, useDistance, oneTimeUse);
+        button.enabled = true;
     }
 
     IEnumerator offWindow()
