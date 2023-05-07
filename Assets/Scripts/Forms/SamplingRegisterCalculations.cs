@@ -62,6 +62,11 @@ public class SamplingRegisterCalculations : MonoBehaviour
         unidadesProducidas = tTotalDispDiario / tiempoCiclo;
 
 
+        print("num minutos " + QuestSampling.Instance.CurrentOperationData.numMinutosMuestreo);
+        print("porcentaje  " + QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion);
+        print("ritmo " + QuestSampling.Instance.CurrentOperationData.factorRitmo);
+        print("K " + QuestSampling.Instance.CurrentOperationData.K);
+
         tOptimoIngresado = float.Parse(TOInput.text, CultureInfo.InvariantCulture);
         tCicloIngresado = float.Parse(TCInput.text, CultureInfo.InvariantCulture);
         uProducidasIngresado = float.Parse(UPInput.text, CultureInfo.InvariantCulture);
@@ -71,6 +76,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
 
+         print("tiempo optimo " + tiempoOptimo);
+        print("tiempo ciclo  " + tiempoCiclo);
+        print("unidades producidas " + unidadesProducidas);
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
         FormResultsManager.Instance.unidadesRequeridas = QuestSampling.Instance.CurrentOperationData.requiredUnits;
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;

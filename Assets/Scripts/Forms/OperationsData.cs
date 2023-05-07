@@ -116,14 +116,19 @@ public class OperationData
                 break;
         }
         SetHistoricalSamples(minTime, maxTime);
-        historicalSamples = userData.historicData;
-     
         rhytmfFactors = userData.rhytmFactor;
+        historicalSamples = userData.historicData;
 
-        numMinutosMuestreo = userData.numMinutos;
-        porcentajeDedicadoOperacion = userData.percentageOperation;
-        factorRitmo =userData.rhythm;
-        K = userData.k;
+
+        if (method == 1)
+        {
+           
+            numMinutosMuestreo = userData.numMinutos * 60;
+            porcentajeDedicadoOperacion = userData.percentageOperation;
+            factorRitmo = userData.rhythm;
+            K = userData.k;
+        }
+       
         
 
         if (method == 2)
