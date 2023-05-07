@@ -53,7 +53,7 @@ public class InventorySpace : MonoBehaviour {
             {
                 inventario.seleccionado = inventario.inventoryList[i].itemName;
                 inventario.indice = i;
-                if (userData.load >= 2 && inventario.inventoryList[inventario.indice].playerEquip)
+                if (userData.load >= 2 && inventario.inventoryList[inventario.indice].playerEquip && inventario.inventoryList[inventario.indice].itemName != "Camiseta")
                 {
                     inventoryUseActions.StartAction();
                 }
