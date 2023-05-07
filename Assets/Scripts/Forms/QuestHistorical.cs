@@ -31,8 +31,9 @@ public class QuestHistorical : MonoBehaviour
 
     private void Start()
     {
-        SetHistoricalQuest();
+         SetHistoricalQuest();
        
+
     }
 
 
@@ -46,6 +47,8 @@ public class QuestHistorical : MonoBehaviour
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));          
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
             notesManager.EnablePage(0);
+           
+            
         }
         else
         {

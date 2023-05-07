@@ -155,7 +155,7 @@ public class FormResultsManager : MonoBehaviour
 
     public void ActivateReward()
     {
-        GameObject.FindWithTag("TextContainer").GetComponentInParent<Canvas>().enabled = false;
+        //GameObject.FindWithTag("TextContainer").GetComponentInParent<Canvas>().enabled = false;
         reward.SetActive(true);
     }
 

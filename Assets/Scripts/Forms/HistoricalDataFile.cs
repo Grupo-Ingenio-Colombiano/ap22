@@ -18,6 +18,7 @@ public class HistoricalDataFile : MonoBehaviour
     void Start()
     {
         SetDataInFile();
+        
     }
 
     void SetDataInFile()
@@ -31,7 +32,7 @@ public class HistoricalDataFile : MonoBehaviour
         if(userData.load >= 2 && userData.method == 1)
         {
             QuestHistorical.Instance.CurrentOperationData.requiredUnits = userData.proccessUnits;
-
+            historicalSamples = userData.historicData;
             for (int i = 0; i < dataCount; i++)
             {
                 historicalDataTexts[i].text = userData.historicData[i].ToString();

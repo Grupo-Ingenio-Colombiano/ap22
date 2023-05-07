@@ -65,11 +65,15 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         tiempoCiclo = (tiempoOptimo + 4 * tiempoModal + tiempoPesimista) / 6f;
         unidadesProducidas = tTotalDispDiario / tiempoCiclo;
 
-
+        print("Required Units" + QuestHistorical.Instance.CurrentOperationData.requiredUnits);
 
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+
+        print("tiempo optimo " + tiempoOptimo);
+        print("tiempo ciclo  " + tiempoCiclo);
+        print("unidades producidas " + unidadesProducidas);
 
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
             && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
@@ -84,6 +88,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
         FormResultsManager.Instance.unidadesRequeridas = QuestHistorical.Instance.CurrentOperationData.requiredUnits;
+        print("Rquired unitr" + userData.historicData);
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
         FormResultsManager.Instance.taktTime = tOptimoIngresado;//tiempoTakt;
 

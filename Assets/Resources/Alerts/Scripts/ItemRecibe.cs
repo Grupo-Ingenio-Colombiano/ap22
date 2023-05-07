@@ -43,6 +43,14 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if(data.load >= 1)
+        {
+            for (int i = 0; i < data.numInventario; i++)
+            {
+                empty[i].SetActive(false);
+            }
+        }
     }
 
 
@@ -112,6 +120,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         StartCoroutine(AddItemInventory());
         button.enabled = false;
         numInv++;
+        data.numInventario = numInv;
     }
 
     IEnumerator AddItemInventory()

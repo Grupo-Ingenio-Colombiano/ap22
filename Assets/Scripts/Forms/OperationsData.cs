@@ -115,8 +115,9 @@ public class OperationData
             default:
                 break;
         }
-
+        SetHistoricalSamples(minTime, maxTime);
         historicalSamples = userData.historicData;
+     
         rhytmfFactors = userData.rhytmFactor;
 
         numMinutosMuestreo = userData.numMinutos;

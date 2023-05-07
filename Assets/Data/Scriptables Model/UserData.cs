@@ -39,8 +39,8 @@ public class UserData : ScriptableObject
     public Vector3 markerCanvas;
     public Vector3 indicator;
 
-   
 
+    public int numInventario;
     [Header("Guardado")]
     public int method;
     public bool selectedMethod;

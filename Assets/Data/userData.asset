@@ -22,20 +22,21 @@ MonoBehaviour:
   inspectorSeguridad: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 31.569124, y: 0.048503518, z: -2.9409122}
-  playerRot: {x: -0, y: 0.8698363, z: -0, w: 0.49334058}
-  progress: 5
-  experience: 30
-  timer: 00:00:46
+  playerPosition: {x: 27.096685, y: 0.048496842, z: -58.09841}
+  playerRot: {x: -0, y: 0.28066698, z: -0, w: 0.95980525}
+  progress: 115
+  experience: 480
+  timer: 00:20:24
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
+  numInventario: 9
   method: 1
   selectedMethod: 1
-  proccessUnits: 0
-  indexOperationData: 0
+  proccessUnits: 185
+  indexOperationData: 2
   scoreSecurityElements: 30
   scoreTimeTake: 30
   scoreSelectData: 30
@@ -97,49 +98,104 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
+  - itemName: Guantes
+    sprite: 5
+    eliminable: 0
+    obj: 5
+    infotext: 
+    infoSprite: 5
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "Protector de o\xEDdos"
+    sprite: 7
+    eliminable: 0
+    obj: 7
+    infotext: 
+    infoSprite: 7
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Gafas
+    sprite: 8
+    eliminable: 0
+    obj: 8
+    infotext: 
+    infoSprite: 8
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Camiseta
+    sprite: 9
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   historicData:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  minTimeHistorical: 0
-  maxTimeHistorical: 0
-  talkTime: 0
-  tiempoOptimo: 0
-  unidadesRequeridas: 0
-  justifHistorical: 
+  - 5.28
+  - 5.27
+  - 4.81
+  - 4.69
+  - 4.82
+  - 4.72
+  - 4.9
+  - 5.18
+  - 5.2
+  - 4.78
+  - 5.16
+  - 5.26
+  - 4.98
+  - 4.86
+  - 5
+  - 5.18
+  - 4.84
+  - 5.22
+  - 4.97
+  - 5.25
+  - 4.77
+  - 5.27
+  - 4.81
+  - 4.95
+  - 5.18
+  - 5.18
+  - 4.85
+  - 4.93
+  - 4.79
+  - 5.2
+  - 5.29
+  - 5.03
+  - 5.27
+  - 5.09
+  - 4.81
+  - 5.05
+  minTimeHistorical: 4.6
+  maxTimeHistorical: 5.4
+  talkTime: 219
+  tiempoOptimo: 470
+  unidadesRequeridas: 8617
+  justifHistorical: dfggdfg
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
@@ -189,7 +245,7 @@ MonoBehaviour:
   - 0
   unitPerDay: 0
   unitsRquired: 0
-  turn1: 0
+  turn1: 1
   turn2: 0
   turn3: 0
   observaciones: 
