@@ -25,7 +25,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField]
     MethodData methodData;
 
-    TurnFormValuesCheck form;
+     TurnFormValuesCheck form;
 
     int tryTurn = 0;
 

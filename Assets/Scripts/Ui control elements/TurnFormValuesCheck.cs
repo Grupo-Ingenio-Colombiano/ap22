@@ -127,7 +127,7 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         data[6] = upValue.ToString("F0");
 
-        data[7] = observaciones.text;
+      
     }
 
     private void OnEnable()
@@ -142,6 +142,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     {
         userData.unitPerDay = upValue;
         userData.unitsRquired = urValue;
+        data[7] = observaciones.text;
         player.SetActive(true);
         FollowCameraController.instance.ResetCameraFollow();
         col.enabled = true;
