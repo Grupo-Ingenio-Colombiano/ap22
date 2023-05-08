@@ -60,6 +60,10 @@ public class CronoManager : MonoBehaviour
 
     float maxTime;
 
+    private void Start()
+    {
+        btnContinuar.SetActive(false);
+    }
     private void OnEnable()
     {
         anim.speed = 0;

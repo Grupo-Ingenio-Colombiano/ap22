@@ -31,12 +31,8 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject supervMuestreo1;
 
     [Header("--Datos Cronometro")]
-    [SerializeField] GameObject questTimignCronometro;
-    [SerializeField] GameObject actividadTiming;
-    [SerializeField] GameObject supervCronom1;
-    [SerializeField] GameObject formTimingQuestCronometro;
+    [SerializeField] GameObject questTimignCronometro;   
     [SerializeField] GameObject timingDragActivity;
-    [SerializeField] NotesManager notesManager;
 
     // Update is called once per frame
 
@@ -99,7 +95,7 @@ public class LoadCharacter : MonoBehaviour
                     if (userData.load == 2)
                     {
                        questTimignCronometro.SetActive(true);
-                        timingDragActivity.SetActive(true);
+                       timingDragActivity.SetActive(true);
                         //actividadTiming.SetActive(true);                                            
                         //formTimingQuestCronometro.SetActive(true);
                         //notesManager.EnablePage(2);

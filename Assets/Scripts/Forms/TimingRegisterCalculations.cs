@@ -164,9 +164,9 @@ public class TimingRegisterCalculations : MonoBehaviour
         tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
         tiempoTakt = tTotalDispDiario / unidadesRequeridas;
         unidadesProducidas = (int)(tTotalDispDiario / tiempoCiclo);
-        //print("unidades producidas " + unidadesProducidas);
-        //print("tTotalDispDiario " + tTotalDispDiario);
-        //print("Takt time " + tiempoTakt);
+        print("Tiempo de Ciclo " + tiempoCiclo);
+        print("Unidades producidas " + tiempoCiclo);
+        print("Tiempo Normal " + tiempoNormal);
 
         float error = 0.05f;
 
@@ -303,6 +303,10 @@ public class TimingRegisterCalculations : MonoBehaviour
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
         FormResultsManager.Instance.taktTime = tiempoTaktIngresado;//tiempoTakt;
 
+      
+        //print("tTotalDispDiario " + tTotalDispDiario);
+        //print("Takt time " + tiempoTakt);
+
         FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
 
         FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
@@ -312,10 +316,10 @@ public class TimingRegisterCalculations : MonoBehaviour
 
         ShowCorrectAnswer();
 
-        for (int i = 0; i < areCorrectAnswers.Length; i++)
-        {
-            print("correct?: " + i + " " + areCorrectAnswers[i]);
-        }
+        //for (int i = 0; i < areCorrectAnswers.Length; i++)
+        //{
+        //    print("correct?: " + i + " " + areCorrectAnswers[i]);
+        //}
 
     }
 
