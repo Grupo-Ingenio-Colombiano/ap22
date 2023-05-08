@@ -15,7 +15,7 @@ public class UserData : ScriptableObject
     
     public string name;
     public string email;
-    public string lastScene;
+    public int lastScene;
     public string practiceName;
 
     public bool isSave = false;

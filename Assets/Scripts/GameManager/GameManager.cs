@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        userData.lastScene = SceneManager.GetActiveScene().buildIndex.ToString();
+        userData.lastScene = SceneManager.GetActiveScene().buildIndex;
         userData.scoreSecurityElements = scoreSecurityElements;
         userData.scoreTimeTake = scoreTimeTake; 
         userData.scoreSelectData = scoreSelectData;

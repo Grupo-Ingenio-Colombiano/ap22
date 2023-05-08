@@ -44,6 +44,7 @@ public class LoginManager : MonoBehaviour
         imageAsset.sprite = image;
         titleText.text = title;
         contentText.text = content;
+        userData.lastScene = SceneManager.GetActiveScene().buildIndex;
     }
 
 
@@ -129,14 +130,14 @@ public class LoginManager : MonoBehaviour
 
     void ContinueScene()
     {
-        if (data.lastScene.Length == 0)
+        if (data.lastScene == 0)
         {
             int activeScene = SceneManager.GetActiveScene().buildIndex;
             LevelLoader.sceneToload = activeScene + 1;
         }
         else
         {
-            LevelLoader.sceneToload = int.Parse(data.lastScene);
+            LevelLoader.sceneToload = data.lastScene;
             gender.playerIsMan = userData.gender;
         }
 
