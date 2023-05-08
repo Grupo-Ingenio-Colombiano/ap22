@@ -80,6 +80,7 @@ public class InstructionsManagerComponent : MonoBehaviour
         texto.text = defaultText;
         color_texto = Color.white;
         color_texto.a = 0;
+        //userData.lastScene = SceneManager.GetActiveScene().buildIndex;
     }
 
 

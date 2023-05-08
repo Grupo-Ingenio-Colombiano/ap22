@@ -12,30 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4185f1eda9d0ff94e88a3b1626f42396, type: 3}
   m_Name: userData
   m_EditorClassIdentifier: 
-  name: a
-  email: a@a.
-  lastScene: 1
+  name: 
+  email: 
+  lastScene: 3
   practiceName: Estudio de tiempos
   isSave: 1
   load: 2
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
-  PlayerSelected: 0
+  PlayerSelected: 
   gender: 0
-  playerPosition: {x: 25.901575, y: 0.048599362, z: -57.268555}
-  playerRot: {x: -0.009600967, y: 0.84240067, z: -0.008619461, w: 0.5386973}
-  progress: 35
-  experience: 90
-  timer: 00:18:06
+  playerPosition: {x: -1.046114, y: 0.04850179, z: -17.700071}
+  playerRot: {x: 0, y: -0.0074751917, z: 0, w: 0.9999721}
+  progress: 70
+  experience: 310
+  timer: 00:10:59
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
   numInventario: 9
-  method: 3
+  method: 2
   selectedMethod: 1
-  proccessUnits: 109
+  proccessUnits: 121
   indexOperationData: 3
   scoreSecurityElements: 30
   scoreTimeTake: 30
@@ -142,43 +142,76 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 0
+  - itemName: Camiseta
+    sprite: 9
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Baile
+    sprite: 10
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Llave montacargas
+    sprite: 11
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 2
+    useOneTime: 0
   historicData:
-  - 6.02
-  - 5.96
-  - 6.28
-  - 5.93
-  - 6.47
-  - 5.67
-  - 5.91
-  - 5.45
-  - 6.15
-  - 5.85
-  - 5.45
-  - 5.55
-  - 6.18
-  - 6.52
-  - 5.64
-  - 5.45
-  - 5.6
-  - 5.63
-  - 5.48
-  - 5.91
-  - 5.75
-  - 6.39
-  - 5.81
-  - 6.52
-  - 6.55
-  - 5.53
-  - 6.57
-  - 5.62
-  - 5.9
-  - 5.84
-  - 5.45
-  - 5.46
-  - 6.01
-  - 5.92
-  - 5.86
-  - 6.21
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   minTimeHistorical: 0
   maxTimeHistorical: 0
   talkTime: 0
@@ -188,13 +221,13 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 0
-  percentageOperation: 0
-  rhythm: 0
-  k: 0
-  unidadesProducidasMuestreo: 0
-  kCronometraje: 12
-  rhytmFactor: 690000006e0000005f0000006e000000730000006400000069000000690000005a0000006400000069000000640000005f0000005f000000690000005a0000006900000064000000640000006e0000006400000064000000550000005f000000640000005f0000005a000000640000005a000000690000006e0000006e0000005f000000640000005f0000005a000000
+  numMinutos: 2
+  percentageOperation: 90
+  rhythm: 80
+  k: 11
+  unidadesProducidasMuestreo: 17
+  kCronometraje: 0
+  rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
   - 0
   - 0
@@ -232,13 +265,13 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  unitPerDay: 0
-  unitsRquired: 0
-  turn1: 0
-  turn2: 0
+  unitPerDay: 143
+  unitsRquired: 121
+  turn1: 1
+  turn2: 1
   turn3: 0
   observaciones: 
-  templateName: ap22_3
+  templateName: ap22_2
   fileName: 
   excelReport:
   - A: []
@@ -311,7 +344,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
+    - ' '
     - 
     - 
     - 
@@ -472,10 +505,10 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
+    - 30
+    - 30
+    - 20
+    - 20
     - 
     - 
     - 
@@ -522,23 +555,23 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 3.35
+    - 2.82
+    - 143
+    - 
+    - Si
+    - sdfg
     - 
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Si
+    - 1
+    - Si
+    - 1
+    - No
+    - 0
+    - 143
     - 
     - 
     - 
@@ -578,12 +611,12 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 3.35
+    - 5.64
+    - 71
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Si
+    - sdfg
     - 
     - 
     - 
@@ -679,7 +712,7 @@ MonoBehaviour:
     O: []
     P: []
     Q: []
-  reportUrl: 
+  reportUrl: https://apivirtualplant.com/virtualplantApiServices/reportData/data/-.pdf
   institution: 
   academicProgram: 
   subject: 
