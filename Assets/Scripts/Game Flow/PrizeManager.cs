@@ -79,7 +79,7 @@ public class PrizeManager : MonoBehaviour
         anim.SetTrigger("out");
         Invoke("SetItemToInventory", 1.5f);
         itemRecibe.numInv = numInventario + 1;
-
+        
         print("invent " + numInventario);
         itemRecibe.empty[numInventario].SetActive(false);
         PlayerDataManager.Instance.AddExperience(30);

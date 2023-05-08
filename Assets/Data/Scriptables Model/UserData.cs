@@ -38,9 +38,13 @@ public class UserData : ScriptableObject
 
     public Vector3 markerCanvas;
     public Vector3 indicator;
-
-
     public int numInventario;
+    [Header("Formulario de Ingreso")]
+    public string nombreForm;
+    public string apellidoForm;
+    public string iDForm;
+    
+   
     [Header("Guardado")]
     public int method;
     public bool selectedMethod;

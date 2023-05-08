@@ -19,10 +19,22 @@ public class WorkPermit : MonoBehaviour
     [SerializeField] InputField userIDField;
     [SerializeField] InputField userLastNameField;
 
+    [SerializeField] UserData userData;
+
     public static string userName;
     public static string userLastName;
     public static string userID;
 
+
+    private void Start()
+    {
+        if(userData.isSave == true)
+        {
+            userNameField.text = userData.nombreForm;
+            userLastNameField.text = userData.apellidoForm;
+            userIDField.text = userData.iDForm;
+        }
+    }
     private void OnEnable()
     {
         DisableFields();
@@ -71,6 +83,11 @@ public class WorkPermit : MonoBehaviour
             userName = userNameField.text;
             userLastName = userLastNameField.text;
             userID = userIDField.text;
+
+            userData.nombreForm = userNameField.text;
+            userData.apellidoForm = userLastNameField.text;
+            userData.iDForm = userIDField.text;
+
             var dialog = FindObjectOfType(typeof(UIDialogManager)) as UIDialogManager;
             dialog.GetComponentInParent<Canvas>().enabled = true;
             dialog.CallNext();
