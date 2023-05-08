@@ -14,8 +14,8 @@ public class Downloader : MonoBehaviour
 
     private void Start()
     {
-        userData.excelReport[0].E[3] = WorkPermit.userName + " " + WorkPermit.userLastName;
-        userData.excelReport[0].E[5] = WorkPermit.userID;
+        userData.excelReport[0].E[3] = userData.nombreForm + " " + userData.apellidoForm;
+        userData.excelReport[0].E[5] = userData.iDForm;
 
         if (userData.method == 1 || userData.method == 2)
         {

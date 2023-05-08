@@ -58,7 +58,7 @@ public class UserData : ScriptableObject
     public  int scoreUpgradeForm;
 
     public List<InventoryItem> inventory;
- 
+    public bool questsCheck = false;
 
     [Header("--Metodo 1 (Datos Históricos)")]
     [Header("----Punto 0")]
@@ -69,6 +69,8 @@ public class UserData : ScriptableObject
     public float tiempoOptimo;
     public float unidadesRequeridas;
     public string justifHistorical;
+
+    public float modalTimeHistorical;
    
 
     [Header("----Punto 1")]

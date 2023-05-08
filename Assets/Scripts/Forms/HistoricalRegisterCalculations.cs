@@ -88,7 +88,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
         FormResultsManager.Instance.unidadesRequeridas = QuestHistorical.Instance.CurrentOperationData.requiredUnits;
-        print("Rquired unitr" + userData.historicData);
+       
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
         FormResultsManager.Instance.taktTime = tOptimoIngresado;//tiempoTakt;
 

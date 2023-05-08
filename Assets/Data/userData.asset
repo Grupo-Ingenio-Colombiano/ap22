@@ -33,6 +33,9 @@ MonoBehaviour:
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
   numInventario: 0
+  nombreForm: 
+  apellidoForm: 
+  iDForm: 
   method: 0
   selectedMethod: 0
   proccessUnits: 0
@@ -43,6 +46,7 @@ MonoBehaviour:
   scoreFormTCiclo: 0
   scoreUpgradeForm: 0
   inventory: []
+  questsCheck: 0
   historicData:
   - 0
   - 0
@@ -86,6 +90,7 @@ MonoBehaviour:
   tiempoOptimo: 0
   unidadesRequeridas: 0
   justifHistorical: 
+  modalTimeHistorical: 0
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0

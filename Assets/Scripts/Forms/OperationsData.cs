@@ -115,7 +115,7 @@ public class OperationData
             default:
                 break;
         }
-        SetHistoricalSamples(minTime, maxTime);
+        modalTime = userData.modalTimeHistorical;
         rhytmfFactors = userData.rhytmFactor;
         historicalSamples = userData.historicData;
 
