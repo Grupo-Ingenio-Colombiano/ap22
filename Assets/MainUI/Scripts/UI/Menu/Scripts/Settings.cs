@@ -90,9 +90,9 @@ public class Settings : MonoBehaviour
 
     void DesactivarBotones()
     {
-        qualitySetting[0].GetComponent<Image>().sprite = btnDesactivado;
-        qualitySetting[1].GetComponent<Image>().sprite = btnDesactivado;
-        qualitySetting[2].GetComponent<Image>().sprite = btnDesactivado;
+        //qualitySetting[0].GetComponent<Image>().sprite = btnDesactivado;
+        //qualitySetting[1].GetComponent<Image>().sprite = btnDesactivado;
+        //qualitySetting[2].GetComponent<Image>().sprite = btnDesactivado;
     }
 
     public void RefreshQuality(int n)

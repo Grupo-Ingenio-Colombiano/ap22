@@ -31,21 +31,19 @@ public class VpNewNotice : MonoBehaviour
 
     public static void StartSavingAnimation()
     {    
-        if(SavingPanel != null )   
+        if(SavingPanel == null )   
         { 
-            Destroy(SavingPanel);
-        }     
-        
-        SavingPanel = Instantiate(Resources.Load("notice/SavingPanel"));        
+            SavingPanel = Instantiate(Resources.Load("notice/SavingPanel"));     
+        } 
+           
     }    
 
     public static void StopSavingAnimation()
     { 
         if(SavingPanel)   
         { 
-            Destroy(SavingPanel);
-        } 
-                
+            SavingPanel.GetComponent<SavingPanelManager>().StartDestroy();             
+        }      
     }   
     
 }

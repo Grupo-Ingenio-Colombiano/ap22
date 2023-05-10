@@ -70,10 +70,9 @@ public class ReportManager : MonoBehaviour
         buttonsDownload.SetActive(false);
         SetUiValues();
         ShowAnswers();
-    }
 
-      //-------------- Report Logic ---------------
-
+        //-------------- Report Logic ---------------
+     }
    
 
     public void ActiveSendReportWindow()
@@ -140,7 +139,7 @@ public class ReportManager : MonoBehaviour
         
     }
 
-    public void DownloadReport()
+        public void DownloadReport()
     {
         Application.OpenURL(userData.reportUrl);
     }
@@ -289,5 +288,5 @@ public class ReportManager : MonoBehaviour
         }
     }
 
-
+       
 }

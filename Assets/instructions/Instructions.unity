@@ -3715,7 +3715,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5957,17 +5957,19 @@ MonoBehaviour:
     funcionamiento b\xE1sico de la simulaci\xF3n\nA continuaci\xF3n voy a explicarle
     en que consiste la pr\xE1ctica"
   instructions:
-  - "Usted iniciar\xE1 su pr\xE1ctica ubicado en la entrada de la planta, "
-  - test1 dialog
-  - test2 dialog
-  - test2 dialog
-  - test2 dialog
+  - "Usted iniciar\xE1 su pr\xE1ctica ubicado en la entrada de la planta, hable con
+    el vigilante para llenar su formulario de entrada."
+  - "En el men\xFA de pausa encontrar\xE1 las opciones para continuar y finalizar
+    la pr\xE1ctica."
+  - "En la parte derecha podr\xE1 encontrar la opci\xF3n de pistas, estas servir\xE1n
+    para guiarlo durante la pr\xE1ctica."
+  - "Al finalizar la pr\xE1ctica podr\xE1 encontrar el panel de resultados finales,
+    no olvide generar el reporte final antes de cerrar la pesta\xF1a del navegador.\t"
   images:
   - {fileID: 21300000, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
   - {fileID: 21300002, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
   - {fileID: 21300004, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
-  - {fileID: 21300002, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
-  - {fileID: 21300004, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
+  - {fileID: 21300006, guid: 33e8cabdb6f9ffc4e9032f8d036a0ffe, type: 3}
   texto: {fileID: 409617350}
   text_boton: {fileID: 2009385459}
   btn_cambio: {fileID: 343572830}

@@ -777,6 +777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1283676662, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
+      propertyPath: userData
+      value: 
+      objectReference: {fileID: 11400000, guid: a09a3a216e394df44a4d8311794fe239,
+        type: 2}
     - target: {fileID: 1344990352901206, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
       propertyPath: m_Name
       value: Indicator
@@ -830,6 +835,11 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 703816026}
+    - target: {fileID: 199544203927448446, guid: 69e1253019a5b62409db6e35d20b1c26,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
 --- !u!1 &703816025
@@ -1613,12 +1623,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148967737}
   m_Mesh: {fileID: 4300002, guid: e5a28f35f14b03d46b5b41a5d6434ce2, type: 3}
---- !u!95 &1169716887 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6865744892837680183, guid: 69e1253019a5b62409db6e35d20b1c26,
-    type: 3}
-  m_PrefabInstance: {fileID: 654548134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1207833191
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3723,7 +3727,7 @@ MonoBehaviour:
           m_StringArgument: 02_Button_Close
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1169716887}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -4515,7 +4519,7 @@ MonoBehaviour:
           m_StringArgument: 01_Button-Generic_1
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1169716887}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: SetTrigger
         m_Mode: 5
