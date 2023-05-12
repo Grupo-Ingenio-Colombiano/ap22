@@ -164,6 +164,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
         tiempoTakt = tTotalDispDiario / unidadesRequeridas;
         unidadesProducidas = (int)(tTotalDispDiario / tiempoCiclo);
+
         print("Tiempo de Ciclo " + tiempoCiclo);
         print("Unidades producidas " + tiempoCiclo);
         print("Tiempo Normal " + tiempoNormal);
@@ -460,7 +461,7 @@ public class TimingRegisterCalculations : MonoBehaviour
 
     void CalculateTC()
     {
-        tiempoCiclo = tiempoNormal * (1 + (QuestTiming.Instance.CurrentOperationData.K));
+        tiempoCiclo = tiempoNormal * (1 + (QuestTiming.Instance.CurrentOperationData.K / 100f));
         //print("tiempo ciclo  = " + tiempoCiclo);
         //print("K  = " + QuestTiming.Instance.CurrentOperationData.K);
     }

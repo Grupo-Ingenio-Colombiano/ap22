@@ -17,6 +17,7 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] UserData data;
     [SerializeField] Text name;
 
+
     float exp = 0;
     float maxExperience = 500;
     private void Start()

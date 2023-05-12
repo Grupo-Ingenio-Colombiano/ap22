@@ -130,6 +130,8 @@ public class LoginManager : MonoBehaviour
 
     void ContinueScene()
     {
+        data.name = studentName.text;
+        data.email = email.text;
         if (data.lastScene == 0)
         {
             int activeScene = SceneManager.GetActiveScene().buildIndex;
