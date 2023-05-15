@@ -291,7 +291,7 @@ public class UIDialogManager : MonoBehaviour
         npcText.transform.parent.gameObject.SetActive(false);
 
         playerText.transform.parent.gameObject.SetActive(false);
-        playerTextParent.SetActive(false);
+        //playerTextParent.SetActive(false);
         playerImage.sprite = null;
         npcImage.sprite = null;
     }
