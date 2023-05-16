@@ -5,7 +5,7 @@ using UnityEngine;
 public class WayAdvise : MonoBehaviour
 {
     // Start is called before the first frame update
-    public UnityEngine.UI.Text timeText;
+    public TMPro.TextMeshProUGUI timeText;
     bool onWay = true;
     bool message;
     public GameObject panelWay;
@@ -37,6 +37,7 @@ public class WayAdvise : MonoBehaviour
 
                 onWay = true;
                 panelTimer.SetActive(false);
+                panelWay.SetActive(true);
             }
         }
     }
@@ -45,7 +46,7 @@ public class WayAdvise : MonoBehaviour
     {
         if (other.gameObject.name == "Limit")
         {
-            panelWay.SetActive(true);
+         
 
             panelTimer.SetActive(true);
 
@@ -71,6 +72,7 @@ public class WayAdvise : MonoBehaviour
             onWay = true;
 
             panelTimer.SetActive(false);
+            panelWay.SetActive(false);
         }
     }
 }
