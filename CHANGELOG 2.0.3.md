@@ -4,6 +4,25 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.3] - 2023-17-05
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Added
+-[functionality] wrong way alert and  count when the player walk out of correct way 
+-[UI] add ingco build logo
+
+### Fixed
+
+-[Bug] Fixed bug menu, remove scripts for quality graphic
+-[Bug] Remove player settings library for build error
+-[Bug] Fix Vide foreach error, this was gererated by foreach bucle, solution: for bucle was used
+
+### Removed
+-[Api] depreaced webGl 1.0 API 
+
+
 
 ## [2.0.2] - 2023-12-05
 

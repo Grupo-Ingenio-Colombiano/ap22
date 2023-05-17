@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WayAdvise : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class WayAdvise : MonoBehaviour
 
     public GameObject panelTimer;
     public float timer = 5;
+
+    [SerializeField] PlayerExperience experience;
 
     private void FixedUpdate()
     {
@@ -37,9 +40,21 @@ public class WayAdvise : MonoBehaviour
 
                 onWay = true;
                 panelTimer.SetActive(false);
-                panelWay.SetActive(true);
+                //panelWay.SetActive(true);
+                VpNewNotice.SetNotice("Tránsito peatonal prohibido","Usted transitó por una zona prohibida para peatones, se le descontarán 25 puntos de experiencia. Por favor regrese al camino peatonal",NoticeCallback);
             }
         }
+    }   
+
+    void NoticeCallback(Button button)
+    {
+        button.onClick.RemoveAllListeners();
+        
+        button.onClick.AddListener( () => 
+        {            
+            experience.AddExperience(-25);
+             
+        });
     }
 
     public void OnTriggerEnter(Collider other)
