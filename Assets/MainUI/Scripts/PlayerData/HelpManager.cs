@@ -29,6 +29,8 @@ public class HelpManager : MonoBehaviour
 
     [SerializeField] PlayerClues pClues;
 
+    int time = 5;
+
     public void SetHelp(string clue)
     {
         SetHelpText(clue);
@@ -43,37 +45,30 @@ public class HelpManager : MonoBehaviour
 
     public void Close()
     {
-        StartCoroutine(AnimateClose());
-        closeButton.enabled = false;
+        helpPanel.transform.localScale = new Vector3(0, 0, 0);
+        helpButton.enabled = true;
         SoundManager.Instance().PlayClic();
+        time = 5;
+        StopCoroutine(AnimateOpen());   
     }
 
     public void Open()
     {
+        helpPanel.transform.localScale = new Vector3(1, 1, 1);
         StartCoroutine(AnimateOpen());
         helpButton.enabled = false;
         SoundManager.Instance().PlayClic();
     }
 
-    IEnumerator AnimateClose()
-    {
-        
-            helpPanel.transform.localScale = new Vector3(0,0, 0);
-            //yield return new WaitForSecondsRealtime(0.1f);
-            yield return null;
-        
-        //helpPanel.transform.localPosition = new Vector3(-850f, 62.5f, 0);
-        helpButton.enabled = true;
-    }
 
     IEnumerator AnimateOpen()
     {
-       
-            helpPanel.transform.localScale = new Vector3(1, 1, 1);
-            yield return null;
-        
+
+
+        yield return new WaitForSeconds(time); ;
+
         //helpPanel.transform.localPosition = new Vector3(0, 62.5f, 0);
-        closeButton.enabled = true;
+       Close();
     }
 
 
