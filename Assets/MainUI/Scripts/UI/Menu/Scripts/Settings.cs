@@ -62,9 +62,7 @@ public class Settings : MonoBehaviour
         cameraFilter.profile.fog.enabled = true;
 
         DesactivarBotones();
-        qualitySetting[1].Select();
-        qualitySetting[1].GetComponent<Image>().sprite = btnActivo;
-        quality = 1;
+       
     }
 
     public void SetLowQuality()
