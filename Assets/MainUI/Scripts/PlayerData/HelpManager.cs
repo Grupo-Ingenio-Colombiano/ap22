@@ -50,6 +50,7 @@ public class HelpManager : MonoBehaviour
         SoundManager.Instance().PlayClic();
         time = 5;
         StopCoroutine(AnimateOpen());   
+        
     }
 
     public void Open()
