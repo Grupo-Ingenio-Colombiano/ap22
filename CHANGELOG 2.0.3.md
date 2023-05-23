@@ -4,6 +4,19 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.4] - 2023-17-05
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Added
+-[Experience] add new experience function in historical quest, now adds experience in different game points
+-[Experience] add new experience function in sampling quest, now adds experience in different game points
+
+### Removed
+-[Experience] removed experience function in historical quest
+-[Experience] removed experience function in sampling quest
+
 ## [2.0.3] - 2023-17-05
 
 ## Developers
