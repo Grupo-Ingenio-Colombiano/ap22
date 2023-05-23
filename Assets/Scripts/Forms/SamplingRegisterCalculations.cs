@@ -76,7 +76,19 @@ public class SamplingRegisterCalculations : MonoBehaviour
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
 
-         print("tiempo optimo " + tiempoOptimo);
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
+          && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
+          && DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
+        {
+           
+            PlayerDataManager.Instance.AddExperience(356);
+        }
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
+        {
+
+        }
+
+        print("tiempo optimo " + tiempoOptimo);
         print("tiempo ciclo  " + tiempoCiclo);
         print("unidades producidas " + unidadesProducidas);
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
