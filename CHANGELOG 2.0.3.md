@@ -11,11 +11,11 @@ grupo Ingenio Colombiano
 
 ### Added
 -[Experience] add new experience function in historical quest, now adds experience in different game points
--[Experience] add new experience function in sampling quest, now adds experience in different game points
+-[Experience] add new experience function in sampling quest, now adds experience in different game points and sampling quest now can reach 500 
 
 ### Removed
--[Experience] removed experience function in historical quest
--[Experience] removed experience function in sampling quest
+-[Experience] removed experience function in historical quest, not add experience in prizes received 
+-[Experience] removed experience function in sampling quest,  not add experience in prizes received 
 
 ## [2.0.3] - 2023-17-05
 
