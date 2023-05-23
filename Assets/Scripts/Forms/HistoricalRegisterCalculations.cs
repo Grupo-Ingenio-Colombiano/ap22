@@ -83,6 +83,8 @@ public class HistoricalRegisterCalculations : MonoBehaviour
             userData.tiempoOptimo = float.Parse(TCInput.text);
             userData.unidadesRequeridas = float.Parse(UPInput.text);
             userData.justifHistorical = justifInput.text;
+
+            PlayerDataManager.Instance.AddExperience(300);
         }
 
 

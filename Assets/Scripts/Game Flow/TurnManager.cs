@@ -182,7 +182,7 @@ public class TurnManager : MonoBehaviour
     public void CorrectTurnValidator()
     {
         resultsOneWeekManager.SetActive(true);
-        PlayerDataManager.Instance.AddExperience(120 / tryTurn);
+        PlayerDataManager.Instance.AddExperience(100);
         GameManager.scoreUpgradeForm = 30 - (tryTurn * 10);
         PlayerDataManager.Instance.AddProgress(25);
     }

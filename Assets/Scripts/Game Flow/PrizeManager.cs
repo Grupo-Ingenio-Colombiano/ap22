@@ -82,7 +82,6 @@ public class PrizeManager : MonoBehaviour
         
         print("invent " + numInventario);
         itemRecibe.empty[numInventario].SetActive(false);
-        PlayerDataManager.Instance.AddExperience(30);
         PlayerDataManager.Instance.AddProgress(5);
     }
 
