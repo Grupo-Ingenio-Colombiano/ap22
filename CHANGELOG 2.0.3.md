@@ -12,6 +12,13 @@ grupo Ingenio Colombiano
 ### Added
 -[Experience] add new experience function in historical quest, now adds experience in different game points
 -[Experience] add new experience function in sampling quest, now adds experience in different game points and sampling quest now can reach 500 
+-[CLue] Now the clue panel dissappears after five seconds.
+
+### Fixed
+
+-[UI] Fixed select turn operator UI, button continue appears 
+-[UI] Fixed name fromm security guard in dialog, now is "Vigilante"
+-[Settings] Sound button in menu setting now mute and unmute sound
 
 ### Removed
 -[Experience] removed experience function in historical quest, not add experience in prizes received 
