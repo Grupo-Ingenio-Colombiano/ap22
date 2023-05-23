@@ -87,8 +87,9 @@ public class FormResultsManager : MonoBehaviour
         {
             incorrect.SetActive(false);
             correct.SetActive(true);
-            expRewardManager.AddScore();
-        }else
+            PlayerDataManager.Instance.AddProgress(25);
+        }
+        else
         {
             GameManager.scoreFormTCiclo -= 10;
             currentAttempts--;

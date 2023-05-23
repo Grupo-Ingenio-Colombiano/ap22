@@ -59,6 +59,8 @@ public class MethodSeleccion : MonoBehaviour
             selection = true;
             data.selectedMethod = selection;
             selectedExcelMethod = "InformeDatosHistoricos.xlsx";
+
+        
         }        
         
     }
@@ -74,6 +76,7 @@ public class MethodSeleccion : MonoBehaviour
             selection = true;
             data.selectedMethod = selection; 
             selectedExcelMethod = "InformeMuestreo.xlsx";
+            
         }
 
     }
@@ -89,6 +92,7 @@ public class MethodSeleccion : MonoBehaviour
             selection = true;
             data.selectedMethod = selection;
             selectedExcelMethod = "InformeCronometraje.xlsx";
+           
         }
 
     }
@@ -117,6 +121,7 @@ public class MethodSeleccion : MonoBehaviour
         {
             UiMethodSelection.enabled = false;
             gameObject.SetActive(false);
+            PlayerDataManager.Instance.AddExperience(30);
         }
     }
   

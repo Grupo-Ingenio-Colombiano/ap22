@@ -80,8 +80,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
           && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
           && DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
         {
-           
-            PlayerDataManager.Instance.AddExperience(356);
+
+            PlayerDataManager.Instance.AddExperience(350);
+            PlayerDataManager.Instance.AddProgress(25);
         }
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
         {
