@@ -26,9 +26,9 @@ public class MapCanvasController : MonoBehaviour
                         Debug.LogError("You have more than one MapCanvasController in the scene.");
                     }
                 }
-                else
+                else 
                 {
-                    Debug.LogError("You should add Map prefab to your canvas");
+                    Debug.LogWarning("You should add Map prefab to your canvas");
                 }
 
 
