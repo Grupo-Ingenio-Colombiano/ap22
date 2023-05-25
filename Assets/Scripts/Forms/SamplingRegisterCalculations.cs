@@ -82,11 +82,7 @@ public class SamplingRegisterCalculations : MonoBehaviour
         {
 
             PlayerDataManager.Instance.AddExperience(350);
-            PlayerDataManager.Instance.AddProgress(20);
-        }
-        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
-        {
-
+            PlayerDataManager.Instance.AddProgress(25);
         }
 
         print("tiempo optimo " + tiempoOptimo);
