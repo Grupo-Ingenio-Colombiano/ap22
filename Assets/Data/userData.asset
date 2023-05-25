@@ -17,29 +17,29 @@ MonoBehaviour:
   lastScene: 2
   practiceName: Estudio de tiempos
   isSave: 1
-  load: 1
+  load: 2
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 29.961695, y: 3.358036, z: 9.245144}
-  playerRot: {x: 0, y: 0.4149513, z: 0, w: 0.9098436}
-  progress: 5
-  experience: 30
-  timer: 00:00:09
+  playerPosition: {x: -0.74375963, y: 0.048509657, z: -17.43904}
+  playerRot: {x: -0, y: -0.18858477, z: -0, w: 0.9820569}
+  progress: 95
+  experience: 500
+  timer: 00:03:31
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  numInventario: 2
+  numInventario: 12
   nombreForm: 
   apellidoForm: 
   iDForm: 
-  method: 1
+  method: 2
   selectedMethod: 1
-  proccessUnits: 0
-  indexOperationData: 0
+  proccessUnits: 147
+  indexOperationData: 2
   scoreSecurityElements: 30
   scoreTimeTake: 30
   scoreSelectData: 30
@@ -68,6 +68,116 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 1
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "M\xE1scara para vapores"
+    sprite: 4
+    eliminable: 0
+    obj: 4
+    infotext: 
+    infoSprite: 4
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Guantes
+    sprite: 5
+    eliminable: 0
+    obj: 5
+    infotext: 
+    infoSprite: 5
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "Protector de o\xEDdos"
+    sprite: 7
+    eliminable: 0
+    obj: 7
+    infotext: 
+    infoSprite: 7
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Gafas
+    sprite: 8
+    eliminable: 0
+    obj: 8
+    infotext: 
+    infoSprite: 8
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Camiseta
+    sprite: 9
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Baile
+    sprite: 10
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Llave montacargas
+    sprite: 11
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 2
+    useOneTime: 0
   questsCheck: 0
   historicData:
   - 0
@@ -116,11 +226,11 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 0
-  percentageOperation: 0
-  rhythm: 0
-  k: 0
-  unidadesProducidasMuestreo: 0
+  numMinutos: 1
+  percentageOperation: 80
+  rhythm: 80
+  k: 11
+  unidadesProducidasMuestreo: 16
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -160,13 +270,13 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  unitPerDay: 0
-  unitsRquired: 0
-  turn1: 0
+  unitPerDay: 152
+  unitsRquired: 147
+  turn1: 1
   turn2: 0
   turn3: 0
   observaciones: 
-  templateName: ap22_1
+  templateName: ap22_2
   fileName: 
   excelReport:
   - A: []
@@ -239,7 +349,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
+    - ' '
     - 
     - 
     - 
@@ -400,10 +510,10 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
+    - 30
+    - 30
+    - 30
+    - 20
     - 
     - 
     - 
@@ -450,24 +560,24 @@ MonoBehaviour:
     - 
     - 
     - 
+    - 2.76
+    - 2.66
+    - 152
+    - 
+    - Si
+    - fdgdfga
     - 
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Si
+    - 1
+    - No
+    - 0
+    - No
+    - 0
+    - 152
+    - dfgdfg
     - 
     - 
     - 
