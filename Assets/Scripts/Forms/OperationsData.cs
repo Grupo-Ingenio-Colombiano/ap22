@@ -125,7 +125,7 @@ public class OperationData
         if (method == 1)
         {
            
-            numMinutosMuestreo = userData.numMinutos * 60;
+            numMinutosMuestreo = userData.numMinutos;
             porcentajeDedicadoOperacion = userData.percentageOperation;
             factorRitmo = userData.rhythm;
             K = userData.k;
