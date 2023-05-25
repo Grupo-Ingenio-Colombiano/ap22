@@ -63,6 +63,19 @@ public class ReportManager : MonoBehaviour
     [SerializeField]  UserData userData;
 
 
+    
+    void SetDateOnUserData()
+    {
+        var date = System.DateTime.Now;
+        var dateString = date.ToString("MM/dd/yyyy");
+        var hourString = date.ToString("hh:mm tt");
+
+        userData.excelReport[0].E[7]=dateString;
+        userData.excelReport[0].L[7]=hourString;
+       
+    }
+
+
     // Start 
 
     private void Start() {
@@ -70,6 +83,8 @@ public class ReportManager : MonoBehaviour
         buttonsDownload.SetActive(false);
         SetUiValues();
         ShowAnswers();
+
+        SetDateOnUserData();
 
         //-------------- Report Logic ---------------
      }
