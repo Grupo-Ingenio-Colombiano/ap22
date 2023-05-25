@@ -27,6 +27,9 @@ public class PrizeManager : MonoBehaviour
     [SerializeField]
     AudioSource sound;
 
+    [SerializeField]
+    UserData userData;
+
 
 
 
@@ -79,7 +82,7 @@ public class PrizeManager : MonoBehaviour
         anim.SetTrigger("out");
         Invoke("SetItemToInventory", 1.5f);
         itemRecibe.numInv = numInventario + 1;
-        
+        userData.numInventario = itemRecibe.numInv;
         print("invent " + numInventario);
         itemRecibe.empty[numInventario].SetActive(false);
         PlayerDataManager.Instance.AddProgress(5);

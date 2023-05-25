@@ -8,7 +8,8 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] UserData userData;
     [SerializeField] GameObject dialogSST;
     [SerializeField] VIDE_Assign vigilante;
-
+    [SerializeField] GameObject[] empty;
+    
     [SerializeField]
     VIDE_Assign videJefe;
 
@@ -34,6 +35,8 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject questTimignCronometro;   
     [SerializeField] GameObject timingDragActivity;
 
+    [SerializeField] ItemRecibe itemRecibe;
+
     // Update is called once per frame
 
     private void Start()
@@ -58,7 +61,8 @@ public class LoadCharacter : MonoBehaviour
             {
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
-               
+                empty[1].SetActive(false);
+                itemRecibe.numInv = userData.numInventario;
 
             }
 
