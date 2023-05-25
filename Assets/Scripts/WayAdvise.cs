@@ -15,6 +15,8 @@ public class WayAdvise : MonoBehaviour
     public float timer = 5;
 
     [SerializeField] PlayerExperience experience;
+    [SerializeField] BoxCollider firstLimit;
+    [SerializeField] GameObject box;
 
     private void FixedUpdate()
     {

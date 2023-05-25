@@ -19,6 +19,12 @@ public class WorkPermit : MonoBehaviour
     [SerializeField] InputField userIDField;
     [SerializeField] InputField userLastNameField;
 
+
+    [SerializeField] GameObject Limit1;
+    [SerializeField] GameObject Limit2;
+    [SerializeField] GameObject Limit3;
+    [SerializeField] GameObject notPass1;
+    [SerializeField] GameObject notPass2;
     [SerializeField] UserData userData;
 
     public static string userName;
@@ -117,5 +123,12 @@ public class WorkPermit : MonoBehaviour
             item.interactable = true;
         }
     }
-
+    public void CollidersEnable()
+    {
+        notPass1.SetActive(false);
+        notPass2.SetActive(false);
+        Limit1.SetActive(true);
+        Limit2.SetActive(true);
+        Limit3.SetActive(true);
+    }
 }
