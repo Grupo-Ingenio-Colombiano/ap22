@@ -5,6 +5,12 @@ using UnityEngine;
 public class LoadCharacter : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] GameObject Limit1;
+    [SerializeField] GameObject Limit2;
+    [SerializeField] GameObject Limit3;
+    [SerializeField] GameObject notPass1;
+    [SerializeField] GameObject notPass2;
+
     [SerializeField] UserData userData;
     [SerializeField] GameObject dialogSST;
     [SerializeField] VIDE_Assign vigilante;
@@ -66,6 +72,12 @@ public class LoadCharacter : MonoBehaviour
                 vigilante.overrideStartNode = 3;
                 empty[1].SetActive(false);
                 itemRecibe.numInv = userData.numInventario;
+
+                notPass1.SetActive(false);
+                notPass2.SetActive(false);
+                Limit1.SetActive(true);
+                Limit2.SetActive(true);
+                Limit3.SetActive(true);
 
             }
 
