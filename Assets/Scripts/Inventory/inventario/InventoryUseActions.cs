@@ -20,6 +20,7 @@ public class InventoryUseActions : MonoBehaviour {
 
     [SerializeField] UserData userData;
     [SerializeField] InventorySpace inventorySpace;
+    [SerializeField] ItemRecibe itemrecibe;
 
     string nombre;
 
@@ -124,6 +125,7 @@ public class InventoryUseActions : MonoBehaviour {
                         if (inventario.inventoryList[inventario.indice].useOneTime)
                         {
                             inventario.DeleteItem();
+                            itemrecibe.numInv = itemrecibe.numInv - 1;
                         }
                     }
 

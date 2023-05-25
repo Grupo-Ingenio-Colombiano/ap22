@@ -129,6 +129,6 @@ public class WorkPermit : MonoBehaviour
         notPass2.SetActive(false);
         Limit1.SetActive(true);
         Limit2.SetActive(true);
-        Limit3.SetActive(true);
+        Limit3.SetActive(true); 
     }
 }

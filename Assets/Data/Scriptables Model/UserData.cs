@@ -52,12 +52,10 @@ public class UserData : ScriptableObject
     public int indexOperationData;
 
     [Header("Score")]
+    public int scoreMethodElection;
     public  int scoreSecurityElements;
-    public  int scoreTimeTake;
-    public  int scoreSelectData;
-    public  int scoreFormTCiclo;
-    public  int scoreUpgradeForm;
-
+    public int scoreHistoricDataTable;
+    public int scoreTO;
     public List<InventoryItem> inventory;
     public bool questsCheck = false;
 

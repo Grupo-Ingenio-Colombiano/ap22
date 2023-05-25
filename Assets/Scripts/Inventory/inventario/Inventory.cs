@@ -240,7 +240,7 @@ public class Inventory : MonoBehaviour {
                     UpdateInventory();
                     return true;
 
-                    loadManager.Upload(1);
+               
                     break;
 
                 case 2:
