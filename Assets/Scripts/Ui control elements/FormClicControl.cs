@@ -18,12 +18,16 @@ public class FormClicControl : MonoBehaviour
     [SerializeField]
     InputField input;
 
+    [SerializeField] GameObject buttonContinue;
+
     private void OnEnable()
     {
 
         hand = Resources.Load("cursorTextures/mano_2") as Texture2D;
 
         offHand = Resources.Load("cursorTextures/mano_off") as Texture2D;
+
+        buttonContinue.SetActive(false);
     }
     private void OnMouseOver()
     {
@@ -53,6 +57,8 @@ public class FormClicControl : MonoBehaviour
             GameObject.FindWithTag("Player").SetActive(false);
 
             FollowCameraController.instance.SetCameraFollow(gameObject, 40, false);
+
+            buttonContinue.SetActive(true);
 
             col.enabled = false;
 

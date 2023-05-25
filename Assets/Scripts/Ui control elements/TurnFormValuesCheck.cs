@@ -109,7 +109,7 @@ public class TurnFormValuesCheck : MonoBehaviour
             userData.turn3 = false;
         }
 
-        btnContinue.SetActive(true);
+        //btnContinue.SetActive(true);
 
         urValue = (int)FormResultsManager.Instance.unidadesRequeridas;
 
@@ -134,7 +134,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     {
         validateTurns();
         //btnContinue.SetActive(false);
-        btnContinue.SetActive(true);
+        //btnContinue.SetActive(true);
         player = GameObject.FindWithTag("Player");
     }
 
