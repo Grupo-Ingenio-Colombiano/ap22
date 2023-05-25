@@ -12,39 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4185f1eda9d0ff94e88a3b1626f42396, type: 3}
   m_Name: userData
   m_EditorClassIdentifier: 
-  name: 
-  email: 
+  name: a
+  email: a@a.
   lastScene: 2
   practiceName: Estudio de tiempos
   isSave: 1
-  load: 2
+  load: 1
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
-  PlayerSelected: 
-  gender: 0
-  playerPosition: {x: -0.74375963, y: 0.048509657, z: -17.43904}
-  playerRot: {x: -0, y: -0.18858477, z: -0, w: 0.9820569}
-  progress: 95
-  experience: 500
-  timer: 00:03:31
+  PlayerSelected: 0
+  gender: 1
+  playerPosition: {x: 30.002653, y: 3.3532877, z: 9.466608}
+  playerRot: {x: 0, y: 0.6196095, z: 0, w: 0.7849103}
+  progress: 5
+  experience: 30
+  timer: 00:00:17
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  numInventario: 12
+  numInventario: 2
   nombreForm: 
   apellidoForm: 
   iDForm: 
   method: 2
   selectedMethod: 1
-  proccessUnits: 147
-  indexOperationData: 2
-  scoreSecurityElements: 30
-  scoreTimeTake: 30
-  scoreSelectData: 30
-  scoreFormTCiclo: 30
-  scoreUpgradeForm: 30
+  proccessUnits: 0
+  indexOperationData: 0
+  scoreSecurityElements: 0
+  scoreTimeTake: 0
+  scoreSelectData: 0
+  scoreFormTCiclo: 0
+  scoreUpgradeForm: 0
   inventory:
   - itemName: "Cron\xF3metro"
     sprite: 0
@@ -57,127 +57,6 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 6
     useOneTime: 1
-  - itemName: Virtualina
-    sprite: 1
-    eliminable: 1
-    obj: 1
-    infotext: "Renueva los animos y da m\xE1s velocidad"
-    infoSprite: 1
-    playerEquip: 0
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 1
-  - itemName: Botas
-    sprite: 3
-    eliminable: 0
-    obj: 3
-    infotext: 
-    infoSprite: 3
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Casco
-    sprite: 2
-    eliminable: 0
-    obj: 2
-    infotext: 
-    infoSprite: 2
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "M\xE1scara para vapores"
-    sprite: 4
-    eliminable: 0
-    obj: 4
-    infotext: 
-    infoSprite: 4
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Guantes
-    sprite: 5
-    eliminable: 0
-    obj: 5
-    infotext: 
-    infoSprite: 5
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Overol
-    sprite: 6
-    eliminable: 0
-    obj: 6
-    infotext: 
-    infoSprite: 6
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "Protector de o\xEDdos"
-    sprite: 7
-    eliminable: 0
-    obj: 7
-    infotext: 
-    infoSprite: 7
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Gafas
-    sprite: 8
-    eliminable: 0
-    obj: 8
-    infotext: 
-    infoSprite: 8
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Camiseta
-    sprite: 9
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Baile
-    sprite: 10
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 0
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Llave montacargas
-    sprite: 11
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 2
-    useOneTime: 0
   questsCheck: 0
   historicData:
   - 0
@@ -226,11 +105,11 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 1
-  percentageOperation: 80
-  rhythm: 80
-  k: 11
-  unidadesProducidasMuestreo: 16
+  numMinutos: 0
+  percentageOperation: 0
+  rhythm: 0
+  k: 0
+  unidadesProducidasMuestreo: 0
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -270,9 +149,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  unitPerDay: 152
-  unitsRquired: 147
-  turn1: 1
+  unitPerDay: 0
+  unitsRquired: 0
+  turn1: 0
   turn2: 0
   turn3: 0
   observaciones: 
@@ -349,7 +228,7 @@ MonoBehaviour:
     - 
     - 
     - 
-    - ' '
+    - 
     - 
     - 
     - 
@@ -510,10 +389,10 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 30
-    - 30
-    - 30
-    - 20
+    - 
+    - 
+    - 
+    - 
     - 
     - 
     - 
@@ -560,24 +439,24 @@ MonoBehaviour:
     - 
     - 
     - 
-    - 2.76
-    - 2.66
-    - 152
-    - 
-    - Si
-    - fdgdfga
     - 
     - 
     - 
     - 
-    - Si
-    - 1
-    - No
-    - 0
-    - No
-    - 0
-    - 152
-    - dfgdfg
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
     - 
     - 
     - 

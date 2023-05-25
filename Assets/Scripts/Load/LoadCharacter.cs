@@ -9,7 +9,7 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject dialogSST;
     [SerializeField] VIDE_Assign vigilante;
     [SerializeField] GameObject[] empty;
-    
+
     [SerializeField]
     VIDE_Assign videJefe;
 
@@ -32,10 +32,11 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject supervMuestreo1;
 
     [Header("--Datos Cronometro")]
-    [SerializeField] GameObject questTimignCronometro;   
+    [SerializeField] GameObject questTimignCronometro;
     [SerializeField] GameObject timingDragActivity;
 
     [SerializeField] ItemRecibe itemRecibe;
+    [SerializeField] LoadManager loadManager;
 
     // Update is called once per frame
 
@@ -55,6 +56,8 @@ public class LoadCharacter : MonoBehaviour
    
     void MethodFlujo()
     {
+
+
         if (userData.isSave == true)
         {
             if (userData.load >= 1)

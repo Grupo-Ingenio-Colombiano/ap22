@@ -17,6 +17,9 @@ public class Downloader : MonoBehaviour
         userData.excelReport[0].E[3] = userData.nombreForm + " " + userData.apellidoForm;
         userData.excelReport[0].E[5] = userData.iDForm;
 
+        userData.excelReport[0].E[7] = System.DateTime.Now.ToString("MM/dd/yyyy");
+        userData.excelReport[0].L[7] = System.DateTime.Now.ToString("hh: mm:ss");
+
         if (userData.method == 1 || userData.method == 2)
         {
             userData.excelReport[0].J[15] = MethodsAnswerData.TiempoTakt[0];

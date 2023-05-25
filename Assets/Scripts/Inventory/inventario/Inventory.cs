@@ -239,7 +239,8 @@ public class Inventory : MonoBehaviour {
                     }
                     UpdateInventory();
                     return true;
-                    
+
+                    loadManager.Upload(1);
                     break;
 
                 case 2:
@@ -515,12 +516,7 @@ public class Inventory : MonoBehaviour {
                     return true;
                     break;
             }
-            if(userData.load <= 1 && name == "Virtualina")
-            {
-              
-                    loadManager.Upload(1);
-                
-            }
+           
           
         }
 
@@ -537,7 +533,6 @@ public class Inventory : MonoBehaviour {
         }
 
     }
-
 
 
 
@@ -681,6 +676,7 @@ public class Inventory : MonoBehaviour {
             eliminar.interactable = inventoryList[indice].eliminable;
 
         }
+      
     }
 
     public void playError()

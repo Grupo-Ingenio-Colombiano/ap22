@@ -27,12 +27,13 @@ public class LoadManager : MonoBehaviour
     }
 
 
-    private void Start()
+  public void TimeInvoke()
     {
-        //if(data.load == 1)
-        //{
-        //    VD.isActive = true;
-        //    dialogManager.SetOverrideStartNode(10);
-        //}
+        Invoke("Load", 3f);
+    }
+
+     void Load()
+    {
+        Upload(1);
     }
 }
