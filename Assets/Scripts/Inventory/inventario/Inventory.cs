@@ -239,7 +239,7 @@ public class Inventory : MonoBehaviour {
                     }
                     UpdateInventory();
                     return true;
-                    empty[1].SetActive(false);
+                    
                     break;
 
                 case 2:

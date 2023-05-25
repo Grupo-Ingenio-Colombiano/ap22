@@ -17,29 +17,29 @@ MonoBehaviour:
   lastScene: 2
   practiceName: Estudio de tiempos
   isSave: 1
-  load: 2
+  load: 1
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
   PlayerSelected: 
   gender: 0
-  playerPosition: {x: 21.003765, y: 0.048496544, z: -62.074142}
-  playerRot: {x: 0, y: 0.9909974, z: -0, w: -0.13388146}
-  progress: 110
-  experience: 750
-  timer: 00:00:37
+  playerPosition: {x: 29.961695, y: 3.358036, z: 9.245144}
+  playerRot: {x: 0, y: 0.4149513, z: 0, w: 0.9098436}
+  progress: 5
+  experience: 30
+  timer: 00:00:09
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  numInventario: 10
+  numInventario: 2
   nombreForm: 
   apellidoForm: 
   iDForm: 
-  method: 2
+  method: 1
   selectedMethod: 1
-  proccessUnits: 135
-  indexOperationData: 2
+  proccessUnits: 0
+  indexOperationData: 0
   scoreSecurityElements: 30
   scoreTimeTake: 30
   scoreSelectData: 30
@@ -68,105 +68,6 @@ MonoBehaviour:
     indexUi: 0
     useDistance: 0
     useOneTime: 1
-  - itemName: Botas
-    sprite: 3
-    eliminable: 0
-    obj: 3
-    infotext: 
-    infoSprite: 3
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Casco
-    sprite: 2
-    eliminable: 0
-    obj: 2
-    infotext: 
-    infoSprite: 2
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "M\xE1scara para vapores"
-    sprite: 4
-    eliminable: 0
-    obj: 4
-    infotext: 
-    infoSprite: 4
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Guantes
-    sprite: 5
-    eliminable: 0
-    obj: 5
-    infotext: 
-    infoSprite: 5
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Overol
-    sprite: 6
-    eliminable: 0
-    obj: 6
-    infotext: 
-    infoSprite: 6
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: "Protector de o\xEDdos"
-    sprite: 7
-    eliminable: 0
-    obj: 7
-    infotext: 
-    infoSprite: 7
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Gafas
-    sprite: 8
-    eliminable: 0
-    obj: 8
-    infotext: 
-    infoSprite: 8
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Camiseta
-    sprite: 9
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
-  - itemName: Camiseta
-    sprite: 9
-    eliminable: 0
-    obj: 0
-    infotext: 
-    infoSprite: 0
-    playerEquip: 1
-    isNowEquiped: 0
-    indexUi: 0
-    useDistance: 0
-    useOneTime: 0
   questsCheck: 0
   historicData:
   - 0
@@ -215,11 +116,11 @@ MonoBehaviour:
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 1.5
-  percentageOperation: 85
-  rhythm: 95
-  k: 15
-  unidadesProducidasMuestreo: 16
+  numMinutos: 0
+  percentageOperation: 0
+  rhythm: 0
+  k: 0
+  unidadesProducidasMuestreo: 0
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -261,11 +162,11 @@ MonoBehaviour:
   - 0
   unitPerDay: 0
   unitsRquired: 0
-  turn1: 1
+  turn1: 0
   turn2: 0
   turn3: 0
   observaciones: 
-  templateName: ap22_2
+  templateName: ap22_1
   fileName: 
   excelReport:
   - A: []
