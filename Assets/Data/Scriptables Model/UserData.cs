@@ -51,6 +51,7 @@ public class UserData : ScriptableObject
     public int proccessUnits;
     public int indexOperationData;
 
+    [Header("Score")]
     public  int scoreSecurityElements;
     public  int scoreTimeTake;
     public  int scoreSelectData;

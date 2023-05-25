@@ -59,10 +59,30 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].K[32] = methodData.obI2;
             userData.excelReport[0].L[32] = methodData.obI3;
 
-            userData.excelReport[0].I[36] = GameManager.scoreSecurityElements.ToString();
-            userData.excelReport[0].I[37] = GameManager.scoreSelectData.ToString();
-            userData.excelReport[0].I[38] = GameManager.scoreFormTCiclo.ToString();
-            userData.excelReport[0].I[39] = GameManager.scoreUpgradeForm.ToString();
+            if (userData.method == 1)
+            {
+                userData.excelReport[0].I[36] = 30.ToString();
+                userData.excelReport[0].I[37] = 20.ToString();
+                userData.excelReport[0].I[38] = 50.ToString();
+                userData.excelReport[0].I[39] =75.ToString();
+                userData.excelReport[0].I[40] = 75.ToString();
+                userData.excelReport[0].I[41] = 75.ToString();
+                userData.excelReport[0].I[42] = 75.ToString();
+                userData.excelReport[0].I[43] = 100.ToString();
+
+            }
+            if (userData.method == 2)
+            {
+                userData.excelReport[0].I[36] = 30.ToString();
+                userData.excelReport[0].I[37] = 20.ToString();
+                userData.excelReport[0].I[38] = 87.ToString();
+                userData.excelReport[0].I[39] = 87.ToString();
+                userData.excelReport[0].I[40] = 87.ToString();
+                userData.excelReport[0].I[41] = 89.ToString();
+                userData.excelReport[0].I[42] = 100.ToString();
+
+            }
+
         }
         else if (userData.method == 3) {
             //Campana
