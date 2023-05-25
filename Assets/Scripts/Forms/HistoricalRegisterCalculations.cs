@@ -56,6 +56,12 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         bool[] areCorrectAnswers = { true, true, true };
 
 
+        foreach (var item in QuestHistorical.Instance.CurrentOperationData.historicalSamples)
+        {
+            print("Dato : " +item );
+        }
+
+
         tiempoModal = QuestHistorical.Instance.CurrentOperationData.modalTime;
         tiempoPesimista = QuestHistorical.Instance.CurrentOperationData.historicalSamples.Max();
         tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;

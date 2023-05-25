@@ -36,7 +36,7 @@ public class OperationData
     public OperationData(int indexToGenerate, int method)
     {
         Index = indexToGenerate;
-        Debug.Log("INDEX" + Index);
+        Debug.Log("EL INDEX ALEATORIO ES" + Index);
         switch (indexToGenerate)
         {
             case 1:
@@ -68,6 +68,8 @@ public class OperationData
             default:
                 break;
         }
+
+        Debug.Log("Se han Generado UR" + requiredUnits);
 
         SetHistoricalSamples(minTime, maxTime);
         SetRhytmfactors();
