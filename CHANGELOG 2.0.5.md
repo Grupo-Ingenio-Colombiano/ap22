@@ -4,6 +4,15 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.5] - 2023-17-05
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Added
+-[Begin] Now if you don´t talk with security guard you can´t pass to other places in practice
+
+
 ## [2.0.4] - 2023-17-05
 
 ## Developers
