@@ -30,10 +30,6 @@ public class GameManager : MonoBehaviour
             EnableSecurityNPC();
             disablePlantBossFirstInteraccion();
             scoreSecurityElements = userData.scoreSecurityElements;
-            scoreTimeTake = userData.scoreTimeTake; 
-            scoreSelectData = userData.scoreSelectData;
-            scoreFormTCiclo = userData.scoreFormTCiclo;
-            scoreUpgradeForm = userData.scoreUpgradeForm;
 
         }
         if (userData.load == 1)
