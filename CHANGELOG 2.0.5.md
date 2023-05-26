@@ -10,7 +10,21 @@ grupo Ingenio Colombiano
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
 
 ### Added
--[Begin] Now if you don´t talk with security guard you can´t pass to other places in practice
+
+-[functionality] Now if you don´t talk with security guard in the beginning you can´t pass to other places in practice
+-[functionality] Now button continue on operator turn table only appears when you click on board
+-[Excel] Add new fields for new experience in historical final report, now can reach 500 
+-[Excel] Add new fields for new experience in sampling final report, now can reach 500 
+
+### Fixed
+
+-[functionality] Fixed wrong calculation historic data on load
+-[functionality] Fixed wrong calculation sampling data on load
+-[functionality] Fixed virtualina item, now it adds to inventory on load 
+-[UI] Fixed cronometer icon on sampling quest, doesn´t cover the next button dialog 
+-[UI] Fixed operator talk indicator on sampling quest in index 3, appears near to the head of operator NPC
+-[UI] Fixed count indicator on sampling quest in index 3, not appears next to model, appears above 
+-[UI] Fixed empty icon in inventory when virtualina be used
 
 
 ## [2.0.4] - 2023-17-05
