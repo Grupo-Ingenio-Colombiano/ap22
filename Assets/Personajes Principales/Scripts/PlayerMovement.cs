@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     UserData data;
 
+  
+
     void Start()
     {
 
@@ -39,11 +43,14 @@ public class PlayerMovement : MonoBehaviour
             rb.transform.localPosition = data.playerPosition;
             rb.transform.localRotation = data.playerRot;
         }
+
+
     }
 
     void Update()
     {
-        if (movementControl.CanMove)
+
+        if (movementControl.CanMove && !IsInputOnFocus())
         {
             //rotacion
             float h = Input.GetAxis("Horizontal");
@@ -109,5 +116,36 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+
+    bool IsInputOnFocus()
+    {
+
+        var inputs = FindObjectsOfType<InputField>();
+
+        foreach (var item in inputs)
+        {
+            if(item.isFocused)
+            {
+                Debug.Log(item.name+ " IS FOCUSED");
+                return true;
+            }
+            
+        }
+
+        var inputsTMP = FindObjectsOfType<TMPro.TMP_InputField>();
+
+        foreach (var item in inputsTMP)
+        {
+            if(item.isFocused)
+            {
+                Debug.Log(item.name+ " IS FOCUSED");
+                return true;
+            }
+            
+        }
+
+        return false;
+    }
 
 }

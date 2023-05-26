@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FollowCameraController : MonoBehaviour
 {
 
@@ -78,7 +77,7 @@ public class FollowCameraController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.C) && !bloqCam)
+        if (Input.GetKeyDown(KeyCode.C) && !bloqCam && !IsInputOnFocus())
         {
             ToggleCamera();
         }
@@ -176,5 +175,35 @@ public class FollowCameraController : MonoBehaviour
         camara.fieldOfView = 60;
         bloqCam = false;
         move.CanMove = true;
+    }
+
+    bool IsInputOnFocus()
+    {
+
+        var inputs = FindObjectsOfType<InputField>();
+
+        foreach (var item in inputs)
+        {
+            if(item.isFocused)
+            {
+                Debug.Log(item.name+ " IS FOCUSED");
+                return true;
+            }
+            
+        }
+
+        var inputsTMP = FindObjectsOfType<TMPro.TMP_InputField>();
+
+        foreach (var item in inputsTMP)
+        {
+            if(item.isFocused)
+            {
+                Debug.Log(item.name+ " IS FOCUSED");
+                return true;
+            }
+            
+        }
+
+        return false;
     }
 }
