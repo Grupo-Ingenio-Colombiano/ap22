@@ -8,6 +8,7 @@ grupo Ingenio Colombiano
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
 ### Added
 
@@ -25,6 +26,7 @@ grupo Ingenio Colombiano
 -[UI] Fixed operator talk indicator on sampling quest in index 3, appears near to the head of operator NPC
 -[UI] Fixed count indicator on sampling quest in index 3, not appears next to model, appears above 
 -[UI] Fixed empty icon in inventory when virtualina be used
+-[functionality] Prevent movement and toggle camera on input focus
 
 
 ## [2.0.4] - 2023-17-05
