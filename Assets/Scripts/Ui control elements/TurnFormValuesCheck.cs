@@ -51,6 +51,7 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     public int urValue;
 
+  
     public void validateTurns()
     {
         data = new string[8];
@@ -124,6 +125,8 @@ public class TurnFormValuesCheck : MonoBehaviour
         FormResultsManager.Instance.UsersInput = op;
 
         FormResultsManager.Instance.UsersCalculate = Mathf.CeilToInt(FormResultsManager.Instance.tiempoCicloCalculadas / FormResultsManager.Instance.taktTimeCalculadas);
+
+        userData.excelReport[0].M[31] = FormResultsManager.Instance.UsersCalculate.ToString();
 
         data[6] = upValue.ToString("F0");
 

@@ -42,7 +42,7 @@ public class SamplingRegisterCalculations : MonoBehaviour
     [SerializeField] GameObject emptyMessage;
 
     [SerializeField] ExperienceRewardManager rewardManager;
-
+    [SerializeField] UserData userData;
     private void OnEnable()
     {
         requiredUnits.text = QuestSampling.Instance.CurrentOperationData.requiredUnits.ToString();
@@ -70,11 +70,15 @@ public class SamplingRegisterCalculations : MonoBehaviour
         tOptimoIngresado = float.Parse(TOInput.text, CultureInfo.InvariantCulture);
         tCicloIngresado = float.Parse(TCInput.text, CultureInfo.InvariantCulture);
         uProducidasIngresado = float.Parse(UPInput.text, CultureInfo.InvariantCulture);
-
+        userData.excelReport[0].M[15] = tiempoOptimo.ToString();
+        userData.excelReport[0].M[16] = tiempoCiclo.ToString();
+        userData.excelReport[0].M[17] = unidadesProducidas.ToString();
 
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+
+        areCorrectAnswers[2] = yesNo;
 
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
           && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true

@@ -81,6 +81,10 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         print("tiempo ciclo  " + tiempoCiclo);
         print("unidades producidas " + unidadesProducidas);
 
+        userData.excelReport[0].M[15] = tiempoOptimo.ToString();
+        userData.excelReport[0].M[16] = tiempoCiclo.ToString();
+        userData.excelReport[0].M[17] = unidadesProducidas.ToString();
+
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
             && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
             && DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
