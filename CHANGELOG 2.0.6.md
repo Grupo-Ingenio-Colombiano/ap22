@@ -4,6 +4,19 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.6] - 2023-29-05
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Added
+
+-[Excel] Add new fields for correct answers comparation 
+
+### Fixed
+-[UI] Fixed ortographic errors on help panel 
+
 ## [2.0.5] - 2023-17-05
 
 ## Developers
