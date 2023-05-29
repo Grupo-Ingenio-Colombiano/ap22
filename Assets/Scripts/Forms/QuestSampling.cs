@@ -45,7 +45,7 @@ public class QuestSampling : MonoBehaviour
     public void SetSamplingQuest()
     {
       
-        HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
+        HelpManager.Instance().SetHelp("Diríjase con el supervisor de planta");
         if (userData.load >= 2 && userData.method == 2 )
         {
             CurrentOperationData = new OperationData(userData.indexOperationData, 1, userData);

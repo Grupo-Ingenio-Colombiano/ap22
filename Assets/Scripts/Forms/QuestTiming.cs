@@ -49,7 +49,7 @@ public class QuestTiming : MonoBehaviour
         }
         else
         {
-            HelpManager.Instance().SetHelp("Dirijase con el supervisor de planta");
+            HelpManager.Instance().SetHelp("Diríjase con el supervisor de planta");
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             var randomOperation = Random.Range(1, 4);         
             CurrentOperationData = new OperationData(randomOperation, 2);
