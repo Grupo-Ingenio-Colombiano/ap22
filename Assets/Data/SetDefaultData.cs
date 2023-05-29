@@ -11,6 +11,7 @@ public class SetDefaultData : MonoBehaviour
         {
             var excelPage = new VpSerializableData.ExcelPage();
             userData.excelReport.Add(excelPage);
+            
         }
     }
 
