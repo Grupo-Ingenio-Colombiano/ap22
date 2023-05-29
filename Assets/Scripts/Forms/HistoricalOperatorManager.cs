@@ -53,6 +53,6 @@ public class HistoricalOperatorManager : MonoBehaviour
     public void SetIndicator()
     {
         IndicatorManager.instance().SetDestiny(transform.position);
-        HelpManager.Instance().SetHelp("Dirijase al área indicada, si tiene dudas hable nuevamente con el supervisor");
+        HelpManager.Instance().SetHelp("Diríjase al área indicada, si tiene dudas hable nuevamente con el supervisor");
     }
 }
