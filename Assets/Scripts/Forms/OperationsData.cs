@@ -143,6 +143,9 @@ public class OperationData
 
     void SetHistoricalSamples(float minValue, float maxValue)
     {
+        Debug.Log("SetHistoricalSamples executed");
+
+        
         historicalSamples = new float[36];
 
         var randomHistoricalData = new List<float>();

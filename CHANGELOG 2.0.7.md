@@ -4,6 +4,18 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.7] - 2023-30-05
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Fixed
+-[Data] Fixed data on excel ields toogle "cumple la demanda"
+-[Data] Fixed data on excel fields "Unidades producidas"
+-[Calculate] Fixed historical data random generation for prevend more than one modal
+
+
 ## [2.0.6] - 2023-29-05
 
 ## Developers
