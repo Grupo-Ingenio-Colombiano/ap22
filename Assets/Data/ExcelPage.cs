@@ -53,6 +53,7 @@ namespace VpSerializableData
             J = new List<string>(new string[55]);
             K = new List<string>(new string[55]);
             L = new List<string>(new string[55]);
+            M = new List<string>(new string[55]);
         }
     }
 }
