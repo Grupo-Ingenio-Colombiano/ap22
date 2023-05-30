@@ -77,7 +77,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
-        userData.excelReport[0].M[19] = yesNo.ToString();
+        userData.excelReport[0].M[19] = yesNo.isOn ? "Si" : "No";
+
+        print(yesNo.isOn ? "Si" : "No" + " Cumple");
 
 
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
