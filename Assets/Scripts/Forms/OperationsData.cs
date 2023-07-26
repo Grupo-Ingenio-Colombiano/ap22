@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 
 public class OperationsData
 {
@@ -97,8 +97,7 @@ public class OperationData
         {
             case 1:
                 operationName = "Corte del tubo de manubrio";             
-                numMachines = 3;             
-               
+                numMachines = 3; 
 
                 break;
             case 2:
@@ -144,28 +143,88 @@ public class OperationData
 
     void SetHistoricalSamples(float minValue, float maxValue)
     {
+        Debug.Log("SetHistoricalSamples executed");
+
+        
         historicalSamples = new float[36];
+
+        var randomHistoricalData = new List<float>();
 
         var modalData = Rounder.RounToPlaces(Random.Range(minValue, maxValue), 2);
 
+        
         int modal1 = Random.Range(0, 12);
         int modal2 = Random.Range(13, 24);
         int modal3 = Random.Range(25, 36);
 
-        historicalSamples[modal1] = modalData;
-        historicalSamples[modal2] = modalData;
-        historicalSamples[modal3] = modalData;
+        randomHistoricalData.Add(modalData);
+        randomHistoricalData.Add(modalData);
+        randomHistoricalData.Add(modalData);
+
+        // historicalSamples[modal1] = modalData;
+        // historicalSamples[modal2] = modalData;
+        // historicalSamples[modal3] = modalData;
+
         modalTime = modalData;
 
-        for (int i = 0; i < historicalSamples.Length; i++)
-        {
-            if (i != modal1 && i != modal2 && i != modal3)
-            {
-                historicalSamples[i] = Rounder.RounToPlaces(Random.Range(minValue, maxValue), 2);
-                //Debug.Log(historicalSamples[i]);
-            }
+        
 
+        // for (int i = 0; i < historicalSamples.Length; i++)
+        // {
+        //     if (i != modal1 && i != modal2 && i != modal3)
+        //     {
+        //         historicalSamples[i] = Rounder.RounToPlaces(Random.Range(minValue, maxValue), 2);
+        //         //Debug.Log(historicalSamples[i]);
+        //     }
+        // }
+
+        // Hay que evitar que la haya mas de una moda
+        for (int i = 0; i < historicalSamples.Length-3; i++)
+        {
+            var randonData = Rounder.RounToPlaces(Random.Range(minValue, maxValue), 2);
+            do
+            {
+                randonData = Rounder.RounToPlaces(Random.Range(minValue, maxValue), 2);
+            } while (randomHistoricalData.Contains(randonData));
+
+            randomHistoricalData.Add(randonData);
         }
+       
+
+        var filterList = from i in randomHistoricalData group i by i into g let count = g.Count() orderby count descending select new { Value = g.Key, count};
+
+        foreach (var item in filterList)
+        {
+            if(item.count >1)
+             Debug.Log("value: " + item.Value+ " Conteo: "+item.count);
+        }
+
+
+        randomHistoricalData = ShuffleIntList(randomHistoricalData);
+       
+
+        for (int i = 0; i < randomHistoricalData.Count; i++)
+        {
+             Debug.Log($"pos[{i}]" + randomHistoricalData[i]);
+        }
+
+        historicalSamples = randomHistoricalData.ToArray();
+
+
+    }
+
+    public static List<float> ShuffleIntList(List<float> list)
+    {
+        var random = new System.Random();
+        var newShuffledList = new List<float>();
+        var listcCount = list.Count;
+        for (int i = 0; i < listcCount; i++)
+        {
+            var randomElementInList = random.Next(0, list.Count);
+            newShuffledList.Add(list[randomElementInList]);
+            list.Remove(list[randomElementInList]);
+        }
+        return newShuffledList;
     }
 
     void SetSamplingData()
