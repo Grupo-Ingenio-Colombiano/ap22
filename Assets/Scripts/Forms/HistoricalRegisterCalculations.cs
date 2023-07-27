@@ -118,9 +118,9 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
     private void SetUserInputValues()
     {
-        tOptimoIngresado = float.Parse(TOInput.text, CultureInfo.InvariantCulture);
-        tCicloIngresado = float.Parse(TCInput.text, CultureInfo.InvariantCulture);
-        uProducidasIngresado = float.Parse(UPInput.text, CultureInfo.InvariantCulture);
+        tOptimoIngresado = float.Parse(TOInput.text);
+        tCicloIngresado = float.Parse(TCInput.text);
+        uProducidasIngresado = float.Parse(UPInput.text);
     }
 
     public void Submit()

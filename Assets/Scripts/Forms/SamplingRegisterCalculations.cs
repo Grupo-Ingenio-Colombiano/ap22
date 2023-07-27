@@ -67,9 +67,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
         print("ritmo " + QuestSampling.Instance.CurrentOperationData.factorRitmo);
         print("K " + QuestSampling.Instance.CurrentOperationData.K);
 
-        tOptimoIngresado = float.Parse(TOInput.text, CultureInfo.InvariantCulture);
-        tCicloIngresado = float.Parse(TCInput.text, CultureInfo.InvariantCulture);
-        uProducidasIngresado = float.Parse(UPInput.text, CultureInfo.InvariantCulture);
+        tOptimoIngresado = float.Parse(TOInput.text);
+        tCicloIngresado = float.Parse(TCInput.text);
+        uProducidasIngresado = float.Parse(UPInput.text);
         userData.excelReport[0].M[15] = tiempoOptimo.ToString();
         userData.excelReport[0].M[16] = tiempoCiclo.ToString();
         userData.excelReport[0].M[17] = unidadesProducidas.ToString();
