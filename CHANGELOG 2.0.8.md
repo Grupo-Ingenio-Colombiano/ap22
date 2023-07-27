@@ -11,6 +11,7 @@ grupo Ingenio Colombiano
 [Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
 ### Added
+-[UI] Add blue indicator to character selection scene
 -[Functionality] Now calculation fields works with colombian culture info and replace dot (.) to coma (,) in Sampling and Historical Quests
 
 ### Changed
