@@ -24,7 +24,6 @@ public class SamplingNotes : MonoBehaviour
         factorRitmo.text = QuestSampling.Instance.CurrentOperationData.factorRitmo.ToString();
         K.text = QuestSampling.Instance.CurrentOperationData.K.ToString();
 
-        userData.numMinutos = QuestSampling.Instance.CurrentOperationData.numMinutosMuestreo / 60f;
         userData.percentageOperation = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion;
         userData.rhythm = QuestSampling.Instance.CurrentOperationData.factorRitmo;
         userData.k = QuestSampling.Instance.CurrentOperationData.K;
