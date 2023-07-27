@@ -4,6 +4,20 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.8] - 2023-27-07
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Added
+-[Functionality] Now calculation fields works with colombian culture info and replace dot (.) to coma (,) in Sampling and Historical Quests
+
+### Changed
+-[Functionality] Fixed hours to minutes in sampling quest calculation
+
+
+
 ## [2.0.7] - 2023-30-05
 
 ## Developers
