@@ -268,7 +268,7 @@ RectTransform:
   m_Children:
   - {fileID: 1404970890}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -770,78 +770,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589084269}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &654548134
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1283676662, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: userData
-      value: 
-      objectReference: {fileID: 11400000, guid: a09a3a216e394df44a4d8311794fe239,
-        type: 2}
-    - target: {fileID: 1344990352901206, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_Name
-      value: Indicator
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4511436950959044, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198882263991896604, guid: 69e1253019a5b62409db6e35d20b1c26,
-        type: 3}
-      propertyPath: LightsModule.light
-      value: 
-      objectReference: {fileID: 703816026}
-    - target: {fileID: 199544203927448446, guid: 69e1253019a5b62409db6e35d20b1c26,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69e1253019a5b62409db6e35d20b1c26, type: 3}
 --- !u!1 &703816025
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &798998117
 GameObject:
@@ -1538,8 +1466,76 @@ Transform:
   - {fileID: 798998118}
   - {fileID: 589084270}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1127382055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1344990352901206, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_Name
+      value: IndicatorBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511436950959044, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33654543440363150, guid: 5298d88878cbaa8408dc64f9428068b1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5298d88878cbaa8408dc64f9428068b1, type: 3}
+--- !u!95 &1127382056 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6865744892837680183, guid: 5298d88878cbaa8408dc64f9428068b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1127382055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148967737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,7 +1799,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404970889
 GameObject:
@@ -3759,16 +3755,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Play
+      - m_Target: {fileID: 1127382056}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 02_Button_Close
+          m_StringArgument: Open
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
@@ -4551,16 +4547,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Play
+      - m_Target: {fileID: 1127382056}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 01_Button-Generic_1
+          m_StringArgument: Open
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
