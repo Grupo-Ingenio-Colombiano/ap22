@@ -214,7 +214,7 @@ public class ReportManager : MonoBehaviour
             break;
         }
 
-        timeText.text = userData.timer;
+        timeText.text = userData.time;
 
         var sliderValueConversion = userData.experience / 500f;
 

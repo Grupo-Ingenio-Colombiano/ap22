@@ -10,35 +10,48 @@ public class TimeCounter : MonoBehaviour
     [SerializeField] Text timer;
 
     [SerializeField]
-    UserData data;
+    UserData userData;
 
-    public static float timeAux;
+    float second = 1;
+    private float savedTime;
+
+    DateTime startTime;
 
     private void Start()
     {
-        timeAux = 0;
-        if (data.isSave == true)
+
+
+        float dataTime;
+
+        float.TryParse(userData.tiempoTotal, out dataTime);
+        if (dataTime > 0)
         {
-            timer.text = data.timer;
+            savedTime = dataTime;
 
         }
+        startTime = System.DateTime.Now - TimeSpan.FromSeconds(savedTime);
 
     }
 
     private void Update()
     {
-        var timeSpan = TimeSpan.FromSeconds(Math.Round(Time.realtimeSinceStartup - timeAux));
-       // if (data.isSave == true)
-       // {
-       //     timeSpan = TimeSpan.FromSeconds(Math.Round(Time.realtimeSinceStartup - timeAux) + Int32.Parse(timer.text));
+        second -= Time.deltaTime;
+        if (second <= 0)
+        {
+            second = 1;
+            var countedTime = CountTimeFrom(startTime);
+            timer.text = countedTime.ToString(@"hh\:mm\:ss");
+            userData.tiempoTotal = countedTime.TotalSeconds.ToString("F0");
+            userData.time = timer.text;
+        }
 
-       //}
-
-        timer.text = timeSpan.ToString();
-
-        data.timer = timer.text;
-
-      
     }
+
+    TimeSpan CountTimeFrom(DateTime startTime)
+    {
+        var result = System.DateTime.Now - startTime;
+        return result;
+    }
+
 
 }

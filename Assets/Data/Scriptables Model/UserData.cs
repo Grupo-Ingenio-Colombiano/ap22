@@ -30,7 +30,8 @@ public class UserData : ScriptableObject
 
     public float progress;
     public float experience;
-    public string timer;
+    public string time;
+    public string tiempoTotal;
     public string note;
 
     public int badAnswer;
