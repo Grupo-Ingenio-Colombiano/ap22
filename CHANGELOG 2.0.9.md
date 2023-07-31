@@ -4,6 +4,16 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+
+
+## [2.0.9] - 2023-31-07
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Fixed
+-[TimeCounter] New logic for get time, set time from system.date.now instead update method and time.time
 ## [2.0.8] - 2023-27-07
 
 ## Developers
