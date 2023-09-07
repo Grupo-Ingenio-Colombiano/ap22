@@ -267,13 +267,16 @@ public class CharacterAppearanceManager : MonoBehaviour
         if (camiseta.activeInHierarchy)
         {
             Overol_top.SetActive(true);
+            Overol_Botoom.SetActive(true);
             camiseta.SetActive(false);
+            bootPants.SetActive(false);
         }
 
         if (shirt.activeInHierarchy)
         {            
             Overol_top.SetActive(true);            
-            shirt.SetActive(false);
+            shirt.SetActive(false); 
+            bootPants.SetActive(false);
         }
 
         if (coat.activeInHierarchy)
