@@ -8,14 +8,24 @@ public class ItemsValidation : MonoBehaviour
     [SerializeField]
     GameObject[] itemsMan;
 
+
+    [SerializeField]
+    GameObject[] itemsDarkMan;
+
     [SerializeField]
     GameObject[] itemsGirl;
+
+
+    [SerializeField]
+    GameObject[] itemsDarkGirl;
 
     [SerializeField]
     Gender gender;
 
     [SerializeField]
     GameObject dontItemGood;
+
+    [SerializeField] UserData userData;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,29 +40,65 @@ public class ItemsValidation : MonoBehaviour
 
     private void ManValidate()
     {
-        foreach (GameObject g in itemsMan)
+        if (userData.PlayerSelected == "0")
         {
-            if (!g.activeInHierarchy)
+            foreach (GameObject g in itemsMan)
             {
-                GameManager.scoreSecurityElements = 0;
-                dontItemGood.SetActive(true);
-                SoundManager.Instance().PlayNaturalAmbience();
-                return;
+                if (!g.activeInHierarchy)
+                {
+                    GameManager.scoreSecurityElements = 0;
+                    dontItemGood.SetActive(true);
+                    SoundManager.Instance().PlayNaturalAmbience();
+                    return;
+                }
             }
         }
+
+        if (userData.PlayerSelected == "2")
+        {
+            foreach (GameObject g in itemsDarkMan)
+            {
+                if (!g.activeInHierarchy)
+                {
+                    GameManager.scoreSecurityElements = 0;
+                    dontItemGood.SetActive(true);
+                    SoundManager.Instance().PlayNaturalAmbience();
+                    return;
+                }
+            }
+        }
+
+
     }
 
     private void GirlValidate()
     {
-        foreach (GameObject g in itemsGirl)
+        if(userData.PlayerSelected == "1")
         {
-            if (!g.activeInHierarchy)
+            foreach (GameObject g in itemsGirl)
             {
-                GameManager.scoreSecurityElements = 0;
-                dontItemGood.SetActive(true);
-                SoundManager.Instance().PlayNaturalAmbience();
-                return;
+                if (!g.activeInHierarchy)
+                {
+                    GameManager.scoreSecurityElements = 0;
+                    dontItemGood.SetActive(true);
+                    SoundManager.Instance().PlayNaturalAmbience();
+                    return;
+                }
             }
         }
+        if (userData.PlayerSelected == "3")
+        {
+            foreach (GameObject g in itemsDarkGirl)
+            {
+                if (!g.activeInHierarchy)
+                {
+                    GameManager.scoreSecurityElements = 0;
+                    dontItemGood.SetActive(true);
+                    SoundManager.Instance().PlayNaturalAmbience();
+                    return;
+                }
+            }
+        }
+
     }
 }

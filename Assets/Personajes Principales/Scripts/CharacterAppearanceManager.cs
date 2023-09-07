@@ -228,6 +228,7 @@ public class CharacterAppearanceManager : MonoBehaviour
     {
         if (boots.activeInHierarchy)
         {
+            camiseta.SetActive(false);
             Overol_Botoom_bots.SetActive(false);
             bootPants.SetActive(true);
             shirt.SetActive(true);
