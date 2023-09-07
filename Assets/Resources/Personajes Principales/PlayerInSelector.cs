@@ -23,7 +23,7 @@ public class PlayerInSelector : MonoBehaviour
     {
         foreach (var item in players)
         {
-            item.SetActive(true);
+            item.SetActive(false);
         }
 
         players[index].SetActive(true);

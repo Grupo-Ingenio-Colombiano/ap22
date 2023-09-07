@@ -120,9 +120,10 @@ public class SelectCharacter : MonoBehaviour
         PlayerPrefs.SetInt("Character", actualCharacter);
 
         audioSource.Play();
+        userdata.PlayerSelected = actualCharacter.ToString();
         if (actualCharacter % 2 == 0)
         {
-           pGender.playerIsMan = true;
+            pGender.playerIsMan = true;
             userdata.gender = true;
         }
         else
@@ -130,7 +131,6 @@ public class SelectCharacter : MonoBehaviour
             pGender.playerIsMan = false;
             userdata.gender = false;
         }
-
         buttonNext.SetActive(false);
         buttonPrev.SetActive(false);
 
