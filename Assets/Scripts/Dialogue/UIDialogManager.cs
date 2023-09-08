@@ -37,6 +37,8 @@ public class UIDialogManager : MonoBehaviour
     [SerializeField] Gender playerGender;
     [SerializeField] Sprite playerSpriteWoman;
     [SerializeField] Sprite playerSpriteMan;
+    [SerializeField] Sprite playerSpriteDarkWoman;
+    [SerializeField] Sprite playerSpriteDarkMan;
     [SerializeField] PlayerCanMove canMove;
 
     [SerializeField] UserData userData;
@@ -275,13 +277,21 @@ public class UIDialogManager : MonoBehaviour
             playerImage.sprite = VD.assigned.defaultPlayerSprite;
         }
 
-        if (!playerGender.playerIsMan)
+        if (userData.PlayerSelected == "1")
         {
             playerImage.sprite = playerSpriteWoman;
         }
-        else
+        if (userData.PlayerSelected == "0")
         {
             playerImage.sprite = playerSpriteMan;
+        }
+        if (userData.PlayerSelected == "2")
+        {
+            playerImage.sprite = playerSpriteDarkMan;
+        }
+        if (userData.PlayerSelected == "3")
+        {
+            playerImage.sprite = playerSpriteDarkWoman;
         }
     }
 
