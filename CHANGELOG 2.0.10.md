@@ -4,9 +4,20 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.10] - 2023-09-08
 
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
-## [2.0.9] - 2023-31-07
+### Added
+-[Functionality] Add new two playable character 
+-[UI] Add new characters icons to Dialog
+### Fixed
+-[Inventory] Fixed Shirt functionality, now works propertly if you want to remove prize shirt from your character
+-[Inventory] Fixed Overlo functionality, now works propertly if you want to put on again your Overol in practice 
+
+## [2.0.9] - 2023-07-31
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -14,7 +25,7 @@ grupo Ingenio Colombiano
 
 ### Fixed
 -[TimeCounter] New logic for get time, set time from system.date.now instead update method and time.time
-## [2.0.8] - 2023-27-07
+## [2.0.8] - 2023-07-27
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -29,7 +40,7 @@ grupo Ingenio Colombiano
 
 
 
-## [2.0.7] - 2023-30-05
+## [2.0.7] - 2023-05-30
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -41,7 +52,7 @@ grupo Ingenio Colombiano
 -[Calculate] Fixed historical data random generation for prevend more than one modal
 
 
-## [2.0.6] - 2023-29-05
+## [2.0.6] - 2023-05-29
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -54,7 +65,7 @@ grupo Ingenio Colombiano
 ### Fixed
 -[UI] Fixed ortographic errors on help panel 
 
-## [2.0.5] - 2023-17-05
+## [2.0.5] - 2023-05-17
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -79,7 +90,7 @@ grupo Ingenio Colombiano
 -[functionality] Prevent movement and toggle camera on input focus
 
 
-## [2.0.4] - 2023-17-05
+## [2.0.4] - 2023-05-17
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -99,7 +110,7 @@ grupo Ingenio Colombiano
 -[Experience] removed experience function in historical quest, not add experience in prizes received 
 -[Experience] removed experience function in sampling quest,  not add experience in prizes received 
 
-## [2.0.3] - 2023-17-05
+## [2.0.3] - 2023-05-17
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -119,7 +130,7 @@ grupo Ingenio Colombiano
 
 
 
-## [2.0.2] - 2023-12-05
+## [2.0.2] - 2023-05-12
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -132,7 +143,7 @@ grupo Ingenio Colombiano
 
 -[UI] Fixed HUD, inventory and mini map for differents resolutions
 
-## [2.0.1] - 2023-04-05
+## [2.0.1] - 2023-05-04
 
 ## Developers
 [Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
@@ -177,7 +188,7 @@ grupo Ingenio Colombiano
 
 
 
-## [1.0.0] - 2023-03-02
+## [1.0.0] - 2023-02-03
  ## Developers 
 [ Diego Salamanca / diegocolmayor@gmail.com ] 
 
