@@ -40,7 +40,9 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: e889435f24e3ab44fb424e0e557e8ad9, type: 3}
+  - logo: {fileID: 21300000, guid: c60fd38d44416b647b6f89b7b0673751, type: 3}
+    duration: 2
+  - logo: {fileID: 21300002, guid: c60fd38d44416b647b6f89b7b0673751, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -157,7 +159,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.Ingco.ap22
   buildNumber:
     Standalone: 0
     iPhone: 0
