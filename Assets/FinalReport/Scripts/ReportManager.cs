@@ -191,6 +191,10 @@ public class ReportManager : MonoBehaviour
 
     void SetUiValues()
     {
+        if (userData.experience > 500)
+        {
+            userData.experience = 500;
+        }
         switch (userData.experience)
         {            
             default:
