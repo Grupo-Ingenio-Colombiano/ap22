@@ -346,6 +346,7 @@ public class UIDialogManager : MonoBehaviour
             //newOp.transform.position = playerText.transform.position;
             newOp.GetComponentInChildren<UnityEngine.UI.Text>().text = opts[i];
             currentOptions.Add(newOp);
+            playerText.transform.localScale = Vector3.one;
         }
     }
 
