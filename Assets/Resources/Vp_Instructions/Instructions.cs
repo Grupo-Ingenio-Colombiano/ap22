@@ -203,7 +203,7 @@ namespace Vp_Packages
         //Se activa cuando las instrucciones se acaban o cuando el usuario las salta
         public void TriggerEndInstructions()
         {
-            container.SetActive(false);
+            instructionPanel.SetActive(false);
             if(!hasTriggered)
             {
                 hasTriggered = true;
