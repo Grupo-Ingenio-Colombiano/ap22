@@ -165,12 +165,12 @@ public class UIDialogManager : MonoBehaviour
         {
             currentOptions[i].GetComponentInChildren<Text>().color = Color.white;
 
-            currentOptions[i].transform.GetChild(0).GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+            //currentOptions[i].transform.GetChild(0).GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
 
             if (i == data.commentIndex)
             {
                 currentOptions[i].GetComponentInChildren<Text>().color = new Color32(0x3D, 0xB4, 0x49, 0xff);
-                currentOptions[i].transform.GetChild(0).GetComponent<Image>().color = new Color32(0x00, 0x10, 0x14, 0xc0);
+                //currentOptions[i].transform.GetChild(0).GetComponent<Image>().color = new Color32(0x00, 0x10, 0x14, 0xc0);
 
             }
         }
