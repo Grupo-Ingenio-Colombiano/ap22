@@ -215,6 +215,66 @@ public class VpNetServices : MonoBehaviour
             VpNewNotice.StopSavingAnimation();
         }
     }
+
+    static public IEnumerator FillEmptyExcel(string data, System.Action<bool, string, string, long> callback)
+    {
+
+        VpNewNotice.StartSavingAnimation();
+
+        WWWForm form = new WWWForm();
+
+        Debug.Log(data);
+
+        form.AddField("data", data);
+             
+        
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/reportData/endpoint/emptyExcel.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {                
+                callback(false, www.downloadHandler.text, www.error, www.responseCode);
+            }
+            else
+            {
+                callback(true, www.downloadHandler.text, www.error, www.responseCode);                
+                
+            }
+
+            VpNewNotice.StopSavingAnimation();
+        }
+    }
+
+    static public IEnumerator GetExcelData(string fileName, System.Action<bool, string, string, long> callback)
+    {
+
+        VpNewNotice.StartSavingAnimation();
+
+        WWWForm form = new WWWForm();        
+
+        form.AddField("fileName", fileName);
+             
+        
+
+        using (UnityWebRequest www = UnityWebRequest.Post("https://apivirtualplant.com/virtualplantApiServices/reportData/endpoint/getExcelData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {                
+                callback(false, www.downloadHandler.text, www.error, www.responseCode);
+            }
+            else
+            {
+                callback(true, www.downloadHandler.text, www.error, www.responseCode);                
+                
+            }
+
+            VpNewNotice.StopSavingAnimation();
+        }
+    }
     
    
 }
