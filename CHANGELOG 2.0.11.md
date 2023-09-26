@@ -4,6 +4,24 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.0.11] - 2023-09-26
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Added
+-[Functionality] Add new map and minimap functions, now user can move map, zoom in and zoom out and see the position in the minimap 
+-[Functionality] Add new help container for repeat instructions, see controls and search external support
+-[UI] New UI for indicator in map
+-[UI] Add new UI instructions
+-[UI] New panel avatar in scene, opens when user clicks on experience button 
+### Fixed
+-[UI] Fixed player dialog scale, now all options scale propertly
+-[Inventory] Fixed Overlo functionality, now works propertly if you want to put on again your Overol in practice 
+### Delete
+-[UI] Delete lines and background in player dialog options
+
 ## [2.0.10] - 2023-09-08
 
 ## Developers
