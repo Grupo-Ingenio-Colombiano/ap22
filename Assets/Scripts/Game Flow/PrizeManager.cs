@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,7 +65,8 @@ public class PrizeManager : MonoBehaviour
 
     public int numInventario;
 
-    [SerializeField] ItemRecibe itemRecibe; 
+    [SerializeField] ItemRecibe itemRecibe;
+    [SerializeField] GameObject buttonInvent;
 
     private void OnEnable()
     {
@@ -78,8 +80,13 @@ public class PrizeManager : MonoBehaviour
 
     public void SendItemToInventory()
     {
+        var sequence = DOTween.Sequence();
         acept.interactable = false;
-        anim.SetTrigger("out");
+        sequence.Append(buttonInvent.transform.DOScale(1.7f, 0.4f));
+        sequence.OnComplete(() =>
+        {
+            buttonInvent.transform.DOScale(1, 1);
+        });
         Invoke("SetItemToInventory", 1.5f);
         itemRecibe.numInv = numInventario + 1;
         userData.numInventario = itemRecibe.numInv;

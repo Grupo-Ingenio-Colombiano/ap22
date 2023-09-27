@@ -121,7 +121,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
         empty[numInv].SetActive(false);
         print(numInv + " inventario");
         item.SetActive(false);
-        sequence.Append(buttonInvent.transform.DOScale(1.5f, 0.6f));
+        sequence.Append(buttonInvent.transform.DOScale(1.7f, 0.4f));
         sequence.OnComplete(() =>
         {
             buttonInvent.transform.DOScale(1, 1);
