@@ -65,5 +65,19 @@ namespace Vp_Packages
             Time.timeScale = truncatedNumber;
             timeText.text = "Time: " + truncatedNumber + "x";
         }
+
+        public void DatosHistoricos()
+        {
+            HistoricalRegisterCalculations historicalData = FindAnyObjectByType<HistoricalRegisterCalculations>();
+            historicalData.RellenarDatosHistoricos();
+        }
+
+        public void DatosMuestreo()
+        {
+            SamplingRegisterCalculations historicalData = FindAnyObjectByType<SamplingRegisterCalculations>();
+            historicalData.RellenarDatosMuestreo();
+        }
     }
+
+
 }

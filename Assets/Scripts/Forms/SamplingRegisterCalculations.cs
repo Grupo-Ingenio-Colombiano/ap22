@@ -143,4 +143,13 @@ public class SamplingRegisterCalculations : MonoBehaviour
             print("current index " + currentIndex);
         }
     }
+    public void RellenarDatosMuestreo()
+    {
+        Calculate();
+        TOInput.text = tiempoOptimo.ToString();
+        TCInput.text = tiempoCiclo.ToString();
+        UPInput.text = unidadesProducidas.ToString();
+
+
+    }
 }

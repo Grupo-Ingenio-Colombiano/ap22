@@ -162,5 +162,13 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
 
     }
+    public void RellenarDatosHistoricos()
+    {
+        Calculate();
+        TOInput.text = tiempoOptimo.ToString();
+        TCInput.text = tiempoCiclo.ToString();
+        UPInput.text = unidadesProducidas.ToString();
+            
 
+     }
 }
