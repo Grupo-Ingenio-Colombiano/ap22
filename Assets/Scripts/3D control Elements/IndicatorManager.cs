@@ -14,10 +14,7 @@ public class IndicatorManager : MonoBehaviour
     private void Start()
     {
 
-        if (userData.isSave != false)
-        {
-            loadCharacter.SetIndicatorLoad();
-        }
+      
        
     }
     static public IndicatorManager instance()

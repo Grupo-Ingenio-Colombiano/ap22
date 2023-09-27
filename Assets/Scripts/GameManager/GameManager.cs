@@ -66,7 +66,11 @@ public class GameManager : MonoBehaviour
 
     public void enableSSGTdialog1()
     {
-        SSGTdialog1.SetActive(true);
+        if(userData.load < 1)
+        {
+            SSGTdialog1.SetActive(true);
+        }
+  
     }
 
     public void disableSSGTdialog1()

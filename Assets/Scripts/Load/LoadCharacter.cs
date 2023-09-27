@@ -11,6 +11,7 @@ public class LoadCharacter : MonoBehaviour
     [SerializeField] GameObject notPass1;
     [SerializeField] GameObject notPass2;
 
+    [SerializeField] GameObject indicator;
     [SerializeField] UserData userData;
     [SerializeField] GameObject dialogSST;
     [SerializeField] VIDE_Assign vigilante;
@@ -48,6 +49,7 @@ public class LoadCharacter : MonoBehaviour
 
     private void Start()
     {
+       
         MethodFlujo();
        
     }
@@ -68,10 +70,13 @@ public class LoadCharacter : MonoBehaviour
         {
             if (userData.load >= 1)
             {
+                indicator.SetActive(true);
+                IndicatorManager.instance().SetDestiny(new Vector3(41, 1.3f, -20.37f));
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
                 empty[1].SetActive(false);
                 itemRecibe.numInv = userData.numInventario;
+                dialogSST.SetActive(false);
 
                 notPass1.SetActive(false);
                 notPass2.SetActive(false);
