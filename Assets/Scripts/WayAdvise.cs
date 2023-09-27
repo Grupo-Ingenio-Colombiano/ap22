@@ -17,7 +17,10 @@ public class WayAdvise : MonoBehaviour
     [SerializeField] PlayerExperience experience;
     [SerializeField] BoxCollider firstLimit;
     [SerializeField] GameObject box;
-
+    private void Start()
+    {
+         
+    }
     private void FixedUpdate()
     {
         if (!onWay)
@@ -68,7 +71,7 @@ public class WayAdvise : MonoBehaviour
             panelTimer.SetActive(true);
 
             timer = 5;
-            timeText.color = Color.white;
+            timeText.color = Color.black;
 
             onWay = false;
         }
