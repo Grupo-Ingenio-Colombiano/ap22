@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
 {
@@ -38,7 +39,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
 
     bool oneTimeUse;
 
-
+    [SerializeField] GameObject buttonInvent;
 
     private void Start()
     {
@@ -113,13 +114,19 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
     public void AcceptItem()
     {
         GetComponent<Animator>().SetTrigger("hide");
-      
-       
-      
+        var sequence = DOTween.Sequence();
+
+
         StartCoroutine(offWindow());
         empty[numInv].SetActive(false);
         print(numInv + " inventario");
-        item.GetComponent<Animator>().SetTrigger("toInventory");
+        item.SetActive(false);
+        sequence.Append(buttonInvent.transform.DOScale(1.5f, 0.6f));
+        sequence.OnComplete(() =>
+        {
+            buttonInvent.transform.DOScale(1, 1);
+        });
+       
         StartCoroutine(AddItemInventory());
         button.enabled = false;
        
@@ -135,7 +142,7 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
        
         i.AddItemTest(itemNameText, miniatureInt, eliminate, objInt, infoText, infoSpriteInt, playerEquip, indexUi, useDistance, oneTimeUse);
         button.enabled = true;
-      
+        item.SetActive(true); 
     }
 
     IEnumerator offWindow()
