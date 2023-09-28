@@ -16,11 +16,15 @@ grupo Ingenio Colombiano
 -[UI] New UI for indicator in map
 -[UI] Add new UI instructions
 -[UI] New panel avatar in scene, opens when user clicks on experience button 
+-[UI] Add animation for inventory button when adding an item
+-[UI] Add Debug input field for testing mode in panel menu
 ### Fixed
 -[UI] Fixed player dialog scale, now all options scale propertly
+-[UI] New UI way advise
 -[Inventory] Fixed Overlo functionality, now works propertly if you want to put on again your Overol in practice 
 ### Delete
 -[UI] Delete lines and background in player dialog options
+-[UI] UI Animation for adding item inventory
 
 ## [2.0.10] - 2023-09-08
 
