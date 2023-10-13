@@ -80,8 +80,9 @@ public class PrizeManager : MonoBehaviour
 
     public void SendItemToInventory()
     {
-        var sequence = DOTween.Sequence();
+     
         acept.interactable = false;
+        var sequence = DOTween.Sequence();
         sequence.Append(buttonInvent.transform.DOScale(1.7f, 0.4f));
         sequence.OnComplete(() =>
         {
