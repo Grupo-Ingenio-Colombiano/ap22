@@ -77,6 +77,11 @@ namespace Vp_Packages
             SamplingRegisterCalculations historicalData = FindAnyObjectByType<SamplingRegisterCalculations>();
             historicalData.RellenarDatosMuestreo();
         }
+        public void DatosCronometraje()
+        {
+            TimingRegisterCalculations timer = FindAnyObjectByType<TimingRegisterCalculations>();
+            timer.RellenarDatosCronometraje();
+        }
     }
 
 

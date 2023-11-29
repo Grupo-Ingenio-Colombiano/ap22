@@ -329,28 +329,28 @@ public class TimingRegisterCalculations : MonoBehaviour
 
         for (int i = 0; i < sumatoria.Length; i++)
         {
-            sumatoriaTiemposFRIngresados[i] = float.Parse(sumatoria[i].text, CultureInfo.InvariantCulture);
+            sumatoriaTiemposFRIngresados[i] = float.Parse(sumatoria[i].text);
             //print("datos ingresados: " + sumatoriaTiemposFRIngresados[i] + " " + sumatoria[i].text + " " + float.Parse(sumatoria[i].text));
         }
 
         for (int i = 0; i < normalizados.Length; i++)
         {
-            tiemposNormalizadosIngresados[i] = float.Parse(normalizados[i].text, CultureInfo.InvariantCulture);
+            tiemposNormalizadosIngresados[i] = float.Parse(normalizados[i].text);
             //print("datos ingresados: " + tiemposNormalizadosIngresados[i] + "  " + float.Parse(normalizados[i].text));
         }
 
-        numSamplesIngresado = float.Parse(numSamplesInput.text, CultureInfo.InvariantCulture);
+        numSamplesIngresado = float.Parse(numSamplesInput.text);
         //print("datos ingresados: " + numSamplesIngresado + " " + numSamplesInput.text + " " + float.Parse(numSamplesInput.text));
 
-        tNormalIngresado = float.Parse(TNormalInput.text, CultureInfo.InvariantCulture);
+        tNormalIngresado = float.Parse(TNormalInput.text);
         //print("datos ingresados: " + tNormalIngresado + " " + TNormalInput.text + " " + tiempoNormal);
-        tCicloIngresado = float.Parse(TCicloInput.text, CultureInfo.InvariantCulture);
+        tCicloIngresado = float.Parse(TCicloInput.text);
         //print("datos ingresados: " + tCicloIngresado + " " + TCicloInput.text + " " + tiempoCiclo);
-        tiempoTaktIngresado = float.Parse(TTaktInput.text, CultureInfo.InvariantCulture);
+        tiempoTaktIngresado = float.Parse(TTaktInput.text);
         //print("datos ingresados: " + tiempoTaktIngresado + " " + TTaktInput.text + " " + tiempoTakt);
-        uProducidasIngresado = float.Parse(uProducidasInput.text, CultureInfo.InvariantCulture);
+        uProducidasIngresado = float.Parse(uProducidasInput.text);
         //print("datos ingresados: " + uProducidasIngresado + " " + uProducidasInput.text + " " + unidadesProducidas);
-        uRequeridasIngresado = float.Parse(uRequeridasInput.text, CultureInfo.InvariantCulture);
+        uRequeridasIngresado = float.Parse(uRequeridasInput.text);
         //print("datos ingresados: " + uRequeridasIngresado + " " + uRequeridasInput.text + " " + unidadesRequeridas);
     }
 
@@ -548,6 +548,24 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             print("current index: " + currentIndex);
         }
+
+    }
+    public void RellenarDatosCronometraje()
+    {
+        Calculate();
+        for (int i = 0; i < sumatoria.Length; i++)
+        {
+            sumatoria[i].text = sumatoriaTiemposFR[i].ToString();
+        }
+        for (int i = 0; i < normalizados.Length; i++)
+        {
+            normalizados[i].text = tiemposNormalizados[i].ToString();
+        }
+        TNormalInput.text = tiempoNormal.ToString();
+        TCicloInput.text = tiempoCiclo.ToString();
+        TTaktInput.text = tiempoTakt.ToString();
+        uProducidasInput.text = unidadesProducidas.ToString();
+        uRequeridasInput.text = unidadesRequeridas.ToString();
 
     }
 }

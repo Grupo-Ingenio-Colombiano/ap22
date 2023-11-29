@@ -231,4 +231,18 @@ public class BoardManagerTest : MonoBehaviour
         //playerExperience.AddExperience(questionaryPoints);
     }
 
+    public void GaussTestPanel()
+    {
+
+        SetPosiblePositions();
+        int test = 0;
+        for (int i = 0; i < numPosiblePositions; i++)
+        {
+
+            var posibleCorrectPos = initialButtons[i].GetComponent<BoardButton>().correctPositionsIndexes;          
+            initialButtons[i].GetComponent<RectTransform>().localPosition = answerButtonsIndicators[0].GetComponent<RectTransform>().localPosition;
+
+        }
+    }
+
 }
