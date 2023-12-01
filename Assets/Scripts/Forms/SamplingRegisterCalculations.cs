@@ -145,7 +145,14 @@ public class SamplingRegisterCalculations : MonoBehaviour
     }
     public void RellenarDatosMuestreo()
     {
-        Calculate();
+        tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
+
+        tiempoOptimo = tTotalDispDiario / QuestSampling.Instance.CurrentOperationData.requiredUnits;
+        tiempoTakt = tiempoOptimo;
+
+        tiempoCiclo = ((QuestSampling.Instance.CurrentOperationData.numMinutosMuestreo * (QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion / 100) *
+            (QuestSampling.Instance.CurrentOperationData.factorRitmo / 100) * (1f + (QuestSampling.Instance.CurrentOperationData.K / 100f)))) / QuestSampling.Instance.CurrentOperationData.unidadesRealizadas;
+        unidadesProducidas = tTotalDispDiario / tiempoCiclo;
         TOInput.text = tiempoOptimo.ToString();
         TCInput.text = tiempoCiclo.ToString();
         UPInput.text = unidadesProducidas.ToString();
