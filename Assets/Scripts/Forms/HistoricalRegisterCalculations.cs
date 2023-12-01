@@ -164,7 +164,14 @@ public class HistoricalRegisterCalculations : MonoBehaviour
     }
     public void RellenarDatosHistoricos()
     {
-        Calculate();
+        tiempoModal = QuestHistorical.Instance.CurrentOperationData.modalTime;
+        tiempoPesimista = QuestHistorical.Instance.CurrentOperationData.historicalSamples.Max();
+        tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
+
+        tiempoOptimo = tTotalDispDiario / QuestHistorical.Instance.CurrentOperationData.requiredUnits;
+        tiempoTakt = tiempoOptimo;
+        tiempoCiclo = (tiempoOptimo + 4 * tiempoModal + tiempoPesimista) / 6f;
+        unidadesProducidas = tTotalDispDiario / tiempoCiclo;
         TOInput.text = tiempoOptimo.ToString();
         TCInput.text = tiempoCiclo.ToString();
         UPInput.text = unidadesProducidas.ToString();
