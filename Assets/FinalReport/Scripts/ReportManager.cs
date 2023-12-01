@@ -70,8 +70,8 @@ public class ReportManager : MonoBehaviour
         var dateString = date.ToString("MM/dd/yyyy");
         var hourString = date.ToString("hh:mm tt");
 
-        userData.excelReport[0].E[7]=dateString;
-        userData.excelReport[0].L[7]=hourString;
+        userData.excelReport[0].G[8]=dateString + "   " + hourString;
+        
        
     }
 
@@ -200,22 +200,27 @@ public class ReportManager : MonoBehaviour
             default:
             TurnOnStars(0);
             trophyImage.gameObject.SetActive(false);
-            break;
+            userData.excelReport[0].F[18] = "No Obtenido";
+
+                break;
 
             case >=450:
             TurnOnStars(3);
             trophyImage.sprite = trophySprites[0];
-            break;
+                userData.excelReport[0].F[18] = "Oro";
+                break;
 
             case >=400:
             TurnOnStars(2);
             trophyImage.sprite = trophySprites[1];
-            break;
+                userData.excelReport[0].F[18] = "Plata";
+                break;
 
             case >=300:
             TurnOnStars(1);
             trophyImage.sprite = trophySprites[2];
-            break;
+                userData.excelReport[0].F[18] = "Bronce";
+                break;
         }
 
         timeText.text = userData.time;

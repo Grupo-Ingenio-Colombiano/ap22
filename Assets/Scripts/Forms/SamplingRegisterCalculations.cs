@@ -70,14 +70,14 @@ public class SamplingRegisterCalculations : MonoBehaviour
         tOptimoIngresado = float.Parse(TOInput.text);
         tCicloIngresado = float.Parse(TCInput.text);
         uProducidasIngresado = float.Parse(UPInput.text);
-        userData.excelReport[0].M[15] = tiempoOptimo.ToString();
-        userData.excelReport[0].M[16] = tiempoCiclo.ToString();
-        userData.excelReport[0].M[17] = unidadesProducidas.ToString();
+        userData.excelReport[0].M[27] = tiempoOptimo.ToString();
+        userData.excelReport[0].M[28] = tiempoCiclo.ToString();
+        userData.excelReport[0].M[29] = unidadesProducidas.ToString();
 
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
-        userData.excelReport[0].M[19] = yesNo.isOn ? "Si" : "No";
+        userData.excelReport[0].M[31] = yesNo.isOn ? "Si" : "No";
 
         print(yesNo.isOn ? "Si" : "No" + " Cumple");
 

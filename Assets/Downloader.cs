@@ -14,75 +14,91 @@ public class Downloader : MonoBehaviour
 
     private void Start()
     {
-        userData.excelReport[0].E[3] = userData.nombreForm + " " + userData.apellidoForm;
-        userData.excelReport[0].E[5] = userData.iDForm;
+        userData.excelReport[0].G[6] = userData.nombreForm + " " + userData.apellidoForm;
+        userData.excelReport[0].G[7] = userData.email;
+        userData.excelReport[0].G[8] = System.DateTime.Now.ToString("MM/dd/yyyy") + "   " + System.DateTime.Now.ToString("hh: mm:ss");
 
-        userData.excelReport[0].E[7] = System.DateTime.Now.ToString("MM/dd/yyyy");
-        userData.excelReport[0].L[7] = System.DateTime.Now.ToString("hh: mm:ss");
+        userData.excelReport[0].F[14] = userData.experience.ToString();
+        userData.excelReport[0].F[15] = userData.progress.ToString();
+        userData.excelReport[0].F[16] = userData.time;
+        userData.excelReport[0].F[17] = ((userData.experience / 500) * 100).ToString();
+
 
         if (userData.method == 1 || userData.method == 2)
         {
-            userData.excelReport[0].J[15] = MethodsAnswerData.TiempoTakt[0];
-            userData.excelReport[0].K[15] = MethodsAnswerData.TiempoTakt[1];
-            userData.excelReport[0].L[15] = MethodsAnswerData.TiempoTakt[2];
-            userData.excelReport[0].J[16] = MethodsAnswerData.TiempoCiclo[0];
-            userData.excelReport[0].K[16] = MethodsAnswerData.TiempoCiclo[1];
-            userData.excelReport[0].L[16] = MethodsAnswerData.TiempoCiclo[2];
-            userData.excelReport[0].J[17] = MethodsAnswerData.UnidadesProducidas[0];
-            userData.excelReport[0].K[17] = MethodsAnswerData.UnidadesProducidas[1];
-            userData.excelReport[0].L[17] = MethodsAnswerData.UnidadesProducidas[2];
-            userData.excelReport[0].J[19] = MethodsAnswerData.YesNo[0];
-            userData.excelReport[0].K[19] = MethodsAnswerData.YesNo[1];
-            userData.excelReport[0].L[19] = MethodsAnswerData.YesNo[2];
-            userData.excelReport[0].J[20] = MethodsAnswerData.Justification[0];
-            userData.excelReport[0].K[20] = MethodsAnswerData.Justification[1];
-            userData.excelReport[0].L[20] = MethodsAnswerData.Justification[2];
-            userData.excelReport[0].J[25] = methodData.t1I1;
-            userData.excelReport[0].K[25] = methodData.t1I2;
-            userData.excelReport[0].L[25] = methodData.t1I3;
-            userData.excelReport[0].J[26] = methodData.o1I1;
-            userData.excelReport[0].K[26] = methodData.o1I2;
-            userData.excelReport[0].L[26] = methodData.o1I3;
-            userData.excelReport[0].J[27] = methodData.t2I1;
-            userData.excelReport[0].K[27] = methodData.t2I2;
-            userData.excelReport[0].L[27] = methodData.t2I3;
-            userData.excelReport[0].J[28] = methodData.o2I1;
-            userData.excelReport[0].K[28] = methodData.o2I2;
-            userData.excelReport[0].L[28] = methodData.o2I3;
-            userData.excelReport[0].J[29] = methodData.t3I1;
-            userData.excelReport[0].K[29] = methodData.t3I2;
-            userData.excelReport[0].L[29] = methodData.t3I3;
-            userData.excelReport[0].J[30] = methodData.o3I1;
-            userData.excelReport[0].K[30] = methodData.o3I2;
-            userData.excelReport[0].L[30] = methodData.o3I3;
-            userData.excelReport[0].J[31] = methodData.upI1;
-            userData.excelReport[0].K[31] = methodData.upI2;
-            userData.excelReport[0].L[31] = methodData.upI3;
-            userData.excelReport[0].J[32] = methodData.obI1;
-            userData.excelReport[0].K[32] = methodData.obI2;
-            userData.excelReport[0].L[32] = methodData.obI3;
+            userData.excelReport[0].J[27] = MethodsAnswerData.TiempoTakt[0];
+            userData.excelReport[0].K[27] = MethodsAnswerData.TiempoTakt[1];
+            userData.excelReport[0].L[27] = MethodsAnswerData.TiempoTakt[2];
+
+            userData.excelReport[0].J[28] = MethodsAnswerData.TiempoCiclo[0];
+            userData.excelReport[0].K[28] = MethodsAnswerData.TiempoCiclo[1];
+            userData.excelReport[0].L[28] = MethodsAnswerData.TiempoCiclo[2];
+
+            userData.excelReport[0].J[29] = MethodsAnswerData.UnidadesProducidas[0];
+            userData.excelReport[0].K[29] = MethodsAnswerData.UnidadesProducidas[1];
+            userData.excelReport[0].L[29] = MethodsAnswerData.UnidadesProducidas[2];
+
+            userData.excelReport[0].J[31] = MethodsAnswerData.YesNo[0];
+            userData.excelReport[0].K[31] = MethodsAnswerData.YesNo[1];
+            userData.excelReport[0].L[31] = MethodsAnswerData.YesNo[2]; 
+
+            userData.excelReport[0].J[32] = MethodsAnswerData.Justification[0];
+            userData.excelReport[0].K[32] = MethodsAnswerData.Justification[1];
+            userData.excelReport[0].L[32] = MethodsAnswerData.Justification[2];
+
+            userData.excelReport[0].J[36] = methodData.t1I1;
+            userData.excelReport[0].K[36] = methodData.t1I2;
+            userData.excelReport[0].L[36] = methodData.t1I3;
+
+            userData.excelReport[0].J[37] = methodData.o1I1;
+            userData.excelReport[0].K[37] = methodData.o1I2;
+            userData.excelReport[0].L[37] = methodData.o1I3;
+
+            userData.excelReport[0].J[38] = methodData.t2I1;
+            userData.excelReport[0].K[38] = methodData.t2I2;
+            userData.excelReport[0].L[38] = methodData.t2I3;
+
+            userData.excelReport[0].J[39] = methodData.o2I1;
+            userData.excelReport[0].K[39] = methodData.o2I2;
+            userData.excelReport[0].L[39] = methodData.o2I3;
+
+            userData.excelReport[0].J[40] = methodData.t3I1;
+            userData.excelReport[0].K[40] = methodData.t3I2;
+            userData.excelReport[0].L[40] = methodData.t3I3;
+
+            userData.excelReport[0].J[41] = methodData.o3I1;
+            userData.excelReport[0].K[41] = methodData.o3I2;
+            userData.excelReport[0].L[41] = methodData.o3I3;
+
+            userData.excelReport[0].J[42] = methodData.upI1;
+            userData.excelReport[0].K[42] = methodData.upI2;
+            userData.excelReport[0].L[42] = methodData.upI3;
+
+            userData.excelReport[0].J[43] = methodData.obI1;
+            userData.excelReport[0].K[43] = methodData.obI2;
+            userData.excelReport[0].L[43] = methodData.obI3;
 
             if (userData.method == 1)
             {
-                userData.excelReport[0].I[36] = 30.ToString();
-                userData.excelReport[0].I[37] = 20.ToString();
-                userData.excelReport[0].I[38] = 50.ToString();
-                userData.excelReport[0].I[39] =75.ToString();
-                userData.excelReport[0].I[40] = 75.ToString();
-                userData.excelReport[0].I[41] = 75.ToString();
-                userData.excelReport[0].I[42] = 75.ToString();
-                userData.excelReport[0].I[43] = 100.ToString();
+                userData.excelReport[0].I[47] = 30.ToString();
+                userData.excelReport[0].I[48] = 20.ToString();
+                userData.excelReport[0].I[49] = 50.ToString();
+                userData.excelReport[0].I[50] =75.ToString();
+                userData.excelReport[0].I[51] = 75.ToString();
+                userData.excelReport[0].I[52] = 75.ToString();
+                userData.excelReport[0].I[53] = 75.ToString();
+                userData.excelReport[0].I[54] = 100.ToString();
 
             }
             if (userData.method == 2)
             {
-                userData.excelReport[0].I[36] = 30.ToString();
-                userData.excelReport[0].I[37] = 20.ToString();
-                userData.excelReport[0].I[38] = 87.ToString();
-                userData.excelReport[0].I[39] = 87.ToString();
-                userData.excelReport[0].I[40] = 87.ToString();
-                userData.excelReport[0].I[41] = 89.ToString();
-                userData.excelReport[0].I[42] = 100.ToString();
+                userData.excelReport[0].I[47] = 30.ToString();
+                userData.excelReport[0].I[48] = 20.ToString();
+                userData.excelReport[0].I[49] = 87.ToString();
+                userData.excelReport[0].I[50] = 87.ToString();
+                userData.excelReport[0].I[51] = 87.ToString();
+                userData.excelReport[0].I[52] = 89.ToString();
+                userData.excelReport[0].I[53] = 100.ToString();
 
             }
 
