@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -552,7 +553,17 @@ public class TimingRegisterCalculations : MonoBehaviour
     }
     public void RellenarDatosCronometraje()
     {
-        Calculate();
+        CalculateSumFR();
+        CalculateNormalizedSum();
+        CalculateTiempoNormal();
+        CalculateTC();
+
+        tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
+        tiempoTakt = tTotalDispDiario / unidadesRequeridas;
+        unidadesProducidas = (int)(tTotalDispDiario / tiempoCiclo);
+        float error = 0.05f;
+        numSamples = 4 * ((36 * sumTiemposCuadrado) - (sumTiempos * sumTiempos)) / (error * error * (sumTiempos * sumTiempos));
+        numSamples = Mathf.Ceil(numSamples);
         for (int i = 0; i < sumatoria.Length; i++)
         {
             sumatoria[i].text = sumatoriaTiemposFR[i].ToString();
@@ -561,6 +572,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             normalizados[i].text = tiemposNormalizados[i].ToString();
         }
+        numSamplesInput.text = numSamples.ToString();
         TNormalInput.text = tiempoNormal.ToString();
         TCicloInput.text = tiempoCiclo.ToString();
         TTaktInput.text = tiempoTakt.ToString();
