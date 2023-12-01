@@ -18,6 +18,15 @@ public class TurnFormValuesCheck : MonoBehaviour
     Toggle Turn3;
 
     [SerializeField]
+    Toggle toggleOperators;
+
+    [SerializeField]
+    GameObject operatorsDropsObject;
+
+    [SerializeField]
+    GameObject operatorsFieldsObject;
+
+    [SerializeField]
     TMP_Dropdown operators1;
 
     [SerializeField]
@@ -25,6 +34,9 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     [SerializeField]
     TMP_Dropdown operators3;
+
+    [SerializeField]
+    TMP_InputField operatorsField;
 
     [SerializeField]
     Text upText;
@@ -51,66 +63,99 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     public int urValue;
 
+    private bool enable;
   
-    public void validateTurns()
+    public void ToggleOperator()
+    {
+        if (toggleOperators.isOn)
+        {
+            operatorsDropsObject.SetActive(false);
+            operatorsFieldsObject.SetActive(true);
+            ValidateTurnsField();
+        }
+        else
+        { 
+            operatorsDropsObject.SetActive(true);
+            operatorsFieldsObject.SetActive(false);
+            ValidateTurnsDrops();
+        }
+    }
+    public void ValidateTurnsDrops()
     {
         data = new string[8];
 
         var op = 0;
+       
+           
 
-        if (Turn1.isOn)
+            if (Turn1.isOn)
+            {
+                operators1.gameObject.SetActive(true);
+                op += int.Parse(operators1.options[operators1.value].text);
+                data[0] = "Si";
+                data[1] = operators1.options[operators1.value].text;
+                userData.turn1 = true;
+            }
+            else
+            {
+                operators1.gameObject.SetActive(false);
+                data[0] = "No";
+                data[1] = "0";
+                userData.turn1 = false;
+            }
+
+
+            if (Turn2.isOn)
+            {
+                operators2.gameObject.SetActive(true);
+                op += int.Parse(operators2.options[operators2.value].text);
+                data[2] = "Si";
+                data[3] = operators2.options[operators1.value].text;
+                userData.turn2 = true;
+            }
+
+            else
+            {
+                operators2.gameObject.SetActive(false);
+                data[2] = "No";
+                data[3] = "0";
+                userData.turn2 = false;
+            }
+
+
+            if (Turn3.isOn)
+            {
+                operators3.gameObject.SetActive(true);
+                op += int.Parse(operators3.options[operators3.value].text);
+                data[4] = "Si";
+                data[5] = operators3.options[operators1.value].text;
+                userData.turn3 = true;
+            }
+
+            else
+            {
+                operators3.gameObject.SetActive(false);
+                data[4] = "No";
+                data[5] = "0";
+                userData.turn3 = false;
+            }
+
+        Calculate(op);
+    }
+    public void ValidateTurnsField()
+    {
+        var op = 0; 
+        if(operatorsField.text == "")
         {
-            operators1.gameObject.SetActive(true);
-            op += int.Parse(operators1.options[operators1.value].text);
-            data[0] = "Si";
-            data[1] = operators1.options[operators1.value].text;
-            userData.turn1 = true;
+            operatorsField.text = "0";
         }
-        else
-        {
-            operators1.gameObject.SetActive(false);
-            data[0] = "No";
-            data[1] = "0";
-            userData.turn1 = false;
-        }
-
-
-        if (Turn2.isOn)
-        {
-            operators2.gameObject.SetActive(true);
-            op += int.Parse(operators2.options[operators2.value].text);
-            data[2] = "Si";
-            data[3] = operators2.options[operators1.value].text;
-            userData.turn2 = true;
-        }
-
-        else
-        {
-            operators2.gameObject.SetActive(false);
-            data[2] = "No";
-            data[3] = "0";
-            userData.turn2 = false;
-        }
-
-
-        if (Turn3.isOn)
-        {
-            operators3.gameObject.SetActive(true);
-            op += int.Parse(operators3.options[operators3.value].text);
-            data[4] = "Si";
-            data[5] = operators3.options[operators1.value].text;
-            userData.turn3 = true;
-        }
-
-        else
-        {
-            operators3.gameObject.SetActive(false);
-            data[4] = "No";
-            data[5] = "0";
-            userData.turn3 = false;
-        }
-
+        op = int.Parse(operatorsField.text);
+        Calculate(op);
+    }
+    public void Calculate(int op)
+    {
         //btnContinue.SetActive(true);
+        data = new string[8];
 
         urValue = (int)FormResultsManager.Instance.unidadesRequeridas;
 
@@ -130,12 +175,13 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         data[6] = upValue.ToString("F0");
 
+        Debug.Log("Operarios" + FormResultsManager.Instance.UsersCalculate);
       
     }
 
     private void OnEnable()
     {
-        validateTurns();
+        enable = true;       
         //btnContinue.SetActive(false);
         //btnContinue.SetActive(true);
         player = GameObject.FindWithTag("Player");
