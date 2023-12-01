@@ -316,6 +316,24 @@ public class TimingRegisterCalculations : MonoBehaviour
         FormResultsManager.Instance.unidadesProducidasCalculadas = unidadesProducidas;
         FormResultsManager.Instance.unidadesProducidasNoCumplen = unidadesProducidas;
 
+        bool experienceBool = false;
+
+        for (int i = 0; i < areCorrectAnswers.Length; i++)
+        {
+            if (areCorrectAnswers[i])
+            {
+                experienceBool = true;
+            }
+            else
+            {
+                experienceBool = false;
+                break;
+            }
+        }
+        if(experienceBool)
+        {
+            PlayerDataManager.Instance.AddExperience(300);
+        }
         ShowCorrectAnswer();
 
         //for (int i = 0; i < areCorrectAnswers.Length; i++)
