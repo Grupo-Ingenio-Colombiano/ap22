@@ -252,10 +252,10 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].K[67] = methodData.obI2;
             userData.excelReport[0].L[67] = methodData.obI3;
 
-            userData.excelReport[0].I[71] = GameManager.scoreSecurityElements.ToString();
-            userData.excelReport[0].I[72] = GameManager.scoreSelectData.ToString();
-            userData.excelReport[0].I[73] = GameManager.scoreFormTCiclo.ToString();
-            userData.excelReport[0].I[74] = GameManager.scoreUpgradeForm.ToString();
+            userData.excelReport[0].I[71] = 50.ToString();
+            userData.excelReport[0].I[72] = 50.ToString();
+            userData.excelReport[0].I[73] = 300.ToString();
+            userData.excelReport[0].I[74] = 100.ToString();
         }
 
 
