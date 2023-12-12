@@ -256,6 +256,13 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].I[72] = 50.ToString();
             userData.excelReport[0].I[73] = 300.ToString();
             userData.excelReport[0].I[74] = 100.ToString();
+            userData.excelReport[0].I[75] = 500.ToString();
+
+            userData.excelReport[0].K[71] = 50.ToString();
+            userData.excelReport[0].K[72] = 50.ToString();
+            userData.excelReport[0].K[73] = 300.ToString();
+            userData.excelReport[0].K[74] = 100.ToString();
+            userData.excelReport[0].K[75] = 500.ToString();
         }
 
 
