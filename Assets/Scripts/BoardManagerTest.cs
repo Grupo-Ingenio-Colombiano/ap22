@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardManagerTest : MonoBehaviour
@@ -235,14 +236,19 @@ public class BoardManagerTest : MonoBehaviour
     {
 
         SetPosiblePositions();
+        List<int> posOcupadas = new List<int>();
         int test = 0;
-        for (int i = 0; i < numPosiblePositions; i++)
-        {
+        //for (int i = 0; i < initialButtons.Length; i++)
+        //{
+        //    var posibleCorrectPos = initialButtons[i].GetComponent<BoardButton>().correctPositionsIndexes;
+        //    do
+        //    {
 
-            var posibleCorrectPos = initialButtons[i].GetComponent<BoardButton>().correctPositionsIndexes;          
-            initialButtons[i].GetComponent<RectTransform>().localPosition = answerButtonsIndicators[0].GetComponent<RectTransform>().localPosition;
+        //    } while (initialButtons[i].GetComponent<RectTransform>().localPosition == );
+                   
+        //    initialButtons[i].GetComponent<RectTransform>().localPosition = answerButtonsIndicators[0].GetComponent<RectTransform>().localPosition;
 
-        }
+        //}
     }
 
 }
