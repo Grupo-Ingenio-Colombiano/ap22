@@ -70,9 +70,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
         tOptimoIngresado = float.Parse(TOInput.text);
         tCicloIngresado = float.Parse(TCInput.text);
         uProducidasIngresado = float.Parse(UPInput.text);
-        userData.excelReport[0].M[27] = tiempoOptimo.ToString();
-        userData.excelReport[0].M[28] = tiempoCiclo.ToString();
-        userData.excelReport[0].M[29] = unidadesProducidas.ToString();
+        userData.excelReport[0].M[27] = tiempoOptimo.ToString("F2");
+        userData.excelReport[0].M[28] = tiempoCiclo.ToString("F2");
+        userData.excelReport[0].M[29] = unidadesProducidas.ToString("F2");
 
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");

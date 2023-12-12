@@ -81,9 +81,9 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         print("tiempo ciclo  " + tiempoCiclo);
         print("unidades producidas " + unidadesProducidas);
 
-        userData.excelReport[0].M[27] = tiempoOptimo.ToString();
-        userData.excelReport[0].M[28] = tiempoCiclo.ToString();
-        userData.excelReport[0].M[29] = unidadesProducidas.ToString();
+        userData.excelReport[0].M[27] = tiempoOptimo.ToString("F2");
+        userData.excelReport[0].M[28] = tiempoCiclo.ToString("F2");
+        userData.excelReport[0].M[29] = unidadesProducidas.ToString("F2");
 
         userData.excelReport[0].M[31] = yesNo.isOn ? "Si" : "No";
 
