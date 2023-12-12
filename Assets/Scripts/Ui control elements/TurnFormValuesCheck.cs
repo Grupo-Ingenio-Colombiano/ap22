@@ -194,7 +194,15 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         FormResultsManager.Instance.UsersCalculate = Mathf.CeilToInt(FormResultsManager.Instance.tiempoCicloCalculadas / FormResultsManager.Instance.taktTimeCalculadas);
 
-        userData.excelReport[0].M[42] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+        if(userData.method == 1 || userData.method == 2)
+        {
+            userData.excelReport[0].M[42] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+        }
+        else
+        {
+            userData.excelReport[0].M[66] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+        }
+     
 
         data[6] = upValue.ToString("F0");
 
