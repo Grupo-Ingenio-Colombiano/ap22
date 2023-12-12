@@ -58,23 +58,46 @@ public class TurnFormValuesCheck : MonoBehaviour
 
     GameObject player;
 
+    [SerializeField]
+    GameObject[] selectors;
+
     [SerializeField] UserData userData;
     public int upValue;
 
     public int urValue;
 
     private bool enable;
-  
+
+    private void Update()
+    {
+        if(toggleOperators.isOn)
+        {
+            if (operatorsField.text == "")
+            {
+                Calculate(0);
+            }
+            else
+            {
+                Calculate(int.Parse(operatorsField.text));
+            }
+            
+        }
+    }
     public void ToggleOperator()
     {
         if (toggleOperators.isOn)
         {
+           
             operatorsDropsObject.SetActive(false);
             operatorsFieldsObject.SetActive(true);
             ValidateTurnsField();
         }
         else
-        { 
+        {
+            for (int i = 0; i < selectors.Length; i++)
+            {
+                selectors[i].SetActive(true);
+            }
             operatorsDropsObject.SetActive(true);
             operatorsFieldsObject.SetActive(false);
             ValidateTurnsDrops();
@@ -171,7 +194,7 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         FormResultsManager.Instance.UsersCalculate = Mathf.CeilToInt(FormResultsManager.Instance.tiempoCicloCalculadas / FormResultsManager.Instance.taktTimeCalculadas);
 
-        userData.excelReport[0].M[31] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+        userData.excelReport[0].M[42] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
 
         data[6] = upValue.ToString("F0");
 
