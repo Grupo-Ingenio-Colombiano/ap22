@@ -528,15 +528,15 @@ public class TimingRegisterCalculations : MonoBehaviour
             HistoricalAnswerData.JustificationTomados[currentIndex] = justifTomadosInput.text;
             HistoricalAnswerData.YesNoSuficientes[currentIndex] = yesNoSuficientes.isOn ? "Si" : "No";
             HistoricalAnswerData.JustificationSuficientes[currentIndex] = justifSuficientesInput.text;
-        
-         
-            normalizados[0].text = userData.excelReport[0].G[40];
-            normalizados[1].text = userData.excelReport[0].H[40];
-            normalizados[2].text = userData.excelReport[0].I[40];
-            normalizados[3].text = userData.excelReport[0].J[40];
-            normalizados[4].text = userData.excelReport[0].K[40];
-            normalizados[5].text = userData.excelReport[0].L[40];
-            normalizados[6].text = userData.excelReport[0].M[40];
+
+
+            userData.excelReport[0].G[40] = normalizados[0].text; 
+            userData.excelReport[0].H[40] = normalizados[1].text; 
+            userData.excelReport[0].I[40] = normalizados[2].text; 
+            userData.excelReport[0].J[40] = normalizados[3].text; 
+            userData.excelReport[0].K[40] = normalizados[4].text; 
+            userData.excelReport[0].L[40] = normalizados[5].text;
+            userData.excelReport[0].M[40] = normalizados[6].text; 
 
 
             if (currentIndex == 0)
