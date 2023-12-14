@@ -4,6 +4,23 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+
+## [2.0.12] - 2023-12-14
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Added
+-[Functionality] Now you can add operators by input fields in turn operators quest
+
+### Changed
+-[Functionality] All calculates from timing quest are fixed
+-[Functionality] Fixed all fields for Timing quest 
+-[Functionality] Fixed all fields for Turn operators 
+-[ExcelReport] New excel reports for Historical, Sampling and timing quests. Change fields for turn operators quest
+
+
 ## [2.0.11] - 2023-09-26
 
 ## Developers
