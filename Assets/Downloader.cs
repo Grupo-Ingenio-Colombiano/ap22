@@ -137,33 +137,33 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].K[29] = HistoricalAnswerData.campana115;
 
             //Tiempos
-            userData.excelReport[0].F[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[0];
-            userData.excelReport[0].F[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[0];
-            userData.excelReport[0].F[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[0];
+            userData.excelReport[0].G[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[0];
+            userData.excelReport[0].G[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[0];
+            userData.excelReport[0].G[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[0];
 
-            userData.excelReport[0].G[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[1];
-            userData.excelReport[0].G[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[1];
-            userData.excelReport[0].G[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[1];
+            userData.excelReport[0].H[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[1];
+            userData.excelReport[0].H[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[1];
+            userData.excelReport[0].H[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[1];
 
-            userData.excelReport[0].H[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[2];
-            userData.excelReport[0].H[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[2];
-            userData.excelReport[0].H[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[2];
+            userData.excelReport[0].I[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[2];
+            userData.excelReport[0].I[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[2];
+            userData.excelReport[0].I[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[2];
 
-            userData.excelReport[0].I[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[3];
-            userData.excelReport[0].I[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[3];
-            userData.excelReport[0].I[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[3];
+            userData.excelReport[0].J[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[3];
+            userData.excelReport[0].J[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[3];
+            userData.excelReport[0].J[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[3];
 
-            userData.excelReport[0].J[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[4];
-            userData.excelReport[0].J[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[4];
-            userData.excelReport[0].J[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[4];
+            userData.excelReport[0].K[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[4];
+            userData.excelReport[0].K[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[4];
+            userData.excelReport[0].K[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[4];
 
-            userData.excelReport[0].K[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[5];
-            userData.excelReport[0].K[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[5];
-            userData.excelReport[0].K[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[5];
+            userData.excelReport[0].L[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[5];
+            userData.excelReport[0].L[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[5];
+            userData.excelReport[0].L[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[5];
 
-            userData.excelReport[0].L[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[6];
-            userData.excelReport[0].L[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[6];
-            userData.excelReport[0].L[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[6];
+            userData.excelReport[0].M[41] = HistoricalAnswerData.TiempoNormalizadoIntento1[6];
+            userData.excelReport[0].M[42] = HistoricalAnswerData.TiempoNormalizadoIntento2[6];
+            userData.excelReport[0].M[43] = HistoricalAnswerData.TiempoNormalizadoIntento3[6];
 
             //Cuadros
             userData.excelReport[0].J[46] = HistoricalAnswerData.TiempoNormal[0];
@@ -212,45 +212,33 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].K[60] = methodData.t1I2;
             userData.excelReport[0].L[60] = methodData.t1I3;
 
-            userData.excelReport[0].J[61] = methodData.o1I1;
-            userData.excelReport[0].K[61] = methodData.o1I2;
-            userData.excelReport[0].L[61] = methodData.o1I3;
+            userData.excelReport[0].J[61] = methodData.t2I1;
+            userData.excelReport[0].K[61] = methodData.t2I2;
+            userData.excelReport[0].L[61] = methodData.t2I3;
 
-            userData.excelReport[0].J[62] = methodData.t2I1;
-            userData.excelReport[0].K[62] = methodData.t2I2;
-            userData.excelReport[0].L[62] = methodData.t2I3;
+            userData.excelReport[0].J[62] = methodData.t3I1;
+            userData.excelReport[0].K[62] = methodData.t3I2;
+            userData.excelReport[0].L[62] = methodData.t3I3;
 
-            userData.excelReport[0].J[63] = methodData.o2I1;
-            userData.excelReport[0].K[63] = methodData.o2I2;
-            userData.excelReport[0].L[63] = methodData.o2I3;
+            userData.excelReport[0].J[64] = methodData.upI1;
+            userData.excelReport[0].K[64] = methodData.upI2;
+            userData.excelReport[0].L[64] = methodData.upI3;
 
-            userData.excelReport[0].J[64] = methodData.t3I1;
-            userData.excelReport[0].K[64] = methodData.t3I2;
-            userData.excelReport[0].L[64] = methodData.t3I3;
+            userData.excelReport[0].J[65] = methodData.obI1;
+            userData.excelReport[0].K[65] = methodData.obI2;
+            userData.excelReport[0].L[65] = methodData.obI3;
 
-            userData.excelReport[0].J[65] = methodData.o3I1;
-            userData.excelReport[0].K[65] = methodData.o3I2;
-            userData.excelReport[0].L[65] = methodData.o3I3;
+            userData.excelReport[0].I[69] = 50.ToString();
+            userData.excelReport[0].I[70] = 50.ToString();
+            userData.excelReport[0].I[71] = 300.ToString();
+            userData.excelReport[0].I[72] = 100.ToString();
+            userData.excelReport[0].I[73] = 500.ToString();
 
-            userData.excelReport[0].J[66] = methodData.upI1;
-            userData.excelReport[0].K[66] = methodData.upI2;
-            userData.excelReport[0].L[66] = methodData.upI3;
-
-            userData.excelReport[0].J[67] = methodData.obI1;
-            userData.excelReport[0].K[67] = methodData.obI2;
-            userData.excelReport[0].L[67] = methodData.obI3;
-
-            userData.excelReport[0].I[71] = 50.ToString();
-            userData.excelReport[0].I[72] = 50.ToString();
-            userData.excelReport[0].I[73] = 300.ToString();
-            userData.excelReport[0].I[74] = 100.ToString();
-            userData.excelReport[0].I[75] = 500.ToString();
-
-            userData.excelReport[0].K[71] = 50.ToString();
-            userData.excelReport[0].K[72] = 50.ToString();
-            userData.excelReport[0].K[73] = 300.ToString();
-            userData.excelReport[0].K[74] = 100.ToString();
-            userData.excelReport[0].K[75] = 500.ToString();
+            userData.excelReport[0].K[69] = 50.ToString();
+            userData.excelReport[0].K[70] = 50.ToString();
+            userData.excelReport[0].K[71] = 300.ToString();
+            userData.excelReport[0].K[72] = 100.ToString();
+            userData.excelReport[0].K[73] = 500.ToString();
         }
 
 
