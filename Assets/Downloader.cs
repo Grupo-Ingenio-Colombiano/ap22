@@ -50,55 +50,43 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].K[36] = methodData.t1I2;
             userData.excelReport[0].L[36] = methodData.t1I3;
 
-            userData.excelReport[0].J[37] = methodData.o1I1;
-            userData.excelReport[0].K[37] = methodData.o1I2;
-            userData.excelReport[0].L[37] = methodData.o1I3;
+            userData.excelReport[0].J[37] = methodData.t2I1;
+            userData.excelReport[0].K[37] = methodData.t2I2;
+            userData.excelReport[0].L[37] = methodData.t2I3;
 
-            userData.excelReport[0].J[38] = methodData.t2I1;
-            userData.excelReport[0].K[38] = methodData.t2I2;
-            userData.excelReport[0].L[38] = methodData.t2I3;
+            userData.excelReport[0].J[38] = methodData.t3I1;
+            userData.excelReport[0].K[38] = methodData.t3I2;
+            userData.excelReport[0].L[38] = methodData.t3I3;
 
-            userData.excelReport[0].J[39] = methodData.o2I1;
-            userData.excelReport[0].K[39] = methodData.o2I2;
-            userData.excelReport[0].L[39] = methodData.o2I3;
+            userData.excelReport[0].J[40] = methodData.upI1;
+            userData.excelReport[0].K[40] = methodData.upI2;
+            userData.excelReport[0].L[40] = methodData.upI3;
 
-            userData.excelReport[0].J[40] = methodData.t3I1;
-            userData.excelReport[0].K[40] = methodData.t3I2;
-            userData.excelReport[0].L[40] = methodData.t3I3;
-
-            userData.excelReport[0].J[41] = methodData.o3I1;
-            userData.excelReport[0].K[41] = methodData.o3I2;
-            userData.excelReport[0].L[41] = methodData.o3I3;
-
-            userData.excelReport[0].J[42] = methodData.upI1;
-            userData.excelReport[0].K[42] = methodData.upI2;
-            userData.excelReport[0].L[42] = methodData.upI3;
-
-            userData.excelReport[0].J[43] = methodData.obI1;
-            userData.excelReport[0].K[43] = methodData.obI2;
-            userData.excelReport[0].L[43] = methodData.obI3;
+            userData.excelReport[0].J[41] = methodData.obI1;
+            userData.excelReport[0].K[41] = methodData.obI2;
+            userData.excelReport[0].L[41] = methodData.obI3;
 
             if (userData.method == 1)
             {
-                userData.excelReport[0].I[47] = 30.ToString();
-                userData.excelReport[0].I[48] = 20.ToString();
-                userData.excelReport[0].I[49] = 50.ToString();
-                userData.excelReport[0].I[50] =75.ToString();
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
+                userData.excelReport[0].I[47] = 50.ToString();
+                userData.excelReport[0].I[48] =75.ToString();
+                userData.excelReport[0].I[49] = 75.ToString();
+                userData.excelReport[0].I[50] = 75.ToString();
                 userData.excelReport[0].I[51] = 75.ToString();
-                userData.excelReport[0].I[52] = 75.ToString();
-                userData.excelReport[0].I[53] = 75.ToString();
-                userData.excelReport[0].I[54] = 100.ToString();
+                userData.excelReport[0].I[52] = 100.ToString();
 
             }
             if (userData.method == 2)
             {
-                userData.excelReport[0].I[47] = 30.ToString();
-                userData.excelReport[0].I[48] = 20.ToString();
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
+                userData.excelReport[0].I[47] = 87.ToString();
+                userData.excelReport[0].I[48] = 87.ToString();
                 userData.excelReport[0].I[49] = 87.ToString();
-                userData.excelReport[0].I[50] = 87.ToString();
-                userData.excelReport[0].I[51] = 87.ToString();
-                userData.excelReport[0].I[52] = 89.ToString();
-                userData.excelReport[0].I[53] = 100.ToString();
+                userData.excelReport[0].I[50] = 89.ToString();
+                userData.excelReport[0].I[51] = 100.ToString();
 
             }
 
