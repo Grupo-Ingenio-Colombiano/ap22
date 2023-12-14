@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TurnFormValuesCheck : MonoBehaviour
 {
     public string[] data;
-
+    public string operatorsExcel;
     [SerializeField]
     Toggle Turn1;
 
@@ -17,7 +17,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     [SerializeField]
     Toggle Turn3;
 
-    [SerializeField]
+    public
     Toggle toggleOperators;
 
     [SerializeField]
@@ -80,7 +80,8 @@ public class TurnFormValuesCheck : MonoBehaviour
             {        
                 Calculate(int.Parse(operatorsField.text));
             }
-            
+            operatorsExcel = operatorsField.text;
+
         }
         else
         {
@@ -212,6 +213,7 @@ public class TurnFormValuesCheck : MonoBehaviour
         {
             operatorsField.text = "0";
         }
+       
         op = int.Parse(operatorsField.text);
         Calculate(op);
     }
@@ -236,11 +238,12 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         if(userData.method == 1 || userData.method == 2)
         {
-            userData.excelReport[0].M[42] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+            userData.excelReport[0].M[39] = FormResultsManager.Instance.UsersCalculate.ToString();
+            userData.excelReport[0].M[40] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
         }
         else
         {
-            userData.excelReport[0].M[66] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
+            userData.excelReport[0].M[64] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
         }
      
 
