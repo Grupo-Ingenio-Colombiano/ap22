@@ -27,6 +27,8 @@ public class TurnManager : MonoBehaviour
 
      TurnFormValuesCheck form;
 
+    [SerializeField] UserData userData;
+
     int tryTurn = 0;
 
 
@@ -118,20 +120,77 @@ public class TurnManager : MonoBehaviour
 
     public void GotoNodeTurnValidator()
     {
+
         form = FindAnyObjectByType<TurnFormValuesCheck>();
         tryTurn += 1;
         dialog.GoToNode(TurnValidator());
         switch (tryTurn)
         {
             case 1:
+                int turn = 0;
+                if (form.toggleOperators.isOn)
+                {
+                     turn = int.Parse(form.operatorsExcel);
+                }
+                else
+                {
+                     turn = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
+                }
+                Debug.Log("La cantidad de turnos es " + turn);
+               
+                if (userData.method == 1 || userData.method == 2)
+                {
+                    userData.excelReport[0].J[39] = turn.ToString();
+                }
+                else
+                {
+                    userData.excelReport[0].J[63] = turn.ToString();
+                }
+               
                 methodData.t1I1 = form.data[0]; methodData.o1I1 = form.data[1]; methodData.t2I1 = form.data[2]; methodData.o2I1 = form.data[3]; methodData.t3I1 = form.data[4]; methodData.o3I1 = form.data[5]; methodData.upI1 = form.data[6]; methodData.obI1 = form.data[7];
                 break;
 
             case 2:
+                int turn2 = 0;
+                if (form.toggleOperators.isOn)
+                {
+                    turn2 = int.Parse(form.operatorsExcel);
+                }
+                else
+                {
+                    turn2 = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
+                }
+                Debug.Log("La cantidad de turnos es " + turn2);
+                if (userData.method == 1 || userData.method == 2)
+                {
+                    userData.excelReport[0].K[39] = turn2.ToString();
+                }
+                else
+                {
+                    userData.excelReport[0].K[63] = turn2.ToString();
+                }
                 methodData.t1I2 = form.data[0]; methodData.o1I2 = form.data[1]; methodData.t2I2 = form.data[2]; methodData.o2I2 = form.data[3]; methodData.t3I2 = form.data[4]; methodData.o3I2 = form.data[5]; methodData.upI2 = form.data[6]; methodData.obI2 = form.data[7];
                 break;
 
             case 3:
+                int turn3 = 0;
+                if (form.toggleOperators.isOn)
+                {
+                    turn3 = int.Parse(form.operatorsExcel);
+                }
+                else
+                {
+                    turn3 = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
+                }
+                Debug.Log("La cantidad de turnos es " + turn3);
+                if (userData.method == 1 || userData.method == 2)
+                {
+                    userData.excelReport[0].L[39] = turn3.ToString();
+                }
+                else
+                {
+                    userData.excelReport[0].L[63] = turn3.ToString();
+                }
                 methodData.t1I3 = form.data[0]; methodData.o1I3 = form.data[1]; methodData.t2I3 = form.data[2]; methodData.o2I3 = form.data[3]; methodData.t3I3 = form.data[4]; methodData.o3I3 = form.data[5]; methodData.upI3 = form.data[6]; methodData.obI3 = form.data[7];
                 break;
         }
