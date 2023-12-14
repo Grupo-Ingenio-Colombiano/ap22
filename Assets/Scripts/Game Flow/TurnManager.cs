@@ -118,6 +118,7 @@ public class TurnManager : MonoBehaviour
 
     public void GotoNodeTurnValidator()
     {
+        form = FindAnyObjectByType<TurnFormValuesCheck>();
         tryTurn += 1;
         dialog.GoToNode(TurnValidator());
         switch (tryTurn)
