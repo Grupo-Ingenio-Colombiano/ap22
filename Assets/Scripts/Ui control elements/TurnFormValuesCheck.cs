@@ -77,10 +77,49 @@ public class TurnFormValuesCheck : MonoBehaviour
                 Calculate(0);
             }
             else
-            {
+            {        
                 Calculate(int.Parse(operatorsField.text));
             }
             
+        }
+        else
+        {
+            if (Turn1.isOn)
+            {
+                data[0] = "Si";
+                data[1] = operators1.options[operators1.value].text;
+            }
+            else
+            {
+                data[0] = "No";
+                data[1] = "0";
+            }
+
+
+            if (Turn2.isOn)
+            {
+                data[2] = "Si";
+                data[3] = operators2.options[operators1.value].text;
+            }
+
+            else
+            {
+                data[2] = "No";
+                data[3] = "0";
+            }
+
+
+            if (Turn3.isOn)
+            {
+                data[4] = "Si";
+                data[5] = operators3.options[operators1.value].text;
+            }
+
+            else
+            {
+                data[4] = "No";
+                data[5] = "0";
+            }
         }
     }
     public void ToggleOperator()
@@ -105,7 +144,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     }
     public void ValidateTurnsDrops()
     {
-        data = new string[8];
+        //data = new string[8];
 
         var op = 0;
        
@@ -162,7 +201,8 @@ public class TurnFormValuesCheck : MonoBehaviour
                 data[5] = "0";
                 userData.turn3 = false;
             }
-
+          
+     
         Calculate(op);
     }
     public void ValidateTurnsField()
