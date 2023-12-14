@@ -92,7 +92,7 @@ public class WayAdvise : MonoBehaviour
             onWay = true;
 
             panelTimer.SetActive(false);
-            panelWay.SetActive(false);
+           
         }
     }
 }
