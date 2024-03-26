@@ -244,7 +244,7 @@ public class TurnManager : MonoBehaviour
         resultsOneWeekManager.SetActive(true);
         PlayerDataManager.Instance.AddExperience(100);
         GameManager.scoreUpgradeForm = 30 - (tryTurn * 10);
-        PlayerDataManager.Instance.AddProgress(25);
+        PlayerDataManager.Instance.AddProgress(35);
     }
 
     public void ViewData()
