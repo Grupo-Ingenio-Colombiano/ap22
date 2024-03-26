@@ -172,6 +172,10 @@ public class TimingRegisterCalculations : MonoBehaviour
         print("Unidades producidas " + unidadesProducidas);
         print("Tiempo Normal " + tiempoNormal);
 
+        userData.excelReport[0].M[46] = tiempoNormal.ToString("F2");
+        userData.excelReport[0].M[47] = tiempoCiclo.ToString("F2");
+        userData.excelReport[0].M[48] = tiempoTakt.ToString("F2");
+        userData.excelReport[0].M[49] = unidadesProducidas.ToString("F2");
         float error = 0.05f;
 
         numSamples = 4 * ((36 * sumTiemposCuadrado) - (sumTiempos * sumTiempos)) / (error * error * (sumTiempos * sumTiempos));
@@ -336,6 +340,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             PlayerDataManager.Instance.AddExperience(300);
         }
+      
         ShowCorrectAnswer();
 
         //for (int i = 0; i < areCorrectAnswers.Length; i++)
