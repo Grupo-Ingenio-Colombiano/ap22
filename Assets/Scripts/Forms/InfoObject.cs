@@ -51,6 +51,7 @@ public class InfoObject : MonoBehaviour
     private bool PlayerIsNextToInfo()
     {
         target = GameObject.FindWithTag("Player");
+
         return Vector3.Distance(transform.position, target.transform.position) < minDistanceToEnable;
     }
 
