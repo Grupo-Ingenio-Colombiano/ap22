@@ -5,6 +5,25 @@ This file will be documented this file all changes in .
 grupo Ingenio Colombiano
 
 
+
+## [2.1.0] - 2024-04-01
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Changed
+-[Functionality] Now progress for all quests reach 100 
+-[Functionality] Fix empty icon in inventory for green T-shirt
+-[Functionality] Fix error for sad animation
+-[UI] Add spam notice in final report scene
+-[UI] Fix close button for historical data
+-[UI] Add animation for map button
+-[UI] Add animation for menu button
+-[UI] Add animation for talk button
+-[Excel] Fix correct values for timing quest in final report
+
+
 ## [2.0.12] - 2023-12-14
 
 ## Developers
