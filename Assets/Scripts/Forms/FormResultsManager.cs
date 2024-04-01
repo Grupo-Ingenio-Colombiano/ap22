@@ -96,8 +96,26 @@ public class FormResultsManager : MonoBehaviour
             expRewardManager.FailAttempt();
             //print("cosito = " + expRewardManager.GetCurrentAttempts());
 
-            correct.SetActive(false);
-            incorrect.SetActive(true);
+            if (currentAttempts <= 0)
+            {
+                incorrect.SetActive(false);
+                outSupervisor.SetActive(true);
+            }else
+            {
+                /*if (Debug.isDebugBuild && currentAttempts == 1)
+                {
+                    incorrect.SetActive(false);
+                    correct.SetActive(true);
+                    expRewardManager.AddScore();
+                }
+                else
+                {
+                    incorrect.SetActive(true);
+                }*/
+                correct.SetActive(false);
+                incorrect.SetActive(true);
+            }
+
         }
     }
 
