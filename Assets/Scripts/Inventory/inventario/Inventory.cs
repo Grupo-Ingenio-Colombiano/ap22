@@ -447,7 +447,7 @@ public class Inventory : MonoBehaviour {
                         useDistance = useDistance,
                         useOneTime = oneTimeUse
                     };
-                    empty[9].SetActive(false);
+                    empty[8].SetActive(false);
                     inventoryList.Add(item9);
 
                     if (GetComponent<AudioSource>())
