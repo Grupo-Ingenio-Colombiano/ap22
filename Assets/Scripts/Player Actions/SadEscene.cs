@@ -46,6 +46,10 @@ public class SadEscene : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI mesaggeTmpro;
+
+    [SerializeField] GameObject downloader;
+
+    [SerializeField] SetDefaultData excelData;
     
     string mesaggeString;
 
@@ -84,7 +88,7 @@ public class SadEscene : MonoBehaviour
         mainCanvas.enabled = false;
         inventory.enabled = false;
         notesCanvas.enabled = false;
-        plotCanvas.enabled = false;
+        //plotCanvas.enabled = false;
         talkCanvas.enabled = false;
         historicalCanvas.enabled = false;
         cam.enabled = true;
@@ -110,14 +114,16 @@ public class SadEscene : MonoBehaviour
 
     public void Reload()
     {
-        var thisLevel = SceneManager.GetActiveScene().name;
-        print("Nivel actual" + thisLevel);
-        if (FindObjectOfType(typeof(LoadLevelsManager)))
-        {
-           var levels =  FindObjectOfType(typeof(LoadLevelsManager)) as LoadLevelsManager;
-            levels.LoadLevel(thisLevel);
-        }
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
         
-        
+        excelData.ExcelPage();
+    }
+    public void FinalReportScene()
+    {
+        downloader.SetActive(true);
+        int activeScene = SceneManager.GetActiveScene().buildIndex;
+        LevelLoader.sceneToload = activeScene + 1;
+        SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
     }
 }
