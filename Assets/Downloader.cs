@@ -19,9 +19,9 @@ public class Downloader : MonoBehaviour
         userData.excelReport[0].G[8] = System.DateTime.Now.ToString("MM/dd/yyyy") + "   " + System.DateTime.Now.ToString("hh: mm:ss");
 
         userData.excelReport[0].F[14] = userData.experience.ToString();
-        userData.excelReport[0].F[15] = userData.progress.ToString();
+        userData.excelReport[0].F[15] = userData.progress.ToString() + "%";
         userData.excelReport[0].F[16] = userData.time;
-        userData.excelReport[0].F[17] = ((userData.experience / 500) * 100).ToString();
+        userData.excelReport[0].F[17] = ((userData.experience / 500) * 100).ToString() + "%";
 
 
         if (userData.method == 1 || userData.method == 2)
