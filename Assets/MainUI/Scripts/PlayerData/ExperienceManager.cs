@@ -61,6 +61,10 @@ public class ExperienceManager : MonoBehaviour
         {
             star1.SetActive(true);
         }
+        if(exp > 500)
+        {
+            exp = 500;
+        }
         data.experience = exp;
     }
 

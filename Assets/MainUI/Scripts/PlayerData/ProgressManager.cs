@@ -37,6 +37,7 @@ public class ProgressManager : MonoBehaviour
         if (Mathf.Ceil(pct * 100) > 98)
         {
             progressPercentage.text = "100%";
+            userData.progress = 100f;
         }
     }
 
