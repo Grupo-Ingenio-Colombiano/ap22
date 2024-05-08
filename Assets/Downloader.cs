@@ -227,6 +227,8 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].J[65] = methodData.obI1;
             userData.excelReport[0].K[65] = methodData.obI2;
             userData.excelReport[0].L[65] = methodData.obI3;
+            userData.excelReport[0].M[65] = FormResultsManager.Instance.UsersCalculate.ToString();
+
 
             userData.excelReport[0].I[69] = 50.ToString();
             userData.excelReport[0].I[70] = 50.ToString();
