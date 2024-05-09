@@ -6,6 +6,19 @@ grupo Ingenio Colombiano
 
 
 
+## [2.1.1] - 2024-05-08
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Diego salamanca / dsalamanca@ingeniocolombiano.com]
+
+### Fixed
+-[Functionality] Progress only can reach 100
+-[Functionality] Experience only can reach 500
+-[FinalReport] Add "%" to progress and global performance
+-[FinalReport] Add correct values for timing quest calulations into final report
+-[FinalReport] Add operators correct value to final report 
+
 ## [2.1.0] - 2024-04-01
 
 ## Developers
