@@ -6,6 +6,13 @@ grupo Ingenio Colombiano
 
 
 
+## [2.1.2] - 2024-05-17
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Fixed
+-[FinalReport] Fix fild for correct value for operators number in timing quest final report
 ## [2.1.1] - 2024-05-08
 
 ## Developers
