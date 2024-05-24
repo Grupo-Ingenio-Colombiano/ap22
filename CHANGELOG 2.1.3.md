@@ -6,6 +6,18 @@ grupo Ingenio Colombiano
 
 
 
+## [2.1.3] - 2024-05-24
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Fixed
+-[UI] Fix continue button tint for first turn operator
+-[FinalReport] Add new fields for normalized time sums
+-[FinalReport] Fix last field for normalized sum in final report
+-[FinalReport] Fix justification in operators quest for final report
+-[FinalReport] Adjust all fields to new final report format
+
 ## [2.1.2] - 2024-05-17
 
 ## Developers
