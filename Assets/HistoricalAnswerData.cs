@@ -11,6 +11,13 @@ public class HistoricalAnswerData
 
     public static string[] TiempoNormal = { "", "", "" };
 
+    public static string[] SumatoriaDatosCorrecto = { "", "", "", "", "", "", "" };
+
+    public static string[] SumatoriaDatosIntento1 = { "", "", "", "", "", "", "" };
+    public static string[] SumatoriaDatosIntento2 = { "", "", "", "", "", "", "" };
+    public static string[] SumatoriaDatosIntento3 = { "", "", "", "", "", "", "" };
+
+    public static string[] TiempoNormalizadCorrecto = { "", "", "", "", "", "", "" };
     public static string[] TiempoNormalizadoIntento1 = { "", "", "", "", "", "", "" };
     public static string[] TiempoNormalizadoIntento2 = { "", "", "", "", "", "", "" };
     public static string[] TiempoNormalizadoIntento3 = { "", "", "", "", "", "", "" };

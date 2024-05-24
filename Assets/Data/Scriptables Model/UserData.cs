@@ -97,6 +97,7 @@ public class UserData : ScriptableObject
     public float[] cronometrajeData = new float[36];
 
     [Header("--Selección de Turnos ")]
+    public string[] operators = new string[3];
     public int unitPerDay;
     public int unitsRquired;
     public bool turn1;

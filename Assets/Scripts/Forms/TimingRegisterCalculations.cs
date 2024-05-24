@@ -337,14 +337,7 @@ public class TimingRegisterCalculations : MonoBehaviour
             PlayerDataManager.Instance.AddExperience(300);
         }
 
-        userData.excelReport[0].M[46] = tiempoNormal.ToString("F2");
-        userData.excelReport[0].M[47] = tiempoCiclo.ToString("F2");
-        userData.excelReport[0].M[48] = tiempoTakt.ToString("F2");
-        userData.excelReport[0].M[49] = unidadesProducidas.ToString("F2");
-        userData.excelReport[0].M[51] = "Si";
-        userData.excelReport[0].M[53] = "Si";
-        userData.excelReport[0].M[55] = "No";
-
+        AddToFinalReport();
         ShowCorrectAnswer();
 
         //for (int i = 0; i < areCorrectAnswers.Length; i++)
@@ -353,7 +346,17 @@ public class TimingRegisterCalculations : MonoBehaviour
         //}
 
     }
+    void AddToFinalReport()
+    {
 
+        userData.excelReport[0].M[50] = tiempoNormal.ToString("F2");
+        userData.excelReport[0].M[51] = tiempoCiclo.ToString("F2");
+        userData.excelReport[0].M[52] = tiempoTakt.ToString("F2");
+        userData.excelReport[0].M[53] = unidadesProducidas.ToString("F2");
+        userData.excelReport[0].M[55] = "Si";
+        userData.excelReport[0].M[57] = "Si";
+        userData.excelReport[0].M[59] = "No";
+    }
     private void SetUserInputAnswers()
     {
 
@@ -457,7 +460,11 @@ public class TimingRegisterCalculations : MonoBehaviour
                 sumTiemposCuadrado += (currentTimeValues[i] * currentTimeValues[i]);
                 //print(sumatoriaTiemposFR[5] + " = " + currentTimeValues[i] + " fr 110");
             }
-
+            
+        }
+        for (int i = 0; i < sumatoriaTiemposFR.Length; i++)
+        {
+            HistoricalAnswerData.SumatoriaDatosCorrecto[i] = sumatoriaTiemposFR[i].ToString();
         }
 
 
@@ -470,8 +477,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             var fr = ((i * 5) + 85); // correccion a fromula  sumatoriaTiemposFR[i] * ((i * 5) + 85) / 100
             tiemposNormalizados[i] = (sumatoriaTiemposFR[i] * fr) / 100f;
-            //print("Sum " + fr + " = " + sumatoriaTiemposFR[i]);
-            //print("tiemposNormalizados " + fr + " = " + tiemposNormalizados[i]);
+            HistoricalAnswerData.TiempoNormalizadCorrecto[i] = tiemposNormalizados[i].ToString();
         }
     }
 
@@ -539,30 +545,41 @@ public class TimingRegisterCalculations : MonoBehaviour
             HistoricalAnswerData.JustificationSuficientes[currentIndex] = justifSuficientesInput.text;
 
 
-            userData.excelReport[0].G[40] = normalizados[0].text; 
-            userData.excelReport[0].H[40] = normalizados[1].text; 
-            userData.excelReport[0].I[40] = normalizados[2].text; 
-            userData.excelReport[0].J[40] = normalizados[3].text; 
-            userData.excelReport[0].K[40] = normalizados[4].text; 
-            userData.excelReport[0].L[40] = normalizados[5].text;
-            userData.excelReport[0].M[40] = normalizados[6].text; 
+
 
 
             if (currentIndex == 0)
             {
                 print("1 intento");
+                HistoricalAnswerData.SumatoriaDatosIntento1[0] = sumatoria[0].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[1] = sumatoria[1].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[2] = sumatoria[2].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[3] = sumatoria[3].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[4] = sumatoria[4].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[5] = sumatoria[5].text;
+                HistoricalAnswerData.SumatoriaDatosIntento1[6] = sumatoria[6].text;
+
+
                 HistoricalAnswerData.TiempoNormalizadoIntento1[0] = normalizados[0].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento1[1] = normalizados[1].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento1[2] = normalizados[2].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento1[3] = normalizados[3].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento1[4] = normalizados[4].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento1[5] = normalizados[5].text;
-                HistoricalAnswerData.TiempoNormalizadoIntento1[6] = normalizados[5].text;
+                HistoricalAnswerData.TiempoNormalizadoIntento1[6] = normalizados[6].text;
             }
 
             if (currentIndex == 1)
             {
                 print("2 intento");
+                HistoricalAnswerData.SumatoriaDatosIntento2[0] = sumatoria[0].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[1] = sumatoria[1].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[2] = sumatoria[2].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[3] = sumatoria[3].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[4] = sumatoria[4].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[5] = sumatoria[5].text;
+                HistoricalAnswerData.SumatoriaDatosIntento2[6] = sumatoria[6].text;
+
                 HistoricalAnswerData.TiempoNormalizadoIntento2[0] = normalizados[0].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento2[1] = normalizados[1].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento2[2] = normalizados[2].text;
@@ -575,6 +592,16 @@ public class TimingRegisterCalculations : MonoBehaviour
             if (currentIndex == 2)
             {
                 print("3 intento");
+
+                HistoricalAnswerData.SumatoriaDatosIntento3[0] = sumatoria[0].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[1] = sumatoria[1].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[2] = sumatoria[2].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[3] = sumatoria[3].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[4] = sumatoria[4].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[5] = sumatoria[5].text;
+                HistoricalAnswerData.SumatoriaDatosIntento3[6] = sumatoria[6].text;
+
+
                 HistoricalAnswerData.TiempoNormalizadoIntento3[0] = normalizados[0].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento3[1] = normalizados[1].text;
                 HistoricalAnswerData.TiempoNormalizadoIntento3[2] = normalizados[2].text;

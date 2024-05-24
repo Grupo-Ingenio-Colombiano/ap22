@@ -35,7 +35,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     [SerializeField]
     TMP_Dropdown operators3;
 
-    [SerializeField]
+    [SerializeField] public
     TMP_InputField operatorsField;
 
     [SerializeField]
@@ -50,10 +50,7 @@ public class TurnFormValuesCheck : MonoBehaviour
     [SerializeField]
     GameObject btnContinue, supervisorNulo, supervisorValidador;
 
-    [SerializeField]
-    InputField input;
-
-    [SerializeField]
+    [SerializeField] public
     InputField observaciones;
 
     GameObject player;
@@ -83,44 +80,70 @@ public class TurnFormValuesCheck : MonoBehaviour
             operatorsExcel = operatorsField.text;
 
         }
-        else
+    
+         TurnIsOn();        
+    }
+    void TurnIsOn()
+    {
+        if (Turn1.isOn)
         {
-            if (Turn1.isOn)
+            data[0] = "Si";
+            if (!toggleOperators.isOn)
             {
-                data[0] = "Si";
                 data[1] = operators1.options[operators1.value].text;
             }
-            else
+           
+        }
+        else
+        {
+            data[0] = "No";
+            if (!toggleOperators.isOn)
             {
-                data[0] = "No";
                 data[1] = "0";
             }
+           
+        }
 
 
-            if (Turn2.isOn)
+        if (Turn2.isOn)
+        {
+            data[2] = "Si";
+            if (!toggleOperators.isOn)
             {
-                data[2] = "Si";
                 data[3] = operators2.options[operators1.value].text;
             }
+           
+        }
 
-            else
+        else
+        {
+            data[2] = "No";
+            if (!toggleOperators.isOn)
             {
-                data[2] = "No";
                 data[3] = "0";
             }
+          
+        }
 
 
-            if (Turn3.isOn)
+        if (Turn3.isOn)
+        {
+            data[4] = "Si";
+            if (!toggleOperators.isOn)
             {
-                data[4] = "Si";
                 data[5] = operators3.options[operators1.value].text;
             }
+           
+        }
 
-            else
+        else
+        {
+            data[4] = "No";
+            if (!toggleOperators.isOn)
             {
-                data[4] = "No";
                 data[5] = "0";
             }
+          
         }
     }
     public void ToggleOperator()
@@ -236,17 +259,7 @@ public class TurnFormValuesCheck : MonoBehaviour
 
         FormResultsManager.Instance.UsersCalculate = Mathf.CeilToInt(FormResultsManager.Instance.tiempoCicloCalculadas / FormResultsManager.Instance.taktTimeCalculadas);
 
-        if(userData.method == 1 || userData.method == 2)
-        {
-            userData.excelReport[0].M[39] = FormResultsManager.Instance.UsersCalculate.ToString();
-            userData.excelReport[0].M[40] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
-        }
-        else
-        {
-            userData.excelReport[0].M[64] = FormResultsManager.Instance.unidadesProducidasCalculadas.ToString();
-            
-        }
-     
+      
 
         data[6] = upValue.ToString("F0");
 
@@ -267,11 +280,12 @@ public class TurnFormValuesCheck : MonoBehaviour
         userData.unitPerDay = upValue;
         userData.unitsRquired = urValue;
         data[7] = observaciones.text;
+        print("Observaciones " + observaciones.text);
         player.SetActive(true);
         FollowCameraController.instance.ResetCameraFollow();
         col.enabled = true;
         btnContinue.SetActive(false);
-        input.interactable = false;
+        observaciones.interactable = false;
         IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
         HelpManager.Instance().SetHelp("Hable con el supervisor de planta para validar su propuesta.");
         supervisorNulo.SetActive(false);

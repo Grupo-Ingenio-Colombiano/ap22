@@ -137,17 +137,13 @@ public class TurnManager : MonoBehaviour
                      turn = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
                 }
                 Debug.Log("La cantidad de turnos es " + turn);
-               
-                if (userData.method == 1 || userData.method == 2)
+
+                if(userData.method == 3)
                 {
-                    userData.excelReport[0].J[39] = turn.ToString();
-                }
-                else
-                {
-                    userData.excelReport[0].J[63] = turn.ToString();
+                    userData.operators[0] = form.operatorsField.text;
                 }
                
-                methodData.t1I1 = form.data[0]; methodData.o1I1 = form.data[1]; methodData.t2I1 = form.data[2]; methodData.o2I1 = form.data[3]; methodData.t3I1 = form.data[4]; methodData.o3I1 = form.data[5]; methodData.upI1 = form.data[6]; methodData.obI1 = form.data[7];
+                methodData.t1I1 = form.data[0]; methodData.o1I1 = form.data[1]; methodData.t2I1 = form.data[2]; methodData.o2I1 = form.data[3]; methodData.t3I1 = form.data[4]; methodData.o3I1 = form.data[5]; methodData.upI1 = form.data[6]; methodData.obI1 = form.observaciones.text;
                 break;
 
             case 2:
@@ -161,15 +157,11 @@ public class TurnManager : MonoBehaviour
                     turn2 = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
                 }
                 Debug.Log("La cantidad de turnos es " + turn2);
-                if (userData.method == 1 || userData.method == 2)
+                if (userData.method == 3)
                 {
-                    userData.excelReport[0].K[39] = turn2.ToString();
+                    userData.operators[1] = form.operatorsField.text;
                 }
-                else
-                {
-                    userData.excelReport[0].K[63] = turn2.ToString();
-                }
-                methodData.t1I2 = form.data[0]; methodData.o1I2 = form.data[1]; methodData.t2I2 = form.data[2]; methodData.o2I2 = form.data[3]; methodData.t3I2 = form.data[4]; methodData.o3I2 = form.data[5]; methodData.upI2 = form.data[6]; methodData.obI2 = form.data[7];
+                methodData.t1I2 = form.data[0]; methodData.o1I2 = form.data[1]; methodData.t2I2 = form.data[2]; methodData.o2I2 = form.data[3]; methodData.t3I2 = form.data[4]; methodData.o3I2 = form.data[5]; methodData.upI2 = form.data[6]; methodData.obI2 = form.observaciones.text;
                 break;
 
             case 3:
@@ -182,16 +174,13 @@ public class TurnManager : MonoBehaviour
                 {
                     turn3 = int.Parse(form.data[1]) + int.Parse(form.data[3]) + int.Parse(form.data[5]);
                 }
+                if (userData.method == 3)
+                {
+                    userData.operators[2] = form.operatorsField.text;
+                }
                 Debug.Log("La cantidad de turnos es " + turn3);
-                if (userData.method == 1 || userData.method == 2)
-                {
-                    userData.excelReport[0].L[39] = turn3.ToString();
-                }
-                else
-                {
-                    userData.excelReport[0].L[63] = turn3.ToString();
-                }
-                methodData.t1I3 = form.data[0]; methodData.o1I3 = form.data[1]; methodData.t2I3 = form.data[2]; methodData.o2I3 = form.data[3]; methodData.t3I3 = form.data[4]; methodData.o3I3 = form.data[5]; methodData.upI3 = form.data[6]; methodData.obI3 = form.data[7];
+              
+                methodData.t1I3 = form.data[0]; methodData.o1I3 = form.data[1]; methodData.t2I3 = form.data[2]; methodData.o2I3 = form.data[3]; methodData.t3I3 = form.data[4]; methodData.o3I3 = form.data[5]; methodData.upI3 = form.data[6]; methodData.obI3 = form.observaciones.text;
                 break;
         }
     }
