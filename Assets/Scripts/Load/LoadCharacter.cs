@@ -52,16 +52,7 @@ public class LoadCharacter : MonoBehaviour
        
         MethodFlujo();
        
-    }
-
-    public void SetIndicatorLoad()
-    {
-        if(userData.load >= 1)
-        {
-            dialogSST.SetActive(true);
-        }
-    }
-   
+    } 
     void MethodFlujo()
     {
 
@@ -71,7 +62,7 @@ public class LoadCharacter : MonoBehaviour
             if (userData.load >= 1)
             {
                 indicator.SetActive(true);
-                IndicatorManager.instance().SetDestiny(new Vector3(41, 1.3f, -20.37f));
+                IndicatorManager.instance().SetDestiny(new Vector3(41, 0.3f, -20.37f));
                 videJefe.overrideStartNode = 10;
                 vigilante.overrideStartNode = 3;
                 empty[1].SetActive(false);
@@ -84,9 +75,10 @@ public class LoadCharacter : MonoBehaviour
                 Limit2.SetActive(true);
                 Limit3.SetActive(true);
 
-            }
-
-            if (userData.load >= 2)
+                dialogSST.SetActive(true);
+               
+            }  
+            if(userData.load >= 2)
             {
                 inspectorSeguridad.overrideStartNode = 12;
             }
