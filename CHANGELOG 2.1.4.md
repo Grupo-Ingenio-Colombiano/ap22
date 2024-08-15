@@ -5,6 +5,13 @@ This file will be documented this file all changes in .
 grupo Ingenio Colombiano
 
 
+## [2.1.4] - 2024-08-16
+
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Fixed
+-[Functionality] Fix SST character dialog interactor when user load practice 
 
 ## [2.1.3] - 2024-05-24
 
