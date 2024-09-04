@@ -51,6 +51,7 @@ public class UserData : ScriptableObject
     public bool selectedMethod;
     public int proccessUnits;
     public int indexOperationData;
+    public bool failPractice;
 
     [Header("Score")]
     public int scoreMethodElection;

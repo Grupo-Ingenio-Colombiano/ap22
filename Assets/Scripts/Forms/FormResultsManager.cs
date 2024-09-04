@@ -100,6 +100,7 @@ public class FormResultsManager : MonoBehaviour
             {
                 incorrect.SetActive(false);
                 outSupervisor.SetActive(true);
+                userData.failPractice = true;
             }else
             {
                 /*if (Debug.isDebugBuild && currentAttempts == 1)

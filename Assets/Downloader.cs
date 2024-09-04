@@ -84,25 +84,55 @@ public class Downloader : MonoBehaviour
 
         if (userData.method == 1)
         {
-            userData.excelReport[0].I[45] = 30.ToString();
-            userData.excelReport[0].I[46] = 20.ToString();
-            userData.excelReport[0].I[47] = 50.ToString();
-            userData.excelReport[0].I[48] = 75.ToString();
-            userData.excelReport[0].I[49] = 75.ToString();
-            userData.excelReport[0].I[50] = 75.ToString();
-            userData.excelReport[0].I[51] = 75.ToString();
-            userData.excelReport[0].I[52] = 100.ToString();
+            if (!userData.failPractice)
+            {
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
+                userData.excelReport[0].I[47] = 50.ToString();
+                userData.excelReport[0].I[48] = 75.ToString();
+                userData.excelReport[0].I[49] = 75.ToString();
+                userData.excelReport[0].I[50] = 75.ToString();
+                userData.excelReport[0].I[51] = 75.ToString();
+                userData.excelReport[0].I[52] = 100.ToString();
+            }
+            else
+            {
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
+                userData.excelReport[0].I[47] = 50.ToString();
+                userData.excelReport[0].I[48] = 0.ToString();
+                userData.excelReport[0].I[49] = 0.ToString();
+                userData.excelReport[0].I[50] = 0.ToString();
+                userData.excelReport[0].I[51] = 0.ToString();
+                userData.excelReport[0].I[52] = 0.ToString();
+            }
+
 
         }
         if (userData.method == 2)
         {
-            userData.excelReport[0].I[45] = 30.ToString();
-            userData.excelReport[0].I[46] = 20.ToString();
-            userData.excelReport[0].I[47] = 87.ToString();
-            userData.excelReport[0].I[48] = 87.ToString();
-            userData.excelReport[0].I[49] = 87.ToString();
-            userData.excelReport[0].I[50] = 89.ToString();
-            userData.excelReport[0].I[51] = 100.ToString();
+            if (!userData.failPractice)
+            {
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
+                userData.excelReport[0].I[47] = 87.ToString();
+                userData.excelReport[0].I[48] = 87.ToString();
+                userData.excelReport[0].I[49] = 87.ToString();
+                userData.excelReport[0].I[50] = 89.ToString();
+                userData.excelReport[0].I[51] = 100.ToString();
+            }
+            else
+            {
+                userData.excelReport[0].I[45] = 30.ToString();
+                userData.excelReport[0].I[46] = 0.ToString();
+                userData.excelReport[0].I[47] = 0.ToString();
+                userData.excelReport[0].I[48] = 0.ToString();
+                userData.excelReport[0].I[49] = 0.ToString();
+                userData.excelReport[0].I[50] = 0.ToString();
+                userData.excelReport[0].I[51] = 00.ToString();
+
+            }
+               
 
         }
 
@@ -288,14 +318,24 @@ public class Downloader : MonoBehaviour
         userData.excelReport[0].J[69] = methodData.obI1;
         userData.excelReport[0].K[69] = methodData.obI2;
         userData.excelReport[0].L[69] = methodData.obI3;
-       
 
+        if (!userData.failPractice)
+        {
+            userData.excelReport[0].I[73] = 50.ToString();
+            userData.excelReport[0].I[74] = 50.ToString();
+            userData.excelReport[0].I[75] = 300.ToString();
+            userData.excelReport[0].I[76] = 100.ToString();
+            userData.excelReport[0].I[77] = 500.ToString();
+        }
+        else
+        {
+            userData.excelReport[0].I[73] = 50.ToString();
+            userData.excelReport[0].I[74] = 50.ToString();
+            userData.excelReport[0].I[75] = 0.ToString();
+            userData.excelReport[0].I[76] = 0.ToString();
+            userData.excelReport[0].I[77] = 0.ToString();
+        }
 
-        userData.excelReport[0].I[73] = 50.ToString();
-        userData.excelReport[0].I[74] = 50.ToString();
-        userData.excelReport[0].I[75] = 300.ToString();
-        userData.excelReport[0].I[76] = 100.ToString();
-        userData.excelReport[0].I[77] = 500.ToString();
 
         userData.excelReport[0].K[73] = 50.ToString();
         userData.excelReport[0].K[74] = 50.ToString();
