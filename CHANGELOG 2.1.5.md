@@ -4,7 +4,13 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.1.5] - 2024-09-04
 
+## Developers
+[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+
+### Fixed
+-[FinalReport] Fix experience in final report when users fails practice, in Historical, Sample, and Timing Quest
 ## [2.1.4] - 2024-08-16
 
 ## Developers
