@@ -124,12 +124,12 @@ public class Downloader : MonoBehaviour
             else
             {
                 userData.excelReport[0].I[45] = 30.ToString();
-                userData.excelReport[0].I[46] = 0.ToString();
+                userData.excelReport[0].I[46] = 20.ToString();
                 userData.excelReport[0].I[47] = 0.ToString();
                 userData.excelReport[0].I[48] = 0.ToString();
                 userData.excelReport[0].I[49] = 0.ToString();
                 userData.excelReport[0].I[50] = 0.ToString();
-                userData.excelReport[0].I[51] = 00.ToString();
+                userData.excelReport[0].I[51] = 0.ToString();
 
             }
                
@@ -333,7 +333,7 @@ public class Downloader : MonoBehaviour
             userData.excelReport[0].I[74] = 50.ToString();
             userData.excelReport[0].I[75] = 0.ToString();
             userData.excelReport[0].I[76] = 0.ToString();
-            userData.excelReport[0].I[77] = 0.ToString();
+            userData.excelReport[0].I[77] = 100.ToString();
         }
 
 
