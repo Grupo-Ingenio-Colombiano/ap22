@@ -82,14 +82,7 @@ public class SamplingRegisterCalculations : MonoBehaviour
         print(yesNo.isOn ? "Si" : "No" + " Cumple");
 
 
-        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true
-          && DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true
-          && DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
-        {
-
-            PlayerDataManager.Instance.AddExperience(350);
-            PlayerDataManager.Instance.AddProgress(25);
-        }
+        ValidateIfDataIsCorrect();
 
         print("tiempo optimo " + tiempoOptimo);
         print("tiempo ciclo  " + tiempoCiclo);
@@ -107,9 +100,41 @@ public class SamplingRegisterCalculations : MonoBehaviour
 
         FormResultsManager.Instance.unidadesProducidasNoCumplen = QuestSampling.Instance.CurrentOperationData.unidadesRealizadas;
     }
-
-
-    public void Submit()
+    private void ValidateIfDataIsCorrect()
+    {
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true && TOInput.interactable)
+        {
+            userData.experienceTalkTimeSample = 87;
+            userData.talkTime = float.Parse(TOInput.text);
+            TOInput.interactable = false;
+            TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+            PlayerDataManager.Instance.AddExperience(87);
+        }
+        if (DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
+        {
+            userData.experienceTiempoOptimoSample = 87;
+            userData.tiempoOptimo = float.Parse(TCInput.text);
+            TCInput.interactable = false;
+            TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+            PlayerDataManager.Instance.AddExperience(87);
+        }
+        if (DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
+        {
+            userData.experienceUnidadesrequeridasSample = 87;
+            userData.tiempoOptimo = float.Parse(TCInput.text);
+            UPInput.interactable = false;
+            UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+            PlayerDataManager.Instance.AddExperience(87);
+        }
+        if (!yesNo.isOn && yesNo.interactable)
+        {
+            yesNo.interactable = false;
+            userData.experienceQuestionSample = 89;
+            PlayerDataManager.Instance.AddExperience(89);
+        }
+        userData.justifHistorical = justifInput.text;
+    }
+        public void Submit()
     {
         if (!validator.CheckIsEmpty())
         {
