@@ -115,6 +115,7 @@ public class UserData : ScriptableObject
     public bool turn2;
     public bool turn3;
     public string observaciones;
+    public int experienceTurnOperators;
 
 
     [Header("----------Datos de Excel----------")]
