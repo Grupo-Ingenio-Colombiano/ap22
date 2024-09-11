@@ -31,8 +31,8 @@ public class ExperienceRewardManager : MonoBehaviour
 
     public void AddScore()
     {
-        PlayerDataManager.Instance.AddExperience(50);
-        PlayerDataManager.Instance.AddProgress(25);
+        //PlayerDataManager.Instance.AddExperience(50);
+        //PlayerDataManager.Instance.AddProgress(25);
     }
    
 

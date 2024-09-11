@@ -81,8 +81,13 @@ public class HistoricalDataFile : MonoBehaviour
 
         if (!isCorrectData)
         {
-            GameManager.scoreSelectData -= 10;
+            GameManager.scoreSelectData -= 10;           
             rewardManager.FailAttempt();
+        }
+        else
+        {
+            userData.experienceSelectHistoricalData = GameManager.scoreSelectData;
+            PlayerDataManager.Instance.AddExperience(GameManager.scoreSelectData);
         }
 
     }

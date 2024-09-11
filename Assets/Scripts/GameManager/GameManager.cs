@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static int scoreSecurityElements = 30;
     public static int scoreTimeTake = 30;
-    public static int scoreSelectData = 30;
+    public static int scoreSelectData = 50;
     public static int scoreFormTCiclo = 30;
     public static int scoreUpgradeForm = 30;
 

@@ -71,6 +71,11 @@ public class UserData : ScriptableObject
     public float unidadesRequeridas;
     public string justifHistorical;
 
+    public int experienceSelectHistoricalData;
+    public int experienceTalkTimeHistorical;
+    public int experienceTiempoOptimoHistorical;
+    public int experienceUnidadesrequeridasHistorical;
+    public int experienceQuestionHistorical;
     public float modalTimeHistorical;
    
 
@@ -90,7 +95,12 @@ public class UserData : ScriptableObject
     public float rhythm;
     public float k;
     public int unidadesProducidasMuestreo;
-    
+
+    public int experienceTalkTimeSample;
+    public int experienceTiempoOptimoSample;
+    public int experienceUnidadesrequeridasSample;
+    public int experienceQuestionSample;
+
     [Header("--Metodo 3 (Cronometraje)")]
 
     public float kCronometraje;
