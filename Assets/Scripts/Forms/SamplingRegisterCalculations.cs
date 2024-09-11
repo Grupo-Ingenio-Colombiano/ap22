@@ -109,6 +109,7 @@ public class SamplingRegisterCalculations : MonoBehaviour
             TOInput.interactable = false;
             TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(87);
+            PlayerDataManager.Instance.AddProgress(25);
         }
         if (DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
         {
