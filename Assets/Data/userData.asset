@@ -20,7 +20,7 @@ MonoBehaviour:
   load: 0
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
-  PlayerSelected: 2
+  PlayerSelected: 
   gender: 0
   playerPosition: {x: 0, y: 0, z: 0}
   playerRot: {x: 0, y: 0, z: 0, w: 0}
@@ -105,6 +105,10 @@ MonoBehaviour:
   rhythm: 0
   k: 0
   unidadesProducidasMuestreo: 0
+  experienceTalkTimeSample: 0
+  experienceTiempoOptimoSample: 0
+  experienceUnidadesrequeridasSample: 0
+  experienceQuestionSample: 0
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -154,6 +158,7 @@ MonoBehaviour:
   turn2: 0
   turn3: 0
   observaciones: 
+  experienceTurnOperators: 0
   templateName: 
   fileName: 
   excelReport: []
