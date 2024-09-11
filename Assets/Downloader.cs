@@ -84,59 +84,26 @@ public class Downloader : MonoBehaviour
 
         if (userData.method == 1)
         {
-            if (!userData.failPractice)
-            {
-                userData.excelReport[0].I[45] = 30.ToString();
-                userData.excelReport[0].I[46] = 20.ToString();
-                userData.excelReport[0].I[47] = 50.ToString();
-                userData.excelReport[0].I[48] = 75.ToString();
-                userData.excelReport[0].I[49] = 75.ToString();
-                userData.excelReport[0].I[50] = 75.ToString();
-                userData.excelReport[0].I[51] = 75.ToString();
-                userData.excelReport[0].I[52] = 100.ToString();
-            }
-            else
-            {
-                userData.excelReport[0].I[45] = 30.ToString();
-                userData.excelReport[0].I[46] = 20.ToString();
-                userData.excelReport[0].I[47] = 50.ToString();
-                userData.excelReport[0].I[48] = 0.ToString();
-                userData.excelReport[0].I[49] = 0.ToString();
-                userData.excelReport[0].I[50] = 0.ToString();
-                userData.excelReport[0].I[51] = 0.ToString();
-                userData.excelReport[0].I[52] = 0.ToString();
-            }
-
+            userData.excelReport[0].I[45] = 30.ToString();
+            userData.excelReport[0].I[46] = 20.ToString();
+            userData.excelReport[0].I[47] = userData.experienceSelectHistoricalData.ToString();
+            userData.excelReport[0].I[48] = userData.experienceTalkTimeHistorical.ToString();
+            userData.excelReport[0].I[49] = userData.experienceTiempoOptimoHistorical.ToString();
+            userData.excelReport[0].I[50] = userData.experienceUnidadesrequeridasHistorical.ToString();
+            userData.excelReport[0].I[51] = userData.experienceQuestionHistorical.ToString();
+            userData.excelReport[0].I[52] = userData.experienceTurnOperators.ToString();
 
         }
         if (userData.method == 2)
         {
-            if (!userData.failPractice)
-            {
-                userData.excelReport[0].I[45] = 30.ToString();
-                userData.excelReport[0].I[46] = 20.ToString();
-                userData.excelReport[0].I[47] = 87.ToString();
-                userData.excelReport[0].I[48] = 87.ToString();
-                userData.excelReport[0].I[49] = 87.ToString();
-                userData.excelReport[0].I[50] = 89.ToString();
-                userData.excelReport[0].I[51] = 100.ToString();
-            }
-            else
-            {
-                userData.excelReport[0].I[45] = 30.ToString();
-                userData.excelReport[0].I[46] = 20.ToString();
-                userData.excelReport[0].I[47] = 0.ToString();
-                userData.excelReport[0].I[48] = 0.ToString();
-                userData.excelReport[0].I[49] = 0.ToString();
-                userData.excelReport[0].I[50] = 0.ToString();
-                userData.excelReport[0].I[51] = 0.ToString();
-
-            }
-               
-
+            userData.excelReport[0].I[45] = 30.ToString();
+            userData.excelReport[0].I[46] = 20.ToString();
+            userData.excelReport[0].I[47] = userData.experienceTalkTimeSample.ToString();
+            userData.excelReport[0].I[48] = userData.experienceTiempoOptimoSample.ToString();
+            userData.excelReport[0].I[49] = userData.experienceUnidadesrequeridasSample.ToString();
+            userData.excelReport[0].I[50] = userData.experienceQuestionSample.ToString();
+            userData.excelReport[0].I[51] = userData.experienceTurnOperators.ToString();
         }
-
-
     }
     void DownloadTimingData()
     {
