@@ -114,8 +114,6 @@ public class TimingRegisterCalculations : MonoBehaviour
     {
         sumatoriaTiemposFR = new float[factoresRitmo];
         tiemposNormalizados = new float[factoresRitmo];
-        unidadesRequeridas = QuestTiming.Instance.CurrentOperationData.requiredUnits;
-
         sumTiempos = 0;
         sumTiemposCuadrado = 0;
         sumatoriaTiemposFRIngresados = new float[factoresRitmo];

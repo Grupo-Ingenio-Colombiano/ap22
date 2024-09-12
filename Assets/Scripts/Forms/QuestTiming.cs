@@ -61,8 +61,7 @@ public class QuestTiming : MonoBehaviour
                 userData.kCronometraje = CurrentOperationData.K;
                 userData.rhytmFactor = CurrentOperationData.rhytmfFactors;
                 userData.historicData = CurrentOperationData.historicalSamples;
-
-                //CurrentOperationData = new OperationData(1, 2);//TO ERASE
+                timingRegisterCalculations.unidadesRequeridas = CurrentOperationData.requiredUnits;
                 timingRegisterCalculations.Calculate();
                 FormResultsManager.Instance.currentOperationIndex = randomOperation;
             }
