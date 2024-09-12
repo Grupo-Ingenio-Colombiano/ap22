@@ -6,6 +6,7 @@ public class QuestSampling : MonoBehaviour
 
     public OperationData CurrentOperationData { get; private set; }
 
+    [SerializeField] SamplingRegisterCalculations samplingRegisterCalculations;
 
     [SerializeField] GameObject[] objectsToActivate;
     [SerializeField] GameObject[] infoObjects;
@@ -51,22 +52,32 @@ public class QuestSampling : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 1, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+            samplingRegisterCalculations.requiredUnits.text = CurrentOperationData.requiredUnits.ToString();
+            samplingRegisterCalculations.Calculate();
             SwapOperator();
             
         }
         else
         {
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
-            var randomOperation = Random.Range(1, 4);
-            userData.indexOperationData = randomOperation;
-            CurrentOperationData = new OperationData(randomOperation, 1);
-            userData.proccessUnits = CurrentOperationData.requiredUnits;
-            userData.numMinutos = CurrentOperationData.numMinutosMuestreo;
-            userData.percentageOperation = CurrentOperationData.porcentajeDedicadoOperacion;
-            userData.rhythm = CurrentOperationData.factorRitmo;
-            userData.k = CurrentOperationData.K;
-            userData.unidadesProducidasMuestreo = CurrentOperationData.unidadesRealizadas;
-            FormResultsManager.Instance.currentOperationIndex = randomOperation;
+            do
+            {
+                var randomOperation = Random.Range(1, 4);
+                userData.indexOperationData = randomOperation;
+                CurrentOperationData = new OperationData(randomOperation, 1);
+                userData.proccessUnits = CurrentOperationData.requiredUnits;
+                userData.numMinutos = CurrentOperationData.numMinutosMuestreo;
+                userData.percentageOperation = CurrentOperationData.porcentajeDedicadoOperacion;
+                userData.rhythm = CurrentOperationData.factorRitmo;
+                userData.k = CurrentOperationData.K;
+                userData.unidadesProducidasMuestreo = CurrentOperationData.unidadesRealizadas;
+                FormResultsManager.Instance.currentOperationIndex = randomOperation;
+                samplingRegisterCalculations.requiredUnits.text = CurrentOperationData.requiredUnits.ToString();
+                samplingRegisterCalculations.Calculate();
+            }
+            while(samplingRegisterCalculations.tiempoTakt >= samplingRegisterCalculations.tiempoCiclo);
+           
+          
         }
 
         notesManager.EnablePage(1);

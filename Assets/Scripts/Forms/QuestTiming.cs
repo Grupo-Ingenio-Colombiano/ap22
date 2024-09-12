@@ -6,7 +6,7 @@ public class QuestTiming : MonoBehaviour
 
     public OperationData CurrentOperationData { get; private set; }
 
-
+    [SerializeField] TimingRegisterCalculations timingRegisterCalculations;
     [SerializeField] GameObject[] objectsToActivate;
     [SerializeField] GameObject timingForm;
 
@@ -46,22 +46,29 @@ public class QuestTiming : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 2, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+            timingRegisterCalculations.Calculate();
         }
         else
         {
             HelpManager.Instance().SetHelp("Diríjase con el supervisor de planta");
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
-            var randomOperation = Random.Range(1, 4);         
-            CurrentOperationData = new OperationData(randomOperation, 2);
-            userData.proccessUnits = CurrentOperationData.requiredUnits;
-            userData.indexOperationData = randomOperation;
-            userData.kCronometraje = CurrentOperationData.K;
-            userData.rhytmFactor = CurrentOperationData.rhytmfFactors;
-            userData.historicData = CurrentOperationData.historicalSamples;
+            do
+            {
+                var randomOperation = Random.Range(1, 4);
+                CurrentOperationData = new OperationData(randomOperation, 2);
+                userData.proccessUnits = CurrentOperationData.requiredUnits;
+                userData.indexOperationData = randomOperation;
+                userData.kCronometraje = CurrentOperationData.K;
+                userData.rhytmFactor = CurrentOperationData.rhytmfFactors;
+                userData.historicData = CurrentOperationData.historicalSamples;
 
-            //CurrentOperationData = new OperationData(1, 2);//TO ERASE
-
-            FormResultsManager.Instance.currentOperationIndex = randomOperation;
+                //CurrentOperationData = new OperationData(1, 2);//TO ERASE
+                timingRegisterCalculations.Calculate();
+                FormResultsManager.Instance.currentOperationIndex = randomOperation;
+            }
+            while (timingRegisterCalculations.tiempoTakt >= timingRegisterCalculations.tiempoCiclo);
+           
+         
         }
        
         ActivateQuestObjects();
