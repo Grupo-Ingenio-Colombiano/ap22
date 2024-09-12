@@ -30,7 +30,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
     public float uProducidasIngresado;
 
     [SerializeField] public Text requiredUnits;
-
+    [SerializeField] GameObject form;
     [Header("Inputs")]
     [SerializeField] InputField TOInput;
     [SerializeField] InputField TCInput;
@@ -44,6 +44,15 @@ public class HistoricalRegisterCalculations : MonoBehaviour
     [SerializeField] ExperienceRewardManager rewardManager;
 
     [SerializeField] UserData userData;
+
+    private const int experience = 75;
+    private void Start()
+    {
+        userData.experienceTalkTimeHistorical = experience;
+        userData.experienceTiempoOptimoHistorical = experience;
+        userData.experienceUnidadesrequeridasHistorical = experience;
+        userData.experienceQuestionHistorical = experience;
+    }
     public void Calculate() //calculos 
     {
         foreach (var item in QuestHistorical.Instance.CurrentOperationData.historicalSamples)
@@ -84,36 +93,74 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
 
-        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true && TOInput.interactable)
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
         {
-            userData.experienceTalkTimeHistorical = 75;
-
-            TOInput.interactable = false;
-            TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(75);
+            if (TOInput.interactable)
+            {
+                TOInput.interactable = false;
+                TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceTalkTimeHistorical);
+            }
         }
-        if(DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
+        else
         {
-            userData.experienceTiempoOptimoHistorical = 75;
-            TCInput.interactable = false;
-            TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(75);
+            userData.experienceTalkTimeHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if(userData.experienceTalkTimeHistorical < 0)
+            {
+                userData.experienceTalkTimeHistorical = 0;
+            }
+        }
+        if(DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true)
+        {
+            if(TCInput.interactable) 
+            {
+                TCInput.interactable = false;
+                TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceTiempoOptimoHistorical);
+            }          
+        }
+        else
+        {
+            userData.experienceTiempoOptimoHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (userData.experienceTiempoOptimoHistorical < 0)
+            {
+                userData.experienceTiempoOptimoHistorical = 0;
+            }
         }
         if(DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
         {
-            userData.experienceUnidadesrequeridasHistorical = 75;
-            UPInput.interactable = false;
-            UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(75);
+            if (UPInput.interactable)
+            {
+                UPInput.interactable = false;
+                UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceUnidadesrequeridasHistorical);
+            }           
+        }
+        else
+        {
+            userData.experienceUnidadesrequeridasHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (userData.experienceUnidadesrequeridasHistorical < 0)
+            {
+                userData.experienceUnidadesrequeridasHistorical = 0;
+            }
         }
         if(!yesNo.isOn && yesNo.interactable)
         {
-            yesNo.interactable = false;
-            userData.experienceQuestionHistorical = 75;
-            PlayerDataManager.Instance.AddExperience(75);
+            if (yesNo.interactable)
+            {
+                yesNo.interactable = false;
+                PlayerDataManager.Instance.AddExperience(userData.experienceQuestionHistorical);
+            }           
+        }
+        else
+        {
+            userData.experienceQuestionHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (userData.experienceQuestionHistorical < 0)
+            {
+                userData.experienceQuestionHistorical = 0;
+            }
         }
         userData.justifHistorical = justifInput.text;
-
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
         FormResultsManager.Instance.unidadesRequeridas = QuestHistorical.Instance.CurrentOperationData.requiredUnits;
 
@@ -122,7 +169,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
         FormResultsManager.Instance.unidadesProducidasNoCumplen = unidadesProducidas;
 
-        FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
+        FormResultsManager.Instance.Evaluate(areCorrectAnswers, form);
 
         FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
         FormResultsManager.Instance.tiempoCicloCalculadas = tiempoCiclo;
@@ -143,7 +190,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
             SaveDataInFile();
             ValidateIfDataIsCorrect();
 
-            gameObject.SetActive(false);
+            form.SetActive(false);
             HelpManager.Instance().SetHelp("Hable con el supervisor de planta");
             emptyMessage.SetActive(false);
         }

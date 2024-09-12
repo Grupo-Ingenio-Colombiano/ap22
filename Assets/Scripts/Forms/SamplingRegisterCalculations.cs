@@ -16,20 +16,20 @@ public class SamplingRegisterCalculations : MonoBehaviour
 
     float tTotalDispDiario;
 
-    float tiempoOptimo;
-    float tiempoTakt;
-    float tiempoModal;
-    float tiempoPesimista;
+    public float tiempoOptimo;
+    public float tiempoTakt;
+    public float tiempoModal;
+    public float tiempoPesimista;
 
-    float tiempoCiclo;
+    public float tiempoCiclo;
 
-    float unidadesProducidas;
+    public float unidadesProducidas;
 
     float tOptimoIngresado;
     float tCicloIngresado;
     float uProducidasIngresado;
 
-    [SerializeField] Text requiredUnits;
+    [SerializeField] public Text requiredUnits;
 
     [Header("Inputs")]
     [SerializeField] InputField TOInput;
@@ -37,21 +37,24 @@ public class SamplingRegisterCalculations : MonoBehaviour
     [SerializeField] InputField UPInput;
     [SerializeField] InputField justifInput;
     [SerializeField] Toggle yesNo;
-
+    [SerializeField] GameObject form;
     [SerializeField] ValidateFields validator;
     [SerializeField] GameObject emptyMessage;
 
     [SerializeField] ExperienceRewardManager rewardManager;
     [SerializeField] UserData userData;
-    private void OnEnable()
-    {
-        requiredUnits.text = QuestSampling.Instance.CurrentOperationData.requiredUnits.ToString();
-    }
 
+    private const int experienceGeneral = 87;
+    private const int experienciaPregunta = 89;
+    private void Start()
+    {
+        userData.experienceTalkTimeSample = experienceGeneral;
+        userData.experienceTiempoOptimoSample = experienceGeneral;
+        userData.experienceUnidadesrequeridasSample = experienceGeneral;
+        userData.experienceQuestionSample = experienciaPregunta;
+    }
     public void Calculate() //calculos 
     {
-        bool[] areCorrectAnswers = { true, true, true };
-
         tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
 
         tiempoOptimo = tTotalDispDiario / QuestSampling.Instance.CurrentOperationData.requiredUnits;
@@ -74,25 +77,100 @@ public class SamplingRegisterCalculations : MonoBehaviour
         userData.excelReport[0].M[28] = tiempoCiclo.ToString("F2");
         userData.excelReport[0].M[29] = unidadesProducidas.ToString("F2");
 
-        areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
-        areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
-        areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+
         userData.excelReport[0].M[31] = yesNo.isOn ? "Si" : "No";
 
         print(yesNo.isOn ? "Si" : "No" + " Cumple");
 
-
-        ValidateIfDataIsCorrect();
-
         print("tiempo optimo " + tiempoOptimo);
         print("tiempo ciclo  " + tiempoCiclo);
         print("unidades producidas " + unidadesProducidas);
+       
+    }
+    private void ValidateIfDataIsCorrect()
+    {
+        bool[] areCorrectAnswers = { true, true, true };
+        areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
+        areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
+        areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
+        {
+            if (TOInput.interactable)
+            {
+                TOInput.interactable = false;
+                TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceTalkTimeSample);
+                PlayerDataManager.Instance.AddProgress(25);
+            }          
+        }
+        else
+        {
+            userData.experienceTalkTimeSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (userData.experienceTalkTimeSample < 0)
+            {
+                userData.experienceTalkTimeSample = 0;
+            }
+        }
+        if (DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true)
+        {
+            if(TCInput.interactable)
+            {
+                TCInput.interactable = false;
+                TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceTiempoOptimoSample);
+            }
+          
+        }
+        else
+        {
+            userData.experienceTiempoOptimoSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (userData.experienceTiempoOptimoSample < 0)
+            {
+                userData.experienceTiempoOptimoSample = 0;
+            }
+        }
+        if (DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
+        {
+            if (UPInput.interactable)
+            {
+                UPInput.interactable = false;
+                UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
+                PlayerDataManager.Instance.AddExperience(userData.experienceUnidadesrequeridasSample);
+            }           
+        }
+        else
+        {
+            userData.experienceUnidadesrequeridasSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (userData.experienceUnidadesrequeridasSample < 0)
+            {
+                userData.experienceUnidadesrequeridasSample = 0;
+            }
+        }
+        if (!yesNo.isOn)
+        {
+            if (yesNo.interactable)
+            {
+                yesNo.interactable = false;
+                userData.experienceQuestionSample = 89;
+                PlayerDataManager.Instance.AddExperience(userData.experienceQuestionSample);
+            }         
+        }
+        else
+        {
+            userData.experienceQuestionSample -= Mathf.RoundToInt(experienciaPregunta * 0.33f);
+            if (userData.experienceQuestionSample < 0)
+            {
+                userData.experienceQuestionSample = 0;
+            }
+        }
+        userData.justifHistorical = justifInput.text;
+
         FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
         FormResultsManager.Instance.unidadesRequeridas = QuestSampling.Instance.CurrentOperationData.requiredUnits;
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
         FormResultsManager.Instance.taktTime = tOptimoIngresado;//tiempoTakt;
 
-        FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
+        FormResultsManager.Instance.Evaluate(areCorrectAnswers, form);
 
         FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
         FormResultsManager.Instance.tiempoCicloCalculadas = tiempoCiclo;
@@ -100,46 +178,14 @@ public class SamplingRegisterCalculations : MonoBehaviour
 
         FormResultsManager.Instance.unidadesProducidasNoCumplen = QuestSampling.Instance.CurrentOperationData.unidadesRealizadas;
     }
-    private void ValidateIfDataIsCorrect()
-    {
-        if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true && TOInput.interactable)
-        {
-            userData.experienceTalkTimeSample = 87;
-            TOInput.interactable = false;
-            TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(87);
-            PlayerDataManager.Instance.AddProgress(25);
-        }
-        if (DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
-        {
-            userData.experienceTiempoOptimoSample = 87;
-            TCInput.interactable = false;
-            TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(87);
-        }
-        if (DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
-        {
-            userData.experienceUnidadesrequeridasSample = 87;
-            UPInput.interactable = false;
-            UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
-            PlayerDataManager.Instance.AddExperience(87);
-        }
-        if (!yesNo.isOn && yesNo.interactable)
-        {
-            yesNo.interactable = false;
-            userData.experienceQuestionSample = 89;
-            PlayerDataManager.Instance.AddExperience(89);
-        }
-        userData.justifHistorical = justifInput.text;
-    }
         public void Submit()
     {
         if (!validator.CheckIsEmpty())
         {
             SaveDataInFile();
-            Calculate();
+            ValidateIfDataIsCorrect();
 
-            gameObject.SetActive(false);
+            form.SetActive(false);
             HelpManager.Instance().SetHelp("Hable con el supervisor de planta");
             emptyMessage.SetActive(false);
         }

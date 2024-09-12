@@ -20,12 +20,12 @@ public class TimingRegisterCalculations : MonoBehaviour
     float[] sumatoriaTiemposFR;
     float[] tiemposNormalizados;
 
-    float tiempoNormal;
-    float tiempoCiclo;
-    float tTotalDispDiario;
-    float tiempoTakt;
-    float unidadesProducidas;
-    float unidadesRequeridas;
+    public float tiempoNormal;
+    public float tiempoCiclo;
+    public float tTotalDispDiario;
+    public float tiempoTakt;
+    public float unidadesProducidas;
+    public float unidadesRequeridas;
 
     //temporales por error
     /*List<float> sumatoriaTiemposFRIngresados = new List<float>();
@@ -37,17 +37,17 @@ public class TimingRegisterCalculations : MonoBehaviour
     float[] tiemposNormalizadosIngresados;
 
 
-    float sumTiemposCuadrado;
-    float sumTiempos;
+    public float sumTiemposCuadrado;
+    public float sumTiempos;
 
-    float numSamplesIngresado;
+    public float numSamplesIngresado;
 
-    float tNormalIngresado;
-    float tCicloIngresado;
-    float tiempoTaktIngresado;
-    float uProducidasIngresado;
-    float uRequeridasIngresado;
-
+    public float tNormalIngresado;
+    public float tCicloIngresado;
+    public float tiempoTaktIngresado;
+    public float uProducidasIngresado;
+    public float uRequeridasIngresado;
+    [SerializeField] GameObject form;
 
     [Header("Inputs")]
     [SerializeField] InputField numSamplesInput;
@@ -311,7 +311,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         //print("tTotalDispDiario " + tTotalDispDiario);
         //print("Takt time " + tiempoTakt);
 
-        FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
+        FormResultsManager.Instance.Evaluate(areCorrectAnswers, form);
 
         FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
         FormResultsManager.Instance.tiempoCicloCalculadas = tiempoCiclo;
@@ -513,7 +513,7 @@ public class TimingRegisterCalculations : MonoBehaviour
             emptyMessage.SetActive(false);
             move.CanMove = true;
             dragActivity.SetActive(false);
-            gameObject.SetActive(false);
+            form.SetActive(false);
         }
         else
         {
