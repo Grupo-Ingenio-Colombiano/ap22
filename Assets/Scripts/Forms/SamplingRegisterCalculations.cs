@@ -105,7 +105,6 @@ public class SamplingRegisterCalculations : MonoBehaviour
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true && TOInput.interactable)
         {
             userData.experienceTalkTimeSample = 87;
-            userData.talkTime = float.Parse(TOInput.text);
             TOInput.interactable = false;
             TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(87);
@@ -114,7 +113,6 @@ public class SamplingRegisterCalculations : MonoBehaviour
         if (DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
         {
             userData.experienceTiempoOptimoSample = 87;
-            userData.tiempoOptimo = float.Parse(TCInput.text);
             TCInput.interactable = false;
             TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(87);
@@ -122,7 +120,6 @@ public class SamplingRegisterCalculations : MonoBehaviour
         if (DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
         {
             userData.experienceUnidadesrequeridasSample = 87;
-            userData.tiempoOptimo = float.Parse(TCInput.text);
             UPInput.interactable = false;
             UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(87);

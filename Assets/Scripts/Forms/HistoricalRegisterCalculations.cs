@@ -16,20 +16,20 @@ public class HistoricalRegisterCalculations : MonoBehaviour
 
     float tTotalDispDiario;
 
-    float tiempoOptimo;
-    float tiempoTakt;
-    float tiempoModal;
-    float tiempoPesimista;
+    public float tiempoOptimo;
+    public float tiempoTakt;
+    public float tiempoModal;
+    public float tiempoPesimista;
 
-    float tiempoCiclo;
+    public float tiempoCiclo;
 
-    float unidadesProducidas;
+    public float unidadesProducidas;
 
-    float tOptimoIngresado;
-    float tCicloIngresado;
-    float uProducidasIngresado;
+    public float tOptimoIngresado;
+    public float tCicloIngresado;
+    public float uProducidasIngresado;
 
-    [SerializeField] Text requiredUnits;
+    [SerializeField] public Text requiredUnits;
 
     [Header("Inputs")]
     [SerializeField] InputField TOInput;
@@ -44,24 +44,12 @@ public class HistoricalRegisterCalculations : MonoBehaviour
     [SerializeField] ExperienceRewardManager rewardManager;
 
     [SerializeField] UserData userData;
-
-
-    private void OnEnable()
-    {
-        requiredUnits.text = QuestHistorical.Instance.CurrentOperationData.requiredUnits.ToString();
-    }
-
     public void Calculate() //calculos 
     {
-        bool[] areCorrectAnswers = { true, true, true };
-
-
         foreach (var item in QuestHistorical.Instance.CurrentOperationData.historicalSamples)
         {
             print("Dato : " +item );
         }
-
-
         tiempoModal = QuestHistorical.Instance.CurrentOperationData.modalTime;
         tiempoPesimista = QuestHistorical.Instance.CurrentOperationData.historicalSamples.Max();
         tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
@@ -72,42 +60,34 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         unidadesProducidas = tTotalDispDiario / tiempoCiclo;
 
         print("Required Units" + QuestHistorical.Instance.CurrentOperationData.requiredUnits);
-
-        areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
-        areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
-        areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
-
         print("tiempo optimo " + tiempoOptimo);
         print("tiempo ciclo  " + tiempoCiclo);
         print("unidades producidas " + unidadesProducidas);
+
+        userData.talkTimeHistorical = tiempoTakt;
+        userData.tiempoCicloHistorical = tiempoCiclo;
+        userData.unidadesRequeridasHistorical = unidadesProducidas;
 
         userData.excelReport[0].M[27] = tiempoOptimo.ToString("F2");
         userData.excelReport[0].M[28] = tiempoCiclo.ToString("F2");
         userData.excelReport[0].M[29] = unidadesProducidas.ToString("F2");
 
         userData.excelReport[0].M[31] = yesNo.isOn ? "Si" : "No";
-        ValidateIfDataIsCorrect();
-        FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
-        FormResultsManager.Instance.unidadesRequeridas = QuestHistorical.Instance.CurrentOperationData.requiredUnits;
        
-        FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
-        FormResultsManager.Instance.taktTime = tOptimoIngresado;//tiempoTakt;
-
-        FormResultsManager.Instance.unidadesProducidasNoCumplen = unidadesProducidas;
-
-        FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
-
-        FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
-        FormResultsManager.Instance.tiempoCicloCalculadas = tiempoCiclo;
-        FormResultsManager.Instance.unidadesProducidasCalculadas = unidadesProducidas;
 
     }
     private void ValidateIfDataIsCorrect()
     {
+        bool[] areCorrectAnswers = { true, true, true };
+
+        areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
+        areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
+        areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true && TOInput.interactable)
         {
             userData.experienceTalkTimeHistorical = 75;
-            userData.talkTime = float.Parse(TOInput.text);
+
             TOInput.interactable = false;
             TOInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(75);
@@ -115,7 +95,6 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         if(DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo") == true && TCInput.interactable)
         {
             userData.experienceTiempoOptimoHistorical = 75;
-            userData.tiempoOptimo = float.Parse(TCInput.text);
             TCInput.interactable = false;
             TCInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(75);
@@ -123,7 +102,6 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         if(DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
         {
             userData.experienceUnidadesrequeridasHistorical = 75;
-            userData.tiempoOptimo = float.Parse(TCInput.text);
             UPInput.interactable = false;
             UPInput.textComponent.color = new Color(0.01f, 0.85f, 0);
             PlayerDataManager.Instance.AddExperience(75);
@@ -135,6 +113,20 @@ public class HistoricalRegisterCalculations : MonoBehaviour
             PlayerDataManager.Instance.AddExperience(75);
         }
         userData.justifHistorical = justifInput.text;
+
+        FormResultsManager.Instance.unidadesProdPosiblesIngresadas = uProducidasIngresado;
+        FormResultsManager.Instance.unidadesRequeridas = QuestHistorical.Instance.CurrentOperationData.requiredUnits;
+
+        FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
+        FormResultsManager.Instance.taktTime = tOptimoIngresado;//tiempoTakt;
+
+        FormResultsManager.Instance.unidadesProducidasNoCumplen = unidadesProducidas;
+
+        FormResultsManager.Instance.Evaluate(areCorrectAnswers, gameObject);
+
+        FormResultsManager.Instance.taktTimeCalculadas = tiempoTakt;
+        FormResultsManager.Instance.tiempoCicloCalculadas = tiempoCiclo;
+        FormResultsManager.Instance.unidadesProducidasCalculadas = unidadesProducidas;
     }
     private void SetUserInputValues()
     {
@@ -149,7 +141,7 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         {
             SetUserInputValues();
             SaveDataInFile();
-            Calculate();
+            ValidateIfDataIsCorrect();
 
             gameObject.SetActive(false);
             HelpManager.Instance().SetHelp("Hable con el supervisor de planta");

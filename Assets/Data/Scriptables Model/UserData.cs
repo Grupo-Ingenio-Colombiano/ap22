@@ -66,9 +66,9 @@ public class UserData : ScriptableObject
     public float[] historicData = new float[36];
     public float minTimeHistorical;
     public float maxTimeHistorical;
-    public float talkTime;
-    public float tiempoOptimo;
-    public float unidadesRequeridas;
+    public float talkTimeHistorical;
+    public float tiempoCicloHistorical;
+    public float unidadesRequeridasHistorical;
     public string justifHistorical;
 
     public int experienceSelectHistoricalData;

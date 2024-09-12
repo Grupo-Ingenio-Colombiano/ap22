@@ -14,6 +14,7 @@ public class QuestHistorical : MonoBehaviour
     [SerializeField] GameObject operator2;
     [SerializeField] GameObject operator1;
 
+    [SerializeField] HistoricalRegisterCalculations historicalRegisterCalculations;
     [SerializeField] UserData userData;
     [SerializeField] NotesManager notesManager;
 
@@ -31,9 +32,7 @@ public class QuestHistorical : MonoBehaviour
 
     private void Start()
     {
-         SetHistoricalQuest();
-       
-
+        SetHistoricalQuest();
     }
 
 
@@ -47,13 +46,14 @@ public class QuestHistorical : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 0, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));          
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
-            notesManager.EnablePage(0);
-           
-            
+            historicalRegisterCalculations.requiredUnits.text = CurrentOperationData.requiredUnits.ToString();
+            historicalRegisterCalculations.Calculate();
+            notesManager.EnablePage(0);           
         }
         else
         {
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
+
             var randomOperation = Random.Range(1, 4);
             userData.indexOperationData = randomOperation;
             //var randomOperation = 3;
@@ -63,13 +63,13 @@ public class QuestHistorical : MonoBehaviour
             userData.maxTimeHistorical = CurrentOperationData.maxTime;
             userData.modalTimeHistorical = CurrentOperationData.modalTime;
             FormResultsManager.Instance.currentOperationIndex = randomOperation;
-                     
+            historicalRegisterCalculations.requiredUnits.text = CurrentOperationData.requiredUnits.ToString();
+            historicalRegisterCalculations.Calculate();
+
         }
         ActivateObjects();
         notesManager.EnablePage(0);
     }
-
-
     void ActivateObjects()
     {
         if(userData.load >= 2 && userData.method == 1)
@@ -85,8 +85,7 @@ public class QuestHistorical : MonoBehaviour
             {
                 objectsToActivate[i].SetActive(true);
             }
-        }
-       
+        }     
     }
 
     public void UserDataLoad()
@@ -106,7 +105,6 @@ public class QuestHistorical : MonoBehaviour
         historicalForm.SetActive(true);
         historicalDataViewer.SetActive(true);
         notesManager.EnablePage(0);
-
     }
 
     public void SetIndicator()
