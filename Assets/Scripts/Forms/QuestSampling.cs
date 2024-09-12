@@ -75,18 +75,16 @@ public class QuestSampling : MonoBehaviour
                 samplingRegisterCalculations.requiredUnits.text = CurrentOperationData.requiredUnits.ToString();
                 samplingRegisterCalculations.Calculate();
             }
-            while(samplingRegisterCalculations.tiempoTakt >= samplingRegisterCalculations.tiempoCiclo);
-           
-          
+            while(samplingRegisterCalculations.tiempoTakt >= samplingRegisterCalculations.tiempoCiclo);                    
         }
 
         notesManager.EnablePage(1);
-
         ActivateObjects();
     }
 
     void ActivateObjects()
     {
+        Debug.Log("Activar Objetos");
         for (int i = 0; i < objectsToActivate.Length; i++)
         {
             objectsToActivate[i].SetActive(true);

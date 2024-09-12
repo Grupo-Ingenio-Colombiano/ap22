@@ -69,16 +69,12 @@ public class SamplingRegisterCalculations : MonoBehaviour
         print("porcentaje  " + QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion);
         print("ritmo " + QuestSampling.Instance.CurrentOperationData.factorRitmo);
         print("K " + QuestSampling.Instance.CurrentOperationData.K);
-
-        tOptimoIngresado = float.Parse(TOInput.text);
-        tCicloIngresado = float.Parse(TCInput.text);
-        uProducidasIngresado = float.Parse(UPInput.text);
         userData.excelReport[0].M[27] = tiempoOptimo.ToString("F2");
         userData.excelReport[0].M[28] = tiempoCiclo.ToString("F2");
         userData.excelReport[0].M[29] = unidadesProducidas.ToString("F2");
 
 
-        userData.excelReport[0].M[31] = yesNo.isOn ? "Si" : "No";
+        userData.excelReport[0].M[31] = "No";
 
         print(yesNo.isOn ? "Si" : "No" + " Cumple");
 
@@ -89,6 +85,9 @@ public class SamplingRegisterCalculations : MonoBehaviour
     }
     private void ValidateIfDataIsCorrect()
     {
+        tOptimoIngresado = float.Parse(TOInput.text);
+        tCicloIngresado = float.Parse(TCInput.text);
+        uProducidasIngresado = float.Parse(UPInput.text);
         bool[] areCorrectAnswers = { true, true, true };
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
