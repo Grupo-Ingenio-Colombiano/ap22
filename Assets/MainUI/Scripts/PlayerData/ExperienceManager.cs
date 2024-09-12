@@ -47,17 +47,17 @@ public class ExperienceManager : MonoBehaviour
 
         experienceText.text = exp.ToString();
 
-        if (exp >= maxExperience / 100 * 90)
+        if (exp >= 450)
         {
             star3.SetActive(true);
         }
 
-        if (exp >= maxExperience / 100 * 65)
+        if (exp >= 400)
         {
             star2.SetActive(true);
         }
 
-        if (exp >= maxExperience / 100 * 31)
+        if (exp >= 300)
         {
             star1.SetActive(true);
         }
