@@ -297,7 +297,7 @@ public class Downloader : MonoBehaviour
         else
         {
             userData.excelReport[0].I[73] = 50.ToString();
-            userData.excelReport[0].I[74] = 50.ToString();
+            userData.excelReport[0].I[74] = userData.experienceCronometer.ToString();
             userData.excelReport[0].I[75] = 0.ToString();
             userData.excelReport[0].I[76] = 0.ToString();
             userData.excelReport[0].I[77] = 100.ToString();
@@ -305,7 +305,7 @@ public class Downloader : MonoBehaviour
 
 
         userData.excelReport[0].K[73] = 50.ToString();
-        userData.excelReport[0].K[74] = 50.ToString();
+        userData.excelReport[0].K[74] = userData.experienceCronometer.ToString();
         userData.excelReport[0].K[75] = 300.ToString();
         userData.excelReport[0].K[76] = 100.ToString();
         userData.excelReport[0].K[77] = 500.ToString();
