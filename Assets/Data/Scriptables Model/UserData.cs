@@ -106,7 +106,7 @@ public class UserData : ScriptableObject
     public float kCronometraje;
     public int[] rhytmFactor = new int[36];
     public float[] cronometrajeData = new float[36];
-
+    public int experienceCronometer;
     [Header("--Selección de Turnos ")]
     public string[] operators = new string[3];
     public int unitPerDay;
