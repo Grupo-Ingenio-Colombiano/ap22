@@ -119,7 +119,11 @@ public class TimingRegisterCalculations : MonoBehaviour
         sumatoriaTiemposFRIngresados = new float[factoresRitmo];
         tiemposNormalizadosIngresados = new float[factoresRitmo];
     }
-
+    public void GiveTimingExperience()
+    {
+        userData.experienceCronometer = 50;
+        PlayerDataManager.Instance.AddExperience(userData.experienceCronometer);
+    }
     public void ShowCorrectAnswer()
     {
         a0.text = sumatoriaTiemposFR[0].ToString();
@@ -148,15 +152,6 @@ public class TimingRegisterCalculations : MonoBehaviour
 
     public void Calculate()
     {
-        bool[] areCorrectAnswers = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
-
-        chulo1.SetActive(false);
-        equis1.SetActive(false);
-        chulo2.SetActive(false);
-        equis2.SetActive(false);
-        chulo3.SetActive(false);
-        equis3.SetActive(false);
-
         CalculateSumFR();
         CalculateNormalizedSum();
         CalculateTiempoNormal();
@@ -175,18 +170,29 @@ public class TimingRegisterCalculations : MonoBehaviour
         numSamples = 4 * ((36 * sumTiemposCuadrado) - (sumTiempos * sumTiempos)) / (error * error * (sumTiempos * sumTiempos));
         numSamples = Mathf.Ceil(numSamples);
         //print(numSamples + " samples calc");
+    }
+    void SetUserAnswers()
+    {
+        bool[] areCorrectAnswers = { true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true };
 
+        chulo1.SetActive(false);
+        equis1.SetActive(false);
+        chulo2.SetActive(false);
+        equis2.SetActive(false);
+        chulo3.SetActive(false);
+        equis3.SetActive(false);
         SetUserInputAnswers();
 
         for (int i = 0; i < 7; i++)
         {
             areCorrectAnswers[i] = DataChecker.IsDataCorrect(sumatoriaTiemposFRIngresados[i], sumatoriaTiemposFR[i], 0.1f, "sumatoria fr : " + i);
 
-            if(areCorrectAnswers[i])
+            if (areCorrectAnswers[i])
             {
                 sumatoria[i].enabled = false;
                 sumatoria[i].image.color = Color.green;
-            }else
+            }
+            else
             {
                 sumatoria[i].image.color = Color.red;
             }
@@ -200,12 +206,12 @@ public class TimingRegisterCalculations : MonoBehaviour
 
             if (areCorrectAnswers[i])
             {
-                normalizados[i-7].enabled = false;
-                normalizados[i-7].image.color = Color.green;
+                normalizados[i - 7].enabled = false;
+                normalizados[i - 7].image.color = Color.green;
             }
             else
             {
-                normalizados[i-7].image.color = Color.red;
+                normalizados[i - 7].image.color = Color.red;
             }
 
             print(tiemposNormalizadosIngresados[i - 7] + " sumatoria" + i);
@@ -216,7 +222,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             TNormalInput.enabled = false;
             TNormalInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             TNormalInput.image.color = Color.red;
         }
@@ -226,7 +233,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             TCicloInput.enabled = false;
             TCicloInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             TCicloInput.image.color = Color.red;
         }
@@ -236,7 +244,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             TTaktInput.enabled = false;
             TTaktInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             TTaktInput.image.color = Color.red;
         }
@@ -246,7 +255,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             uProducidasInput.enabled = false;
             uProducidasInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             uProducidasInput.image.color = Color.red;
         }
@@ -256,7 +266,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             uRequeridasInput.enabled = false;
             uRequeridasInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             uRequeridasInput.image.color = Color.red;
         }
@@ -266,7 +277,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             numSamplesInput.enabled = false;
             numSamplesInput.image.color = Color.green;
-        }else
+        }
+        else
         {
             numSamplesInput.image.color = Color.red;
         }
@@ -275,7 +287,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         if (areCorrectAnswers[20])
         {
             chulo1.SetActive(true);
-        }else
+        }
+        else
         {
             equis1.SetActive(true);
         }
@@ -284,7 +297,8 @@ public class TimingRegisterCalculations : MonoBehaviour
         if (areCorrectAnswers[21])
         {
             chulo2.SetActive(true);
-        }else
+        }
+        else
         {
             equis2.SetActive(true);
         }
@@ -305,7 +319,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         FormResultsManager.Instance.tiempoCiclo = tCicloIngresado;
         FormResultsManager.Instance.taktTime = tiempoTaktIngresado;//tiempoTakt;
 
-      
+
         //print("tTotalDispDiario " + tTotalDispDiario);
         //print("Takt time " + tiempoTakt);
 
@@ -330,19 +344,13 @@ public class TimingRegisterCalculations : MonoBehaviour
                 break;
             }
         }
-        if(experienceBool)
+        if (experienceBool)
         {
             PlayerDataManager.Instance.AddExperience(300);
         }
 
         AddToFinalReport();
         ShowCorrectAnswer();
-
-        //for (int i = 0; i < areCorrectAnswers.Length; i++)
-        //{
-        //    print("correct?: " + i + " " + areCorrectAnswers[i]);
-        //}
-
     }
     void AddToFinalReport()
     {
@@ -505,7 +513,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         if (!validator.CheckIsEmpty())
         {
             SaveDataInFile();
-            Calculate();
+            SetUserAnswers();
 
             HelpManager.Instance().SetHelp("Hable con el supervisor de planta");
             emptyMessage.SetActive(false);
@@ -617,17 +625,7 @@ public class TimingRegisterCalculations : MonoBehaviour
     }
     public void RellenarDatosCronometraje()
     {
-        CalculateSumFR();
-        CalculateNormalizedSum();
-        CalculateTiempoNormal();
-        CalculateTC();
-
-        tTotalDispDiario = ((horas * 60) - descansos) * numOperarios * turnos;
-        tiempoTakt = tTotalDispDiario / unidadesRequeridas;
-        unidadesProducidas = (int)(tTotalDispDiario / tiempoCiclo);
-        float error = 0.05f;
-        numSamples = 4 * ((36 * sumTiemposCuadrado) - (sumTiempos * sumTiempos)) / (error * error * (sumTiempos * sumTiempos));
-        numSamples = Mathf.Ceil(numSamples);
+        Calculate();
         for (int i = 0; i < sumatoria.Length; i++)
         {
             sumatoria[i].text = sumatoriaTiemposFR[i].ToString();
@@ -636,6 +634,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         {
             normalizados[i].text = tiemposNormalizados[i].ToString();
         }
+        Debug.Log("Takt " + tiempoTakt);
         numSamplesInput.text = numSamples.ToString();
         TNormalInput.text = tiempoNormal.ToString();
         TCicloInput.text = tiempoCiclo.ToString();

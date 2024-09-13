@@ -46,6 +46,7 @@ public class QuestTiming : MonoBehaviour
             CurrentOperationData = new OperationData(userData.indexOperationData, 2, userData);
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             FormResultsManager.Instance.currentOperationIndex = userData.indexOperationData;
+            timingRegisterCalculations.unidadesRequeridas = CurrentOperationData.requiredUnits;
             timingRegisterCalculations.Calculate();
         }
         else
