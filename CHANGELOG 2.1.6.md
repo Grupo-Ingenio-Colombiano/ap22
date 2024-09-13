@@ -4,17 +4,31 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+
+## [2.1.6] - 2024-09-13
+
+## Developers
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
+### Added
+-[Functionality] Now if user fails one field but has other as a correct answer, this correct field freeze and gives experience
+-[Functionality] Now if user fails one field but in second attemp set the correct answer gives experience, but this experience is reduced by each attemp
+### Fixed
+-[Functionality] Now if TT is higher than TC, sets new data until condition is met
+-[Functionality] Now calculation of Historical, Sampling and Timing data starts at the beginning of the practice
+-[Functionality] Now calculation and check answers are different functionalities to avoid errors
+-[FinalReport] Now gets the correct experience for each answer in final report
+-[UI] Fix stars for experience, now actives propertly in HUD depend experience: 300xp 1 star, 400xp 2 stars and 450xp 3 stars
 ## [2.1.5] - 2024-09-04
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 
 ### Fixed
 -[FinalReport] Fix experience in final report when users fails practice, in Historical, Sample, and Timing Quest
 ## [2.1.4] - 2024-08-16
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 
 ### Fixed
 -[Functionality] Fix SST character dialog interactor when user load practice 
@@ -22,7 +36,7 @@ grupo Ingenio Colombiano
 ## [2.1.3] - 2024-05-24
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 
 ### Fixed
 -[UI] Fix continue button tint for first turn operator
@@ -34,14 +48,14 @@ grupo Ingenio Colombiano
 ## [2.1.2] - 2024-05-17
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 
 ### Fixed
 -[FinalReport] Fix fild for correct value for operators number in timing quest final report
 ## [2.1.1] - 2024-05-08
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 [Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
 ### Fixed
@@ -54,7 +68,7 @@ grupo Ingenio Colombiano
 ## [2.1.0] - 2024-04-01
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 [Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
 ### Changed
@@ -72,7 +86,7 @@ grupo Ingenio Colombiano
 ## [2.0.12] - 2023-12-14
 
 ## Developers
-[Felipe Izquierdo Arias / programadorunity02@ingeniocolombiano.com]
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
 [Diego salamanca / dsalamanca@ingeniocolombiano.com]
 
 ### Added
