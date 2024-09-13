@@ -43,8 +43,11 @@ public class ExperienceManager : MonoBehaviour
     {
         exp = Mathf.Ceil(units * maxExperience);
         print("Experiencia " + exp);
-      
 
+        if (exp > 500)
+        {
+            exp = 500;
+        }
         experienceText.text = exp.ToString();
 
         if (exp >= 450)
@@ -61,10 +64,7 @@ public class ExperienceManager : MonoBehaviour
         {
             star1.SetActive(true);
         }
-        if(exp > 500)
-        {
-            exp = 500;
-        }
+      
         data.experience = exp;
     }
 
