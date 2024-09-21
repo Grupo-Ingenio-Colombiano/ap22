@@ -5,6 +5,13 @@ This file will be documented this file all changes in .
 grupo Ingenio Colombiano
 
 
+## [2.1.7] - 2024-09-20
+## Developers
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
+### Added
+-[Functionality] Now in historical and sample quest if user select yes to demand met, fails attempt too
+### Fixed
+-[Functionality] Fix experience given when user fails 1 attempt
 ## [2.1.6] - 2024-09-13
 
 ## Developers
