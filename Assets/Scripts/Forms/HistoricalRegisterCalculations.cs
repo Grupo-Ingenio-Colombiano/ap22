@@ -87,12 +87,12 @@ public class HistoricalRegisterCalculations : MonoBehaviour
     }
     private void ValidateIfDataIsCorrect()
     {
-        bool[] areCorrectAnswers = { true, true, true };
+        bool[] areCorrectAnswers = { true, true, true , true};
 
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
-
+        areCorrectAnswers[3] = !yesNo.isOn;
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
         {
             if (TOInput.interactable)
@@ -104,7 +104,10 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceTalkTimeHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (TOInput.interactable)
+            {
+                userData.experienceTalkTimeHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            }              
             if(userData.experienceTalkTimeHistorical < 0)
             {
                 userData.experienceTalkTimeHistorical = 0;
@@ -121,13 +124,16 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceTiempoOptimoHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (TCInput.interactable)
+            {
+                userData.experienceTiempoOptimoHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            }
             if (userData.experienceTiempoOptimoHistorical < 0)
             {
                 userData.experienceTiempoOptimoHistorical = 0;
             }
         }
-        if(DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true && UPInput.interactable)
+        if(DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas") == true)
         {
             if (UPInput.interactable)
             {
@@ -138,23 +144,29 @@ public class HistoricalRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceUnidadesrequeridasHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (UPInput.interactable)
+            {
+                userData.experienceUnidadesrequeridasHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            }               
             if (userData.experienceUnidadesrequeridasHistorical < 0)
             {
                 userData.experienceUnidadesrequeridasHistorical = 0;
             }
         }
-        if(!yesNo.isOn && yesNo.interactable)
+        if (!yesNo.isOn)
         {
             if (yesNo.interactable)
             {
                 yesNo.interactable = false;
                 PlayerDataManager.Instance.AddExperience(userData.experienceQuestionHistorical);
-            }           
+            }
         }
         else
         {
-            userData.experienceQuestionHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            if (yesNo.interactable)
+            {
+                userData.experienceQuestionHistorical -= Mathf.RoundToInt(experience * 0.33f);
+            }                
             if (userData.experienceQuestionHistorical < 0)
             {
                 userData.experienceQuestionHistorical = 0;

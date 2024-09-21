@@ -88,10 +88,11 @@ public class SamplingRegisterCalculations : MonoBehaviour
         tOptimoIngresado = float.Parse(TOInput.text);
         tCicloIngresado = float.Parse(TCInput.text);
         uProducidasIngresado = float.Parse(UPInput.text);
-        bool[] areCorrectAnswers = { true, true, true };
+        bool[] areCorrectAnswers = { true, true, true , true};
         areCorrectAnswers[0] = DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo");
         areCorrectAnswers[1] = DataChecker.IsDataCorrect(tCicloIngresado, tiempoCiclo, 0.1f, "tiempo Ciclo");
         areCorrectAnswers[2] = DataChecker.IsDataCorrect(uProducidasIngresado, unidadesProducidas, 1f, "unidades Producidas");
+        areCorrectAnswers[3] = !yesNo.isOn;
         if (DataChecker.IsDataCorrect(tOptimoIngresado, tiempoOptimo, 0.1f, "Tiempo optimo") == true)
         {
             if (TOInput.interactable)
@@ -104,7 +105,10 @@ public class SamplingRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceTalkTimeSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (TOInput.interactable)
+            {
+                userData.experienceTalkTimeSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            }               
             if (userData.experienceTalkTimeSample < 0)
             {
                 userData.experienceTalkTimeSample = 0;
@@ -122,7 +126,10 @@ public class SamplingRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceTiempoOptimoSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (TCInput.interactable)
+            {
+                userData.experienceTiempoOptimoSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            }               
             if (userData.experienceTiempoOptimoSample < 0)
             {
                 userData.experienceTiempoOptimoSample = 0;
@@ -139,7 +146,11 @@ public class SamplingRegisterCalculations : MonoBehaviour
         }
         else
         {
-            userData.experienceUnidadesrequeridasSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            if (UPInput.interactable)
+            {
+                userData.experienceUnidadesrequeridasSample -= Mathf.RoundToInt(experienceGeneral * 0.33f);
+            }
+               
             if (userData.experienceUnidadesrequeridasSample < 0)
             {
                 userData.experienceUnidadesrequeridasSample = 0;
@@ -150,13 +161,15 @@ public class SamplingRegisterCalculations : MonoBehaviour
             if (yesNo.interactable)
             {
                 yesNo.interactable = false;
-                userData.experienceQuestionSample = 89;
                 PlayerDataManager.Instance.AddExperience(userData.experienceQuestionSample);
             }         
         }
         else
         {
-            userData.experienceQuestionSample -= Mathf.RoundToInt(experienciaPregunta * 0.33f);
+            if (yesNo.interactable)
+            {
+                userData.experienceQuestionSample -= Mathf.RoundToInt(experienciaPregunta * 0.33f);
+            }                
             if (userData.experienceQuestionSample < 0)
             {
                 userData.experienceQuestionSample = 0;
