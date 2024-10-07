@@ -503,8 +503,8 @@ public class TimingRegisterCalculations : MonoBehaviour
 
     void CalculateTC()
     {
-        tiempoCiclo = tiempoNormal * (1 + (QuestTiming.Instance.CurrentOperationData.K));
-        //print("tiempo ciclo  = " + tiempoCiclo);
+        tiempoCiclo = tiempoNormal * (1 + (QuestTiming.Instance.CurrentOperationData.K / 100));
+        print("tiempo ciclo  = " + tiempoCiclo);
         //print("K  = " + QuestTiming.Instance.CurrentOperationData.K);
     }
 
