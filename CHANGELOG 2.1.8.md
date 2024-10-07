@@ -4,6 +4,11 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.1.8] - 2024-10-07
+## Developers
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
+### Fixed
+-[Functionality] Now TC calculation is correct, value of K divided by 200 for percentage value
 
 ## [2.1.7] - 2024-09-20
 ## Developers
