@@ -12,7 +12,7 @@ public class TimingNotes : MonoBehaviour
     private void OnEnable()
     {
         unidadesRequeridas.text = QuestTiming.Instance.CurrentOperationData.requiredUnits.ToString();
-        k.text = QuestTiming.Instance.CurrentOperationData.K.ToString();
+        k.text = QuestTiming.Instance.CurrentOperationData.K.ToString() + "%";
     }
 
 

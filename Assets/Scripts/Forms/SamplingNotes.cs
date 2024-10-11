@@ -22,7 +22,7 @@ public class SamplingNotes : MonoBehaviour
         horasMuestreo.text = (QuestSampling.Instance.CurrentOperationData.numMinutosMuestreo / 60f).ToString();
         tiempoDedicado.text = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion.ToString();
         factorRitmo.text = QuestSampling.Instance.CurrentOperationData.factorRitmo.ToString();
-        K.text = QuestSampling.Instance.CurrentOperationData.K.ToString();
+        K.text = QuestSampling.Instance.CurrentOperationData.K.ToString() + "%";
 
         userData.percentageOperation = QuestSampling.Instance.CurrentOperationData.porcentajeDedicadoOperacion;
         userData.rhythm = QuestSampling.Instance.CurrentOperationData.factorRitmo;
