@@ -4,6 +4,12 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+## [2.1.9] - 2024-10-11
+## Developers
+[Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
+### Added
+-[Notes] Added "%" to K value in sampling and timing notes
+
 ## [2.1.8] - 2024-10-07
 ## Developers
 [Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
