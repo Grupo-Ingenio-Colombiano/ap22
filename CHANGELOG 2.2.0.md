@@ -4,6 +4,10 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+ ## [2.2.2] - 2025-01-24
+### Changed
+-[Build] Changed type of build to brotli and optimize textures for WebGl weight
+
 ## [2.1.9] - 2024-10-11
 ## Developers
 [Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
