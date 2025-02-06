@@ -4,9 +4,12 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
- ## [2.2.2] - 2025-01-24
+ ## [2.2.0] - 2025-01-24
+ ### Fixed
+ -[HUD] Fix HUD and Dialog canvas resolution for different screen sizes
 ### Changed
 -[Build] Changed type of build to brotli and optimize textures for WebGl weight
+
 
 ## [2.1.9] - 2024-10-11
 ## Developers
@@ -17,7 +20,7 @@ grupo Ingenio Colombiano
 ## [2.1.8] - 2024-10-07
 ## Developers
 [Felipe Izquierdo Arias / felipe.izquierdo@ingco.co]
-### Fixed
+
 -[Functionality] Now TC calculation is correct, value of K divided by 200 for percentage value
 
 ## [2.1.7] - 2024-09-20
