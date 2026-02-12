@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.grupo-ingenio-colombiano.vp.packagemanager": {
+      "version": "https://github.com/Grupo-Ingenio-Colombiano/ComponentsManager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "hash": "81514663484bd3f97ad11998d78edd1526207e6b"
+    },
+    "com.grupo-ingenio-colombiano.vp.webglplugins": {
+      "version": "https://github.com/Grupo-Ingenio-Colombiano/WEBGLPlugins.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "39c02580edf1f6a8bf865cba810ab1aa964d6d54"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -34,6 +51,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -66,9 +90,18 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.14.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

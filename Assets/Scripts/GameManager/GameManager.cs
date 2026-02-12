@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        userData.lastScene = SceneManager.GetActiveScene().buildIndex;
+        userData.lastScene = SceneManager.GetActiveScene().buildIndex.ToString();
         
         if (userData.load >= 1)
         {
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
             enableSSGTdialog1();
          
         }
+
+        GameObject.FindObjectOfType<LoadManager>().Upload(0);
     }
     public void enablePlantBossFirstInteraccion()
     {

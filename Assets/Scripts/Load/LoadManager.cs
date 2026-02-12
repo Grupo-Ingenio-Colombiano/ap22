@@ -16,7 +16,8 @@ public class LoadManager : MonoBehaviour
     {
 
         data.load = point;
-        Debug.Log("Se subieron datos de la práctica");
+        Debug.Log("Se subieron datos de la prï¿½ctica");
+        Debug.Log(data.lastScene);
         data.isSave = true;
         StartCoroutine(VpNetServices.Upload(data.email, data, UploadResponse));
 
