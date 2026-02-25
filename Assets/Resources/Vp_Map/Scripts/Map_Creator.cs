@@ -55,7 +55,6 @@ public class Map_Creator : MonoBehaviour
 
         Camera cam = camObject.AddComponent<Camera>();
         LayerMask mask = LayerMask.NameToLayer(layerName);
-        Debug.Log(cam.cullingMask);
         cam.cullingMask = (1<<mask);
 
         cam.orthographic = true;

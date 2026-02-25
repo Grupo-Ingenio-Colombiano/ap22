@@ -140,7 +140,6 @@ public class LoginManager : MonoBehaviour
         else
         {
             LevelLoader.sceneToload = int.Parse(data.lastScene);
-            gender.playerIsMan = userData.gender;
         }
 
         SceneManager.LoadScene("Loading", LoadSceneMode.Additive);

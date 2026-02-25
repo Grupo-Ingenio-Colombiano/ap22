@@ -124,12 +124,10 @@ public class SelectCharacter : MonoBehaviour
         if (actualCharacter % 2 == 0)
         {
             pGender.playerIsMan = true;
-            userdata.gender = true;
         }
         else
         {
             pGender.playerIsMan = false;
-            userdata.gender = false;
         }
         buttonNext.SetActive(false);
         buttonPrev.SetActive(false);

@@ -19,7 +19,6 @@ public class UserData : ScriptableObject
     public int inspectorSeguridad;
 
     public string PlayerSelected;
-    public bool gender;
     public Vector3 playerPosition;
     public Quaternion playerRot;
 
@@ -145,7 +144,6 @@ public void ResetToItsDefaults()
     inspectorSeguridad = 0;
 
     PlayerSelected = string.Empty;
-    gender = false;
     playerPosition = Vector3.zero;
     playerRot = Quaternion.identity;
 
