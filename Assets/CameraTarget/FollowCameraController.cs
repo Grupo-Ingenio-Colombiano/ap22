@@ -6,7 +6,7 @@ public class FollowCameraController : MonoBehaviour
 
     public static FollowCameraController instance = null;
 
-    public LayerMask PlayerLayer = 8;
+    public LayerMask fpsLayer,tpsLayer;
     public float cameraToogleSpeed = 5.0f;
     public float CameraMoveSpeed = 120.0f;
     GameObject cameraFollowObj;
@@ -148,13 +148,13 @@ public class FollowCameraController : MonoBehaviour
     private IEnumerator ResetCulling()
     {
         yield return new WaitForSeconds(.1f);
-        camara.cullingMask += 1 << PlayerLayer;
+        camara.cullingMask = tpsLayer;
     }
 
     private IEnumerator DeleteCulling()
     {
         yield return new WaitForSeconds(.4f);
-        camara.cullingMask -= 1 << PlayerLayer;
+        camara.cullingMask = fpsLayer;
     }
 
     public void SetCameraFollow(GameObject  obj, int fieldView, bool move)
