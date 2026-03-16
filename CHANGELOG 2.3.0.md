@@ -4,6 +4,18 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+ ## [2.3.0] - 2025-03-16
+ ### Fixed
+ -[Gameflow] Player not being enabled at the start.
+ -[Gameflow] Culling mask not hiding the player on first person.
+### Added
+-[Package] New final report scene with webGlPlugins Implementation.
+-[Package] New login scene with webGlPlugins Implementation.
+
+### Removed
+-[Scene] Old final report logic.
+-[Scene] Old login logic.
+
  ## [2.2.0] - 2025-01-24
  ### Fixed
  -[HUD] Fix HUD and Dialog canvas resolution for different screen sizes
