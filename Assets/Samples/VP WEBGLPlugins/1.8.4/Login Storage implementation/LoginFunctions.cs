@@ -1,6 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 #if UNITY_WEBGL
 using VP.WEBGL.Plugins;
 #endif
@@ -27,6 +27,7 @@ public class LoginFunctions : MonoBehaviour
     #endregion
 
     [Header("options")]
+    [SerializeField] private TextMeshProUGUI errorLabel;
     [SerializeField] UserData data;
 
     public void StartVerifyEmail()
@@ -34,7 +35,7 @@ public class LoginFunctions : MonoBehaviour
         data.ResetToItsDefaults();
 #if UNITY_EDITOR
 
-        data.studentName = nameTest;
+        data.name = nameTest;
         data.email = emailTest;
 
         debugMsg += "Name: " + data.name + "\n";
@@ -42,7 +43,7 @@ public class LoginFunctions : MonoBehaviour
 
 #elif UNITY_WEBGL
         
-        data.studentName = AutoLoginUI.Name;
+        data.name = AutoLoginUI.Name;
         data.email = AutoLoginUI.Email;
         
 #endif
@@ -53,6 +54,7 @@ public class LoginFunctions : MonoBehaviour
     {
         if (code >= 300)
         {
+            errorLabel.text = "No se ha podido establecer conexión con el servidor.";
             Debug.Log(code);
         }
         else
@@ -75,13 +77,21 @@ public class LoginFunctions : MonoBehaviour
     void UploadResponse(bool success, string handler, string error, long code)
     {
         Debug.Log(code);
-        if (code <= 202)
+        if(code >= 300)
+        {
+            errorLabel.text = "Ha ocurrido un error de conexión al intentar subir la nueva partida al servidor.";
+        }
+        else if (code <= 202)
             ContinueScene();
     }
     void DownloadResponse(bool success, string handler, string error, long code)
     {
         Debug.Log(code);
-        if (code == 200)
+        if(code >= 300)
+        {
+            errorLabel.text = "Ha ocurrido un error de conexión al intentar descargar su partida guardada del servidor.";
+        }
+        else if (code == 200)
             ContinueScene();
         
     }
