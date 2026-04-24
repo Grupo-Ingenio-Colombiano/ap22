@@ -4,6 +4,9 @@ This file will be documented this file all changes in .
 ## Owner
 grupo Ingenio Colombiano
 
+ ## [2.3.1] - 2025-04-24
+ ### Updated
+ -[Package] Login sample on WebGL plugins.
  ## [2.3.0] - 2025-03-16
  ### Fixed
  -[Gameflow] Player not being enabled at the start.
