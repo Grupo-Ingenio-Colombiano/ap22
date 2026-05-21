@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2167b3c5df25a074ba6ef16ccdad77f5, type: 3}
+  m_Name: Planteamiento Window
+  m_EditorClassIdentifier: 
+  content: "<size=180%><b>Planteamiento del problema</b></size>\r\n\nLa empresa Logis-TK
+    ha adquirido una bodega antigua para instalar su nuevo centro de distribuci\xF3n.
+    En este espacio deben implementarse veh\xEDculos guiados autom\xE1ticamente (AGV)
+    para transportar electrodom\xE9sticos en paquetes de hasta 10 kg. Sin embargo,
+    existen restricciones t\xE9cnicas y ambientales: no se permiten obras civiles
+    como canalizaciones en el piso, las rutas son compartidas con personas y otras
+    m\xE1quinas que generan suciedad, hay fallas frecuentes de iluminaci\xF3n y se
+    busca minimizar el mantenimiento rutinario. Bajo estas condiciones, es necesario
+    seleccionar el tipo de AGV m\xE1s adecuado, definir su sistema de navegaci\xF3n
+    y determinar rutas de operaci\xF3n \xF3ptimas que garanticen eficiencia, autonom\xEDa
+    y flexibilidad en el transporte.\r\n\r\n<b>1. Analizar y seleccionar el tipo
+    de AGV seg\xFAn las condiciones del entorno:</b> \r\nNo todas las tecnolog\xEDas
+    de navegaci\xF3n son viables dadas las restricciones (ejemplo: guiado por cable
+    o magn\xE9tico requieren canalizaci\xF3n, y visi\xF3n artificial depende de buena
+    iluminaci\xF3n). La elecci\xF3n adecuada asegura continuidad operativa y reducci\xF3n
+    de fallos.\r\n\r\n<b>3. Aplicar algoritmos de optimizaci\xF3n de rutas (Dijkstra):</b>\r\nLa
+    eficiencia log\xEDstica depende de minimizar tiempos de recorrido y consumo energ\xE9tico.
+    Los algoritmos permiten encontrar la ruta m\xE1s corta o de menor costo operativo
+    entre puntos clave del almac\xE9n.\r\n\r\n<b>4. Evaluar indicadores de eficiencia
+    operativa (tiempo de ciclo, capacidad de transporte y porcentaje de utilizaci\xF3n):</b>\r\nEstos
+    indicadores facilitan medir el desempe\xF1o de los AGV en condiciones realistas
+    y tomar decisiones para mejorar la productividad y la gesti\xF3n de recursos.\r\n"
+  allowVerticalScroll: 1
+  allowHorizontalScroll: 0

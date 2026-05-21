@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2167b3c5df25a074ba6ef16ccdad77f5, type: 3}
+  m_Name: Datos Window
+  m_EditorClassIdentifier: 
+  content: "<size=180%><b>Datos y resultados</b></size>\r\n\r\nDurante el desarrollo
+    de la pr\xE1ctica se trabajan dos tipos de datos:\r\n\r\n<b>1. Datos suministrados:</b> 
+    \r\n<indent=5%>- Especificaciones t\xE9cnicas de los AGV (capacidad de bater\xEDa,
+    voltaje, corriente de cargador, consumo nominal, eficiencia, capacidad de carga).</indent> 
+    \r\n<indent=5%>- Restricciones del entorno (condiciones locativas, limitaciones
+    de obra civil, iluminaci\xF3n, suciedad del piso, presupuesto).</indent>  \r\n<indent=5%>-
+    Mapa del centro de distribuci\xF3n con nodos y tiempos de recorrido en cada ruta.</indent> 
+    \r\n\r\n<b>2. Datos calculados:</b>  \r\n<indent=5%>- Par\xE1metros energ\xE9ticos:
+    energ\xEDa nominal, energ\xEDa \xFAtil, autonom\xEDa nominal y efectiva, tiempo
+    de carga y relaci\xF3n autonom\xEDa/tiempo de carga.</indent>  \r\n<indent=5%>-
+    Resultados de los algoritmos de optimizaci\xF3n de rutas (Dijkstra, A*), identificando
+    la ruta de menor costo en tiempo o consumo energ\xE9tico.</indent>  \r\n<indent=5%>-
+    Indicadores de eficiencia operativa: capacidad de transporte, tiempo de ciclo
+    y porcentaje de utilizaci\xF3n efectiva.</indent>  \r\n\r\nEl manejo de los datos
+    consiste en registrar primero la informaci\xF3n de entrada en tablas comparativas,
+    aplicar las f\xF3rmulas correspondientes para los c\xE1lculos, y organizar los
+    resultados obtenidos en matrices o cuadros de an\xE1lisis que faciliten la comparaci\xF3n
+    entre las distintas opciones de AGV y rutas.\r\n\r\n<b>Resultados a presentar
+    para el an\xE1lisis te\xF3rico</b>  \r\n<indent=5%>- Tabla de par\xE1metros energ\xE9ticos
+    para cada modelo de AGV, mostrando valores de energ\xEDa nominal, energ\xEDa
+    \xFAtil, autonom\xEDa, tiempo de carga y relaci\xF3n autonom\xEDa/carga.</indent> 
+    \r\n<indent=5%>- Ruta \xF3ptima identificada, representada en el grafo del centro
+    log\xEDstico y acompa\xF1ada del costo total calculado (tiempo o energ\xEDa).</indent> 
+    \r\n<indent=5%>- Indicadores de eficiencia operativa calculados para el AGV seleccionado
+    en condiciones simuladas.</indent>  \r\n\r\n<b>Discusi\xF3n te\xF3rica de los
+    resultados:</b>  \r\n<indent=5%>- Comparaci\xF3n entre las alternativas de AGV
+    y justificaci\xF3n de la selecci\xF3n m\xE1s adecuada en funci\xF3n de autonom\xEDa,
+    flexibilidad y condiciones del entorno.</indent>  \r\n<indent=5%>- Interpretaci\xF3n
+    del impacto de la ruta \xF3ptima sobre el tiempo de ciclo y la capacidad de transporte.</indent> 
+    \r\n<indent=5%>- Relaci\xF3n entre las condiciones locativas planteadas en el
+    problema (iluminaci\xF3n, mantenimiento, interferencia electromagn\xE9tica) y
+    la viabilidad de los sistemas de navegaci\xF3n.</indent>\r\n"
+  allowVerticalScroll: 1
+  allowHorizontalScroll: 0

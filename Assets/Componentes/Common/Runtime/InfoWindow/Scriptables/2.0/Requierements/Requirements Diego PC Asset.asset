@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9d5d4c384ab1449bdd92d4ee956867, type: 3}
+  m_Name: Requirements Diego PC Asset
+  m_EditorClassIdentifier: 
+  header: Requisitos PC
+  components:
+  - name: IMPORTANTE
+    minimum: "Para un correcto funcionamiento, aseg\xFArese de que la aceleraci\xF3n
+      por hardware est\xE1 habilitada en su navegador."
+    recommended: 
+    warningNotes: 
+  - name: SO
+    minimum: Windows 11, Mac OS X Sonoma (14) o superior. Sistema operativo con arquitectura
+      de 64 BITS.
+    recommended: 
+    warningNotes: 
+  - name: Procesador
+    minimum: "Intel CORE I5 de 10.\xAA generaci\xF3n o superior; AMD Ryzen 5 generaci\xF3n
+      5000 o superior.\r\n"
+    recommended: 
+    warningNotes: 
+  - name: Memoria
+    minimum: 8GB de RAM o superior.
+    recommended: 
+    warningNotes: 
+  - name: Almacenamiento
+    minimum: "Disco duro de estado s\xF3lido (SSD) con al menos 10 GB de espacio
+      disponible."
+    recommended: 
+    warningNotes: 
+  - name: "Gr\xE1ficos "
+    minimum: "Gr\xE1ficos con al menos 4GB de memoria independiente.\r\n"
+    recommended: 
+    warningNotes: 
+  - name: Requisitos adicionales
+    minimum: Navegador web actualizado de Opera, Google Chrome, Mozilla Firefox,
+      Microsoft Edge o Safari compatibles con WebGL.
+    recommended: 
+    warningNotes: 
+  - name: 'Internet '
+    minimum: Internet de banda ancha con 10MB de velocidad de descarga o superior.
+    recommended: 
+    warningNotes: 
+  - name: "Perif\xE9ricos "
+    minimum: "Rat\xF3n de 3 botones y teclado f\xEDsico."
+    recommended: 
+    warningNotes: 
+  - name: Otros
+    minimum: "Procesador de hojas de c\xE1lculo .XLSX"
+    recommended: 
+    warningNotes: 

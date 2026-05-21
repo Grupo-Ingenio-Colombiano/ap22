@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9d5d4c384ab1449bdd92d4ee956867, type: 3}
+  m_Name: Requirements Diego Mobile Asset
+  m_EditorClassIdentifier: 
+  header: "Requisitos Dispositivos M\xF3viles"
+  components:
+  - name: Sistema operativo
+    minimum: Android 13 o superior
+    recommended: 
+    warningNotes: 
+  - name: 'Navegador '
+    minimum: "Google Chrome actualizado a la \xFAltima versi\xF3n\r\n"
+    recommended: 
+    warningNotes: 
+  - name: RAM
+    minimum: 6 gb de memoria ram
+    recommended: 
+    warningNotes: 
+  - name: 'Procesador '
+    minimum: "8 n\xFAcleos con capacidad de aceleraci\xF3n gr\xE1fica"
+    recommended: 
+    warningNotes: 
+  - name: 'Internet '
+    minimum: "8 n\xFAcleos con capacidad de aceleraci\xF3n gr\xE1fica"
+    recommended: Internet de banda ancha con 10MB de velocidad de descarga o superior.
+    warningNotes: 

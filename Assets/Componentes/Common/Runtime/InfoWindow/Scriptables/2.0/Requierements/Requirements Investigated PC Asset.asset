@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d8826bd8289ce4db6c694ae3302f5d, type: 3}
+  m_Name: Requirements Investigated PC Asset
+  m_EditorClassIdentifier: 
+  header: Requisitos PC
+  components:
+  - name: CPU
+    minimum: "Intel Core i3-3110M (2.4 GHz) \nAMD A6-6310 (1.8 GHz)"
+    recommended: Intel Core i5-8400 / AMD Ryzen 5 2600 o superior
+    warningNotes: "WebGL usa JavaScript y depende del rendimiento del hilo principal
+      del navegador. Procesadores de un solo n\xFAcleo sufren mucho."
+  - name: "GPU (Tarjeta gr\xE1fica)"
+    minimum: "Intel HD Graphics 4000 / AMD \nRadeon HD 6450 / NVIDIA GT 610"
+    recommended: Intel UHD 620+, NVIDIA GTX 1050 / AMD RX 560 o superiores
+    warningNotes: "Debe soportar OpenGL ES 3.0 o superior (WebGL 2.0 se basa en \xE9l).
+      Algunos chips integrados antiguos solo ofrecen soporte parcial o inestable."
+  - name: Memoria RAM
+    minimum: 4 GB
+    recommended: "8 GB o m\xE1s"
+    warningNotes: Navegadores modernos usan bastante memoria para juegos. Con 4 GB,
+      el sistema puede tener problemas si hay otras apps abiertas.
+  - name: Almacenamiento
+    minimum: "HDD con 1 GB libre para cach\xE9"
+    recommended: "SSD para tiempos de carga m\xE1s r\xE1pidos"
+    warningNotes: "Aunque el juego se ejecuta desde el navegador, los recursos se
+      almacenan en cach\xE9 local (IndexedDB, etc.)."
+  - name: "Pantalla y resoluci\xF3n"
+    minimum: "Resoluci\xF3n 1366x768 (HD)"
+    recommended: "Resoluci\xF3n 1920x1080 (Full HD)"
+    warningNotes: "A resoluciones m\xE1s altas, la GPU necesita m\xE1s potencia.
+      Limita la resoluci\xF3n interna si buscas rendimiento."
+  - name: Sistema operativo
+    minimum: Windows 7 SP1 / macOS 10.12 / Ubuntu 18.04
+    recommended: Windows 10/11 / macOS 12+ / Ubuntu 22+
+    warningNotes: "Drivers de GPU deben estar actualizados. Algunas versiones de
+      Linux necesitan configuraci\xF3n adicional."
+  - name: Navegador [hace falta calcular la altura para textos grandes en la caja]
+    minimum: "Chrome\t\t\t\t56+ (mejor con 90+)\nFirefox\t\t\t\t51+ (mejor con 90+)\nEdge\t\t\t\t\t79+
+      (Chromium-based)\nSafari\t\t\t\t15+ (WebGL 2.0 estable)\nAndroid WebView\t\tMuy
+      limitado o incompatible con WebGL 2.0"
+    recommended: 
+    warningNotes: 
+  - name: Otros
+    minimum: "Soporte WebGL 2.0\t\tHabilitado por defecto en la mayor\xEDa de navegadores
+      actuales\nJavaScript activado\t\tObligatorio\nInternet \t\t\t\tBanda ancha
+      con 1MB+ de velocidad de descarga.\r\nRat\xF3n \t\t\t\tDe 3 botones \nTeclado
+      f\xEDsico\r\nProcesador de hojas de c\xE1lculo .XLSX."
+    recommended: 
+    warningNotes: 
+  - name: 'Dispositivos que pueden tener problemas:'
+    minimum: "Laptops con Intel HD Graphics 2000/3000\nNavegadores desactualizados
+      en Windows 7 o Linux\niPhone y iPads con iOS < 15\nDispositivos Android con
+      chips Mali-T o Adreno antiguos\nNavegadores con \"modo ahorro\" o sin aceleraci\xF3n
+      por hardware"
+    recommended: 
+    warningNotes: 

@@ -18,7 +18,6 @@ namespace VP.Common.InfoWindow
 
         private void PlaySoundOnClick()
         {
-            //AudioManager.instance.PlayNewSFX(buttonSound);
         }
     }
 

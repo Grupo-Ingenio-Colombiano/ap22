@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2167b3c5df25a074ba6ef16ccdad77f5, type: 3}
+  m_Name: Metodologia Window
+  m_EditorClassIdentifier: 
+  content: "<size=180%><b>Metodolog\xEDa</b></size>\r\n\r\nLa pr\xE1ctica se fundamenta
+    en el marco conceptual de los sistemas AGV y en la teor\xEDa de optimizaci\xF3n
+    log\xEDstica y planificaci\xF3n de rutas, integrando el c\xE1lculo energ\xE9tico,
+    la selecci\xF3n tecnol\xF3gica y el an\xE1lisis de desempe\xF1o operativo. Para
+    resolver el problema planteado, se proponen los siguientes pasos metodol\xF3gicos:\r\n\r\n<b>1.
+    An\xE1lisis de condiciones del entorno</b>  \r\nVariables: restricciones locativas
+    (obras civiles no permitidas), condiciones de iluminaci\xF3n, nivel de suciedad
+    en el piso, presencia de interferencia electromagn\xE9tica, presupuesto disponible. 
+    \r\n<indent=5%><b>- Acci\xF3n:</b> Identificar qu\xE9 tecnolog\xEDas de navegaci\xF3n
+    (cable, magn\xE9tica, \xF3ptica, l\xE1ser, inercial o visi\xF3n artificial) son
+    viables en el escenario dado.</indent>  \r\n<indent=5%><b>- Modelo aplicado:</b>
+    matriz de comparaci\xF3n entre condiciones del entorno y tecnolog\xEDas de guiado.</indent>\r\n\r\n<b>2.
+    Selecci\xF3n del tipo de AGV</b>  \r\n<indent=5%><b>- Variables:</b> capacidad
+    de carga (kg), nivel de autonom\xEDa (h), flexibilidad de rutas, costo y mantenimiento.</indent> 
+    \r\n<indent=5%><b>- Acci\xF3n:</b> Elegir el AGV que cumpla con las condiciones
+    de transporte de paquetes (\u226410 kg) y que ofrezca flexibilidad operativa.</indent> 
+    \r\n<indent=5%><b>- Modelo aplicado:</b> clasificaci\xF3n de AGV seg\xFAn tipo
+    de carga y sistema de navegaci\xF3n.</indent>\r\n\r\n<b>3. C\xE1lculo energ\xE9tico
+    y de autonom\xEDa</b>  \r\n\r\nSe emplean las ecuaciones de desempe\xF1o energ\xE9tico
+    del gui\xF3n:\r\n\r\n<indent=5%>- Energ\xEDa nominal</indent>  \r\n<align=\"center\"><size=150%>E<sub>nominal</sub>
+    = V<sub>bat</sub> \xD7 Cap<sub>bat</sub> \xD7 3600</size></align>\r\n\r\n<indent=5%>-
+    Energ\xEDa \xFAtil</indent>  \r\n<align=\"center\"><size=150%>E<sub>\xFAtil</sub>
+    = E<sub>nominal</sub> \xD7 \u03B7</size></align>\r\n\r\n<indent=5%>- Autonom\xEDa
+    nominal</indent>  \r\n<align=\"center\"><size=150%>t<sub>aut_nom</sub> = (Cap<sub>bat</sub>
+    \xD7 60) / (I<sub>consumo</sub> \xD7 1000)</size></align>\r\n\r\n<indent=5%>-
+    Autonom\xEDa efectiva</indent>  \r\n<align=\"center\"><size=150%>t<sub>aut</sub><sup>ef</sup>
+    = t<sub>aut</sub><sup>nom</sup> \xD7 \u03B7</size></align>\r\n\r\n<indent=5%>-
+    Tiempo de carga</indent>  \r\n<align=\"center\"><size=150%>t<sub>carga</sub>
+    = (Cap<sub>bat</sub> \xD7 60) / (I<sub>cargador</sub> \xD7 1000)</size></align>\r\n\r\n<indent=5%>-
+    Relaci\xF3n autonom\xEDa/tiempo de carga</indent>  \r\n<align=\"center\"><size=150%>R
+    = (t<sub>aut</sub><sup>ef</sup>) / (t<sub>carga</sub>)</size></align>\r\n\r\nCalcular
+    estos par\xE1metros para los modelos de AGV disponibles.\r\n\r\n<b>4. Determinaci\xF3n
+    de la ruta \xF3ptima</b>  \r\n\r\nSe emplea el modelo de grafos ponderados, donde
+    los nodos representan estaciones log\xEDsticas y las aristas los caminos posibles
+    con un peso asociado (tiempo en minutos).  \r\n\r\n<indent=5%>- Algoritmo aplicado:</indent> 
+    \r\n<indent=10%>Dijkstra.</indent>\r\n\r\n<indent=5%>- Variables:</indent>  \r\n<indent=10%>-
+    Nodos: puntos de inter\xE9s (almac\xE9n, estaciones de carga, zona de despacho).</indent> 
+    \r\n<indent=10%>- Pesos: tiempos de recorrido (min).</indent>\r\n\r\nEcuaci\xF3n
+    de costo acumulado:  \r\n<align=\"center\"><size=150%>C<sub>ruta</sub> = \u03A3<sup>n</sup><sub>i=1</sub>
+    w<sub>i</sub></size></align>  \r\nDonde w<sub>i</sub> es el peso de cada arista. 
+    \r\n\r\nEjecutar el algoritmo paso a paso para identificar la ruta con menor
+    costo total (menor tiempo o energ\xEDa).\r\n\r\n<b>5. Evaluaci\xF3n de indicadores
+    de eficiencia operativa</b>  \r\n\r\nUna vez definida la soluci\xF3n, se calculan
+    indicadores para validar el desempe\xF1o del sistema:\r\n\r\n<indent=5%>- Capacidad
+    de transporte</indent> \n \r\n<align=\"center\"><size=150%>CT = (N\xFAmero de
+    cargas completadas) / (Unidad de tiempo)</size></align>\r\n\r\n<indent=5%>- Tiempo
+    de ciclo</indent>  \r\n<align=\"center\"><size=150%>T<sub>ciclo</sub> = T<sub>arranque</sub>
+    + T<sub>carga</sub> + T<sub>ruta</sub><sub>ida</sub> + T<sub>descarga</sub> +
+    T<sub>ruta</sub><sub>regreso</sub></size></align>\r\n\r\n<indent=5%>- Porcentaje
+    de utilizaci\xF3n efectiva</indent>  \r\n<align=\"center\"><size=150%>U = (T<sub>utilizaci\xF3n</sub>)
+    / (T<sub>total</sub>) \xD7 100</size></align>\r\n\r\n<b>6. Validaci\xF3n y toma
+    de decisiones</b>  \r\nCon los resultados de selecci\xF3n del AGV, c\xE1lculos
+    energ\xE9ticos, rutas optimizadas e indicadores, se determina la mejor opci\xF3n
+    tecnol\xF3gica para el centro log\xEDstico.\r\n"
+  allowVerticalScroll: 1
+  allowHorizontalScroll: 0
