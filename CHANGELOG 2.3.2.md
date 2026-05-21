@@ -3,7 +3,14 @@ This file will be documented this file all changes in .
 
 ## Owner
 grupo Ingenio Colombiano
+## [3.0.2] - 2026-05-21
+## Developers
+[ David Ramirez Baquero / davidbaqueroprincipal@gmail.com ]
 
+### Updated
+- [Player] Disable ingco splash screen.
+- [Package] Update webgl plugins to the latest version.
+- [FinalReport] Fix bug with final report function not being executed.
  ## [2.3.1] - 2025-04-24
  ### Updated
  -[Package] Login sample on WebGL plugins.
