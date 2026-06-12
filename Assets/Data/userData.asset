@@ -14,38 +14,137 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   studentName: 
   email: 
-  lastScene: 
-  practiceName: 
-  isSave: 0
-  load: 0
+  lastScene: 2
+  practiceName: Estudio de tiempos
+  isSave: 1
+  load: 2
   nodeDialogueJefePlanta: 0
   inspectorSeguridad: 0
-  PlayerSelected: 
-  playerPosition: {x: 0, y: 0, z: 0}
-  playerRot: {x: 0, y: 0, z: 0, w: 0}
-  progress: 0
-  experience: 0
-  time: 
-  tiempoTotal: 
+  PlayerSelected: 0
+  playerPosition: {x: 83.40001, y: 0.02393502, z: -56.35}
+  playerRot: {x: -0.012239344, y: 0.7066532, z: 0.01222731, w: 0.70734864}
+  progress: 10
+  experience: 50
+  time: 00:03:09
+  tiempoTotal: 189
   note: 
   badAnswer: 0
   goodAnswer: 0
   markerCanvas: {x: 0, y: 0, z: 0}
   indicator: {x: 0, y: 0, z: 0}
-  numInventario: 0
+  numInventario: 9
   nombreForm: 
   apellidoForm: 
   iDForm: 
-  method: 0
-  selectedMethod: 0
-  proccessUnits: 0
-  indexOperationData: 0
-  failPractice: 0
+  method: 2
+  selectedMethod: 1
+  proccessUnits: 166
+  indexOperationData: 2
+  failPractice: 1
   scoreMethodElection: 0
   scoreSecurityElements: 0
   scoreHistoricDataTable: 0
   scoreTO: 0
-  inventory: []
+  inventory:
+  - itemName: "Cron\xF3metro"
+    sprite: 0
+    eliminable: 0
+    obj: 0
+    infotext: 
+    infoSprite: 0
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 6
+    useOneTime: 1
+  - itemName: Virtualina
+    sprite: 1
+    eliminable: 1
+    obj: 1
+    infotext: "Renueva los animos y da m\xE1s velocidad"
+    infoSprite: 1
+    playerEquip: 0
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 1
+  - itemName: Botas
+    sprite: 3
+    eliminable: 0
+    obj: 3
+    infotext: 
+    infoSprite: 3
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Casco
+    sprite: 2
+    eliminable: 0
+    obj: 2
+    infotext: 
+    infoSprite: 2
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "M\xE1scara para vapores"
+    sprite: 4
+    eliminable: 0
+    obj: 4
+    infotext: 
+    infoSprite: 4
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Guantes
+    sprite: 5
+    eliminable: 0
+    obj: 5
+    infotext: 
+    infoSprite: 5
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Overol
+    sprite: 6
+    eliminable: 0
+    obj: 6
+    infotext: 
+    infoSprite: 6
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: "Protector de o\xEDdos"
+    sprite: 7
+    eliminable: 0
+    obj: 7
+    infotext: 
+    infoSprite: 7
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
+  - itemName: Gafas
+    sprite: 8
+    eliminable: 0
+    obj: 8
+    infotext: 
+    infoSprite: 8
+    playerEquip: 1
+    isNowEquiped: 0
+    indexUi: 0
+    useDistance: 0
+    useOneTime: 0
   questsCheck: 0
   historicData:
   - 0
@@ -89,25 +188,25 @@ MonoBehaviour:
   talkTimeHistorical: 0
   tiempoCicloHistorical: 0
   unidadesRequeridasHistorical: 0
-  justifHistorical: 
+  justifHistorical: sad
   experienceSelectHistoricalData: 0
-  experienceTalkTimeHistorical: 0
-  experienceTiempoOptimoHistorical: 0
-  experienceUnidadesrequeridasHistorical: 0
-  experienceQuestionHistorical: 0
+  experienceTalkTimeHistorical: 75
+  experienceTiempoOptimoHistorical: 75
+  experienceUnidadesrequeridasHistorical: 75
+  experienceQuestionHistorical: 75
   modalTimeHistorical: 0
   unitsProccess: 0
   requiredUnits: 0
   kSuplements: 0
-  numMinutos: 0
-  percentageOperation: 0
-  rhythm: 0
-  k: 0
-  unidadesProducidasMuestreo: 0
+  numMinutos: 60
+  percentageOperation: 90
+  rhythm: 80
+  k: 12
+  unidadesProducidasMuestreo: 16
   experienceTalkTimeSample: 0
   experienceTiempoOptimoSample: 0
   experienceUnidadesrequeridasSample: 0
-  experienceQuestionSample: 0
+  experienceQuestionSample: 2
   kCronometraje: 0
   rhytmFactor: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   cronometrajeData:
@@ -159,9 +258,1016 @@ MonoBehaviour:
   turn3: 0
   observaciones: 
   experienceTurnOperators: 0
-  templateName: 
+  templateName: ap22_2
   fileName: 
-  excelReport: []
+  excelReport:
+  - A: []
+    B: []
+    C:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    E:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    F:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 50
+    - 10%
+    - 00:03:08
+    - 10%
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    G:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - ' '
+    - 
+    - '06/12/2026   04: 07:43'
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    H:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    I:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 30
+    - 20
+    - 0
+    - 0
+    - 0
+    - 2
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    J:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - Si
+    - sad
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    K:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - Si
+    - sad
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    L:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - Si
+    - sad
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    M:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 2,44
+    - 3,02
+    - 133,93
+    - 
+    - No
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 0
+    - 133,9286
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    N: []
+    O: []
+    P: []
+    Q: []
   reportUrl: 
   institution: 
   academicProgram: 
