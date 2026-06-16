@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject methodSelection;
 
+    [ContextMenu("Set Method Selection")]
     public void enableMethodSelection()
     {
         methodSelection.SetActive(true);
