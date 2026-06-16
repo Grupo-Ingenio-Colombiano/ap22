@@ -4,6 +4,7 @@ using VP.WEBGL.Plugins;
 
 public class FinalReport : MonoBehaviour
 {
+    [SerializeField] private bool loadOnStart = true;
     [SerializeField] UserData userData;
 
     [System.Serializable]
@@ -23,7 +24,10 @@ public class FinalReport : MonoBehaviour
 
     private void Start()
     {
-        OpenFinalReporttWhitAll();
+        if (loadOnStart)
+        {
+            OpenFinalReporttWhitAll();
+        }
     }
 
     public void OpenFinalReport() { WebGLUtils.OpenFinalReport(); }
