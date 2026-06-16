@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         capsuleCol = GetComponent<CapsuleCollider>();
 
         capsuleCol.material = con_friccion;
-        if (data.isSave == true)
+        if (data.isSave == true && data.playerPosition != Vector3.zero)
         {
             rb.transform.localPosition = data.playerPosition;
             rb.transform.localRotation = data.playerRot;
