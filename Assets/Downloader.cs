@@ -14,7 +14,7 @@ public class Downloader : MonoBehaviour
 
     private void Start()
     {
-        userData.excelReport[0].G[6] = userData.nombreForm + " " + userData.apellidoForm;
+        userData.excelReport[0].G[6] = userData.studentName;
         userData.excelReport[0].G[7] = userData.email;
         userData.excelReport[0].G[8] = System.DateTime.Now.ToString("MM/dd/yyyy") + "   " + System.DateTime.Now.ToString("hh: mm:ss");
 

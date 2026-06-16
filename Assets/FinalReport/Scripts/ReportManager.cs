@@ -71,8 +71,6 @@ public class ReportManager : MonoBehaviour
         var hourString = date.ToString("hh:mm tt");
 
         userData.excelReport[0].G[8]=dateString + "   " + hourString;
-        
-       
     }
 
 

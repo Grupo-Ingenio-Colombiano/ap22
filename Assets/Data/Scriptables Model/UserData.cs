@@ -34,11 +34,6 @@ public class UserData : ScriptableObject
     public Vector3 markerCanvas;
     public Vector3 indicator;
     public int numInventario;
-    [Header("Formulario de Ingreso")]
-    public string nombreForm;
-    public string apellidoForm;
-    public string iDForm;
-    
    
     [Header("Guardado")]
     public int method;
@@ -159,11 +154,6 @@ public void ResetToItsDefaults()
     markerCanvas = Vector3.zero;
     indicator = Vector3.zero;
     numInventario = 0;
-
-    // -------- Formulario --------
-    nombreForm = string.Empty;
-    apellidoForm = string.Empty;
-    iDForm = string.Empty;
 
     // -------- Guardado --------
     method = 0;
