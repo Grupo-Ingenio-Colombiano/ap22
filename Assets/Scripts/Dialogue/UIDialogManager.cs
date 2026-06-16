@@ -262,7 +262,7 @@ public class UIDialogManager : MonoBehaviour
 
         uiContainer.GetComponent<Image>().sprite = playerBackgroundSprite;
 
-        playerNameText.text = playerName.AssignedName;
+        playerNameText.text = userData.studentName;
 
     }
 

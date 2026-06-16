@@ -8,9 +8,9 @@ public class PanelAvatar : MonoBehaviour
     [SerializeField] private Sprite[] miniatures;
     [SerializeField] private Image avatarImage;
 
-    void Start()
+    void OnEnable()
     {
-        nameText.text = data.name;
+        nameText.text = data.studentName;
         emailText.text = data.email;
 
         avatarImage.sprite = miniatures[int.Parse(data.PlayerSelected)];

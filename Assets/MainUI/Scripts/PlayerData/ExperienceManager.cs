@@ -22,7 +22,7 @@ public class ExperienceManager : MonoBehaviour
     float maxExperience = 500;
     private void Start()
     {
-        name.text = data.name;
+        name.text = data.studentName;
        
         if (experience != null)
         {

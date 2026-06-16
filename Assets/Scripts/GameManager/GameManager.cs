@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         userData.lastScene = SceneManager.GetActiveScene().buildIndex.ToString();
-        
+        if(userData.load == 0)
+        {
+            HelpManager.Instance().SetHelp("Registre su ingreso con el vigilante.");
+        }
         if (userData.load >= 1)
         {
           

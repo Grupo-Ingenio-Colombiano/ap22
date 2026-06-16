@@ -35,7 +35,7 @@ public class LoginFunctions : MonoBehaviour
         data.ResetToItsDefaults();
 #if UNITY_EDITOR
 
-        data.name = nameTest;
+        data.studentName = nameTest;
         data.email = emailTest;
 
         debugMsg += "Name: " + data.name + "\n";
@@ -43,7 +43,7 @@ public class LoginFunctions : MonoBehaviour
 
 #elif UNITY_WEBGL
         
-        data.name = AutoLoginUI.Name;
+        data.studentName = AutoLoginUI.Name;
         data.email = AutoLoginUI.Email;
         
 #endif
