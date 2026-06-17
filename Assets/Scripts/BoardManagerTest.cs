@@ -24,7 +24,6 @@ public class BoardManagerTest : MonoBehaviour
     [SerializeField] GameObject endButton;
 
     [SerializeField] GameObject buttonContinue;
-    [SerializeField] GameObject wrongActivityText;
 
     [Header("player data")]
     [SerializeField] PlayerExperience playerExperience;
@@ -151,7 +150,6 @@ public class BoardManagerTest : MonoBehaviour
     public void ResetAnswerButton(int index)
     {
         answerButtonsIndicators[index].GetComponent<Image>().raycastTarget = true;
-        wrongActivityText.SetActive(false);
     }
 
     public void CheckAnswers()
@@ -187,6 +185,15 @@ public class BoardManagerTest : MonoBehaviour
         //print(correctAnswers);
         ProcessEndResult(correctAnswers);
     }
+    [ContextMenu("AutoFill")]
+    public void AutoFill()
+    {
+        for(int i = 0; i< numPosiblePositions; i++)
+        {
+            initialButtons[i].transform.localPosition = posiblePositions[i];
+            initialButtons[i].GetComponent<BoardButton>().indexAnswer = initialButtons[i].GetComponent<BoardButton>().correctPositionsIndexes[0];
+        }
+    }
 
     void ProcessEndResult(int numAnswers)
     {
@@ -196,17 +203,15 @@ public class BoardManagerTest : MonoBehaviour
         }
         else
         {
-            if (currentAtempts - 1 >= 0)
+            currentAtempts--;
+            if(currentAtempts == 0)
             {
-                currentAtempts--;
-            }
-
-            wrongActivityText.SetActive(true);
-
-            if (Debug.isDebugBuild)
-            {
+                VpNewNotice.SetNotice("Información", "No ha podido completar la actividad de manera satisfactoria.");
                 EndDragActivity();
+                return;
             }
+            VpNewNotice.SetNotice("Información","Algunas respuestas no son correctas, intentelo nuevamente");
+
         }
     }
 
@@ -230,25 +235,6 @@ public class BoardManagerTest : MonoBehaviour
         //QuestionPointManager.BoardIndex++;
 
         //playerExperience.AddExperience(questionaryPoints);
-    }
-
-    public void GaussTestPanel()
-    {
-
-        SetPosiblePositions();
-        List<int> posOcupadas = new List<int>();
-        int test = 0;
-        //for (int i = 0; i < initialButtons.Length; i++)
-        //{
-        //    var posibleCorrectPos = initialButtons[i].GetComponent<BoardButton>().correctPositionsIndexes;
-        //    do
-        //    {
-
-        //    } while (initialButtons[i].GetComponent<RectTransform>().localPosition == );
-                   
-        //    initialButtons[i].GetComponent<RectTransform>().localPosition = answerButtonsIndicators[0].GetComponent<RectTransform>().localPosition;
-
-        //}
     }
 
 }
