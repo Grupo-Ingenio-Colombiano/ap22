@@ -89,8 +89,8 @@ public class CronoManager : MonoBehaviour
 
         else
         {
-            minTime = 30;
-            maxTime = 60;
+            minTime = 20;
+            maxTime = 70;
         }
 
 
