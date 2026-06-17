@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VP.WEBGL.Plugins;
 
 public class MethodSeleccion : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class MethodSeleccion : MonoBehaviour
             method = 1;
             data.method = method;
             data.templateName = "ap22_1";
+            WebGLStorage.WriteSessionStorage("templatename","ap22_1");
             anim.SetTrigger("indh");
             selection = true;
             data.selectedMethod = selection;
@@ -72,6 +74,7 @@ public class MethodSeleccion : MonoBehaviour
             method = 2;
             data.method = method;
             data.templateName = "ap22_2";
+            WebGLStorage.WriteSessionStorage("templatename","ap22_2");
             anim.SetTrigger("inm");
             selection = true;
             data.selectedMethod = selection; 
@@ -88,6 +91,7 @@ public class MethodSeleccion : MonoBehaviour
             method = 3;
             data.method = method;
             data.templateName = "ap22_3";
+            WebGLStorage.WriteSessionStorage("templatename","ap22_3");
             anim.SetTrigger("inc");
             selection = true;
             data.selectedMethod = selection;

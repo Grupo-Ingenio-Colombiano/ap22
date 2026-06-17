@@ -37,6 +37,7 @@ public class FinalReport : MonoBehaviour
 
     public void OpenFinalReporttWhitAll()
     {
+        Debug.Log("La plantilla es :" + userData.templateName);
         excelData = new ExcelData();
         excelData.fields = new List<ExcelData.Field>();
 

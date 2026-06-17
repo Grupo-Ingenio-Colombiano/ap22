@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ResultsOneWeekManager : MonoBehaviour
 {
+    [SerializeField] private UserData data;
 
     [SerializeField]
     GameObject transition;
@@ -29,8 +30,6 @@ public class ResultsOneWeekManager : MonoBehaviour
 
     [SerializeField] GameObject resultsSupervisor;
     [SerializeField] GameObject[] supervisors;
-    [SerializeField] GameObject getPriceDance;
-    [SerializeField] GameObject getPriceMontacargas;
 
     [SerializeField] GameObject finalBoard;
 
@@ -65,10 +64,6 @@ public class ResultsOneWeekManager : MonoBehaviour
             i.SetActive(false);
         }
     }
-
-
-
-
     IEnumerator AnimTransition()
     {
         for (float i = 0; i < 1; i += 0.02f)
@@ -103,6 +98,7 @@ public class ResultsOneWeekManager : MonoBehaviour
         SoundManager.Instance().PlayNaturalAmbience();
         move.CanMove = true;
         HelpManager.Instance().SetHelp("La propuesta fue implementada y ha pasado una semana, busque al supervisor de la planta para observar los resultados obtenidos.");
+        Debug.Log("La plantilla es: " + data.templateName);
         IndicatorManager.instance().SetDestiny(new Vector3(resultsSupervisor.transform.position.x, 0, resultsSupervisor.transform.position.z));
     }
 
