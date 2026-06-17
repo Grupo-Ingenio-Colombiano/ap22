@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -81,6 +79,12 @@ namespace Vp_Packages
         {
             TimingRegisterCalculations timer = FindAnyObjectByType<TimingRegisterCalculations>();
             timer.RellenarDatosCronometraje();
+        }
+
+        public void FillDragAndDrop()
+        {
+            BoardManagerTest board = FindAnyObjectByType<BoardManagerTest>();
+            board.AutoFill();
         }
     }
 
