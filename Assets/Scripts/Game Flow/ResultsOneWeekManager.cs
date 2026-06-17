@@ -103,7 +103,6 @@ public class ResultsOneWeekManager : MonoBehaviour
         SoundManager.Instance().PlayNaturalAmbience();
         move.CanMove = true;
         HelpManager.Instance().SetHelp("La propuesta fue implementada y ha pasado una semana, busque al supervisor de la planta para observar los resultados obtenidos.");
-        getPriceDance.SetActive(true);
         IndicatorManager.instance().SetDestiny(new Vector3(resultsSupervisor.transform.position.x, 0, resultsSupervisor.transform.position.z));
     }
 
@@ -119,7 +118,6 @@ public class ResultsOneWeekManager : MonoBehaviour
         finalBoard.SetActive(true);
         HelpManager.Instance().SetHelp("En el momento que lo desee puede finalizar la práctica hablando con el supervisor.");
         IndicatorManager.instance().SetDestiny(new Vector3(resultsSupervisor.transform.position.x, 0, resultsSupervisor.transform.position.z));
-        getPriceMontacargas.SetActive(true);
         dialogState = 2;
     }
 
