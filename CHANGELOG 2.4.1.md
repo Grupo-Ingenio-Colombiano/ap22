@@ -3,7 +3,39 @@ This file will be documented this file all changes in .
 
 ## Owner
 grupo Ingenio Colombiano
-## [3.0.2] - 2026-05-21
+## [2.4.1] - 2026-06-18
+## Developers
+[ David Ramirez Baquero / davidbaqueroprincipal@gmail.com ]
+
+### Updated
+- [Package] Info window with credits support
+- [Rendering] Occlusion culling and lighing baking
+- [UI] All cases when the player name is required is now taken by the Login Storage player name
+- [Gameflow] The timing zone threshold is now more accesible
+### Fixed
+- [Gameflow] Case 1 workflow was broken
+- [Gameflow] Case 2 workflow was broken
+- [Gameflow] Case 3 workflow was broken
+- [3D] Boards were dissapearing just before entering their respective activity
+- [UI] Buttons were overlapping
+- [UI] Bitacora layout was messy on different aspect ratios
+- [Gameflow] Player was spawning inside the building instead of security guard
+- [3D] Animation on worker was missing
+- [3D] Some objects in the scene were randomly dissapearing
+- [Gameflow] More clues and indicators
+- [FinalReport] Some spaces were blank on generating final report
+- [Culling] Culling mask of the camera was changing randomly
+### Added
+- [Testing] Button to generate final report
+- [Testing] Button to complete the drag and drop activity on case 3
+- [Gameflow] Feedback on the drag and drop activity
+- [Gameflow] 3 attemps logic on drag and drop activity
+- [Gameflow] Set the template name based on the case selected (Session storage)
+### Removed
+- [Player] All Logos
+- [Data] Unnecesary fields on user data
+- [Gameflow] unnecesary inventory elements (Dance action, key for vehicle)
+## [2.3.2] - 2026-05-21
 ## Developers
 [ David Ramirez Baquero / davidbaqueroprincipal@gmail.com ]
 
