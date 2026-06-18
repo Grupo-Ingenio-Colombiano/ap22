@@ -119,6 +119,25 @@ public class ResultsOneWeekManager : MonoBehaviour
 
     public void EnbleFInalResult()
     {
+        switch (data.experience)
+        {
+            default:
+                data.excelReport[0].F[18] = "No Obtenido";
+
+                break;
+
+            case >= 450:
+                data.excelReport[0].F[18] = "Oro";
+                break;
+
+            case >= 400:
+                data.excelReport[0].F[18] = "Plata";
+                break;
+
+            case >= 300:
+                data.excelReport[0].F[18] = "Bronce";
+                break;
+        }
         int activeScene = SceneManager.GetActiveScene().buildIndex;
         LevelLoader.sceneToload = activeScene + 1;
         SceneManager.LoadScene("Loading", LoadSceneMode.Additive);

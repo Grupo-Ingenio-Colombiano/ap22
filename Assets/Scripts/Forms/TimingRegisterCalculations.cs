@@ -164,7 +164,7 @@ public class TimingRegisterCalculations : MonoBehaviour
         print("Tiempo de Ciclo " + tiempoCiclo);
         print("Unidades producidas " + unidadesProducidas);
         print("Tiempo Normal " + tiempoNormal);
-     
+
         float error = 0.05f;
 
         numSamples = 4 * ((36 * sumTiemposCuadrado) - (sumTiempos * sumTiempos)) / (error * error * (sumTiempos * sumTiempos));
@@ -466,7 +466,7 @@ public class TimingRegisterCalculations : MonoBehaviour
                 sumTiemposCuadrado += (currentTimeValues[i] * currentTimeValues[i]);
                 //print(sumatoriaTiemposFR[5] + " = " + currentTimeValues[i] + " fr 110");
             }
-            
+
         }
         for (int i = 0; i < sumatoriaTiemposFR.Length; i++)
         {
@@ -516,6 +516,7 @@ public class TimingRegisterCalculations : MonoBehaviour
             SetUserAnswers();
 
             HelpManager.Instance().SetHelp("Hable con el supervisor de planta");
+            IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             emptyMessage.SetActive(false);
             move.CanMove = true;
             dragActivity.SetActive(false);

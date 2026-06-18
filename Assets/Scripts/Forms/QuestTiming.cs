@@ -55,7 +55,7 @@ public class QuestTiming : MonoBehaviour
             IndicatorManager.instance().SetDestiny(new Vector3(35.42f, 0, -73.8f));
             do
             {
-                var randomOperation = Random.Range(1, 4);
+                var randomOperation = Random.Range(1, 3);
                 CurrentOperationData = new OperationData(randomOperation, 2);
                 userData.proccessUnits = CurrentOperationData.requiredUnits;
                 userData.indexOperationData = randomOperation;

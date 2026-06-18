@@ -62,6 +62,7 @@ public class TimingOperatorManager : MonoBehaviour
 
     public void SetIndicator()
     {
+        HelpManager.Instance().SetHelp("Diríjase con el operario indicado");
         IndicatorManager.instance().SetDestiny(transform.position);
     }
 
