@@ -30,7 +30,7 @@ public class GetItemAndDialog : MonoBehaviour
 
     float distance;
 
-    [SerializeField] int ord;
+    public int ord;
 
     
 
@@ -40,10 +40,6 @@ public class GetItemAndDialog : MonoBehaviour
         recibeManager = FindObjectOfType(typeof(ItemRecibe)) as ItemRecibe;      
 
     }
-
-
-   
-
     public void setItem()
     {
 
