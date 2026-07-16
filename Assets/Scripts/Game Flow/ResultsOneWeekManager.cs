@@ -99,6 +99,7 @@ public class ResultsOneWeekManager : MonoBehaviour
         move.CanMove = true;
         HelpManager.Instance().SetHelp("La propuesta fue implementada y ha pasado una semana, busque al supervisor de la planta para observar los resultados obtenidos.");
         Debug.Log("La plantilla es: " + data.templateName);
+        PlayerDataManager.Instance.AddProgress(25);
         IndicatorManager.instance().SetDestiny(new Vector3(resultsSupervisor.transform.position.x, 0, resultsSupervisor.transform.position.z));
     }
 
