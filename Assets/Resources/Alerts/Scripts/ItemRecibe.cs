@@ -91,7 +91,8 @@ public class ItemRecibe : MonoBehaviour, ISerializationCallbackReceiver
             itemsToGive[i].oneTimeUse);
 
 
-            empty[i].SetActive(false);
+            empty[numInv+(i-1)].SetActive(false);
+            
         }
         button.enabled = true;
         item.SetActive(true);
