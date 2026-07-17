@@ -3,6 +3,25 @@ This file will be documented this file all changes in .
 
 ## Owner
 grupo Ingenio Colombiano
+## [3.0.0] - 2026-07-17
+## Developers
+[ Juan David Gonzalez Manjarres / juandavid.gonzalez@lugnia.com ]
+
+### Updated
+- [Gameflow] Now all inventory items are given at once 
+### Fixed
+- [UI] Bug with timing boss being alwats active (even if the practice has choosen another scenario)
+- [UI] Wrong progress percentage at the end of sampling and timing scenarios
+- [UI] Bitacora values were being rendered wrong and the dynamic text were not being formated properly
+- [UI] Dialog text dynamic values were not being formated properly
+### Added
+- [Gameflow] instruction for the info window button
+- [Gameflow] clue after talking to the first supervisor on sampling scenario
+- [UI] Canvas app info with fps counter
+### Removed
+- [Player] All Logos
+- [Data] Unnecesary fields on user data
+- [Gameflow] unnecesary inventory elements (Dance action, key for vehicle)
 ## [2.4.1] - 2026-06-18
 ## Developers
 [ David Ramirez Baquero / davidbaqueroprincipal@gmail.com ]
